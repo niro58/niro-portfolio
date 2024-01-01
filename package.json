@@ -3,15 +3,16 @@
   "version": "1.0.0",
   "description": "Nichita's website",
   "scripts": {
-    "dev" : "next dev -H 0.0.0.0",
-    "build" : "next build",
-    "prettier" : "prettier -write .",
-    "lint" : "next lint"
+    "dev": "next dev -H 0.0.0.0",
+    "build": "next build",
+    "prettier": "prettier -write .",
+    "lint": "next lint"
   },
   "keywords": [],
   "author": "Nichita Roilean",
   "license": "MIT",
   "dependencies": {
+    "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
