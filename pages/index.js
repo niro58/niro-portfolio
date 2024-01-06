@@ -6,17 +6,31 @@ import {
   Image,
   useColorModeValue,
   Link,
+  List,
+  ListItem,
+  SimpleGrid,
   Button,
+  Icon,
 } from "@chakra-ui/react";
 import Layout from "../components/layouts/article";
 import Section from "../components/section";
 import Paragraph from "../components/paragraph";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { BioSection, BioYear } from "../components/bio";
+import { GridItem } from "@chakra-ui/react";
+import {
+  IoLogoTwitter,
+  IoLogoInstagram,
+  IoLogoGithub,
+  IoLogoDiscord,
+} from "react-icons/io5";
+import PathAnimation from "../components/hero-logo";
+
 const Page = () => {
   return (
     <Layout>
       <Container>
+        <PathAnimation />
         <Box
           borderRadius="lg"
           bg={useColorModeValue("whiteAlpha.500", "whiteAlpha.200")}
@@ -104,6 +118,46 @@ const Page = () => {
           <Paragraph>
             Music, Art, Midjourney, Design, Programming, Playing piano
           </Paragraph>
+        </Section>
+        <Section delay={0.4}>
+          <Heading as="h3" variant="section-title">
+            You can find me here
+          </Heading>
+          <List>
+            <ListItem>
+              <Link href="https://github.com/niro58" target="_blank">
+                <Button
+                  variant="ghost"
+                  colorScheme="teal"
+                  leftIcon={<IoLogoGithub />}
+                >
+                  @niro58
+                </Button>
+              </Link>
+            </ListItem>
+            <ListItem>
+              <Link href="https://github.com/niro58" target="_blank">
+                <Button
+                  variant="ghost"
+                  colorScheme="teal"
+                  leftIcon={<IoLogoDiscord />}
+                >
+                  @Discord
+                </Button>
+              </Link>
+            </ListItem>
+            <ListItem>
+              <Link href="https://github.com/niro58" target="_blank">
+                <Button
+                  variant="ghost"
+                  colorScheme="teal"
+                  leftIcon={<IoLogoTwitter />}
+                >
+                  @Twitter
+                </Button>
+              </Link>
+            </ListItem>
+          </List>
         </Section>
       </Container>
     </Layout>
