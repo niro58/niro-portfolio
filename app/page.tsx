@@ -7,12 +7,9 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main>
-      {
-        // <Hero />
-        // <Contacts />
-        //<Skills />
-      }
-      <Socials />
+      <Hero />
+      <Skills />
+      <Contacts />
     </main>
   );
 }
