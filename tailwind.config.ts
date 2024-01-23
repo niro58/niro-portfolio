@@ -23,7 +23,7 @@ const config = {
       },
       backgroundImage: {
         hero: "url('/images/hero.webp')",
-        contacts: "url('/images/contacts-bg.jpg')",
+        mountains: "url('/images/mountains-bg.webp')",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -74,11 +74,19 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "move-to-sides": {
+          "0%": { "background-position": "0% 50%" },
+          "25%": { "background-position": "100% 50%" },
+          "50%": { "background-position": "100% 50%" },
+          "75%": { "background-position": "0% 50%" },
+          "100%": { "background-position": "0% 50%" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "pulse-slow": "pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "move-to-sides": "move-to-sides 240s ease-in-out infinite alternate",
       },
     },
   },

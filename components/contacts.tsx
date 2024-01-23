@@ -3,16 +3,16 @@ import ContactsImage from "@/public/images/contacts.webp";
 import { ContactForm } from "./contact-form";
 export const Contacts: React.FC = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="container gap-5 h-1/2 inline-flex justify-betwee">
-        <div className="bg-contacts w-1/2 bg-cover items-center flex">
+    <div className="flex min-h-screen items-center justify-between p-24 bg-gradient-to-b from-black to-gray-900 ">
+      <div className="container gap-5 h-1/2 flex flex-col md:flex-row justify-between">
+        <div className="w-full  md:max-h-full md:h-full md:w-1/2 bg-cover items-center flex">
           <Image
             src={ContactsImage}
-            className="object-contain h-5/6"
+            className="object-cover h-full border-4 border-gray-900 rounded-xl"
             alt="contacts image"
           />
         </div>
-        <div className="p-10 w-1/2 flex flex-col justify-between">
+        <div className="p-10 w-full md:w-1/2 flex flex-col justify-between">
           <div className="space-y-5">
             <div className="text-4xl">
               Do you want to contact <span className="text-blue-400">me?</span>

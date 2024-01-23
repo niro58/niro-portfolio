@@ -15,9 +15,8 @@ export interface SkillDescription {
 }
 export const Skills: React.FC = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between py-24">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-mountains bg-cover animate-move-to-sides">
       <SkillsShowcase skills={ActiveSkills} />
-      <SkillsShowcase skills={ArchivedSkills} />
     </div>
   );
 };
