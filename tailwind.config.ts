@@ -23,6 +23,7 @@ const config = {
       },
       backgroundImage: {
         hero: "url('/images/hero.webp')",
+        contacts: "url('/images/contacts-bg.jpg')",
       },
       colors: {
         border: "hsl(var(--border))",
