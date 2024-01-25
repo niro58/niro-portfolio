@@ -46,14 +46,14 @@ const NavSubmenu: React.FC<NavSubmenuProps> = ({
           <Transition
             show={isOpen}
             enter="ease-out duration-300"
-            enterFrom="opacity-0 translate-y-20 sm:translate-y-0 sm:scale-95"
+            enterFrom="opacity-0 translate-y-20 sm:translate-y-0 sm:scale-y-0"
             enterTo="opacity-100 translate-y-0 sm:scale-100"
             leave="ease-in duration-200"
             leaveFrom="opacity-100 translate-y-0 h-32 sm:scale-100"
-            leaveTo="opacity-0 translate-y-4 h-0 sm:translate-y-0 sm:scale-95"
-            className="absolute inset-0 z-0 h-28 rounded-lg shadow-lg ring-1 ring-gray-700"
+            leaveTo="opacity-0 translate-y-4 h-0 sm:translate-y-0 sm:scale-y-0"
+            className="absolute inset-0 z-0 h-28 rounded-lg shadow-lg ring-1 origin-top ring-gray-700"
           >
-            <div className="absolute inset-0 -z-10 h-full rounded-lg bg-gradient-to-t from-transparent to-blue-400 " />
+           <div className="absolute inset-0 -z-10 scale-y- h-full rounded-lg bg-gradient-to-t from-transparent to-blue-400 opacity-40 " />
             <div
               className="relative mt-8 origin-center text-center
                           text-white"
