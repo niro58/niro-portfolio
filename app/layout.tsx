@@ -1,6 +1,7 @@
 import { Nav } from "@/components/nav";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import { StrictMode } from "react";
 
 import "../styles/globals.css";
 
@@ -18,10 +19,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`bg-background  ${inter.className}`}>
-        <Nav />
-        {children}
-      </body>
+      <StrictMode>
+        <body className={`bg-background  ${inter.className}`}>
+          <Nav />
+          {children}
+        </body>
+      </StrictMode>
     </html>
   );
 }

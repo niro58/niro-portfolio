@@ -1,6 +1,10 @@
-import Image from "next/image";
+"use client";
+
 import ContactsImage from "@/public/images/contacts.webp";
+import Image from "next/image";
+
 import { ContactForm } from "./contact-form";
+
 export const Contacts: React.FC = () => {
   return (
     <div className="flex min-h-screen items-center justify-between p-24 bg-gradient-to-b from-black to-gray-900 ">

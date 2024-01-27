@@ -1,3 +1,4 @@
+"use client";
 export const RecentPosts: React.FC = () => {
   return (
     <div className="flex flex-col content-center min-h-screen p-10 bg-black">

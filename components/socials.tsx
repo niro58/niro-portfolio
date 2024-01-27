@@ -7,7 +7,7 @@ import { useInView } from "react-intersection-observer";
 
 export const Socials: React.FC = () => {
   const { ref, inView, entry } = useInView({
-    threshold: 0.5,
+    threshold: 1,
     triggerOnce: true
   });
   function copyToCliboard(text: string) {
@@ -16,26 +16,34 @@ export const Socials: React.FC = () => {
 
   return (
     <div className="bg-black " ref={ref}>
-      <div className="container border-2 border-blue-300 border-opacity-20 rounded-lg p-5">
+      <div className="container border-2 border-blue-300 border-opacity-20 rounded-lg p-5  h-40">
         <Transition
           show={inView}
           ref={ref}
           className="flex flex-row items-center justify-between"
-          enter="transition-opacity duration-1000"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="transition-opacity duration-1000"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
         >
-          <div className="animate-popup">
+          <Transition.Child
+            enter="transition ease-in-out duration-300 transform"
+            enterFrom="scale-0"
+            enterTo="scale-100"
+            leave="transition ease-in-out duration-300 transform"
+            leaveFrom="scale-100"
+            leaveTo="scale-0"
+          >
             <a className="gap-2 flex flex-col items-center hover:bg-blue-300 hover:bg-opacity-15 hover:cursor-pointer rounded-md  p-5">
               <BsDiscord size={36} />
               <div className="border-t-2 border-t-blue-400 h-2 w-32"></div>
               <div className="tracking-wide">niro58</div>
             </a>
-          </div>
-          <div className="animate-popup delay-1">
+          </Transition.Child>
+          <Transition.Child
+            enter="transition ease-in-out duration-300 transform delay-50"
+            enterFrom="scale-0"
+            enterTo="scale-100"
+            leave="transition ease-in-out duration-300 transform delay-50"
+            leaveFrom="scale-100"
+            leaveTo="scale-0"
+          >
             <a
               href="https://www.linkedin.com/in/nichita-roilean-2b4673241/"
               className="gap-2 flex flex-col items-center hover:bg-blue-300 hover:bg-opacity-15 hover:cursor-pointer rounded-md  p-5"
@@ -44,8 +52,15 @@ export const Socials: React.FC = () => {
               <div className="border-t-2 w-32 border-t-blue-400 h-2"></div>
               <div className="tracking-wide">Nichita Roilean</div>
             </a>
-          </div>
-          <div className="animate-popup delay-2">
+          </Transition.Child>
+          <Transition.Child
+            enter="transition ease-in-out duration-300 transform delay-100"
+            enterFrom="scale-0"
+            enterTo="scale-100"
+            leave="transition ease-in-out duration-300 transform delay-100"
+            leaveFrom="scale-100"
+            leaveTo="scale-0"
+          >
             <a
               href="https://github.com/niro58"
               className="gap-2 flex flex-col items-center hover:bg-blue-300 hover:bg-opacity-15 hover:cursor-pointer rounded-md  p-5"
@@ -54,8 +69,16 @@ export const Socials: React.FC = () => {
               <div className="border-t-2 w-32 border-t-blue-400 h-2"></div>
               <div className="tracking-wide">niro58</div>
             </a>
-          </div>
-          <div className="flex items-center flex-col animate-popup delay-3">
+          </Transition.Child>
+          <Transition.Child
+            enter="transition ease-in-out duration-300 transform delay-150"
+            enterFrom="scale-0"
+            enterTo="scale-100"
+            leave="transition ease-in-out duration-300 transform delay-150"
+            leaveFrom="scale-100"
+            leaveTo="scale-0"
+            className="flex flex-col items-center justify-center"
+          >
             <a
               href="mailto:niro.dev.01@gmail.com"
               className="gap-2 flex flex-col items-center hover:bg-blue-300 hover:bg-opacity-15 hover:cursor-pointer rounded-md w-full px-5 py-0"
@@ -69,8 +92,15 @@ export const Socials: React.FC = () => {
             >
               <div className="tracking-wide">niro.dev.01@gmail.com</div>
             </a>
-          </div>
-          <div className="animate-popup delay-4">
+          </Transition.Child>
+          <Transition.Child
+            enter="transition ease-in-out duration-300 transform delay-200"
+            enterFrom="scale-0"
+            enterTo="scale-100"
+            leave="transition ease-in-out duration-300 transform delay-200"
+            leaveFrom="scale-100"
+            leaveTo="scale-0"
+          >
             <a
               href="https://niro58.itch.io/"
               className="gap-2 flex flex-col items-center hover:bg-blue-300 hover:bg-opacity-15 hover:cursor-pointer rounded-md  p-5"
@@ -94,8 +124,15 @@ export const Socials: React.FC = () => {
               <div className="border-t-2 w-32 border-t-blue-400 h-2"></div>
               <div className="tracking-wide">niro58</div>
             </a>
-          </div>
-          <div className="animate-popup delay-5">
+          </Transition.Child>
+          <Transition.Child
+            enter="transition ease-in-out duration-300 transform delay-250"
+            enterFrom="scale-0"
+            enterTo="scale-100"
+            leave="transition ease-in-out duration-300 transform delay-250"
+            leaveFrom="scale-100"
+            leaveTo="scale-0"
+          >
             <a
               href="https://leetcode.com/user0863D/"
               className="gap-2 flex flex-col items-center hover:bg-blue-300 hover:bg-opacity-15 hover:cursor-pointer rounded-md  p-5"
@@ -135,7 +172,7 @@ export const Socials: React.FC = () => {
               <div className="border-t-2 w-32 border-t-blue-400 h-2"></div>
               <div className="tracking-wide">niro58</div>
             </a>
-          </div>
+          </Transition.Child>
         </Transition>
       </div>
     </div>

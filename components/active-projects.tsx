@@ -1,3 +1,5 @@
+"use client";
+
 import { RxDoubleArrowRight } from "react-icons/rx";
 
 export const ActiveProjects: React.FC = () => {
