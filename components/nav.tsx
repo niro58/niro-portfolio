@@ -14,7 +14,7 @@ export const Nav: React.FC = () => {
   const page = usePathname();
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 w-full dark:bg-green-500  bg-black">
+    <div className="fixed top-0 left-0 right-0 z-50 w-full bg-black">
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
