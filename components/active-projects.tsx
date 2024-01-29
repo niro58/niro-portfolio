@@ -18,7 +18,7 @@ export const ActiveProjects: React.FC = () => {
           <div className="inline-flex justify-between items-center">
             <div className="pt-2 text-gray-400 text-xl">Web development</div>
             <a
-              href=""
+              href="project/vjm-frigotrans"
               className="inline-flex items-center active:text-primary  hover:text-blue-900 gap-2"
             >
               <span className=" text-lg">Read</span>

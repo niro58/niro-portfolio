@@ -17,7 +17,15 @@ export const About: React.FC = () => {
         ref={ref}
         className="relative container flex flex-row justify-between "
       >
-        <div>
+        <Transition
+          show={inView}
+          enter="transition ease-in-out duration-500 transform opacity-0"
+          enterFrom="translate-y-2 opacity-0"
+          enterTo="translate-y-0 opacity-100"
+          leave="transition ease-in-out duration-500 transform opacity-100"
+          leaveFrom="translate-y-0 opacity-100"
+          leaveTo="translate-y-2 opacity-0"
+        >
           <Image
             src={"/images/about-me.webp"}
             className="object-cover h-full shadow-lg shadow-white"
@@ -25,7 +33,7 @@ export const About: React.FC = () => {
             height={600}
             alt="about"
           />
-        </div>
+        </Transition>
         <Transition
           show={inView}
           className="w-1/2 p-9 flex flex-col justify-between items-center text-2xl"
@@ -41,40 +49,41 @@ export const About: React.FC = () => {
             Czech Republic
           </Transition.Child>
           <Transition.Child
-            enter="transition ease-in-out duration-300 transform delay-50"
+            enter="transition ease-in-out duration-300 transform delay-100"
             enterFrom="scale-0"
             enterTo="scale-100"
-            leave="transition ease-in-out duration-300 transform delay-50"
+            leave="transition ease-in-out duration-300 transform delay-100"
             leaveFrom="scale-100"
             leaveTo="scale-0"
+            className="delay"
           >
-            <Separator className="my-4 h-16" orientation="vertical" />
-          </Transition.Child>
-          <Transition.Child
-            enter="transition ease-in-out duration-300 transform opacity-0 delay-150"
-            enterFrom="translate-y-2 opacity-0"
-            enterTo="translate-y-0 opacity-100"
-            leave="transition ease-in-out duration-300 transform opacity-100 delay-150"
-            leaveFrom="translate-y-0 opacity-100"
-            leaveTo="translate-y-2 opacity-0"
-          >
-            21 years old
-          </Transition.Child>
-          <Transition.Child
-            enter="transition ease-in-out duration-300 transform delay-200"
-            enterFrom="scale-0"
-            enterTo="scale-100"
-            leave="transition ease-in-out duration-300 transform delay-200"
-            leaveFrom="scale-100"
-            leaveTo="scale-0"
-          >
-            <Separator className="my-4 h-16" orientation="vertical" />
+            <Separator className="my-4 h-16 delay" orientation="vertical" />
           </Transition.Child>
           <Transition.Child
             enter="transition ease-in-out duration-300 transform opacity-0 delay-300"
             enterFrom="translate-y-2 opacity-0"
             enterTo="translate-y-0 opacity-100"
             leave="transition ease-in-out duration-300 transform opacity-100 delay-300"
+            leaveFrom="translate-y-0 opacity-100"
+            leaveTo="translate-y-2 opacity-0"
+          >
+            21 years old
+          </Transition.Child>
+          <Transition.Child
+            enter="transition ease-in-out duration-300 transform delay-400"
+            enterFrom="scale-0"
+            enterTo="scale-100"
+            leave="transition ease-in-out duration-300 transform delay-400"
+            leaveFrom="scale-100"
+            leaveTo="scale-0"
+          >
+            <Separator className="my-4 h-16 delay-200" orientation="vertical" />
+          </Transition.Child>
+          <Transition.Child
+            enter="transition ease-in-out duration-300 transform opacity-0 delay-600"
+            enterFrom="translate-y-2 opacity-0"
+            enterTo="translate-y-0 opacity-100"
+            leave="transition ease-in-out duration-300 transform opacity-100 delay-600"
             leaveFrom="translate-y-0 opacity-100"
             leaveTo="translate-y-2 opacity-0"
           >
