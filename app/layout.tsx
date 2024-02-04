@@ -21,7 +21,9 @@ export default function RootLayout({
     <html lang="en">
       <StrictMode>
         <body className={`bg-background  ${inter.className}`}>
-          <Nav />
+          {
+            //<Nav />
+          }{" "}
           {children}
         </body>
       </StrictMode>

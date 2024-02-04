@@ -98,7 +98,8 @@ const config = {
         "move-to-sides": "move-to-sides 240s ease-in-out infinite alternate",
         "ping-reverse-once":
           "ping-reverse-once 1s cubic-bezier(0.4, 0, 0.6, 1) reverse",
-        popup: "popup 0.5s ease-in-out"
+        popup: "popup 0.5s ease-in-out",
+        move_wave: "move_wave 1.5s linear infinite"
       },
       animationDelay: {
         "50": "50ms",
