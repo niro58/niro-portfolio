@@ -2,17 +2,14 @@ import { About } from "@/components/about";
 import { ActiveProjects } from "@/components/active-projects";
 import { Contacts } from "@/components/contacts";
 import { Hero } from "@/components/hero";
-import { RecentPosts } from "@/components/recent-posts";
+import RecentPosts from "@/components/recent-posts";
 import { Skills } from "@/components/skills";
 import { Socials } from "@/components/socials";
-import { WaveEffect } from "@/components/wave-effect";
-import Image from "next/image";
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      <About />
       <About />
       <Socials />
       <Skills />

@@ -57,3 +57,22 @@ export async function getPost(filepath: string): Promise<Post<Frontmatter>> {
     };
   }
 }
+
+export async function getAllPosts(limit: number): Promise<Frontmatter[]> {
+  try {
+    const dir = "./posts";
+    const files = await fs.readdir(dir);
+    let postData: Frontmatter[] = [];
+    for (let i = 0; i < limit; i++) {
+      if (i >= files.length) break;
+      const file = files[i];
+      const post = await getPost(`${dir}/${file}`);
+      postData.push(post.frontmatter);
+    }
+    console.log(postData);
+    return postData;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+}
