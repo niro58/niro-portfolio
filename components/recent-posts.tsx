@@ -1,9 +1,4 @@
-import {
-  Frontmatter,
-  GetRecentPostsByType,
-  PostType
-} from "@/app/api/post-handler";
-import { use } from "react";
+import { Frontmatter, PostType } from "@/lib/post-interfaces";
 
 import { PostDescription } from "./post-description";
 import { Skeleton } from "./ui/skeleton";
@@ -18,19 +13,34 @@ const PostSkeleton = () => (
     </div>
   </div>
 );
-const PostSection = ({ type, rows }: { type: PostType; rows: number }) => {
-  const postsData: Frontmatter[] = use(GetRecentPostsByType(rows, type));
+async function GetPosts(type: PostType) {
+  const res = await fetch(`/api/posts`, {
+    method: "GET",
+    body: JSON.stringify({ type, limit: 5 })
+  });
+  const posts = await res.json();
+  return posts;
+}
+async function PostSection({
+  type,
+  rows
+}: {
+  type: PostType;
+  rows: number;
+}): Promise<JSX.Element> {
+  const postsData = GetPosts(type);
+  const [posts] = await Promise.all([postsData]);
   return (
     <>
       {postsData === undefined
         ? Array.from({ length: rows }).map((_, i) => <PostSkeleton key={i} />)
-        : postsData.map((post: Frontmatter) => (
+        : posts.map((post: Frontmatter) => (
             <PostDescription key={post.title} frontmatter={post} />
           ))}
     </>
   );
-};
-export default function RecentPosts() {
+}
+export default async function RecentPosts() {
   const rows = 3;
   return (
     <div className="flex flex-col content-center min-h-screen py-24 bg-black">
