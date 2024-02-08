@@ -1,10 +1,7 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -12,19 +9,21 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import * as z from "zod";
 
 import { Textarea } from "./ui/textarea";
 
-const formSchema = z.object({
+export const contactFormSchema = z.object({
   name: z.string().min(2).max(50).optional(),
   email: z.string().min(2).max(50),
   description: z.string().min(2).max(500)
 });
 export const ContactForm: React.FC = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof contactFormSchema>>({
+    resolver: zodResolver(contactFormSchema),
     defaultValues: {
       name: "",
       email: "",
@@ -32,8 +31,30 @@ export const ContactForm: React.FC = () => {
     }
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  //async function onSubmit(values: z.infer<typeof contactFormSchema>) {
+  //  const res = await fetch("/api/email", {
+  //    method: "POST",
+  //    headers: {
+  //      "Content-Type": "application/json"
+  //    },
+  //    body: JSON.stringify(values)
+  //  });
+  //}
+  async function onSubmit(values: z.infer<typeof contactFormSchema>) {
+    const res = await fetch("/api/email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "API-Key": process.env.RESEND_API_KEY!
+      },
+      body: JSON.stringify(values)
+    });
+    const { message } = await res.json();
+    if (res.ok && message !== "error") {
+      toast.success("Email sent successfully");
+    } else {
+      toast.error("Error sending email");
+    }
   }
   return (
     <Form {...form}>

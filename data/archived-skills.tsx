@@ -1,6 +1,7 @@
-import { SkillDescription } from "@/components/skills";
+import { SkillDescription } from "@/components/current-stack";
 import { FaReact } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
+
 export const ArchivedSkills: SkillDescription[] = [
   {
     id: uuidv4(),
@@ -33,8 +34,8 @@ export const ArchivedSkills: SkillDescription[] = [
           </clipPath>
         </defs>
       </svg>,
-      <span>SQL</span>,
-    ],
+      <span>SQL</span>
+    ]
   },
   {
     id: "23154714870",
@@ -94,9 +95,9 @@ export const ArchivedSkills: SkillDescription[] = [
           d="M11.2666 24.6003L6.20025 21.6666L1.26673 24.5336L14.2002 32V15.6665L0 7.46698V22.4004L4.93352 19.5334V13.6666C4.93352 13.4665 5.20032 13.3337 5.33314 13.3998L11.3333 16.8665C11.5334 16.9999 11.6001 17.1333 11.6001 17.3334V24.2668C11.6668 24.5336 11.4667 24.7337 11.2666 24.6003Z"
           fill="#4C4C4C"
         />
-      </svg>,
+      </svg>
     ],
-    skillLength: "2021-2023",
+    skillLength: "2021-2023"
   },
   {
     id: uuidv4(),
@@ -120,9 +121,9 @@ export const ArchivedSkills: SkillDescription[] = [
           d="M87.229 29.0542V40.9605C87.229 50.1912 79.4031 57.9605 70.479 57.9605H43.6978C36.3619 57.9605 30.2915 64.239 30.2915 71.5855V97.1167C30.2915 104.383 36.6101 108.657 43.6978 110.742C52.1851 113.237 60.324 113.688 70.479 110.742C77.2292 108.787 83.8853 104.854 83.8853 97.1167V86.898H57.104V83.4917H83.8853H97.2915C105.084 83.4917 107.988 78.0563 110.698 69.898C113.497 61.4991 113.378 53.4222 110.698 42.648C108.772 34.8905 105.094 29.0542 97.2915 29.0542H87.229ZM72.1665 93.7105C74.946 93.7105 77.1978 95.9879 77.1978 98.8042C77.1978 101.631 74.946 103.929 72.1665 103.929C69.397 103.929 67.1353 101.631 67.1353 98.8042C67.1353 95.9879 69.397 93.7105 72.1665 93.7105Z"
           fill="white"
         />
-      </svg>,
+      </svg>
     ],
-    skillLength: "2024",
+    skillLength: "2024"
   },
   {
     id: "78275129122",
@@ -150,9 +151,9 @@ export const ArchivedSkills: SkillDescription[] = [
           d="M22.7158 14.4681H21.6947V15.4894H20.6733V16.5106H21.6947V17.532H22.7158V16.5106H23.7372V15.4894H22.7158V14.4681ZM26.5456 14.4681H25.5245V15.4894H24.5031V16.5106H25.5245V17.532H26.5456V16.5106H27.567V15.4894H26.5456V14.4681Z"
           fill="black"
         />
-      </svg>,
+      </svg>
     ],
-    skillLength: "2024",
+    skillLength: "2024"
   },
   {
     id: uuidv4(),
@@ -209,8 +210,8 @@ export const ArchivedSkills: SkillDescription[] = [
           fill="white"
         />
       </svg>,
-      <span>Aseprite</span>,
+      <span>Aseprite</span>
     ],
-    skillLength: "2024",
-  },
+    skillLength: "2024"
+  }
 ];

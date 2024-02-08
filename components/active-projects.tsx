@@ -4,7 +4,7 @@ import { RxDoubleArrowRight } from "react-icons/rx";
 
 export const ActiveProjects: React.FC = () => {
   return (
-    <div className="flex flex-col content-center p-10 bg-black">
+    <div className="flex flex-col content-center py-24 px-10 bg-black">
       <div className="container text-4xl text-primary tracking-wider pb-16">
         Active Projects
       </div>

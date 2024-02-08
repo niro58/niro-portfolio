@@ -1,4 +1,5 @@
 import { promises as fs } from "fs";
+import matter from "gray-matter";
 import { MDXRemoteSerializeResult } from "next-mdx-remote/rsc";
 import { serialize } from "next-mdx-remote/serialize";
 
@@ -9,12 +10,19 @@ enum Categories {
   DATA_ANALYSIS = "Data Analysis",
   PYTHON = "Python",
   CSHARP = "C#",
-  JAVASCRIPT = "Javascript",
-  REACT = "React",
-  TYPESCRIPT = "Typescript",
   WEB_DEV = "Web Development",
-  NEXT_JS = "Next.js",
-  MACHINE_LEARNING = "Machine Learning"
+  NOSQL = "NoSQL",
+  SQL = "SQL",
+  MACHINE_LEARNING = "Machine Learning",
+  DESIGN = "Design",
+  FIGMA = "Figma",
+  MODELLING3D = "3D Modelling"
+}
+
+export enum PostType {
+  POST = "Post",
+  PROJECT = "Project",
+  LIBRARY = "Library"
 }
 export type Frontmatter = {
   title: string;
@@ -22,13 +30,21 @@ export type Frontmatter = {
   header_img: string;
   short_description: string;
   categories: Categories[];
+  post_type: PostType;
 };
-
+export const blank_frontmatter: Frontmatter = {
+  title: "",
+  date: new Date(1970, 12, 31),
+  header_img: "",
+  short_description: "",
+  categories: [],
+  post_type: PostType.POST
+};
 export type Post<TFrontmatter> = {
   serialized: MDXRemoteSerializeResult;
   frontmatter: TFrontmatter;
 };
-export async function getPost(filepath: string): Promise<Post<Frontmatter>> {
+export async function GetPost(filepath: string): Promise<Post<Frontmatter>> {
   try {
     await fs.access(filepath);
     const raw = await fs.readFile(filepath, "utf-8");
@@ -46,30 +62,42 @@ export async function getPost(filepath: string): Promise<Post<Frontmatter>> {
   } catch (error) {
     console.log(error);
     return {
-      frontmatter: {
-        title: "",
-        date: new Date(1970, 12, 31),
-        header_img: "",
-        short_description: "",
-        categories: []
-      },
+      frontmatter: blank_frontmatter,
       serialized: {} as MDXRemoteSerializeResult
     };
   }
 }
+export async function GetPostFrontmatter(
+  filepath: string
+): Promise<Frontmatter> {
+  try {
+    await fs.access(filepath);
+    const raw = await fs.readFile(filepath, "utf-8");
 
-export async function getAllPosts(limit: number): Promise<Frontmatter[]> {
+    const { data: frontmatter } = matter(raw);
+
+    // Return the serialized content and frontmatter
+    return frontmatter as Frontmatter;
+  } catch (error) {
+    console.log(error);
+    return blank_frontmatter;
+  }
+}
+export async function GetRecentPostsByType(
+  limit: number,
+  type: PostType
+): Promise<Frontmatter[]> {
   try {
     const dir = "./posts";
     const files = await fs.readdir(dir);
     let postData: Frontmatter[] = [];
     for (let i = 0; i < limit; i++) {
-      if (i >= files.length) break;
       const file = files[i];
-      const post = await getPost(`${dir}/${file}`);
-      postData.push(post.frontmatter);
+      const frontmatter = await GetPostFrontmatter(`${dir}/${file}`);
+      if (frontmatter != blank_frontmatter) {
+        postData.push(frontmatter);
+      }
     }
-    console.log(postData);
     return postData;
   } catch (error) {
     console.log(error);

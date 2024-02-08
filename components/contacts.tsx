@@ -7,7 +7,7 @@ import { ContactForm } from "./contact-form";
 
 export const Contacts: React.FC = () => {
   return (
-    <div className="flex min-h-screen items-center justify-between p-24 bg-gradient-to-b from-black to-gray-900 ">
+    <div className="flex min-h-screen items-center justify-between py-24 bg-gradient-to-b from-black to-gray-900 ">
       <div className="container gap-5 h-1/2 flex flex-col md:flex-row justify-between">
         <div className="w-full  md:max-h-full md:h-full md:w-1/2 bg-cover items-center flex">
           <Image

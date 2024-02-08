@@ -2,6 +2,7 @@ import { Nav } from "@/components/nav";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import { StrictMode } from "react";
+import { Toaster } from "sonner";
 
 import "../styles/globals.css";
 
@@ -20,11 +21,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <StrictMode>
-        <body className={`bg-background  ${inter.className}`}>
-          {
-            //<Nav />
-          }{" "}
+        <body className={`bg-background scroll-smooth ${inter.className}`}>
+          <Nav />
           {children}
+          <Toaster />
         </body>
       </StrictMode>
     </html>

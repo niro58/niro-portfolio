@@ -10,7 +10,7 @@ export const Hero: React.FC = () => {
     triggerOnce: true
   });
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center p-24">
+    <div className="flex min-h-screen flex-col items-center justify-center">
       <div className="absolute bg-hero bg-fixed bg-center blur-md bg-cover w-full h-full -z-10"></div>
       <div className="flex flex-col gap-5" ref={ref}>
         <div className="text-center text-8xl tracking-wider font-light">

@@ -15,8 +15,8 @@ export const Socials: React.FC = () => {
   }
 
   return (
-    <div className="bg-black " ref={ref}>
-      <div className="container border-2 border-blue-300 border-opacity-20 rounded-lg p-5  h-40">
+    <div className="bg-black py-24" ref={ref}>
+      <div className="container border-2 border-blue-300 border-opacity-20 rounded-lg p-5 h-40">
         <Transition
           show={inView}
           ref={ref}

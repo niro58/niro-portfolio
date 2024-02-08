@@ -1,21 +1,29 @@
 import { About } from "@/components/about";
 import { ActiveProjects } from "@/components/active-projects";
 import { Contacts } from "@/components/contacts";
+import { CurrentStack } from "@/components/current-stack";
 import { Hero } from "@/components/hero";
 import RecentPosts from "@/components/recent-posts";
-import { Skills } from "@/components/skills";
 import { Socials } from "@/components/socials";
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      <About />
+      <div id="about">
+        <About />
+      </div>
       <Socials />
-      <Skills />
-      <ActiveProjects />
+      <div id="stack">
+        <CurrentStack />
+      </div>
+      <div id="projects">
+        <ActiveProjects />
+      </div>
       <RecentPosts />
-      <Contacts />
+      <div id="contact">
+        <Contacts />
+      </div>
     </main>
   );
 }

@@ -1,7 +1,7 @@
+import { getPost } from "@/app/api/post-handler";
 import { MdxContent } from "@/components/mdx-content";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { getPost } from "@/lib/posts";
 
 export default async function Page({ params }: { params: { slug: string } }) {
   console.log(params.slug);
