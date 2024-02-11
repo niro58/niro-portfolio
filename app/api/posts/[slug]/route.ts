@@ -18,7 +18,9 @@ export async function GET(request: Request, context: Context) {
     const raw = await fs.readFile(dir, "utf-8");
 
     const { data: frontmatter, content } = matter(raw);
-
+    if (frontmatter.date) {
+      frontmatter.date = frontmatter.date.toISOString();
+    }
     // Return the serialized content and frontmatter
     return Response.json({
       frontmatter,

@@ -1,7 +1,7 @@
 "use client";
 
 import { getWindowDimensions } from "@/lib/get-window-dimensions";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export const WaveEffect: React.FC = () => {
   const { height, width } = getWindowDimensions();
