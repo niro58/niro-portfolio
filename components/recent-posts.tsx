@@ -1,4 +1,5 @@
 import { Frontmatter, PostType } from "@/lib/post-interfaces";
+import path from "path";
 
 import { PostDescription } from "./post-description";
 import { Skeleton } from "./ui/skeleton";
@@ -14,7 +15,11 @@ const PostSkeleton = () => (
   </div>
 );
 async function GetPosts(type: PostType) {
-  const res = await fetch(`/api/posts`, {
+  if (process.env.NEXT_API_PATH === undefined) return;
+  const url = path.join(process.env.NEXT_API_PATH, "posts");
+  console.log(url);
+
+  const res = await fetch(url, {
     method: "GET",
     body: JSON.stringify({ type, limit: 5 })
   });
@@ -58,7 +63,7 @@ export default async function RecentPosts() {
           <span>Libaries</span>
         </div>
         <div className="grid grid-cols-3 grid-rows-1 min-h-screen gap-5">
-          <div className="grid grid-rows-3 grid-cols-1 gap-5">
+          {/* <div className="grid grid-rows-3 grid-cols-1 gap-5">
             <PostSection type={PostType.POST} rows={rows} />
           </div>
           <div className="grid grid-rows-3 grid-cols-1 gap-5">
@@ -66,7 +71,7 @@ export default async function RecentPosts() {
           </div>
           <div className="grid grid-rows-3 grid-cols-1 gap-5">
             <PostSection type={PostType.LIBRARY} rows={rows} />
-          </div>
+  </div>*/}
         </div>
       </div>
     </div>

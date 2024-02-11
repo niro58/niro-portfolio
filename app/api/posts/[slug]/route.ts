@@ -8,10 +8,12 @@ interface Context {
     slug: string;
   };
 }
+
 export async function GET(request: Request, context: Context) {
   try {
-    const slug = context.params.slug;
-    const dir = path.join(postsRootDir, slug);
+    const { slug } = context.params;
+    const correctedSlug = slug.replace(/\.mdx$/, "") + ".mdx";
+    const dir = path.join(postsRootDir, correctedSlug);
     await fs.access(dir);
     const raw = await fs.readFile(dir, "utf-8");
 
