@@ -24,6 +24,8 @@ export const ActiveProjects: React.FC = () => {
             <Image
               src={"/images/about-me.jpg"}
               alt="About me"
+              width={300}
+              height={200}
               className="rounded-s-none rounded-3xl"
             />
             <div className="inline-flex justify-between pt-5">

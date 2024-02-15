@@ -16,13 +16,13 @@ export interface SkillDescription {
 }
 export const CurrentStack: React.FC = () => {
   const roundedSides = [
-    "rounded-tl-xl",
-    "rounded-bl-xl",
-    "rounded-tr-xl",
-    "rounded-br-xl"
+    "rounded-tl-xl col-span-3",
+    "rounded-bl-xl col-span-2",
+    "rounded-tr-xl col-span-2",
+    "rounded-br-xl col-span-3"
   ];
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-mountains pb-24 bg-cover space-y-5">
+    <div className="min-h-screen container space-y-5">
       <div className="text-center w-full text-4xl mb-5 font-thin tracking-wide pt-24">
         <div className="text-4xl font-thin tracking-wide">
           My current learning stack
@@ -34,11 +34,11 @@ export const CurrentStack: React.FC = () => {
           <Link href="/history-stack/">View history stack</Link>
         </Button>
       </div>
-      <div className="grid grid-rows-2 grid-flow-col gap-5 content-center container">
+      <div className="grid grid-rows-2 grid-cols-5 gap-5">
         {ActiveSkills.map((skill, index) => (
           <div
             key={skill.id}
-            className={`flex flex-col h-96 ring-2 gap-5 ring-primary ${roundedSides[index]} rounded-sm p-10`}
+            className={`flex flex-col ring-2 gap-5 ring-primary ${roundedSides[index]} rounded-sm p-10`}
           >
             <div className="inline-flex space-x-5 p-5 justify-center">
               {skill.headerIcons.map((headerIcon, index) =>

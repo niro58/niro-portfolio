@@ -15,12 +15,12 @@ export const Socials: React.FC = () => {
   }
 
   return (
-    <div className="py-2 sm:py-6 lg:py-24 px-5" ref={ref}>
-      <div className="container border-2 border-primary border-opacity-20 rounded-lg p-5">
+    <div className="py-2 px-16 sm:px-5 sm:py-6 lg:py-24" ref={ref}>
+      <div className="container flex justify-center items-center border-2 border-primary border-opacity-20 rounded-lg min-h-44">
         <Transition
           show={inView}
           ref={ref}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 items-center justify-between"
+          className="grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-6 gap-5 sm:gap-0 w-full"
         >
           <Transition.Child
             enter="transition ease-in-out duration-300 transform"

@@ -10,10 +10,10 @@ export const Hero: React.FC = () => {
     triggerOnce: true
   });
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center">
+    <div className="px-5 flex min-h-screen flex-col items-center justify-center flex-wrap">
       <div className="absolute bg-hero bg-fixed bg-center blur-md bg-cover w-full h-full -z-10"></div>
-      <div className="flex flex-col gap-5" ref={ref}>
-        <div className="text-center text-8xl tracking-wider font-light">
+      <div ref={ref} className="flex flex-col">
+        <div className="text-center text-6xl sm:text-8xl  pb-5 tracking-wider font-light">
           NIRO
         </div>
         <div className="h-0.5">
@@ -27,12 +27,12 @@ export const Hero: React.FC = () => {
             leaveTo="scale-0"
           >
             <div
-              className="h-0.5 border-b-blue-400 bg-blue-400"
+              className="h-0.5 w-full border-b-blue-400 bg-blue-400"
               style={{ boxShadow: "0 0 10px #60A5FA" }}
             ></div>
           </Transition>
         </div>
-        <div className="text-center text-4xl font-extralight tracking-wide">
+        <div className="text-center text-xl sm:text-3xl lg:text-4xl font-extralight tracking-wide pt-5">
           Just another{" "}
           <span className="text-blue-400 text-3xl font-light">
             &#8217;&#8217;

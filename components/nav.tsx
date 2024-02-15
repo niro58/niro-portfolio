@@ -22,7 +22,13 @@ export const Nav: React.FC = () => {
             <Link href="/">
               <div className="">
                 <div className="mr-3"></div>
-                <Image src={Logo} alt="Logo" className="p-3" height={75} />
+                <Image
+                  src={Logo}
+                  alt="Logo"
+                  className="p-3"
+                  height={75}
+                  priority
+                />
               </div>
             </Link>
           </div>
