@@ -1,11 +1,8 @@
 "use client";
 
-import style from "@/styles/about.module.css";
 import { Transition } from "@headlessui/react";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
-
-import { Separator } from "./ui/separator";
 
 export const About: React.FC = () => {
   const { ref, inView, entry } = useInView({
@@ -13,8 +10,23 @@ export const About: React.FC = () => {
   });
 
   return (
-    <div className="flex h-screen items-center justify-between bg-gradient-to-b from-gray-950 to-black py-24">
-      <div ref={ref} className="relative container grid grid-cols-2">
+    <div className="flex min-h-screen items-center justify-between to-background via-gray-900 from-20% via-70% from-background bg-gradient-to-b py-24">
+      <div
+        ref={ref}
+        className="container flex flex-col items-center justify-center gap-8 px-4 text-center md:gap-10 md:px-6 lg:flex-row lg:justify-between xl:gap-12"
+      >
+        <Transition show={inView} className="grid gap-4 lg:gap-6 xl:gap-8">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+            Hi, I'm Nichita Roilean
+          </h2>
+          <p className="max-w-3xl text-gray-400 md:text-2xl/relaxed lg:text-xl/relaxed xl:text-2xl/relaxed">
+            A full stack developer from Czech Republic, Prague that enjoys
+            trying new technologies, frameworks, understanding their
+            functionality, trying to create something interesting. That has
+            created this website to showcase some recent projects/current
+            projects
+          </p>
+        </Transition>
         <Transition
           show={inView}
           enter="transition ease-in-out duration-500 transform opacity-0"
@@ -23,96 +35,17 @@ export const About: React.FC = () => {
           leave="transition ease-in-out duration-500 transform opacity-100"
           leaveFrom="translate-y-0 opacity-100"
           leaveTo="translate-y-2 opacity-0"
-          className={`rounded-lg ${style.opacitygrad}`}
+          className="flex items-center justify-center gap-4 lg:order-1 lg:gap-6"
         >
           <Image
             src={"/images/about-me.jpg"}
-            sizes="100vw"
+            sizes="50vw"
             layout="responsive"
             width={500}
             height={500}
-            style={{
-              width: "100%",
-              height: "auto"
-            }}
             alt="About me"
+            className="rounded-s-none rounded-3xl "
           />
-        </Transition>
-        <Transition
-          show={inView}
-          className="w-full p-9 flex flex-col justify-between items-center text-2xl"
-        >
-          <Transition.Child
-            enter="transition ease-in-out duration-300 transform opacity-0"
-            enterFrom="translate-y-2 opacity-0"
-            enterTo="translate-y-0 opacity-100"
-            leave="transition ease-in-out duration-300 transform opacity-100"
-            leaveFrom="translate-y-0 opacity-100"
-            leaveTo="translate-y-2 opacity-0"
-          >
-            Czech Republic
-          </Transition.Child>
-          <Transition.Child
-            enter="transition ease-in-out duration-300 transform delay-100"
-            enterFrom="scale-0"
-            enterTo="scale-100"
-            leave="transition ease-in-out duration-300 transform delay-100"
-            leaveFrom="scale-100"
-            leaveTo="scale-0"
-            className="delay"
-          >
-            <Separator className="my-4 h-16 delay" orientation="vertical" />
-          </Transition.Child>
-          <Transition.Child
-            enter="transition ease-in-out duration-300 transform opacity-0 delay-300"
-            enterFrom="translate-y-2 opacity-0"
-            enterTo="translate-y-0 opacity-100"
-            leave="transition ease-in-out duration-300 transform opacity-100 delay-300"
-            leaveFrom="translate-y-0 opacity-100"
-            leaveTo="translate-y-2 opacity-0"
-          >
-            21 years old
-          </Transition.Child>
-          <Transition.Child
-            enter="transition ease-in-out duration-300 transform delay-400"
-            enterFrom="scale-0"
-            enterTo="scale-100"
-            leave="transition ease-in-out duration-300 transform delay-400"
-            leaveFrom="scale-100"
-            leaveTo="scale-0"
-          >
-            <Separator className="my-4 h-16 delay-200" orientation="vertical" />
-          </Transition.Child>
-          <Transition.Child
-            enter="transition ease-in-out duration-300 transform opacity-0 delay-600"
-            enterFrom="translate-y-2 opacity-0"
-            enterTo="translate-y-0 opacity-100"
-            leave="transition ease-in-out duration-300 transform opacity-100 delay-600"
-            leaveFrom="translate-y-0 opacity-100"
-            leaveTo="translate-y-2 opacity-0"
-          >
-            Enjoyer of acquiring new skills
-          </Transition.Child>
-          <Transition.Child
-            enter="transition ease-in-out duration-300 transform delay-700"
-            enterFrom="scale-0"
-            enterTo="scale-100"
-            leave="transition ease-in-out duration-300 transform delay-700"
-            leaveFrom="scale-100"
-            leaveTo="scale-0"
-          >
-            <Separator className="my-4 h-16 delay-200" orientation="vertical" />
-          </Transition.Child>
-          <Transition.Child
-            enter="transition ease-in-out duration-300 transform opacity-0 delay-800"
-            enterFrom="translate-y-2 opacity-0"
-            enterTo="translate-y-0 opacity-100"
-            leave="transition ease-in-out duration-300 transform opacity-100 delay-800"
-            leaveFrom="translate-y-0 opacity-100"
-            leaveTo="translate-y-2 opacity-0"
-          >
-            Enjoyer of MJ, ChatGPT, Github Copilot,
-          </Transition.Child>
         </Transition>
       </div>
     </div>

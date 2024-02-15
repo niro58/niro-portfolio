@@ -38,7 +38,6 @@ async function PostSection({
 }): Promise<JSX.Element> {
   const postsData = GetPosts(type);
   const [posts] = await Promise.all([postsData]);
-  console.log(posts);
   return (
     <>
       {posts === undefined

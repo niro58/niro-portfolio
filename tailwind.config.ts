@@ -22,8 +22,7 @@ const config = {
         sans: ["var(--font-sans)", ...fontFamily.sans]
       },
       backgroundImage: {
-        hero: "url('/images/hero.webp')",
-        mountains: "url('/images/mountains-bg.webp')"
+        hero: "url('/images/hero.webp')"
       },
       colors: {
         border: "hsl(var(--border))",

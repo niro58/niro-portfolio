@@ -1,7 +1,10 @@
 "use client";
 
 import { ActiveSkills } from "@/data/active-skills";
+import Link from "next/link";
 import React from "react";
+
+import { Button } from "./ui/button";
 
 export interface SkillDescription {
   id: string;
@@ -12,21 +15,30 @@ export interface SkillDescription {
   headerIconsTooltip: string[];
 }
 export const CurrentStack: React.FC = () => {
+  const roundedSides = [
+    "rounded-tl-xl",
+    "rounded-bl-xl",
+    "rounded-tr-xl",
+    "rounded-br-xl"
+  ];
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-mountains pb-24 bg-cover space-y-5">
       <div className="text-center w-full text-4xl mb-5 font-thin tracking-wide pt-24">
         <div className="text-4xl font-thin tracking-wide">
           My current learning stack
         </div>
-        <div className="text-xl font-normal text-gray-600 tracking-normal">
+        <div className="text-xl/relaxed font-normal text-gray-600 tracking-normal">
           All archive/current projects are available in my portfolio
         </div>
+        <Button variant="outline">
+          <Link href="/history-stack/">View history stack</Link>
+        </Button>
       </div>
       <div className="grid grid-rows-2 grid-flow-col gap-5 content-center container">
-        {ActiveSkills.map((skill) => (
+        {ActiveSkills.map((skill, index) => (
           <div
             key={skill.id}
-            className="flex flex-col h-96 bg-black ring-2 gap-5 ring-blue-300 rounded-tl-xl rounded-sm p-10"
+            className={`flex flex-col h-96 ring-2 gap-5 ring-primary ${roundedSides[index]} rounded-sm p-10`}
           >
             <div className="inline-flex space-x-5 p-5 justify-center">
               {skill.headerIcons.map((headerIcon, index) =>
@@ -34,8 +46,8 @@ export const CurrentStack: React.FC = () => {
                 React.cloneElement(headerIcon, { key: index })
               )}
             </div>
-            <div className="w-full border-t-2 border-blue-400"></div>
-            <div className="inline-flex justify-between tracking-wider text-2xl text-blue-400">
+            <div className="w-full border-t-2 border-primary"></div>
+            <div className="inline-flex justify-between tracking-wider text-2xl text-primary">
               <div>{skill.type}</div>
               <div>{skill.skillLength}</div>
             </div>

@@ -9,8 +9,7 @@ import { Socials } from "@/components/socials";
 export default function Home() {
   return (
     <main>
-      <RecentPosts />
-      {/*<Hero />
+      <Hero />
       <div id="about">
         <About />
       </div>
@@ -21,6 +20,9 @@ export default function Home() {
       <div id="projects">
         <ActiveProjects />
       </div>
+      {/*
+      <RecentPosts />
+
       <RecentPosts />
       <div id="contact">
         <Contacts />

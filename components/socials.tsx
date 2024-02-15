@@ -15,12 +15,12 @@ export const Socials: React.FC = () => {
   }
 
   return (
-    <div className="bg-black py-24" ref={ref}>
-      <div className="container border-2 border-blue-300 border-opacity-20 rounded-lg p-5 h-40">
+    <div className="py-2 sm:py-6 lg:py-24 px-5" ref={ref}>
+      <div className="container border-2 border-primary border-opacity-20 rounded-lg p-5">
         <Transition
           show={inView}
           ref={ref}
-          className="flex flex-row items-center justify-between"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 items-center justify-between"
         >
           <Transition.Child
             enter="transition ease-in-out duration-300 transform"
@@ -30,10 +30,10 @@ export const Socials: React.FC = () => {
             leaveFrom="scale-100"
             leaveTo="scale-0"
           >
-            <a className="gap-2 flex flex-col items-center hover:bg-blue-300 hover:bg-opacity-15 hover:cursor-pointer rounded-md  p-5">
+            <a className="gap-2 flex flex-col items-center hover:bg-primary/40 active:bg-primary/30 hover:cursor-pointer rounded-md  p-5">
               <BsDiscord size={36} />
-              <div className="border-t-2 border-t-blue-400 h-2 w-32"></div>
-              <div className="tracking-wide">niro58</div>
+              <div className="border-t-2 border-t-primary h-2 w-32"></div>
+              <div className="tracking-wider">niro58</div>
             </a>
           </Transition.Child>
           <Transition.Child
@@ -46,11 +46,11 @@ export const Socials: React.FC = () => {
           >
             <a
               href="https://www.linkedin.com/in/nichita-roilean-2b4673241/"
-              className="gap-2 flex flex-col items-center hover:bg-blue-300 hover:bg-opacity-15 hover:cursor-pointer rounded-md  p-5"
+              className="gap-2 flex flex-col items-center hover:bg-primary/40 active:bg-primary/30 hover:cursor-pointer rounded-md  p-5"
             >
               <BsLinkedin size={36} />{" "}
-              <div className="border-t-2 w-32 border-t-blue-400 h-2"></div>
-              <div className="tracking-wide">Nichita Roilean</div>
+              <div className="border-t-2 w-32 border-t-primary h-2"></div>
+              <div className="tracking-wider">Nichita Roilean</div>
             </a>
           </Transition.Child>
           <Transition.Child
@@ -63,11 +63,11 @@ export const Socials: React.FC = () => {
           >
             <a
               href="https://github.com/niro58"
-              className="gap-2 flex flex-col items-center hover:bg-blue-300 hover:bg-opacity-15 hover:cursor-pointer rounded-md  p-5"
+              className="gap-2 flex flex-col items-center hover:bg-primary/40 active:bg-primary/30 hover:cursor-pointer rounded-md  p-5"
             >
               <BsGithub size={36} />{" "}
-              <div className="border-t-2 w-32 border-t-blue-400 h-2"></div>
-              <div className="tracking-wide">niro58</div>
+              <div className="border-t-2 w-32 border-t-primary h-2"></div>
+              <div className="tracking-wider">niro58</div>
             </a>
           </Transition.Child>
           <Transition.Child
@@ -81,16 +81,16 @@ export const Socials: React.FC = () => {
           >
             <a
               href="mailto:niro.dev.01@gmail.com"
-              className="gap-2 flex flex-col items-center hover:bg-blue-300 hover:bg-opacity-15 hover:cursor-pointer rounded-md w-full px-5 py-0"
+              className="gap-2 flex flex-col items-center hover:bg-primary/40 active:bg-primary/30 hover:cursor-pointer rounded-md w-full px-5 py-0"
             >
               <EnvelopeIcon height={36} />
             </a>
-            <div className="border-t-2 my-1 w-32 border-t-blue-400 h-2"></div>
+            <div className="border-t-2 my-1 w-32 border-t-primary h-2"></div>
             <a
               onClick={(event) => copyToCliboard("niro.dev.01@gmail.com")}
-              className="rounded-md py-1 px-4 hover:bg-blue-300 hover:bg-opacity-15 hover:cursor-pointer active:bg-green-400 active:bg-opacity-40 active:duration-0 transition-colors duration-300"
+              className="rounded-md py-1 px-4 hover:bg-primary/40 active:bg-primary/30 hover:cursor-pointer active:bg-green-400 active:bg-opacity-40 active:duration-0 transition-colors duration-300"
             >
-              <div className="tracking-wide">niro.dev.01@gmail.com</div>
+              <div className="tracking-wider">niro.dev.01@gmail.com</div>
             </a>
           </Transition.Child>
           <Transition.Child
@@ -103,7 +103,7 @@ export const Socials: React.FC = () => {
           >
             <a
               href="https://niro58.itch.io/"
-              className="gap-2 flex flex-col items-center hover:bg-blue-300 hover:bg-opacity-15 hover:cursor-pointer rounded-md  p-5"
+              className="gap-2 flex flex-col items-center hover:bg-primary/40 active:bg-primary/30 hover:cursor-pointer rounded-md  p-5"
             >
               <svg
                 width="36"
@@ -121,8 +121,8 @@ export const Socials: React.FC = () => {
                 </clipPath>
               </svg>
 
-              <div className="border-t-2 w-32 border-t-blue-400 h-2"></div>
-              <div className="tracking-wide">niro58</div>
+              <div className="border-t-2 w-32 border-t-primary h-2"></div>
+              <div className="tracking-wider">niro58</div>
             </a>
           </Transition.Child>
           <Transition.Child
@@ -135,7 +135,7 @@ export const Socials: React.FC = () => {
           >
             <a
               href="https://leetcode.com/user0863D/"
-              className="gap-2 flex flex-col items-center hover:bg-blue-300 hover:bg-opacity-15 hover:cursor-pointer rounded-md  p-5"
+              className="gap-2 flex flex-col items-center hover:bg-primary/40 active:bg-primary/30 hover:cursor-pointer rounded-md  p-5"
             >
               <svg
                 width="28"
@@ -169,8 +169,8 @@ export const Socials: React.FC = () => {
                 </defs>
               </svg>
 
-              <div className="border-t-2 w-32 border-t-blue-400 h-2"></div>
-              <div className="tracking-wide">niro58</div>
+              <div className="border-t-2 w-32 border-t-primary h-2"></div>
+              <div className="tracking-wider">niro58</div>
             </a>
           </Transition.Child>
         </Transition>
