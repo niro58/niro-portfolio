@@ -10,7 +10,7 @@ export const About: React.FC = () => {
   });
 
   return (
-    <div className="flex min-h-screen items-center justify-between to-background via-gray-900 from-20% via-70% from-background bg-gradient-to-b py-24">
+    <div className="flex min-h-screen items-center justify-between to-transparent via-primary/10 from-20% via-70% from-transparent bg-gradient-to-br py-24">
       <div
         ref={ref}
         className="container flex flex-col items-center justify-center gap-8 px-4 text-center md:gap-10 md:px-6 lg:flex-row lg:justify-between xl:gap-12"

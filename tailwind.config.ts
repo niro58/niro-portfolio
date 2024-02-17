@@ -22,7 +22,7 @@ const config = {
         sans: ["var(--font-sans)", ...fontFamily.sans]
       },
       backgroundImage: {
-        hero: "url('/images/hero.webp')"
+        "rain-pattern": "url('/images/hero/rain-effect.png')"
       },
       colors: {
         border: "hsl(var(--border))",
@@ -88,6 +88,10 @@ const config = {
         "ping-reverse-once": {
           "0%": { transform: "scale(1)", opacity: "1" },
           "100%": { transform: "scale(2)", opacity: "0" }
+        },
+        "rain-effect": {
+          "0%": { "background-position": "0% 0%" },
+          "100%": { "background-position": "0% 300%" }
         }
       },
       animation: {
@@ -98,7 +102,7 @@ const config = {
         "ping-reverse-once":
           "ping-reverse-once 1s cubic-bezier(0.4, 0, 0.6, 1) reverse",
         popup: "popup 0.5s ease-in-out",
-        move_wave: "move_wave 1.5s linear infinite"
+        "rain-effect": "rain-effect 3s linear infinite"
       },
       animationDelay: {
         "50": "50ms",

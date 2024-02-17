@@ -15,32 +15,36 @@ export const ActiveProjects: React.FC = () => {
           All archive/current projects are available in my portfolio
         </div>
       </div>
-      <div className="flex gap-8 items-center justify-between">
+      <div className="grid grid-cols-3 gap-8 items-center justify-between">
         {currentProjects.map((project, index) => (
           <div
             key={index}
-            className="grow flex flex-col gap-5 ring-primary ring-2 rounded-xl p-5"
+            className="grow flex flex-col gap-5 bg-primary-foreground/20 rounded-3xl"
           >
             <Image
               src={"/images/about-me.jpg"}
               alt="About me"
-              width={300}
+              width={500}
               height={200}
-              className="rounded-s-none rounded-3xl"
+              className="rounded-s-none rounded-3xl min-w-full"
             />
-            <div className="inline-flex justify-between pt-5">
-              <div className="text-4xl text-primary">VJM Frigotrans</div>
-              <div className="text-4xl text-primary"> 2024</div>
-            </div>
-            <div className="inline-flex justify-between items-center">
-              <div className="pt-2 text-gray-400 text-xl">Web development</div>
-              <a
-                href="project/vjm-frigotrans"
-                className="inline-flex items-center active:text-primary  hover:text-blue-900 gap-2"
-              >
-                <span className=" text-lg">Read</span>
-                <RxDoubleArrowRight size={24} />
-              </a>
+            <div className="p-5">
+              <div className="inline-flex justify-between pt-5">
+                <div className="text-4xl text-primary">VJM Frigotrans</div>
+                <div className="text-4xl text-primary"> 2024</div>
+              </div>
+              <div className="inline-flex justify-between items-center">
+                <div className="pt-2 text-gray-400 text-xl">
+                  Web development
+                </div>
+                <a
+                  href="project/vjm-frigotrans"
+                  className="inline-flex items-center active:text-primary  hover:text-blue-900 gap-2"
+                >
+                  <span className=" text-lg">Read</span>
+                  <RxDoubleArrowRight size={24} />
+                </a>
+              </div>
             </div>
           </div>
         ))}
