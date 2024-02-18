@@ -48,6 +48,7 @@ export default function HeroBackground() {
           placeholder="blur"
           blurDataURL="data:image/svg+xml;base64,LDEeP;Mx01XS_Nr?9GR*9abv$6ae"
           alt="hero"
+          priority
           sizes="100vw"
         />
       </div>

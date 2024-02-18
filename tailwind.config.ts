@@ -90,8 +90,21 @@ const config = {
           "100%": { transform: "scale(2)", opacity: "0" }
         },
         "rain-effect": {
-          "0%": { "background-position": "0% 0%" },
-          "100%": { "background-position": "0% 300%" }
+          "0%": {
+            "background-position": "0% 0%",
+            opacity: ".7",
+            filter: "blur(2px)"
+          },
+          "50%": {
+            "background-position": "0% 150%",
+            opacity: "1",
+            filter: "blur(5px)"
+          },
+          "100%": {
+            "background-position": "0% 300%",
+            opacity: ".7",
+            filter: "blur(3px)"
+          }
         }
       },
       animation: {
