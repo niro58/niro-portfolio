@@ -16,7 +16,7 @@ export async function GET(request: NextApiRequest) {
   const rootApiPath = process.env.NEXT_API_PATH;
 
   if (!rootApiPath || !type || !limit) {
-    return Response.json({ message: "error" });
+    return Response.error();
   }
 
   const apiPath = path.join(rootApiPath, "posts");
@@ -40,10 +40,9 @@ export async function GET(request: NextApiRequest) {
         }
       }
     }
-
     return Response.json(posts);
   } catch (error) {
     console.log(error);
-    return Response.json({ message: "error" });
+    return Response.error();
   }
 }

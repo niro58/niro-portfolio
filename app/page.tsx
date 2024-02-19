@@ -17,10 +17,10 @@ export default function Home() {
       <div id="stack">
         <CurrentStack />
       </div>
-      {/*
       <div id="projects">
         <ActiveProjects />
       </div>
+      {/*
       <RecentPosts />
 
       <RecentPosts />

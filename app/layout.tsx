@@ -1,4 +1,5 @@
-import { Nav } from "@/components/nav";
+import Navbar from "@/components/nav/nav";
+import ScrollObserver from "@/lib/scroll-observer";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import { StrictMode } from "react";
@@ -20,13 +21,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <StrictMode>
-        <body className={`bg-background scroll-smooth ${inter.className}`}>
-          <Nav />
-          {children}
-          <Toaster />
-        </body>
-      </StrictMode>
+      <ScrollObserver>
+        <StrictMode>
+          <body className={`bg-background scroll-smooth ${inter.className}`}>
+            <Navbar />
+            {children}
+            <Toaster />
+          </body>
+        </StrictMode>
+      </ScrollObserver>
     </html>
   );
 }

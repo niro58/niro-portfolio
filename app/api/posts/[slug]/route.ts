@@ -22,11 +22,12 @@ export async function GET(request: Request, context: Context) {
       frontmatter.date = frontmatter.date.toISOString();
     }
     // Return the serialized content and frontmatter
+    console.log("te");
     return Response.json({
       frontmatter,
       content
     });
   } catch (error) {
-    return Response.json({ message: "error" });
+    return Response.error();
   }
 }

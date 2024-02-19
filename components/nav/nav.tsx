@@ -2,21 +2,20 @@
 
 import headerNavLinks from "@/data/headerNavLinks";
 import Logo from "@/data/logo.svg";
+import { ScrollContext } from "@/lib/scroll-observer";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import React, { useContext } from "react";
 
 import MobileNav from "./mobile-nav";
-import NavLink from "./ui/nav-link";
-import NavSubmenu from "./ui/nav-submenu";
+import NavLink from "./nav-link";
+import NavSubmenu from "./nav-submenu";
 
-export const Nav: React.FC = () => {
-  const page = usePathname();
-
+const Navbar: React.FC = () => {
   return (
-    <div className="fixed z-50 w-full bg-black">
+    <div className="fixed top-0 left-0 right-0 z-50 w-full text-foreground bg-background">
       <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="py-4">
             <Link href="/">
@@ -32,21 +31,18 @@ export const Nav: React.FC = () => {
               </div>
             </Link>
           </div>
-          <div className="flex justify-between space-x-8">
+          <div className="justify-between z-0 hidden md:gap-3 md:flex">
             {headerNavLinks.map((link) =>
               link.length == 1 ? (
                 <NavLink
                   key={link[0].title}
                   title={link[0].title}
                   href={link[0].href}
-                  isActive={page === link[0].href}
                 />
               ) : (
                 <NavSubmenu
                   key={link[0].title}
                   title={link[0].title}
-                  href={link[0].href}
-                  isActive={page === link[0].href}
                   subMenuTitles={link.slice(1)}
                 />
               )
@@ -58,3 +54,5 @@ export const Nav: React.FC = () => {
     </div>
   );
 };
+
+export default Navbar;

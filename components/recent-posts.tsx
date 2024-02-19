@@ -1,3 +1,4 @@
+import { GetPosts } from "@/lib/api-utils/api-utils-post";
 import { Frontmatter, PostType } from "@/lib/post-interfaces";
 import path from "path";
 
@@ -14,20 +15,6 @@ const PostSkeleton = () => (
     </div>
   </div>
 );
-async function GetPosts(type: PostType) {
-  const url = new URL("/api/posts", process.env.NEXT_ROOT_PATH);
-  const params = new URLSearchParams({ type: type, limit: "5" });
-
-  url.search = params.toString();
-  const res = await fetch(url.href, {
-    method: "GET"
-  });
-  if (!res.ok) {
-    return [];
-  }
-  const posts = await res.json();
-  return posts;
-}
 
 async function PostSection({
   type,

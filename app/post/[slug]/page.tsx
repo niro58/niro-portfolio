@@ -1,28 +1,14 @@
 import { MdxContent } from "@/components/mdx-content";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { GetPost } from "@/lib/api-utils/api-utils-post";
 import { PostType } from "@/lib/post-interfaces";
 import { serialize } from "next-mdx-remote/serialize";
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  if (process.env.NEXT_ROOT_PATH === undefined) return;
   const { slug } = params;
-
-  const url = new URL(`/api/posts/${slug}`, process.env.NEXT_ROOT_PATH);
-
-  const res = await fetch(url, {
-    method: "GET"
-  });
-  console.log(res);
-  if (!res.ok) {
-    return null;
-  }
-
-  const post = await res.json();
+  const post = await GetPost(slug);
   const { frontmatter, content } = post;
-  if (frontmatter.date) {
-    frontmatter.date = new Date(frontmatter.date);
-  }
   const serialized = await serialize(content);
 
   return (

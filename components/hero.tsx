@@ -14,7 +14,7 @@ export const Hero: React.FC = () => {
   return (
     <div className="px-5 min-h-screen">
       <div ref={ref} className="flex relative flex-col">
-        <HeroBackground />
+        <HeroBackground inView={inView} />
 
         <div className="absolute left-0 right-0 bottom-0 top-0 mx-auto w-full sm:w-1/2 lg:w-1/4 flex items-center flex-col justify-center">
           <div
