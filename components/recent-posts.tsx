@@ -46,13 +46,10 @@ export default async function RecentPosts() {
     <div className="flex flex-col content-center min-h-screen py-24 bg-black">
       <div className="container">
         <div className="grid grid-cols-2 items-center tracking-wider pb-16">
-          <div className="text-4xl text-primary">Recent</div>
-          <div className="text-2xl text-end  tracking-wider">
-            View all &gt;&gt;
-          </div>
+          <div className="text-4xl text-primary">All Projects</div>
         </div>
 
-        <div className="grid grid-cols-3 gap-5 text-center text-2xl py-5 tracking-wide">
+        <div className="grid grid-cols-3 gap-5 text-center py-5 text-4xl font-thin tracking-wide">
           <span>Posts</span>
           <span>Projects</span>
           <span>Libaries</span>

@@ -1,5 +1,6 @@
 import { GetPost } from "@/lib/api-utils/api-utils-post";
 import Image from "next/image";
+import Link from "next/link";
 
 import {
   Card,
@@ -16,7 +17,7 @@ export async function ActiveProjects() {
     "vjm-truck-fleet"
   ];
   let data = [];
-  for (const project in currentProjects) {
+  for (let project of currentProjects) {
     const res = await GetPost(project);
     const { frontmatter } = res;
     data.push(frontmatter);
@@ -33,29 +34,30 @@ export async function ActiveProjects() {
       </div>
       <div className="grid grid-cols-3 gap-8 items-center justify-between">
         {data.map((project, index) => (
-          <Card
-            key={index}
-            className="hover:bg-primary/20 active:bg-primary/30 cursor-pointer"
-            onClick={() => console.log("clicked")}
-          >
-            <CardHeader className="pb-4">
-              <CardTitle className="text-2xl text-primary">
-                {project.title}
-              </CardTitle>
-              <CardDescription className="text-primary/70">
-                {project.short_description}
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="flex items-center justify-center p-6">
-              <Image
-                alt="Creative Portfolio Showcase"
-                className="aspect-video object-cover rounded-lg"
-                width="500"
-                height="250"
-                src={project.header_img}
-              />
-            </CardContent>
-          </Card>
+          <Link href={`/post/${currentProjects[index]}`} key={index}>
+            <Card
+              key={index}
+              className="hover:bg-primary/20 active:bg-primary/30 cursor-pointer"
+            >
+              <CardHeader className="pb-4">
+                <CardTitle className="text-2xl text-primary">
+                  {project.title}
+                </CardTitle>
+                <CardDescription className="text-primary/70">
+                  {project.short_description}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="flex items-center justify-center p-6">
+                <Image
+                  alt="Creative Portfolio Showcase"
+                  className="aspect-video object-cover rounded-lg"
+                  width="500"
+                  height="250"
+                  src={project.header_img}
+                />
+              </CardContent>
+            </Card>
+          </Link>
         ))}
       </div>
     </div>

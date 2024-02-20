@@ -1,7 +1,7 @@
 import { Frontmatter, PostType, postsRootDir } from "@/lib/post-interfaces";
 import { promises as fs } from "fs";
 import { NextApiRequest } from "next";
-import { serialize } from "next-mdx-remote/serialize";
+import { NextResponse } from "next/server";
 import path from "path";
 
 interface PostOutput {
@@ -16,7 +16,7 @@ export async function GET(request: NextApiRequest) {
   const rootApiPath = process.env.NEXT_API_PATH;
 
   if (!rootApiPath || !type || !limit) {
-    return Response.error();
+    return Response.json({ error: "Invalid request" }, { status: 400 });
   }
 
   const apiPath = path.join(rootApiPath, "posts");
@@ -27,7 +27,12 @@ export async function GET(request: NextApiRequest) {
 
     for (let i in files) {
       const postData = await fetch(`${apiPath}/${files[i]}`);
-
+      if (!postData.ok) {
+        return NextResponse.json(
+          { error: "Error fetching posts" },
+          { status: 500 }
+        );
+      }
       const { frontmatter } = await postData.json();
       if (frontmatter.post_type === type) {
         const post: PostOutput = {
@@ -43,6 +48,7 @@ export async function GET(request: NextApiRequest) {
     return Response.json(posts);
   } catch (error) {
     console.log(error);
-    return Response.error();
+
+    return Response.json({ error: "Error fetching posts" }, { status: 500 });
   }
 }

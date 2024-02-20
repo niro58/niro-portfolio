@@ -8,7 +8,6 @@ interface Context {
     slug: string;
   };
 }
-
 export async function GET(request: Request, context: Context) {
   try {
     const { slug } = context.params;
@@ -18,16 +17,15 @@ export async function GET(request: Request, context: Context) {
     const raw = await fs.readFile(dir, "utf-8");
 
     const { data: frontmatter, content } = matter(raw);
+
     if (frontmatter.date) {
       frontmatter.date = frontmatter.date.toISOString();
     }
-    // Return the serialized content and frontmatter
-    console.log("te");
     return Response.json({
       frontmatter,
       content
     });
   } catch (error) {
-    return Response.error();
+    return Response.json({ error: "Error fetching post" }, { status: 500 });
   }
 }

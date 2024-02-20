@@ -14,7 +14,7 @@ export const PostDescription: React.FC<PostDescriptionProps> = ({
 }) => {
   return (
     <Link href={`/post/${slug}`}>
-      <div className="border border-primary-foreground hover:bg-primary/30 active:bg-primary/60 transition-colors duration-300 rounded-lg p-5 flex flex-col gap-5">
+      <div className="border border-primary-foreground bg-primary-foreground transition-colors duration-300 rounded-lg p-5 flex flex-col gap-5">
         <div className="text-2xl text-primary">{frontmatter.title} </div>
         <div className="text-gray-400 text-xl">
           {frontmatter.categories.map((category, index) => (
