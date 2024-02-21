@@ -39,6 +39,7 @@ export async function GET(request: NextApiRequest) {
           slug: files[i].replace(/\.mdx$/, ""),
           frontmatter: frontmatter
         };
+        console.log(post.slug, type);
         posts.push(post);
         if (posts.length === limit) {
           break;

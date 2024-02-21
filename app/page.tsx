@@ -21,12 +21,6 @@ export default function Home() {
         <ActiveProjects />
       </div>
       <RecentPosts />
-      {/*
-
-      <RecentPosts />
-      <div id="contact">
-        <Contacts />
-  </div>*/}
     </main>
   );
 }

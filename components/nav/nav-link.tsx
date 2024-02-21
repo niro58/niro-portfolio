@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
+import { BsFillCircleFill } from "react-icons/bs";
+
 interface NavLinkProps {
   title: string;
   href: string;
@@ -17,21 +19,21 @@ const NavLink: React.FC<NavLinkProps> = ({ title, href }) => {
   return (
     <Link
       href={href}
-      className="text-white m-0"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="relative z-0 sm:flex hidden items-center px-2 lg:px-4 py-1">
+      <div className="relative z-0 sm:flex hidden items-center px-2 lg:px-4 py-1 gap-2">
         <div
           className="absolute inset-0 -z-10 rounded-lg bg-gradient-to-br from-transparent to-primary duration-500"
-          style={{ scale: isOpen ? 1 : 0.9, opacity: isOpen ? 0.5 : 0 }}
+          style={{ scale: isOpen ? 0.9 : 0, opacity: isOpen ? 0.5 : 0 }}
         ></div>
-        <div
-          className="circle mr-2 h-2 w-2 origin-center rounded-full bg-primary opacity-0 duration-500"
-          style={{ scale: isOpen ? 1 : 0, opacity: isOpen ? 1 : 0 }}
-        ></div>
+        <BsFillCircleFill
+          className="origin-center rounded-full text-primary duration-500"
+          size={9}
+          style={{ scale: isOpen ? 0.9 : 0, opacity: isOpen ? 1 : 0 }}
+        />
 
-        <span>{title}</span>
+        <span className="text-base/relaxed">{title}</span>
       </div>
     </Link>
   );

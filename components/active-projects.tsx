@@ -1,7 +1,9 @@
 import { GetPost } from "@/lib/api-utils/api-utils-post";
+import { MoreHorizontalIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { Button } from "./ui/button";
 import {
   Card,
   CardContent,
@@ -23,7 +25,7 @@ export async function ActiveProjects() {
     data.push(frontmatter);
   }
   return (
-    <div className="flex flex-col content-center py-24 px-10">
+    <div className="flex flex-col content-center py-24 px-10 bg-neutral-900">
       <div className="text-center w-full text-4xl mb-5 font-thin tracking-wide pt-24">
         <div className="text-4xl font-thin tracking-wide">
           Currently projects that I am working on
@@ -34,30 +36,31 @@ export async function ActiveProjects() {
       </div>
       <div className="grid grid-cols-3 gap-8 items-center justify-between">
         {data.map((project, index) => (
-          <Link href={`/post/${currentProjects[index]}`} key={index}>
-            <Card
-              key={index}
-              className="hover:bg-primary/20 active:bg-primary/30 cursor-pointer"
-            >
-              <CardHeader className="pb-4">
-                <CardTitle className="text-2xl text-primary">
-                  {project.title}
-                </CardTitle>
-                <CardDescription className="text-primary/70">
-                  {project.short_description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex items-center justify-center p-6">
-                <Image
-                  alt="Creative Portfolio Showcase"
-                  className="aspect-video object-cover rounded-lg"
-                  width="500"
-                  height="250"
-                  src={project.header_img}
-                />
-              </CardContent>
-            </Card>
-          </Link>
+          <Card key={index}>
+            <CardHeader className="pb-4">
+              <CardTitle className="text-2xl flex-row flex justify-between items-center">
+                <div>{project.title}</div>
+                <Link href={`/post/${currentProjects[index]}`} key={index}>
+                  <Button className="ml-auto" size="icon" variant="ghost">
+                    <MoreHorizontalIcon className="w-6 h-6" />
+                    <span className="sr-only">Toggle menu</span>
+                  </Button>
+                </Link>
+              </CardTitle>
+              <CardDescription className="text-primary/70">
+                {project.short_description}
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="flex items-center justify-center p-6">
+              <Image
+                alt="Creative Portfolio Showcase"
+                className="aspect-video object-cover rounded-lg"
+                width="500"
+                height="250"
+                src={project.header_img}
+              />
+            </CardContent>
+          </Card>
         ))}
       </div>
     </div>
