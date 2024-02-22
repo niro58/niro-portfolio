@@ -13,7 +13,6 @@ import NavSubmenu from "./nav-submenu";
 
 const Navbar: React.FC = () => {
   const { scrollY } = useContext(ScrollContext);
-
   return (
     <div className="fixed top-0 left-0 right-0 z-50 w-full text-foreground">
       <div className="w-full">

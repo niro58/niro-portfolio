@@ -12,7 +12,7 @@ export const Hero: React.FC = () => {
     triggerOnce: true
   });
   return (
-    <div className="px-5 min-h-screen">
+    <div className="min-h-screen">
       <div ref={ref} className="flex relative flex-col">
         <HeroBackground inView={inView} />
 

@@ -17,6 +17,9 @@ const ScrollObserver: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
   }, [handleScroll]);
+  useEffect(() => {
+    setScrollY(window.scrollY);
+  }, []);
   return (
     <ScrollContext.Provider value={{ scrollY }}>
       {children}

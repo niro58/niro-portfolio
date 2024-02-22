@@ -1,3 +1,4 @@
+import { blur_data } from "@/data/blur-data";
 import { ScrollContext } from "@/lib/scroll-observer";
 import Image from "next/image";
 import { useContext, useEffect, useRef } from "react";
@@ -7,6 +8,8 @@ interface HeroBackgroundProps {
 }
 
 export default function HeroBackground({ inView }: HeroBackgroundProps) {
+  const { hero_foreground_blur, hero_background_blur } = blur_data;
+
   const parallaxContainer = useRef(null);
   const { scrollY } = useContext(ScrollContext);
   useEffect(() => {
@@ -23,13 +26,12 @@ export default function HeroBackground({ inView }: HeroBackgroundProps) {
         }
         <Image
           src={"/images/hero/city-background.jpg"}
-          width={2560}
-          height={1440}
+          width={640}
+          height={360}
           placeholder="blur" //
-          blurDataURL="data:image/svg+xml;base64,L21{]VjrVWoftUactmo#t.ogZ~kC"
-          className="blur-sm"
+          blurDataURL={hero_background_blur}
+          className="blur-sm w-full"
           alt="hero"
-          sizes="100vw"
         />
       </div>
       {inView && (
@@ -49,7 +51,7 @@ export default function HeroBackground({ inView }: HeroBackgroundProps) {
           width={2560}
           height={1440}
           placeholder="blur"
-          blurDataURL="data:image/svg+xml;base64,LDEeP;Mx01XS_Nr?9GR*9abv$6ae"
+          blurDataURL={hero_foreground_blur}
           alt="hero"
           priority
           sizes="100vw"
