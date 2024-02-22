@@ -1,6 +1,5 @@
 import { Frontmatter, PostType, postsRootDir } from "@/lib/post-interfaces";
 import { promises as fs } from "fs";
-import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 import path from "path";
 
@@ -8,7 +7,7 @@ interface PostOutput {
   slug: string;
   frontmatter: Frontmatter;
 }
-export async function GET(request: NextApiRequest) {
+export async function GET() {
   //const type: PostType = request.query.type as PostType;
   //const limit: number = Number(request.query.limit);
   const type: PostType = PostType.POST;
