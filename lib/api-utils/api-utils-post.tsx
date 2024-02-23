@@ -30,11 +30,11 @@ export async function GetPost(slug: string): Promise<OutputPost> {
   if (process.env.NEXT_ROOT_PATH === undefined)
     return { frontmatter: blank_frontmatter, content: "" };
   const url = new URL(`/api/posts/${slug}`, process.env.NEXT_ROOT_PATH);
-
   const res = await fetch(url, {
     method: "GET"
   });
   if (!res.ok) {
+    console.log(slug);
     return { frontmatter: blank_frontmatter, content: "" };
   }
 

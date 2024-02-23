@@ -1,5 +1,6 @@
 import { blur_data } from "@/data/blur-data";
 import { ScrollContext } from "@/lib/scroll-observer";
+import style from "@/styles/hero-background.module.css";
 import Image from "next/image";
 import { useContext, useEffect, useRef } from "react";
 
@@ -21,33 +22,29 @@ export default function HeroBackground({ inView }: HeroBackgroundProps) {
   return (
     <div className="relative overflow-hidden">
       <div className="absolute w-full h-full -z-20" ref={parallaxContainer}>
-        {
-          //TODO: Do a correct blur data url
-        }
         <Image
-          src={"/images/hero/city-background.jpg"}
-          width={640}
-          height={360}
+          src={"/images/hero/hero-city-background.jpg"}
+          width={1774}
+          height={1440}
           placeholder="blur" //
           blurDataURL={hero_background_blur}
-          className="blur-sm w-full"
+          className="absolute left-0 right-0 top-0 bottom-0 m-auto blur-xs"
           alt="hero"
         />
       </div>
       {inView && (
         <div
-          className="absolute left-0 right-0 top-0 bottom-0 m-auto -z-10 bg-rain-pattern animate-rain-effect w-3/4 h-full"
+          className={`absolute left-0 right-0 top-0 bottom-0 m-auto  -z-10 w-3/4 h-full ${style.rain_effect_animation}`}
           style={{
+            backgroundImage: `url(${"/images/hero/hero-rain-effect.png"})`,
             backgroundSize: "50% 50%"
           }}
         ></div>
       )}
-      {
-        //TODO: Do a correct blur data url
-      }
+
       <div className="z-10">
         <Image
-          src={"/images/hero/foreground.png"}
+          src={"/images/hero/hero-foreground.png"}
           width={2560}
           height={1440}
           placeholder="blur"

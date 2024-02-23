@@ -8,8 +8,6 @@ interface PostOutput {
   frontmatter: Frontmatter;
 }
 export async function GET() {
-  //const type: PostType = request.query.type as PostType;
-  //const limit: number = Number(request.query.limit);
   const type: PostType = PostType.POST;
   const limit: number = Number(5);
   const rootApiPath = process.env.NEXT_API_PATH;

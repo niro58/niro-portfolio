@@ -1,7 +1,9 @@
 import { GetPost } from "@/lib/api-utils/api-utils-post";
+import { blank_frontmatter } from "@/lib/post-interfaces";
 import { MoreHorizontalIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 
 import { Button } from "./ui/button";
 import {
@@ -11,6 +13,7 @@ import {
   CardHeader,
   CardTitle
 } from "./ui/card";
+import { Skeleton } from "./ui/skeleton";
 
 export async function ActiveProjects() {
   const currentProjects = [

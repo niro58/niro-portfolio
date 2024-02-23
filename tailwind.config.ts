@@ -21,8 +21,8 @@ const config = {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans]
       },
-      backgroundImage: {
-        "rain-pattern": "url('/images/hero/rain-effect.png')"
+      blur: {
+        xs: "2px"
       },
       colors: {
         border: "hsl(var(--border))",
@@ -88,23 +88,6 @@ const config = {
         "ping-reverse-once": {
           "0%": { transform: "scale(1)", opacity: "1" },
           "100%": { transform: "scale(2)", opacity: "0" }
-        },
-        "rain-effect": {
-          "0%": {
-            "background-position": "0% 0%",
-            opacity: ".7",
-            filter: "blur(2px)"
-          },
-          "50%": {
-            "background-position": "0% 150%",
-            opacity: "1",
-            filter: "blur(5px)"
-          },
-          "100%": {
-            "background-position": "0% 300%",
-            opacity: ".7",
-            filter: "blur(3px)"
-          }
         }
       },
       animation: {
@@ -114,8 +97,7 @@ const config = {
         "move-to-sides": "move-to-sides 240s ease-in-out infinite alternate",
         "ping-reverse-once":
           "ping-reverse-once 1s cubic-bezier(0.4, 0, 0.6, 1) reverse",
-        popup: "popup 0.5s ease-in-out",
-        "rain-effect": "rain-effect 3s linear infinite"
+        popup: "popup 0.5s ease-in-out"
       },
       animationDelay: {
         "50": "50ms",
