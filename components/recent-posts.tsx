@@ -43,7 +43,7 @@ export default async function RecentPosts() {
   const rows = 3;
 
   return (
-    <div className="flex flex-col content-center min-h-screen py-24 bg-gradient-to-b from-neutral-900 to-background">
+    <div className="flex flex-col content-center min-h-screen py-24 bg-gradient-to-b from-background to-neutral-900">
       <div className="px-5">
         <div className="text-center w-full text-4xl mb-5 font-thin tracking-wide pt-24">
           <div className="text-4xl font-thin tracking-wide">

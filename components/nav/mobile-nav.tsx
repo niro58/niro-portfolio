@@ -3,6 +3,7 @@
 import headerNavLinks from "@/data/headerNavLinks";
 import { Transition } from "@headlessui/react";
 import { useState } from "react";
+
 import MobileNavLink from "./mobile-nav-link";
 import MobileNavSubmenu from "./mobile-nav-submenu";
 
@@ -39,7 +40,7 @@ const MobileNav: React.FC = () => {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
-          className="h-8 w-8 text-gray-900 dark:text-gray-100"
+          className="h-12 w-12 text-primary bg-black rounded-full p-3"
         >
           <path
             fillRule="evenodd"
@@ -94,7 +95,7 @@ const MobileNav: React.FC = () => {
                 title={link[0].title}
                 subMenuTitles={link.slice(1)}
               />
-            ),
+            )
           )}
         </nav>
       </Transition>

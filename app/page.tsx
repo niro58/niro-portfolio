@@ -9,11 +9,11 @@ import { Socials } from "@/components/socials";
 export default function Home() {
   return (
     <main>
-      {/* <Hero />
+      <Hero />
       <div id="about">
         <About />
       </div>
-      <Socials /> */}
+      <Socials />
       <div id="stack">
         <CurrentStack />
       </div>
@@ -21,6 +21,7 @@ export default function Home() {
         <ActiveProjects />
       </div>
       <RecentPosts />
+      <Contacts />
     </main>
   );
 }
