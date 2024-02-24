@@ -33,13 +33,16 @@ export async function ActiveProjects() {
         <div className="text-4xl font-thin tracking-wide">
           Currently projects that I am working on
         </div>
-        <div className="text-xl/relaxed font-normal text-gray-600 tracking-normal">
+        <div className="text-xl/relaxed font-normal text-neutral-500 tracking-normal">
           All archive/current projects are available in my portfolio
         </div>
       </div>
       <div className="grid grid-cols-3 gap-8 items-center justify-between">
         {data.map((project, index) => (
-          <Card key={index}>
+          <Card
+            key={index}
+            className="bg-gradient-to-bl from-neutral-800 via-black  to-black"
+          >
             <CardHeader className="pb-4">
               <CardTitle className="text-2xl flex-row flex justify-between items-center">
                 <div>{project.title}</div>

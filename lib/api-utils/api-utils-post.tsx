@@ -8,9 +8,9 @@ import {
   blank_frontmatter
 } from "../post-interfaces";
 
-export async function GetPosts(type: PostType) {
+export async function GetPosts(type: PostType, limit: number) {
   const url = new URL("/api/posts", process.env.NEXT_ROOT_PATH);
-  const params = new URLSearchParams({ type: type, limit: "5" });
+  const params = new URLSearchParams({ type: type, limit: limit.toString() });
 
   url.search = params.toString();
   const res = await fetch(url.href, {

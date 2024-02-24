@@ -1,22 +1,26 @@
 import { Frontmatter, PostType, postsRootDir } from "@/lib/post-interfaces";
 import { promises as fs } from "fs";
-import { NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import path from "path";
 
 interface PostOutput {
   slug: string;
   frontmatter: Frontmatter;
 }
-export async function GET() {
-  const type: PostType = PostType.POST;
-  const limit: number = Number(5);
-  const rootApiPath = process.env.NEXT_API_PATH;
+export async function GET(req: NextRequest) {
+  if (req.method !== "GET") {
+    return new Response("Method not allowed", { status: 405 });
+  }
+  const type: PostType = req.nextUrl.searchParams.get("type") as PostType;
+  const limit: Number = Number(req.nextUrl.searchParams.get("limit")) || 5;
 
-  if (!rootApiPath || !type || !limit) {
-    return Response.json({ error: "Invalid request" }, { status: 400 });
+  const rootPath = process.env.NEXT_ROOT_PATH;
+
+  if (!rootPath || !type || !limit) {
+    return new Response("Internal server error", { status: 500 });
   }
 
-  const apiPath = path.join(rootApiPath, "posts");
+  const apiPath = path.join(rootPath, "api", "posts");
 
   try {
     const files = await fs.readdir(postsRootDir);
@@ -25,10 +29,7 @@ export async function GET() {
     for (let i in files) {
       const postData = await fetch(`${apiPath}/${files[i]}`);
       if (!postData.ok) {
-        return NextResponse.json(
-          { error: "Error fetching posts" },
-          { status: 500 }
-        );
+        return new Response("Error Fetching Posts", { status: 500 });
       }
       const { frontmatter } = await postData.json();
       if (frontmatter.post_type === type) {
@@ -36,17 +37,17 @@ export async function GET() {
           slug: files[i].replace(/\.mdx$/, ""),
           frontmatter: frontmatter
         };
-        console.log(post.slug, type);
         posts.push(post);
         if (posts.length === limit) {
           break;
         }
       }
     }
-    return Response.json(posts);
+    return new Response(JSON.stringify(posts), {
+      headers: { "content-type": "application/json" }
+    });
   } catch (error) {
     console.log(error);
-
-    return Response.json({ error: "Error fetching posts" }, { status: 500 });
+    return new Response("Error Fetching Posts", { status: 500 });
   }
 }

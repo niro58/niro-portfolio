@@ -25,7 +25,7 @@ async function PostSection({
   type: PostType;
   rows: number;
 }): Promise<JSX.Element> {
-  const postsData = GetPosts(type);
+  const postsData = GetPosts(type, rows);
   const [posts] = await Promise.all([postsData]);
   return (
     <>
@@ -44,12 +44,12 @@ export default async function RecentPosts() {
 
   return (
     <div className="flex flex-col content-center min-h-screen py-24 bg-gradient-to-b from-neutral-900 to-background">
-      <div className="container">
+      <div className="px-5">
         <div className="text-center w-full text-4xl mb-5 font-thin tracking-wide pt-24">
           <div className="text-4xl font-thin tracking-wide">
             My recent projects
           </div>
-          <div className="text-xl/relaxed font-normal text-gray-600 tracking-normal">
+          <div className="text-xl/relaxed font-normal text-neutral-500 tracking-normal">
             Here you can open and check out some of my recent projects
           </div>
         </div>
@@ -69,12 +69,12 @@ export default async function RecentPosts() {
           </div>
         </div>
         <div className="grid grid-cols-3 grid-rows-1 min-h-screen gap-5">
-          {/* {<div className="grid grid-rows-3 grid-cols-1 gap-5">
+          <div className="grid grid-rows-3 grid-cols-1 gap-5">
             <PostSection type={PostType.POST} rows={rows} />
           </div>
           <div className="grid grid-rows-3 grid-cols-1 gap-5">
             <PostSection type={PostType.PROJECT} rows={rows} />
-          </div>} */}
+          </div>
           <div className="grid grid-rows-3 grid-cols-1 gap-5">
             <PostSection type={PostType.POST} rows={rows} />
           </div>

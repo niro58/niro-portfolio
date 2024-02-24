@@ -22,8 +22,8 @@ export const PostDescription: React.FC<PostDescriptionProps> = ({
   slug
 }) => {
   return (
-    <Card>
-      <CardHeader className="flex flex-col content-center justify-between">
+    <Card className="bg-gradient-to-bl from-neutral-800 via-black  to-black">
+      <CardHeader className="flex flex-col content-center justify-between ">
         <div className="flex flex-row justify-between items-center">
           <CardTitle>{frontmatter.title}</CardTitle>
           <Link href={`/post/${slug}`}>

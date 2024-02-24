@@ -22,8 +22,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
         <div className="flex flex-col gap-3 ">
           <div>{`${frontmatter.date.getDate()}.${frontmatter.date.getMonth()}.${frontmatter.date.getFullYear()}`}</div>
           <div>
-            {frontmatter.categories.map((category: PostType, index: number) => (
-              <Badge key={index} variant={"outline"} className="text-sm">
+            {frontmatter.categories.map((category, index) => (
+              <Badge key={index} variant="secondary" className="text-sm">
                 {category}
               </Badge>
             ))}

@@ -20,8 +20,7 @@ export default function Home() {
       <div id="projects">
         <ActiveProjects />
       </div>
-      {/*
-      <RecentPosts /> */}
+      <RecentPosts />
     </main>
   );
 }
