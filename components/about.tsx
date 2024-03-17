@@ -26,7 +26,7 @@ export const About: React.FC = () => {
             enterTo="translate-y-0 opacity-100"
             leave="transition ease-in-out duration-500 transform opacity-100"
             leaveFrom="translate-y-0 opacity-100"
-            className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-6xl"
+            className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-6xl underline decoration-primary"
           >
             Hi, I'm Nichita Roilean
           </Transition.Child>

@@ -21,39 +21,34 @@ export default function HeroBackground({ inView }: HeroBackgroundProps) {
 
   return (
     <div className="relative overflow-hidden">
-      <div className="absolute w-full h-full -z-20" ref={parallaxContainer}>
-        <Image
-          src={"/images/hero/hero-city-background.jpg"}
-          width={1774}
-          height={1440}
-          placeholder="blur" //
-          blurDataURL={hero_background_blur}
-          className="absolute left-0 right-0 top-0 bottom-0 m-auto blur-xs"
-          alt="hero"
-        />
-      </div>
-      {inView && (
-        <div
-          className={`absolute left-0 right-0 top-0 bottom-0 m-auto  -z-10 w-3/4 h-full ${style.rain_effect_animation}`}
-          style={{
-            backgroundImage: `url(${"/images/hero/hero-rain-effect.png"})`,
-            backgroundSize: "50% 50%"
-          }}
-        ></div>
-      )}
-
-      <div className="z-10">
-        <Image
-          src={"/images/hero/hero-foreground.png"}
-          width={2560}
-          height={1440}
-          placeholder="blur"
-          blurDataURL={hero_foreground_blur}
-          alt="hero"
-          priority
-          sizes="100vw"
-        />
-      </div>
+      <Image
+        src={"/images/hero/hero-foreground.png"}
+        width={2560}
+        height={1440}
+        placeholder="blur"
+        blurDataURL={hero_foreground_blur}
+        alt="hero"
+        priority
+        sizes="100vw"
+        className="z-10"
+      />
+      <Image
+        src={"/images/hero/hero-city-background.jpg"}
+        width={1774}
+        height={1440}
+        placeholder="blur" //
+        blurDataURL={hero_background_blur}
+        priority
+        className="absolute w-full h-full -z-20 left-0 right-0 top-0 bottom-0 m-auto blur-xs"
+        alt="hero"
+      />
+      <div
+        className={`absolute left-0 right-0 top-0 bottom-0 m-auto  -z-10 w-3/4 h-full ${inView ? style.rain_effect_animation : ""}`}
+        style={{
+          backgroundImage: `url(${"/images/hero/hero-rain-effect.png"})`,
+          backgroundSize: "50% 50%"
+        }}
+      ></div>
     </div>
   );
 }

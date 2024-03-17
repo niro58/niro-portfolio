@@ -16,10 +16,10 @@ const Navbar: React.FC = () => {
   return (
     <div className="fixed top-0 left-0 right-0 z-50 w-full text-foreground">
       <div className="w-full">
-        <div className="flex items-center justify-between ps-10 pt-5 pe-16 ">
+        <div className="flex items-center justify-between ps-10 pt-5 ">
           {/* Logo */}
           <div
-            className={`${scrollY > 400 ? "w-36 h-0" : "py-4 w-36 h-36"} transition-all duration-500 flex items-center justify-center rounded-full bg-background`}
+            className={`${scrollY > 400 ? "w-36 h-0 border-0 pointer-events-none" : "py-4 w-36 h-36 border"} transition-all duration-500 flex items-center justify-center rounded-full bg-background hover:bg-primary/20 hover:border-primary border-background hover:shadow-lg`}
           >
             <Link href="/" className="p-8">
               <Image

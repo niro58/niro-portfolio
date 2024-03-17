@@ -9,7 +9,7 @@ import { toast } from "sonner";
 export const Socials: React.FC = () => {
   const { ref, inView, entry } = useInView({
     threshold: 1,
-    triggerOnce: true
+    triggerOnce: false
   });
   function copyToCliboard(text: string) {
     navigator.clipboard.writeText(text);
@@ -24,7 +24,10 @@ export const Socials: React.FC = () => {
       <div className="container flex bg-gradient-to-b from-primary/10 justify-center items-center border-2 border-primary border-opacity-20 rounded-lg min-h-44">
         <Transition
           show={inView}
-          ref={ref}
+          enter="transition ease-in-out duration-300 transform"
+          enterFrom="scale-0"
+          enterTo="scale-100"
+          leave="transition ease-in-out duration-300 transform"
           className="grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-6 gap-5 sm:gap-0 w-full items-center"
         >
           <Transition.Child
