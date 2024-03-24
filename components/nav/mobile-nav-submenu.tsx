@@ -2,23 +2,20 @@ import { Transition } from "@headlessui/react";
 import Link from "next/link";
 import { useState } from "react";
 import { BsArrowDownCircle } from "react-icons/bs";
-interface SubMenuOption {
-  title: string;
-  href: string;
-}
+
 interface MobileNavSubmenuProps {
   title: string;
-  subMenuTitles: SubMenuOption[];
+  subPages: { title: string; href: string }[];
 }
 const MobileNavSubmenu: React.FC<MobileNavSubmenuProps> = ({
   title,
-  subMenuTitles,
+  subPages
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="z-0 flex flex-col">
       <div
-        className={`inline-flex items-center z-10 cursor-pointer ${isOpen ? "text-primary/90" : "text-white"}`}
+        className={`z-10 inline-flex cursor-pointer items-center ${isOpen ? "text-primary/90" : "text-white"}`}
         onClick={() => setIsOpen(!isOpen)}
       >
         <div>{title}</div>
@@ -27,7 +24,7 @@ const MobileNavSubmenu: React.FC<MobileNavSubmenuProps> = ({
           size={28}
           style={{
             rotate: isOpen ? "180deg" : "",
-            transition: "rotate 0.5s",
+            transition: "rotate 0.5s"
           }}
         />
       </div>
@@ -41,7 +38,7 @@ const MobileNavSubmenu: React.FC<MobileNavSubmenuProps> = ({
         leaveFrom="opacity-100 scale-y-100"
         leaveTo="opacity-0 scale-y-0"
       >
-        {subMenuTitles.map((sublink, index) => (
+        {subPages.map((sublink, index) => (
           <div key={sublink.href}>
             <Link
               href={sublink.href}

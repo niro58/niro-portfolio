@@ -1,9 +1,9 @@
 "use client";
 
-import headerNavLinks from "@/data/headerNavLinks";
 import { Transition } from "@headlessui/react";
 import { useState } from "react";
 
+import header_components from "@/data/header-components";
 import MobileNavLink from "./mobile-nav-link";
 import MobileNavSubmenu from "./mobile-nav-submenu";
 
@@ -32,7 +32,7 @@ const MobileNav: React.FC = () => {
         leave="transition-opacity duration-300"
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
-        className="md:hidden"
+        className="pe-5 md:hidden"
         onClick={onToggleNav}
         aria-label="Toggle Menu"
       >
@@ -40,7 +40,7 @@ const MobileNav: React.FC = () => {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
-          className="h-12 w-12 text-primary bg-black rounded-full p-3"
+          className="h-14 w-14 rounded-full bg-black p-3 text-primary"
         >
           <path
             fillRule="evenodd"
@@ -58,7 +58,7 @@ const MobileNav: React.FC = () => {
         leave="transition-transform duration-300"
         leaveFrom="translate-x-0"
         leaveTo="translate-x-full"
-        className="fixed left-0 top-0 z-10 h-full w-full transform duration-300 ease-in-out bg-gradient-to-tr from-black/90 to-primary-foreground/90"
+        className="fixed left-0 top-0 z-10 h-full w-full transform bg-gradient-to-tr from-black/90 to-primary-foreground/90 duration-300 ease-in-out"
       >
         <div className="flex justify-end">
           <button
@@ -80,20 +80,20 @@ const MobileNav: React.FC = () => {
             </svg>
           </button>
         </div>
-        <nav className="fixed mt-8 grid grid-cols-1 gap-5 container text-4xl tracking-widest font-bold">
-          {headerNavLinks.map((link) =>
-            link.length == 1 ? (
+        <nav className="container fixed mt-8 grid grid-cols-1 gap-5 text-4xl font-bold tracking-widest">
+          {header_components.map((link) =>
+            link.subPages === undefined ? (
               <MobileNavLink
-                key={link[0].title}
-                title={link[0].title}
-                href={link[0].href}
+                key={link.title}
+                title={link.title}
+                href={link.href}
                 setClosedNav={onToggleNav}
               />
             ) : (
               <MobileNavSubmenu
-                key={link[0].title}
-                title={link[0].title}
-                subMenuTitles={link.slice(1)}
+                key={link.title}
+                title={link.title}
+                subPages={link.subPages}
               />
             )
           )}

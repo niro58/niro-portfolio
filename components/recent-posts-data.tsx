@@ -1,8 +1,5 @@
 import { GetPosts } from "@/lib/api-utils/api-utils-post";
 import { Frontmatter, PostType } from "@/lib/post-interfaces";
-import { BookOpen } from "lucide-react";
-import path from "path";
-import { FaBook, FaBriefcase, FaFileAlt } from "react-icons/fa";
 
 import { PostDescription } from "./post-description";
 import { Skeleton } from "./ui/skeleton";
@@ -11,7 +8,7 @@ export const PostSkeleton = () => (
   <div className="w-full bg-transparent border border-primary-foreground rounded-lg p-5">
     <Skeleton className="h-32 w-full" />
     <div className="flex flex-col mt-8 gap-2">
-      <Skeleton className="h-5 w-3/4" />
+      <Skeleton className=" pt-2 p-4 h-5 w-3/4" />
       <Skeleton className="h-5 w-1/2" />
       <Skeleton className="h-5 w-3/4" />
     </div>

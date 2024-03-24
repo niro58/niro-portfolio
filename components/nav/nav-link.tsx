@@ -22,15 +22,15 @@ const NavLink: React.FC<NavLinkProps> = ({ title, href }) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="relative z-0 sm:flex hidden items-center px-2 lg:px-4 py-1 gap-2">
+      <div className="relative z-0 hidden items-center gap-2 px-2 py-1 sm:flex lg:px-4">
         <div
-          className="absolute inset-0 -z-10 rounded-lg bg-gradient-to-br from-transparent to-primary duration-500"
-          style={{ scale: isOpen ? 0.9 : 0, opacity: isOpen ? 0.5 : 0 }}
+          className={`absolute inset-0 -z-10 rounded-lg bg-gradient-to-br from-transparent to-primary duration-500
+                      ${isOpen ? "scale-90 opacity-50" : "scale-50 opacity-0"}
+                      `}
         ></div>
         <BsFillCircleFill
-          className="origin-center rounded-full text-primary duration-500"
+          className={`origin-center rounded-full text-primary duration-500 ${isOpen ? "scale-90 opacity-100" : "scale-50 opacity-0"}`}
           size={9}
-          style={{ scale: isOpen ? 0.9 : 0, opacity: isOpen ? 1 : 0 }}
         />
 
         <span className="text-base/relaxed">{title}</span>

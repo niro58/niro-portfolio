@@ -3,8 +3,16 @@
 import { Transition } from "@headlessui/react";
 import { EnvelopeIcon } from "@heroicons/react/16/solid";
 import { BsDiscord, BsGithub, BsLinkedin } from "react-icons/bs";
+import { IconType } from "react-icons/lib";
 import { useInView } from "react-intersection-observer";
 import { toast } from "sonner";
+
+const components : { title: string, logo:IconType, link:string}[] = [
+  { title: "Discord", logo: BsDiscord, link: "niro58" },
+  { title: "Linkedin", logo: BsLinkedin, link: "https://www.linkedin.com/in/nichita-roilean-2b4673241/" },
+  { title: "Github", logo: BsGithub, link: "https://github.com/niro58" },
+  { title: "Email", logo: EnvelopeIcon, link: "
+]
 
 export const Socials: React.FC = () => {
   const { ref, inView, entry } = useInView({

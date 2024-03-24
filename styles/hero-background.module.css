@@ -1,20 +1,23 @@
-@keyframes rain_effect_keyframes {
+@keyframes MOVE-BG {
   0% {
-    background-position: 0% 0%;
-    opacity: 0.7;
-    filter: blur(2px);
-  }
-  50% {
-    background-position: 0% 150%;
-    opacity: 1;
-    filter: blur(5px);
+    background-position: 50% 0;
   }
   100% {
-    background-position: 0% 300%;
-    opacity: 0.7;
-    filter: blur(3px);
+    background-position: 50% 600%;
   }
 }
-.rain_effect_animation {
-  animation: rain_effect_keyframes 3s linear infinite;
+
+.rainEffectBG {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: url("./../public/images/hero/hero-rain-effect.png") repeat-y;
+  z-index: -1;
+  background-size: 75% 75%;
+  animation-name: MOVE-BG;
+  animation-duration: 2.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }

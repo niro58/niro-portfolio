@@ -3,12 +3,12 @@ import { ScrollContext } from "@/lib/scroll-observer";
 import style from "@/styles/hero-background.module.css";
 import Image from "next/image";
 import { useContext, useEffect, useRef } from "react";
+import { useInView } from "react-intersection-observer";
 
-interface HeroBackgroundProps {
-  inView: boolean;
-}
-
-export default function HeroBackground({ inView }: HeroBackgroundProps) {
+export default function HeroBackground() {
+  const { ref, inView, entry } = useInView({
+    threshold: 0
+  });
   const { hero_foreground_blur, hero_background_blur } = blur_data;
 
   const parallaxContainer = useRef(null);
@@ -20,7 +20,7 @@ export default function HeroBackground({ inView }: HeroBackgroundProps) {
   }, [scrollY]);
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden" ref={ref}>
       <Image
         src={"/images/hero/hero-foreground.png"}
         width={2560}
@@ -34,21 +34,16 @@ export default function HeroBackground({ inView }: HeroBackgroundProps) {
       />
       <Image
         src={"/images/hero/hero-city-background.jpg"}
+        ref={parallaxContainer}
         width={1774}
         height={1440}
-        placeholder="blur" //
+        placeholder="blur"
         blurDataURL={hero_background_blur}
         priority
-        className="absolute w-full h-full -z-20 left-0 right-0 top-0 bottom-0 m-auto blur-xs"
+        className="absolute bottom-0 left-0 right-0 top-0 -z-20 m-auto h-full w-full"
         alt="hero"
       />
-      <div
-        className={`absolute left-0 right-0 top-0 bottom-0 m-auto  -z-10 w-3/4 h-full ${inView ? style.rain_effect_animation : ""}`}
-        style={{
-          backgroundImage: `url(${"/images/hero/hero-rain-effect.png"})`,
-          backgroundSize: "50% 50%"
-        }}
-      ></div>
+      <div className={`${style.rainEffectBG}`}></div>
     </div>
   );
 }
