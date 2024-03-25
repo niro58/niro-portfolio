@@ -1,8 +1,7 @@
 "use client";
 
 import { ScrollContext } from "@/lib/scroll-observer";
-import Logo from "@/public/icons/logo.svg";
-import Image from "next/image";
+import PersonalLogo from "@/public/icons/logo";
 import Link from "next/link";
 import React, { useContext } from "react";
 
@@ -13,6 +12,7 @@ import NavSubmenu from "./nav-submenu";
 
 const Navbar: React.FC = () => {
   const { scrollY } = useContext(ScrollContext);
+  console.log(typeof PersonalLogo);
   return (
     <div className="fixed left-0 right-0 top-0 z-50 w-full text-foreground">
       <div className="w-full">
@@ -26,14 +26,10 @@ const Navbar: React.FC = () => {
             } flex w-24 items-center justify-center  rounded-full border-background bg-background transition-all duration-300 hover:border-primary hover:bg-primary/20 hover:shadow-lg lg:w-32`}
           >
             <Link href="/" className="p-4 lg:p-8">
-              <Image
-                src={Logo}
-                alt="Logo"
+              <PersonalLogo
                 className={`${
                   scrollY > 400 ? "scale-0" : "scale-1"
                 } transition-all duration-300`}
-                height={125}
-                priority
               />
             </Link>
           </div>
