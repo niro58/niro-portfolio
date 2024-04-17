@@ -1,4 +1,4 @@
-@keyframes MOVE-BG {
+/* @keyframes MOVE-BG {
   0% {
     background-position: 50% 0;
   }
@@ -20,4 +20,31 @@
   animation-duration: 2.5s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
+} */
+
+.rainEffectBG {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin :0 auto;
+  background-image: url("./../public/images/hero/hero-rain-effect.png");
+  background-repeat: repeat;
+  background-position:0% -100%, 0;
+  -moz-animation: swim 2s linear 0s infinite;
+  -webkit-animation: swim 2s linear 0s infinite;
+  animation: swim 2s linear 0s infinite;
+}
+@-moz-keyframes swim {
+  from  { background-position: 0 -100%, 0 0; }
+  to { background-position: 0 300%, 0 0; }
+}
+@-webkit-keyframes swim {
+  from  { background-position: 0 -100%, 0 0; }
+  to { background-position: 0 300%, 0 0; }
+}
+@keyframes swim {
+  from  { background-position: 0 -100%, 0 0; }
+  to { background-position: 0 300%, 0 0; }
 }

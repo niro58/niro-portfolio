@@ -2,7 +2,8 @@ import { Frontmatter, PostType, postsRootDir } from "@/lib/post-interfaces";
 import { promises as fs } from "fs";
 import { NextRequest } from "next/server";
 import path from "path";
-
+import rehypePrism from 'rehype-prism-plus';
+import rehypeCodeTitles from 'rehype-code-titles';
 interface PostOutput {
   slug: string;
   frontmatter: Frontmatter;

@@ -1,12 +1,4 @@
-import { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { serialize } from "v8";
-
-import {
-  Frontmatter,
-  Post,
-  PostType,
-  blank_frontmatter
-} from "../post-interfaces";
+import { Frontmatter, PostType, blank_frontmatter } from "../post-interfaces";
 
 export async function GetPosts(type: PostType, limit: number) {
   const url = new URL("/api/posts", process.env.NEXT_ROOT_PATH);
@@ -34,7 +26,6 @@ export async function GetPost(slug: string): Promise<OutputPost> {
     method: "GET"
   });
   if (!res.ok) {
-    console.log(slug);
     return { frontmatter: blank_frontmatter, content: "" };
   }
 

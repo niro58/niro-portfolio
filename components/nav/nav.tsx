@@ -12,7 +12,6 @@ import NavSubmenu from "./nav-submenu";
 
 const Navbar: React.FC = () => {
   const { scrollY } = useContext(ScrollContext);
-  console.log(typeof PersonalLogo);
   return (
     <div className="fixed left-0 right-0 top-0 z-50 w-full text-foreground">
       <div className="w-full">

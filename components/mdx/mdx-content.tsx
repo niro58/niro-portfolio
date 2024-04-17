@@ -8,33 +8,32 @@ type MdxContentProps = {
 const MdxComponents = {
   h1: (props: React.HTMLProps<HTMLHeadingElement>) => (
     <h1
-      className="text-4xl text-primary mb-5 py-2 border-b-2 border-primary"
+      className="mb-5 border-b-2 border-secondary py-2 text-4xl font-thin tracking-wide text-white"
       {...props}
     />
   ),
   h2: (props: React.HTMLProps<HTMLHeadingElement>) => (
     <h2
-      className="text-3xl text-primary mb-5 py-2 border-b-2 border-primary"
+      className="mb-5 border-b-2 border-secondary py-2 text-3xl font-thin tracking-wide text-white"
       {...props}
     />
   ),
   h3: (props: React.HTMLProps<HTMLHeadingElement>) => (
     <h3
-      className="text-2xl text-primary mb-5 py-2 border-b-2 border-primary"
+      className="mb-5 border-b-2 border-secondary py-2 text-2xl font-thin tracking-wide text-white"
       {...props}
     />
   ),
   h4: (props: React.HTMLProps<HTMLHeadingElement>) => (
     <h4
-      className="text-xl text-primary mb-5 py-2 border-b-2 border-primary"
+      className="mb-5 border-b-2 border-secondary py-2 text-xl font-thin tracking-wide text-white"
       {...props}
     />
   ),
   ul: (props: React.HTMLProps<HTMLUListElement>) => (
-    <ul className="list-disc mb-5" {...props} />
+    <ul className="mb-5 list-disc" {...props} />
   ),
   li: (props: React.HTMLProps<HTMLLIElement>) => <li {...props} />,
-
   /** Card component */
   Card: (props: React.HTMLProps<HTMLDivElement>) => (
     <div
@@ -46,16 +45,7 @@ const MdxComponents = {
       {...props}
     />
   ),
-  Code: (props: React.HTMLProps<HTMLDivElement>) => (
-    <div
-      style={{
-        background: "#333",
-        borderRadius: "0.25rem",
-        padding: "0.5rem 1rem"
-      }}
-      {...props}
-    />
-  ),
+
   Image: (props: React.HTMLProps<HTMLImageElement>) => (
     <img
       style={{

@@ -20,30 +20,26 @@ export default function HeroBackground() {
   }, [scrollY]);
 
   return (
-    <div className="relative overflow-hidden" ref={ref}>
+    <div className="relative h-full" ref={ref}>
       <Image
         src={"/images/hero/hero-foreground.png"}
-        width={2560}
-        height={1440}
         placeholder="blur"
         blurDataURL={hero_foreground_blur}
         alt="hero"
         priority
-        sizes="100vw"
-        className="z-10"
+        fill
+
+        className="z-20 object-cover"
       />
       <Image
         src={"/images/hero/hero-city-background.jpg"}
         ref={parallaxContainer}
-        width={1774}
-        height={1440}
+        className="-z-10 object-cover"
         placeholder="blur"
         blurDataURL={hero_background_blur}
-        priority
-        className="absolute bottom-0 left-0 right-0 top-0 -z-20 m-auto h-full w-full"
+        fill
         alt="hero"
       />
-      <div className={`${style.rainEffectBG}`}></div>
     </div>
   );
 }

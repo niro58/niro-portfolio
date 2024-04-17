@@ -1,11 +1,10 @@
-import Navbar from "@/components/nav/nav";
 import ScrollObserver from "@/lib/scroll-observer";
+import "@/styles/globals.css";
+import "@/styles/prism-coldark-dark.css";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import { StrictMode } from "react";
 import { Toaster } from "sonner";
-
-import "../styles/globals.css";
 
 const inter = Montserrat({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -23,8 +22,8 @@ export default function RootLayout({
     <html lang="en">
       <ScrollObserver>
         <StrictMode>
-          <body className={`bg-background scroll-smooth ${inter.className}`}>
-            <Navbar />
+          <body className={`scroll-smooth bg-background ${inter.className}`}>
+            {/* <Navbar /> */}
             {children}
             <Toaster />
           </body>
