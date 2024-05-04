@@ -5,6 +5,7 @@ const header_components: {
 }[] = [
   { title: "Home", href: "/#" },
   { title: "About me", href: "/#about" },
+  { title: "Projects", href: "/#projects" },
   {
     title: "Stack",
     href: "/#stack",
@@ -13,7 +14,6 @@ const header_components: {
       { title: "History", href: "/history-stack" }
     ]
   },
-  { title: "Projects", href: "/#projects" },
   { title: "Contact", href: "/#contact" }
 ];
 export default header_components;

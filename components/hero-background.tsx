@@ -1,6 +1,5 @@
 import { blur_data } from "@/data/blur-data";
 import { ScrollContext } from "@/lib/scroll-observer";
-import style from "@/styles/hero-background.module.css";
 import Image from "next/image";
 import { useContext, useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
@@ -16,7 +15,7 @@ export default function HeroBackground() {
   useEffect(() => {
     if (!parallaxContainer.current) return;
     const background: HTMLDivElement = parallaxContainer.current;
-    background.style.transform = `translate3d(0, -${scrollY * 0.5}px, 0)`;
+    background.style.transform = `translate3d(0, -${scrollY * 0.15}px, 0)`;
   }, [scrollY]);
 
   return (
@@ -28,7 +27,6 @@ export default function HeroBackground() {
         alt="hero"
         priority
         fill
-
         className="z-20 object-cover"
       />
       <Image

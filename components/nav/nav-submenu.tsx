@@ -20,7 +20,7 @@ const NavSubmenu: React.FC<NavSubmenuProps> = ({ title, subPages }) => {
           onMouseLeave={() => setIsOpen(false)}
         >
           <div className="z-10 inline-flex items-center justify-center">
-            <div className="text-base/relaxed">{title}</div>
+            <div>{title}</div>
             <RxPlus
               className="ms-3"
               size={21}
@@ -61,7 +61,7 @@ const NavSubmenu: React.FC<NavSubmenuProps> = ({ title, subPages }) => {
                       }}
                     >
                       <div className="mb-2 mt-2"></div>
-                      <span className="text-base/relaxed">{sublink.title}</span>
+                      <span>{sublink.title}</span>
                     </Link>
                   </div>
                 ))}

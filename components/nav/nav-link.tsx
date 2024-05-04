@@ -33,7 +33,7 @@ const NavLink: React.FC<NavLinkProps> = ({ title, href }) => {
           size={9}
         />
 
-        <span className="text-base/relaxed">{title}</span>
+        <span>{title}</span>
       </div>
     </Link>
   );
