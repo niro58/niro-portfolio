@@ -4,7 +4,7 @@ const header_components: {
   subPages?: { title: string; href: string }[];
 }[] = [
   { title: "Home", href: "/#" },
-  { title: "About me", href: "/#about" },
+  { title: "About", href: "/#about" },
   { title: "Projects", href: "/#projects" },
   {
     title: "Stack",

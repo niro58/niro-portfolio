@@ -35,7 +35,12 @@ const Navbar: React.FC = () => {
   ];
   return (
     <div
-      className={`fixed z-50 flex w-1/2 transform flex-col justify-between pt-5 transition-all duration-500 ${scrollY > 400 ? "translate-x-full items-end gap-2" : "translate-x-1/2 items-center gap-5"}`}
+      className={`fixed z-50 flex w-4/5 transform flex-col justify-between pt-5 transition-all duration-500 lg:w-1/2
+      ${
+        scrollY > 400
+          ? "translate-x-full items-end gap-2"
+          : "translate-x-4/5 items-center gap-5 lg:translate-x-1/2 "
+      }`}
     >
       {/* Logo */}
       <div
@@ -52,13 +57,13 @@ const Navbar: React.FC = () => {
         </Link>
       </div>
       <div
-        className={`rounded-br-xl rounded-tl-xl border-y  transition-colors duration-500 ${
+        className={`rounded-br-xl rounded-tl-xl border-y transition-colors duration-500 ${
           scrollY > 400
             ? "border-y-primary/50 text-xl md:bg-background/50 "
             : "border-y-primary/75 text-2xl font-normal md:bg-background "
         }`}
       >
-        <div className="z-0 hidden pe-8 md:grid md:grid-cols-5 md:justify-items-end md:gap-7 md:py-3">
+        <div className="hidden pe-8 md:grid md:grid-cols-5 md:justify-items-end md:gap-7 md:py-3">
           {header_components.map((link) =>
             link.subPages == undefined ? (
               <NavLink key={link.title} title={link.title} href={link.href} />

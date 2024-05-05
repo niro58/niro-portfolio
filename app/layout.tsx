@@ -1,4 +1,3 @@
-import Navbar from "@/components/nav/nav";
 import ScrollObserver from "@/lib/scroll-observer";
 import "@/styles/globals.css";
 import "@/styles/prism-coldark-dark.css";
@@ -24,7 +23,7 @@ export default function RootLayout({
       <ScrollObserver>
         <StrictMode>
           <body className={`scroll-smooth bg-background ${inter.className}`}>
-            <Navbar />
+            {/* <Navbar /> */}
             {children}
             <Toaster />
           </body>
