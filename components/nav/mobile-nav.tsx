@@ -4,8 +4,10 @@ import { Transition } from "@headlessui/react";
 import { useState } from "react";
 
 import header_components from "@/data/header-components";
+import Link from "next/link";
 import MobileNavLink from "./mobile-nav-link";
 import MobileNavSubmenu from "./mobile-nav-submenu";
+import { socials } from "./nav";
 
 const MobileNav: React.FC = () => {
   const [navShow, setNavShow] = useState(false);
@@ -32,7 +34,7 @@ const MobileNav: React.FC = () => {
         leave="transition-opacity duration-300"
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
-        className="pe-5 md:hidden"
+        className="flex justify-end pe-5 md:hidden"
         onClick={onToggleNav}
         aria-label="Toggle Menu"
       >
@@ -58,7 +60,7 @@ const MobileNav: React.FC = () => {
         leave="transition-transform duration-300"
         leaveFrom="translate-x-0"
         leaveTo="translate-x-full"
-        className="fixed left-0 top-0 z-10 h-full w-full transform bg-gradient-to-tr from-black/90 to-primary-foreground/90 duration-300 ease-in-out"
+        className="fixed left-0 top-0 z-10 h-full w-full transform bg-gradient-to-br from-primary/90 to-primary-foreground/90 duration-300 ease-in-out"
       >
         <div className="flex justify-end">
           <button
@@ -80,23 +82,48 @@ const MobileNav: React.FC = () => {
             </svg>
           </button>
         </div>
-        <nav className="container fixed mt-8 grid grid-cols-1 gap-5 text-4xl font-bold tracking-widest">
-          {header_components.map((link) =>
-            link.subPages === undefined ? (
-              <MobileNavLink
-                key={link.title}
-                title={link.title}
-                href={link.href}
-                setClosedNav={onToggleNav}
-              />
-            ) : (
-              <MobileNavSubmenu
-                key={link.title}
-                title={link.title}
-                subPages={link.subPages}
-              />
-            )
-          )}
+        <nav className="container fixed flex flex-col justify-between gap-16 py-8">
+          <div className=" grid grid-cols-1 gap-5 text-4xl font-bold tracking-widest">
+            {header_components.map((link) =>
+              link.subPages === undefined ? (
+                <MobileNavLink
+                  key={link.title}
+                  title={link.title}
+                  href={link.href}
+                  setClosedNav={onToggleNav}
+                />
+              ) : (
+                <MobileNavSubmenu
+                  key={link.title}
+                  title={link.title}
+                  subPages={link.subPages}
+                />
+              )
+            )}
+          </div>
+          <div className="flex flex-row gap-8 rounded-xl p-5">
+            {socials.map((component, index) => {
+              const IconComponent = component.logo;
+              return (
+                <Link
+                  href={component.href || ""}
+                  key={index}
+                  className="flex flex-row"
+                >
+                  <div
+                    className={`flex items-center justify-center ${
+                      index < socials.length - 1 ? "pe-8" : ""
+                    }`}
+                  >
+                    <IconComponent
+                      className={`h-12 w-12 text-white transition-transform hover:-translate-y-1 hover:translate-x-1 hover:text-primary
+                      `}
+                    />
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
         </nav>
       </Transition>
     </>

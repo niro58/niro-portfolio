@@ -2,13 +2,8 @@ import { blur_data } from "@/data/blur-data";
 import { ScrollContext } from "@/lib/scroll-observer";
 import Image from "next/image";
 import { useContext, useEffect, useRef } from "react";
-import { useInView } from "react-intersection-observer";
-import { Rain } from "./rain";
 
 export default function HeroBackground() {
-  const { ref, inView, entry } = useInView({
-    threshold: 0
-  });
   const { hero_foreground_blur } = blur_data;
 
   const parallaxContainer = useRef(null);
@@ -20,8 +15,8 @@ export default function HeroBackground() {
   }, [scrollY]);
 
   return (
-    <div className="relative flex h-full justify-center" ref={ref}>
-      <Rain />
+    <div className="relative flex justify-center">
+      {/* <Rain /> */}
       <Image
         src={"/images/hero/hero-foreground.png"}
         placeholder="blur"
@@ -29,14 +24,14 @@ export default function HeroBackground() {
         alt="hero"
         priority
         fill
-        className="z-20 object-cover"
+        className="-z-10 min-h-screen object-cover object-top"
       />
       <Image
         src={"/images/hero/hero-city-background.jpg"}
         ref={parallaxContainer}
         fill
-        quality={50}
-        className="z-0 object-cover"
+        quality={25}
+        className="-z-30 min-h-screen object-cover"
         alt="hero"
       />
     </div>
