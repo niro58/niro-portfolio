@@ -1,18 +1,18 @@
-import { AboutMe } from "@/components/about-me";
-import { CurrentStack } from "@/components/current-stack";
-import { LatestProjects } from "@/components/latest-projects";
+import { Portfolio } from "@/components/portfolio";
 
 export default function Home() {
   return (
     <main>
-      {/* <Hero /> */}
-      <div className="min-h-screen bg-gradient-to-b from-slate-900 to-background">
+      <Portfolio />
+      {/* <Hero />
+      <div className="min-h-screen bg-gradient-to-b from-slate-900 to-background hover:bg-neutral-900/90">
         <AboutMe />
       </div>
       <div className="min-h-screen ">
         <LatestProjects />
-      </div>
-      <CurrentStack />
+      </div> */}
+      {/* <Portfolio />
+      <Contacts /> */}
     </main>
   );
 }

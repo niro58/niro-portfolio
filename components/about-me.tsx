@@ -1,13 +1,14 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { Transition } from "@headlessui/react";
+import Link from "next/link";
 import React, { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 enum Section {
   About,
-  Experience,
-  Contact
+  Experience
 }
 const Background = () => (
   <svg
@@ -639,7 +640,7 @@ const Background = () => (
   </svg>
 );
 export const AboutMe: React.FC = () => {
-  const [section, setSection] = React.useState<Section>(Section.Experience);
+  const [section, setSection] = React.useState<Section>(Section.About);
   const activeButton = `
      bg-primary font-bold
   `;
@@ -650,12 +651,12 @@ export const AboutMe: React.FC = () => {
       <Background />
       <div className="container flex h-full min-h-screen w-full flex-col items-center justify-center">
         <div className="z-10 flex flex-col items-center rounded-lg bg-gradient-to-b from-background via-background to-background/50 shadow-lg shadow-background ring-4 ring-primary">
-          <div className="flex min-h-[30rem] w-[30rem]">
+          <div className="flex">
             <SectionTransition
               show={section === Section.About && !isTransitioning}
               beforeLeaveCallback={() => setIsTransitioning(true)}
               afterLeaveCallback={() => setIsTransitioning(false)}
-              className="p-0"
+              className="h-[40rem] w-full overflow-auto p-0 sm:h-[30rem] sm:w-[25rem] md:w-[30rem]"
             >
               <AboutSection />
             </SectionTransition>
@@ -663,24 +664,18 @@ export const AboutMe: React.FC = () => {
               show={section === Section.Experience && !isTransitioning}
               beforeLeaveCallback={() => setIsTransitioning(true)}
               afterLeaveCallback={() => setIsTransitioning(false)}
+              className="h-[50rem] w-full overflow-auto md:h-[42rem] md:w-[40rem]"
             >
               <ExperienceSection />
             </SectionTransition>
-            <SectionTransition
-              show={section === Section.Contact && !isTransitioning}
-              beforeLeaveCallback={() => setIsTransitioning(true)}
-              afterLeaveCallback={() => setIsTransitioning(false)}
-            >
-              <ContactSection />
-            </SectionTransition>
           </div>
-          <div className="grid w-full grid-cols-3 justify-between border-t text-center text-lg">
+          <div className="grid w-full grid-cols-2 justify-between border-t text-center text-lg">
             <div
               onClick={() =>
                 section !== Section.About && setSection(Section.About)
               }
               className={cn(
-                "py-3 transition-colors duration-500",
+                "cursor-pointer py-3 transition-colors hover:bg-primary/75 active:bg-primary/50",
                 section === Section.About && activeButton
               )}
             >
@@ -691,22 +686,11 @@ export const AboutMe: React.FC = () => {
                 section !== Section.Experience && setSection(Section.Experience)
               }
               className={cn(
-                "border-x py-3 transition-colors duration-500",
+                "cursor-pointer py-3 transition-colors hover:bg-primary/75 active:bg-primary/50",
                 section === Section.Experience && activeButton
               )}
             >
               Experience
-            </div>
-            <div
-              onClick={() =>
-                section !== Section.Contact && setSection(Section.Contact)
-              }
-              className={cn(
-                "py-3 transition-colors duration-500",
-                section === Section.Contact && activeButton
-              )}
-            >
-              Contact
             </div>
           </div>
         </div>
@@ -762,15 +746,17 @@ const AboutSection: React.FC = () => (
         />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
-      <div className="pt-2 text-xl font-bold">Nichita Roilean</div>
-      <div className="grid grid-cols-2 gap-5 py-1 text-center text-neutral-400">
-        <div>Full-stack Developer</div>
+      <div className="pt-2 text-center text-xl font-bold">Nichita Roilean</div>
+      <div className="grid grid-cols-2 gap-1 px-2 py-1 text-center text-neutral-400 sm:gap-5 sm:px-0">
+        <div className="break-all">Full-stack Developer</div>
         <div>Data Analytic</div>
       </div>
     </div>
     <div className="z-10 px-5">
-      <div className="self-start py-2 text-lg font-bold ">About</div>
-      <div className="text-start text-lg text-neutral-300">
+      <div className="self-start py-2 text-xl font-bold text-neutral-400 ">
+        About
+      </div>
+      <div className="text-md leading-relaxed ">
         A 21 year old developer from Prague, Czech Republic that enjoys creating
         software, console apps, . . . Basically everything that sounds fun and
         challenging, enjoying trying out new technologies in each project
@@ -785,48 +771,50 @@ const ExperienceSection: React.FC = () => {
       title: "Naive Newbie Developer",
       company: "High School",
       date: "2018 - 2022",
-      description:
-        "Basic web development (JS,JQ,Wordpress,Bootstrap), Console apps(C#, Python), 3D Design(Maya, Cinema4D)"
+      description: "Basic web development",
+      detailed_link: "https..."
     },
     {
       title: "Unity Developer",
       company: "My projects",
       date: "2020 - 2022",
-      description: "Creating games, creative coding, 3D modelling, pixel art"
+      description: "Creating games, creative coding, 3D modelling, Pixel Art",
+      detailed_link: "https..."
+    },
+    {
+      title: "Back-End Development",
+      company: "My projects",
+      date: "2022 - Present",
+      description: "Console apps, databases, APIs ...",
+      detailed_link: "https..."
     },
     {
       title: "Full-stack Developer, Data Analytics & Visualization",
       company: "VJM Frigotrans",
       date: "2023 - Present",
-      description:
-        "Data gathering, visualization, design, internal software for one of the biggest Taxi logistics company in Czech Republic and a big European transport company, handling both Truck and Taxi fleet data, creating websites & apps for internal use. Primarily using Python, MongoDB, C#, Power BI for data visualization"
+      description: "Data gathering, visualization, design, internal software",
+      detailed_link: "https..."
     },
     {
       title: "Web Development & Creative Coding",
       company: "My projects",
       date: "2024 - Present",
-      description:
-        "Got back to this field using Next.JS for web development, sometimes using Next.JS for backend or Golang/Express.js based on the needs and for db PostgreSQL, MongoDB, SQLite."
-    },
-    {
-      title: "Scripting",
-      company: "My projects",
-      date: "2023 - Present",
-      description:
-        "Creating Console apps for optimization of tasks, using PostgreSQL, SQLite, MongoDB, Python, C#. Mostly Go for backend"
+      description: "Back to web dev Next.JS and p5js for creative coding",
+      detailed_link: "https..."
     }
   ];
   return (
     <>
-      <div className="relative grid h-[42rem] grid-cols-3 items-start justify-between gap-3 text-neutral-300">
+      <div className="relative flex max-h-full flex-row items-start justify-between gap-3 self-start text-neutral-300">
         <svg
-          width="59"
-          height="672"
+          width="100px"
+          height="100%"
           viewBox="0 0 59 672"
           fill="none"
+          className="hidden md:block"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <g clip-path="url(#clip0_228_7)">
+          <g clipPath="url(#clip0_228_7)">
             <line
               x1="49"
               y1="672"
@@ -989,15 +977,26 @@ const ExperienceSection: React.FC = () => {
           </defs>
         </svg>
 
-        <div className="col-span-2 grid h-full grid-cols-1 grid-rows-5 gap-[1.95rem] ">
+        <div className="col-span-2 flex h-full flex-col gap-3 md:grid-cols-1 md:grid-rows-5 md:gap-0">
           {data.map((item, index) => (
-            <div key={index} className="flex flex-col text-sm">
+            <div key={index} className="flex flex-col gap-1 text-sm">
               <div className="font-medium">{item.title}</div>
               <div className="flex gap-2 text-xs">
                 {item.company} <Separator orientation="vertical" /> {item.date}
               </div>
 
               <div>{item.description}</div>
+              <Link href={item.detailed_link}>
+                <Button size="sm" variant="outline">
+                  Details
+                </Button>
+              </Link>
+              {index !== data.length - 1 && (
+                <Separator
+                  orientation="horizontal"
+                  className="mt-3 block md:hidden"
+                />
+              )}
             </div>
           ))}
         </div>
@@ -1005,9 +1004,3 @@ const ExperienceSection: React.FC = () => {
     </>
   );
 };
-
-const ContactSection: React.FC = () => (
-  <>
-    <div>:clown:</div>
-  </>
-);
