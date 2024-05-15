@@ -15,7 +15,7 @@ export async function Portfolio() {
         <div className="flex flex-col">
           <div className="justify-top mb-5 flex w-full flex-col items-start font-thin tracking-wide">
             <div>
-              <div className="text-start  text-6xl/tight font-thin tracking-wide">
+              <div className="py-16 text-start text-6xl/tight font-thin tracking-wide">
                 Portfolio
               </div>
             </div>

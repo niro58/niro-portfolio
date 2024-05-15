@@ -140,7 +140,7 @@ export const ActiveSkills: SkillDescription[] = [
   },
   {
     id: uuidv4(),
-    type: "Apps",
+    type: "Data Analytics & Visualization",
     description:
       "Gathering data to analyze a large taxi and truck fleet for my current job. I'm transforming this data into Power BI to optimize various aspects of the company's business operations. Just trying to make everything work more efficiently.",
     headerIconsTooltip: ["C#", "Microsoft Power BI", "MongoDB"],

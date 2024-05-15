@@ -30,12 +30,9 @@ export async function LatestProjects() {
         <div className="grid h-full grid-cols-2 grid-rows-2 gap-2 lg:gap-5">
           <div className="justify-top mb-5 flex w-full flex-col items-start font-thin tracking-wide">
             <div>
-              <div className="text-start  text-6xl/tight font-thin tracking-wide">
+              <div className="text-start text-6xl/tight font-thin tracking-wide">
                 Some of projects that
                 <br /> I am working on
-              </div>
-              <div className="text-start text-2xl/relaxed font-normal tracking-normal text-neutral-500">
-                All archive/current projects are available in my portfolio
               </div>
             </div>
           </div>
