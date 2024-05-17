@@ -16,16 +16,10 @@ export const Contacts: React.FC = () => {
             alt="contacts image"
           />
         </div>
-        <div className="flex w-full flex-col justify-between p-10 md:w-1/2">
+        <div className="flex w-full flex-col justify-between md:w-1/2">
           <div className="space-y-5">
-            <div className="text-4xl">
-              Do you want to contact <span className="text-primary">me?</span>
-            </div>
-            <div className="inline-block text-2xl">
-              In case if you want to contact me for fun cooperation on some
-              project or anything else feel free to contact me using this{" "}
-              <span className="text-primary">form</span> or on{" "}
-              <span className="text-primary">discord (niro58)</span>
+            <div className="py-16 text-start text-6xl/tight font-thin tracking-wide">
+              Contact Form
             </div>
           </div>
           <div className="flex h-full items-center justify-center">

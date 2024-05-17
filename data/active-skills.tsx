@@ -1,13 +1,103 @@
 import { SkillDescription } from "@/components/current-stack";
+import { ArrowRight } from "lucide-react";
 import { FaReact } from "react-icons/fa";
-import { v4 as uuidv4 } from "uuid";
 
 export const ActiveSkills: SkillDescription[] = [
   {
-    id: uuidv4(),
+    type: "Programming",
+    description:
+      "While web development and data analytics & visualization are enjoyable, this section represents the most valuable part of my learning journey. I regularly switch between programming languages to broaden my skills and get a feel for each language's unique style, helping me adapt more easily to new ones. I apply these languages across various tasks, including working with APIs, web scraping, data manipulation, console app projects, programming challenges, etc",
+    headerIconsTooltip: ["Python"],
+    headerIcons: [
+      <svg
+        width="32"
+        height="32"
+        viewBox="0 0 32 36"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M31.9984 10.5738C31.9981 9.96907 31.8688 9.4347 31.6072 8.97608C31.3503 8.52509 30.9656 8.1471 30.4495 7.84824C26.1894 5.39185 21.9252 2.94298 17.6665 0.484087C16.5183 -0.178745 15.4052 -0.15458 14.2655 0.517767C12.5699 1.51778 4.08041 6.38159 1.55066 7.84686C0.508831 8.44997 0.00187807 9.37298 0.00162766 10.5727C0 15.5126 0.00162766 20.4524 0 25.3925C0 25.984 0.124078 26.508 0.374111 26.9597C0.631156 27.4243 1.02129 27.8127 1.54928 28.1183C4.07916 29.5836 12.5698 34.447 14.265 35.4473C15.4052 36.12 16.5183 36.1441 17.6668 35.481C21.9257 33.022 26.1901 30.5732 30.4508 28.1168C30.9788 27.8113 31.369 27.4227 31.626 26.9584C31.8757 26.5067 32 25.9827 32 25.3911C32 25.3911 32 15.5139 31.9984 10.5738Z"
+          fill="white"
+        />
+        <path
+          d="M16.049 17.9345L0.374111 26.9597C0.631156 27.4243 1.02129 27.8127 1.54928 28.1183C4.07916 29.5836 12.5698 34.447 14.265 35.4473C15.4052 36.12 16.5183 36.1441 17.6668 35.481C21.9257 33.022 26.1901 30.5732 30.4508 28.1168C30.9788 27.8113 31.369 27.4227 31.626 26.9584L16.049 17.9345Z"
+          fill="white"
+        />
+        <path
+          d="M31.9984 10.5738C31.9981 9.96907 31.8688 9.4347 31.6072 8.97608L16.049 17.9345L31.626 26.9584C31.8757 26.5067 31.9997 25.9827 32 25.3911C32 25.3911 32 15.5139 31.9984 10.5738Z"
+          fill="white"
+        />
+        <path
+          d="M25.2778 14.5605V16.2475H26.9647V14.5605H27.8082V16.2475H29.4952V17.091H27.8082V18.778H29.4952V19.6214H27.8082V21.3084H26.9647V19.6214H25.2778V21.3084H24.4343V19.6214H22.7473V18.778H24.4343V17.091H22.7473V16.2475H24.4343V14.5605H25.2778ZM26.9647 17.091H25.2778V18.778H26.9647V17.091Z"
+          fill="black"
+        />
+        <path
+          d="M16.0835 6.08813C20.4836 6.08813 24.3253 8.47782 26.383 12.0298L26.3629 11.9957L21.1859 14.9766C20.1659 13.2495 18.296 12.0841 16.151 12.0601L16.0835 12.0597C12.8124 12.0597 10.1605 14.7114 10.1605 17.9825C10.1605 19.0522 10.4457 20.0549 10.9417 20.921C11.9626 22.7033 13.8818 23.9054 16.0835 23.9054C18.2987 23.9054 20.2288 22.688 21.2446 20.8866L21.2199 20.9299L26.3892 23.9245C24.354 27.4465 20.565 29.8288 16.216 29.8763L16.0835 29.877C11.6694 29.877 7.8168 27.4726 5.76429 23.9018C4.76228 22.1586 4.18896 20.1376 4.18896 17.9825C4.18896 11.4135 9.51419 6.08813 16.0835 6.08813Z"
+          fill="black"
+        />
+      </svg>,
+      <ArrowRight size={32} className="opacity-50" />,
+      <svg
+        width="32"
+        height="32"
+        viewBox="0 0 113 113"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M56.5101 0.397983C51.9264 0.419282 47.5492 0.810201 43.6976 1.49173C32.3514 3.49624 30.2913 7.69183 30.2913 15.4292V25.648H57.1038V29.0542H30.2913H20.2288C12.4364 29.0542 5.61308 33.738 3.47884 42.648C1.01702 52.8609 0.907829 59.234 3.47884 69.898C5.38477 77.8358 9.93639 83.4917 17.7288 83.4917H26.9476V71.2417C26.9476 62.3918 34.6047 54.5855 43.6976 54.5855H70.4788C77.9338 54.5855 83.8851 48.4473 83.8851 40.9605V15.4292C83.8851 8.16289 77.7551 2.70446 70.4788 1.49173C65.8729 0.725008 61.0937 0.376685 56.5101 0.397983ZM42.0101 8.61673C44.7796 8.61673 47.0413 10.9154 47.0413 13.7417C47.0413 16.5581 44.7796 18.8355 42.0101 18.8355C39.2306 18.8355 36.9788 16.5581 36.9788 13.7417C36.9788 10.9154 39.2306 8.61673 42.0101 8.61673Z"
+          fill="#B8B8B8"
+        />
+        <path
+          d="M87.229 29.0542V40.9605C87.229 50.1912 79.4031 57.9605 70.479 57.9605H43.6978C36.3619 57.9605 30.2915 64.239 30.2915 71.5855V97.1167C30.2915 104.383 36.6101 108.657 43.6978 110.742C52.1851 113.237 60.324 113.688 70.479 110.742C77.2292 108.787 83.8853 104.854 83.8853 97.1167V86.898H57.104V83.4917H83.8853H97.2915C105.084 83.4917 107.988 78.0563 110.698 69.898C113.497 61.4991 113.378 53.4222 110.698 42.648C108.772 34.8905 105.094 29.0542 97.2915 29.0542H87.229ZM72.1665 93.7105C74.946 93.7105 77.1978 95.9879 77.1978 98.8042C77.1978 101.631 74.946 103.929 72.1665 103.929C69.397 103.929 67.1353 101.631 67.1353 98.8042C67.1353 95.9879 69.397 93.7105 72.1665 93.7105Z"
+          fill="white"
+        />
+      </svg>,
+      <ArrowRight size={32} className="opacity-50" />,
+      <svg
+        width="42.67"
+        height="32"
+        viewBox="0 0 800 600"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M141.6 255.4C140.4 255.4 140.1 254.8 140.7 253.9L146.9 245.9C147.5 245 149 244.4 150.1 244.4H255.5C256.7 244.4 257 245.3 256.4 246.2L251.4 253.9C250.8 254.8 249.3 255.7 248.4 255.7L141.6 255.4Z"
+          fill="#B8B8B8"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M96.9998 282.6C95.7998 282.6 95.4998 282 96.0998 281.1L102.3 273.1C102.9 272.2 104.4 271.6 105.5 271.6H240.2C241.4 271.6 242 272.5 241.7 273.4L239.3 280.5C239 281.7 237.8 282.3 236.6 282.3L96.9998 282.6Z"
+          fill="#B8B8B8"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M168.5 309.8C167.3 309.8 167 308.9 167.6 308L171.7 300.6C172.3 299.7 173.5 298.8 174.7 298.8H233.8C235 298.8 235.6 299.7 235.6 300.9L235 308C235 309.2 233.8 310.1 232.9 310.1L168.5 309.8Z"
+          fill="#B8B8B8"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M475.1 250.1C456.5 254.8 443.8 258.4 425.5 263.1C421.1 264.3 420.8 264.6 416.9 260.1C412.5 255.1 409.2 251.8 403 248.9C384.4 239.7 366.4 242.4 349.5 253.3C329.4 266.3 319.1 285.5 319.4 309.4C319.7 333 335.9 352.5 359.3 355.8C379.4 358.5 396.2 351.4 409.5 336.3C412.2 333.1 414.5 329.5 417.5 325.4C406.9 325.4 393.6 325.4 360.5 325.4C354.3 325.4 352.8 321.6 354.9 316.5C358.7 307.3 365.8 292 370 284.3C370.9 282.5 373 279.6 377.4 279.6H484.9C484.3 287.6 484.3 295.6 483.1 303.5C479.9 324.8 471.9 344.3 458.9 361.4C437.6 389.5 409.9 406.9 374.7 411.6C345.8 415.4 318.9 409.8 295.2 392.1C273.3 375.6 260.9 353.7 257.7 326.5C253.9 294.3 263.3 265.4 282.8 240C303.8 212.5 331.5 195.1 365.5 188.9C393.3 183.9 419.8 187.1 443.8 203.4C459.5 213.7 470.7 227.9 478.1 245C479.8 247.7 478.6 249.2 475.1 250.1Z"
+          fill="#B8B8B8"
+        />
+        <path
+          d="M572.8 413.4C545.9 412.8 521.4 405.1 500.7 387.4C483.3 372.3 472.3 353.1 468.8 330.4C463.5 297 472.6 267.5 492.7 241.2C514.3 212.8 540.3 198.1 575.4 191.9C605.5 186.6 633.9 189.5 659.6 207C682.9 222.9 697.4 244.5 701.2 272.9C706.2 312.8 694.7 345.3 667.2 373C647.7 392.8 623.8 405.2 596.3 410.8C588.5 412.3 580.5 412.6 572.8 413.4ZM643.1 294.1C642.8 290.3 642.8 287.3 642.2 284.4C636.9 255.2 610 238.6 581.9 245.1C554.4 251.3 536.7 268.7 530.2 296.5C524.9 319.5 536.1 342.9 557.4 352.3C573.6 359.4 589.9 358.5 605.5 350.5C628.9 338.4 641.6 319.5 643.1 294.1Z"
+          fill="#B8B8B8"
+        />
+      </svg>
+    ],
+    skillLength: "2020-2024"
+  },
+  {
     type: "Web",
     description:
-      "In 2024, I made the decision to jump back into web development, with a focus on learning React and Next.js. This move aligns with my upcoming work projects and, honestly, because it just seems like a good time. As you can tell from my other learning pursuits, I like pulling the best from each language and exploring multiple things simultaneously. Maybe not the most conventional approach, but it fits me well.",
+      "In 2024, I made the decision to jump back into web development, with a focus on learning React. This move aligns with my upcoming work projects and, honestly, because it just seems like a good time.",
     skillLength: "2024",
     headerIconsTooltip: ["Next.JS", "React", "Typescript", "Tailwind"],
     headerIcons: [
@@ -90,13 +180,11 @@ export const ActiveSkills: SkillDescription[] = [
       </svg>
     ]
   },
-
   {
-    id: uuidv4(),
-    type: "AI | ML | DS",
+    type: "Data Analytics & Visualization",
     description:
-      "I've played around with data structures and algorithms in C# and Python in the past, but this year, I'm taking a more serious dive with all resources to dive deeper into this field. Additionally, I've decided to tackle AI and ML, despite their ambiguous nature, in the mix with potential future projects.",
-    headerIconsTooltip: ["Python"],
+      "Gathering data to analyze a large taxi and truck fleet for my current job. I'm transforming this data into Power BI to optimize various aspects of the company's business operations. Just trying to make everything work more efficiently.",
+    headerIconsTooltip: ["C#", "Microsoft Power BI", "MongoDB"],
     headerIcons: [
       <svg
         width="32"
@@ -113,38 +201,7 @@ export const ActiveSkills: SkillDescription[] = [
           d="M87.229 29.0542V40.9605C87.229 50.1912 79.4031 57.9605 70.479 57.9605H43.6978C36.3619 57.9605 30.2915 64.239 30.2915 71.5855V97.1167C30.2915 104.383 36.6101 108.657 43.6978 110.742C52.1851 113.237 60.324 113.688 70.479 110.742C77.2292 108.787 83.8853 104.854 83.8853 97.1167V86.898H57.104V83.4917H83.8853H97.2915C105.084 83.4917 107.988 78.0563 110.698 69.898C113.497 61.4991 113.378 53.4222 110.698 42.648C108.772 34.8905 105.094 29.0542 97.2915 29.0542H87.229ZM72.1665 93.7105C74.946 93.7105 77.1978 95.9879 77.1978 98.8042C77.1978 101.631 74.946 103.929 72.1665 103.929C69.397 103.929 67.1353 101.631 67.1353 98.8042C67.1353 95.9879 69.397 93.7105 72.1665 93.7105Z"
           fill="white"
         />
-      </svg>
-    ],
-    skillLength: "2024"
-  },
-  {
-    id: uuidv4(),
-    type: "Graphics",
-    description:
-      "Mostly done for work, usually some posters, facebook ad posts, and other social media posts. I have used figma basically for most of them and image editing tools",
-    headerIconsTooltip: ["Figma"],
-    headerIcons: [
-      <svg
-        stroke="white"
-        fill="white"
-        strokeWidth="0"
-        viewBox="0 0 384 512"
-        height="32"
-        width="32"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M14 95.7924C14 42.8877 56.8878 0 109.793 0H274.161C327.066 0 369.954 42.8877 369.954 95.7924C369.954 129.292 352.758 158.776 326.711 175.897C352.758 193.019 369.954 222.502 369.954 256.002C369.954 308.907 327.066 351.795 274.161 351.795H272.081C247.279 351.795 224.678 342.369 207.666 326.904V415.167C207.666 468.777 163.657 512 110.309 512C57.5361 512 14 469.243 14 416.207C14 382.709 31.1945 353.227 57.2392 336.105C31.1945 318.983 14 289.5 14 256.002C14 222.502 31.196 193.019 57.2425 175.897C31.196 158.776 14 129.292 14 95.7924ZM176.288 191.587H109.793C74.2172 191.587 45.3778 220.427 45.3778 256.002C45.3778 291.44 73.9948 320.194 109.381 320.416C109.518 320.415 109.655 320.415 109.793 320.415H176.288V191.587ZM207.666 256.002C207.666 291.577 236.505 320.417 272.081 320.417H274.161C309.737 320.417 338.576 291.577 338.576 256.002C338.576 220.427 309.737 191.587 274.161 191.587H272.081C236.505 191.587 207.666 220.427 207.666 256.002ZM109.793 351.795C109.655 351.795 109.518 351.794 109.381 351.794C73.9948 352.015 45.3778 380.769 45.3778 416.207C45.3778 451.652 74.6025 480.622 110.309 480.622C146.591 480.622 176.288 451.186 176.288 415.167V351.795H109.793ZM109.793 31.3778C74.2172 31.3778 45.3778 60.2173 45.3778 95.7924C45.3778 131.368 74.2172 160.207 109.793 160.207H176.288V31.3778H109.793ZM207.666 160.207H274.161C309.737 160.207 338.576 131.368 338.576 95.7924C338.576 60.2173 309.737 31.3778 274.161 31.3778H207.666V160.207Z"></path>
-      </svg>
-    ],
-    skillLength: "2023-2024"
-  },
-  {
-    id: uuidv4(),
-    type: "Data Analytics & Visualization",
-    description:
-      "Gathering data to analyze a large taxi and truck fleet for my current job. I'm transforming this data into Power BI to optimize various aspects of the company's business operations. Just trying to make everything work more efficiently.",
-    headerIconsTooltip: ["C#", "Microsoft Power BI", "MongoDB"],
-    headerIcons: [
+      </svg>,
       <svg
         width="32"
         height="32"
