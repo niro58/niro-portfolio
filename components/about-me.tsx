@@ -25,7 +25,7 @@ export const AboutMe: React.FC = () => {
         src="/images/about-me.jpg"
         alt="city background"
         fill
-        className="object-contain"
+        className="object-cover"
       />
       <div className="container flex h-full min-h-screen w-full flex-col items-center justify-center">
         <div className="z-10 flex flex-col items-center rounded-lg bg-gradient-to-b from-background via-background to-background/50 shadow-lg shadow-background ring-4 ring-primary">

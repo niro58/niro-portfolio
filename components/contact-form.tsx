@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -61,11 +60,8 @@ export const ContactForm: React.FC = () => {
   }
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="w-full space-y-16 p-3"
-      >
-        <div className="flex flex-col gap-10">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full p-3">
+        <div className="flex flex-col gap-5">
           <FormField
             control={form.control}
             name="name"
@@ -113,35 +109,40 @@ export const ContactForm: React.FC = () => {
               </FormItem>
             )}
           />
+          <div>
+            <FormField
+              control={form.control}
+              name="agree"
+              render={({ field }) => (
+                <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+                  <FormControl>
+                    <Checkbox
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                  <div className="space-y-1 leading-none">
+                    <FormLabel>
+                      I agree with processing of my personal data
+                      <Link href="/examples/forms" className="text-primary">
+                        {" "}
+                        Terms and Conditions
+                      </Link>
+                      .
+                    </FormLabel>
+                  </div>
+                </FormItem>
+              )}
+            />
+          </div>
+          <Button
+            variant="outline"
+            type="submit"
+            className="h-12 w-full text-lg"
+          >
+            Submit
+          </Button>
         </div>
-        <div>
-          <FormField
-            control={form.control}
-            name="agree"
-            render={({ field }) => (
-              <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
-                <FormControl>
-                  <Checkbox
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                  />
-                </FormControl>
-                <div className="space-y-1 leading-none">
-                  <FormLabel>
-                    Use different settings for my mobile devices
-                  </FormLabel>
-                  <FormDescription>
-                    I aggree with processing of my personal data
-                    <Link href="/examples/forms">Terms and Conditions</Link>.
-                  </FormDescription>
-                </div>
-              </FormItem>
-            )}
-          />
-        </div>
-        <Button variant="outline" type="submit" className="h-12 w-full text-lg">
-          Submit
-        </Button>
       </form>
     </Form>
   );

@@ -12,7 +12,7 @@ export const Contacts: React.FC = () => {
         <div className="flex  w-full items-center bg-cover md:h-full md:max-h-full md:w-1/2">
           <Image
             src={ContactsImage}
-            className="h-full object-cover shadow-lg shadow-white"
+            className="h-full object-cover shadow-lg shadow-primary "
             alt="contacts image"
           />
         </div>

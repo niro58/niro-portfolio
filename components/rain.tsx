@@ -33,7 +33,7 @@ export const Rain: React.FC = () => {
       ctx.lineCap = "round";
 
       const init = [];
-      const maxParts = 100;
+      const maxParts = 50;
       for (let a = 0; a < maxParts; a++) {
         init.push({
           x: Math.random() * w,
@@ -65,7 +65,7 @@ export const Rain: React.FC = () => {
           p.y += p.ys;
           if (p.x > w || p.y > h) {
             p.x = Math.random() * w;
-            p.y = -20;
+            p.y = -10;
           }
         }
       };

@@ -2,6 +2,7 @@ import { blur_data } from "@/data/blur-data";
 import { ScrollContext } from "@/lib/scroll-observer";
 import Image from "next/image";
 import { useContext, useEffect, useRef } from "react";
+import { Rain } from "./rain";
 
 export default function HeroBackground() {
   const { hero_foreground_blur } = blur_data;
@@ -16,7 +17,7 @@ export default function HeroBackground() {
 
   return (
     <div className="relative flex justify-center">
-      {/* <Rain /> */}
+      <Rain />
       <Image
         src={"/images/hero/hero-foreground.png"}
         placeholder="blur"

@@ -23,8 +23,9 @@ export async function GetPosts(
   return posts;
 }
 interface OutputPost {
+  slug?: string;
   frontmatter: Frontmatter;
-  content: string;
+  content?: string;
 }
 export async function GetPost(slug: string): Promise<OutputPost> {
   if (process.env.NEXT_ROOT_PATH === undefined)

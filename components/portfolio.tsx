@@ -1,5 +1,6 @@
 import { GetPosts } from "@/lib/api-utils/api-utils-post";
 import { MoreHorizontalIcon } from "lucide-react";
+import Link from "next/link";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 
@@ -7,7 +8,7 @@ export async function Portfolio() {
   let data = [];
   const posts = await GetPosts();
   for (let project of posts) {
-    data.push(project.frontmatter);
+    data.push(project);
   }
   return (
     <section className="flex w-full justify-center bg-gradient-to-b from-background to-primary/20 py-12 md:py-24 lg:py-32">
@@ -27,24 +28,34 @@ export async function Portfolio() {
                 key={index}
               >
                 <div className="flex flex-row items-center justify-between">
-                  <div className="text-2xl font-bold">{project.title}</div>
+                  <div className="text-2xl font-bold">
+                    {project.frontmatter.title}
+                  </div>
+
                   <Button size="icon" variant="ghost">
-                    <MoreHorizontalIcon className="h-6 w-6" />
+                    <Link href={`/portfolio/${project.slug}`}>
+                      <MoreHorizontalIcon className="h-6 w-6" />
+                    </Link>
                   </Button>
                 </div>
                 <div className="text-neutral-400">
-                  {String(project.date.getDate()).padStart(2, "0")}-
-                  {String(project.date.getMonth() + 1).padStart(2, "0")}-
-                  {project.date.getFullYear()}
+                  {String(project.frontmatter.date.getDate()).padStart(2, "0")}-
+                  {String(project.frontmatter.date.getMonth() + 1).padStart(
+                    2,
+                    "0"
+                  )}
+                  -{project.frontmatter.date.getFullYear()}
                 </div>
                 <div>
-                  {project.categories.map((category, index) => (
+                  {project.frontmatter.categories.map((category, index) => (
                     <Badge key={index} className="mr-2" variant="outline">
                       {category}
                     </Badge>
                   ))}
                 </div>
-                <p className="pt-3 text-lg">{project.short_description}</p>
+                <p className="pt-3 text-lg">
+                  {project.frontmatter.short_description}
+                </p>
               </div>
             ))}
           </div>
