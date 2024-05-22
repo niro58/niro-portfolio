@@ -1,14 +1,14 @@
 import { MdxContent } from "@/components/mdx/mdx-content";
 import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
 import { GetPost } from "@/lib/api-utils/api-utils-post";
 import { serialize } from "next-mdx-remote/serialize";
-import rehypeCodeTitles from "rehype-code-titles";
-import { renderToString } from 'react-dom/server';
-import rehypePrism from "rehype-prism-plus";
 import Link from "next/link";
+import rehypeCodeTitles from "rehype-code-titles";
+import rehypePrism from "rehype-prism-plus";
+function GenerateHeaderID(text: string) {
+  return text.toLowerCase().replace(/ /g, "-");
+}
 export default async function Page({ params }: { params: { slug: string } }) {
-
   const { slug } = params;
   const post = await GetPost(slug);
   const { frontmatter, content } = post;
@@ -16,10 +16,14 @@ export default async function Page({ params }: { params: { slug: string } }) {
     const regex = /#{1,6}.*/g;
     const headings = content.match(regex);
     return headings?.map((heading) => {
-      const text = heading.replace("#","").trim();
+      const text = heading.replace(/#/g, "").trim();
       const level = heading.match(/#/g)?.length || 0;
-      return { text, level };
+      const id = GenerateHeaderID(text);
+      return { id, text, level };
     });
+  };
+  if (!frontmatter || !content) {
+    return <div>Not found</div>;
   }
   const headings = getHeadings(content);
   const serialized = await serialize(content, {
@@ -27,40 +31,43 @@ export default async function Page({ params }: { params: { slug: string } }) {
       rehypePlugins: [rehypeCodeTitles, rehypePrism as any]
     }
   });
-
   return (
-    <div className="grid grid-cols-6">
-      <div className="bg-red-400 flex flex-col justify-center ps-8">
-        <ul>
-          {headings?.map((heading, index) => (
-            <li key={index} className={`text-${4 - heading.level}xl`}>
-              <Link href={`#${heading.text}`}>
-                {heading.text}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="col-span-4 ps-16 container pt-32 text-xl">
-        <h1 className="pb-5 text-5xl font-thin tracking-wide text-center">
-          {frontmatter.title}
-        </h1>
-        <div className="flex flex-row gap-10 pb-5 justify-center">
-          <div className="flex flex-col gap-3 items-center font-thin tracking-wide">
-            <div>{`${frontmatter.date.getDate()}.${frontmatter.date.getMonth()}.${frontmatter.date.getFullYear()}`}</div>
-            <div className="flex flex-row gap-2">
-              {frontmatter.categories.map((category, index) => (
-                <Badge key={index} variant="secondary" className="text-sm">
-                  {category}
-                </Badge>
-              ))}
-            </div>
+    <div className="min-h-screen bg-gradient-to-b from-background to-slate-900">
+      <ul className="fixed bottom-0 left-32 top-0 flex flex-col justify-center bg-primary/20 px-3">
+        {headings?.map((heading, index) => (
+          <li
+            key={index}
+            className={`hover: inline-flex gap-3 rounded-xl text-neutral-400 transition-all hover:text-primary/50`}
+            style={{
+              paddingLeft: `${heading.level - 1}rem`,
+              fontSize: `${1.75 - heading.level * 0.2}rem`
+            }}
+          >
+            <Link href={`#${heading.id}`}>{heading.text}</Link>
+          </li>
+        ))}
+      </ul>
+      <div className="container w-1/2 pt-16 text-xl">
+        <div className="py-16">
+          <h1 className="text-start text-6xl/tight font-thin tracking-wide">
+            {frontmatter.title}
+          </h1>
+          <div className="py-4 tracking-wide">
+            <span className="rounded-lg bg-white px-2 py-1 text-black">
+              {String(frontmatter.start_date.getDate()).padStart(2, "0")}-
+              {String(frontmatter.start_date.getMonth() + 1).padStart(2, "0")}-
+              {frontmatter.start_date.getFullYear()}
+            </span>
+          </div>
+          <div className="flex flex-row items-center gap-2 pt-2">
+            {frontmatter.categories.map((category, index) => (
+              <Badge key={index} variant="default" className="text-sm">
+                {category}
+              </Badge>
+            ))}
           </div>
         </div>
-        <Separator orientation="horizontal" />
-        <div className="pt-8">
-          <MdxContent source={serialized} />
-        </div>
+        <MdxContent source={serialized} />
       </div>
     </div>
   );

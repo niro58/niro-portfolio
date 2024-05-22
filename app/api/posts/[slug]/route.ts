@@ -16,8 +16,8 @@ export async function GET(request: Request, context: Context) {
     await fs.access(dir);
     const raw = await fs.readFile(dir, "utf-8");
     const { data: frontmatter, content } = matter(raw);
-    if (frontmatter.date && frontmatter.date instanceof Date) {
-      frontmatter.date = frontmatter.date.toISOString();
+    if (frontmatter.start_date && frontmatter.start_date instanceof Date) {
+      frontmatter.start_date = frontmatter.start_date.toISOString();
     }
     return Response.json({
       frontmatter,

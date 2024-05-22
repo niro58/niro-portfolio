@@ -3,11 +3,10 @@ import path from "path";
 
 export type Frontmatter = {
   title: string;
-  date: Date;
-  header_img: string;
+  start_date: Date;
+  end_date: Date;
   short_description: string;
-  categories: Categories[];
-  post_type: PostType;
+  categories: string[];
 };
 
 export type Post<TFrontmatter> = {
@@ -16,32 +15,10 @@ export type Post<TFrontmatter> = {
 };
 export const postsRootDir = path.join(process.cwd(), "posts");
 
-enum Categories {
-  GAME_DEV = "Game Development",
-  SOFTWARE = "Software",
-  UNITY = "Unity",
-  DATA_ANALYSIS = "Data Analysis",
-  PYTHON = "Python",
-  CSHARP = "C#",
-  WEB_DEV = "Web Development",
-  NOSQL = "NoSQL",
-  SQL = "SQL",
-  MACHINE_LEARNING = "Machine Learning",
-  DESIGN = "Design",
-  FIGMA = "Figma",
-  MODELLING3D = "3D Modelling"
-}
-export enum PostType {
-  POST = "Post",
-  PROJECT = "Project",
-  LIBRARY = "Library"
-}
-
 export const blank_frontmatter: Frontmatter = {
   title: "",
-  date: new Date(1970, 12, 31),
-  header_img: "",
+  start_date: new Date(),
+  end_date: new Date(),
   short_description: "",
-  categories: [],
-  post_type: PostType.POST
+  categories: []
 };

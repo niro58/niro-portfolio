@@ -39,12 +39,15 @@ export async function Portfolio() {
                   </Button>
                 </div>
                 <div className="text-neutral-400">
-                  {String(project.frontmatter.date.getDate()).padStart(2, "0")}-
-                  {String(project.frontmatter.date.getMonth() + 1).padStart(
+                  {String(project.frontmatter.start_date.getDate()).padStart(
                     2,
                     "0"
                   )}
-                  -{project.frontmatter.date.getFullYear()}
+                  -
+                  {String(
+                    project.frontmatter.start_date.getMonth() + 1
+                  ).padStart(2, "0")}
+                  -{project.frontmatter.start_date.getFullYear()}
                 </div>
                 <div>
                   {project.frontmatter.categories.map((category, index) => (

@@ -19,10 +19,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <ScrollObserver>
         <StrictMode>
-          <body className={`scroll-smooth bg-background ${inter.className}`}>
+          <body className={`bg-background ${inter.className}`}>
             {/* <Navbar /> */}
             {children}
             <Toaster />

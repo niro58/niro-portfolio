@@ -14,11 +14,13 @@ export async function GetPosts(
   }
   const posts = await res.json();
   for (let post of posts) {
-    post.frontmatter.date = new Date(post.frontmatter.date);
+    post.frontmatter.start_date = new Date(post.frontmatter.start_date);
   }
 
   posts.sort((a: OutputPost, b: OutputPost) => {
-    return b.frontmatter.date.getTime() - a.frontmatter.date.getTime();
+    return (
+      b.frontmatter.start_date.getTime() - a.frontmatter.start_date.getTime()
+    );
   });
   return posts;
 }
@@ -40,8 +42,8 @@ export async function GetPost(slug: string): Promise<OutputPost> {
 
   const post = await res.json();
   const { frontmatter, content } = post;
-  if (frontmatter.date) {
-    frontmatter.date = new Date(frontmatter.date);
+  if (frontmatter.start_date) {
+    frontmatter.start_date = new Date(frontmatter.start_date);
   }
   return { frontmatter, content: content };
 }

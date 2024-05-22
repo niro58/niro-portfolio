@@ -26,9 +26,9 @@ export const Rain: React.FC = () => {
 
       const w = canvas.width;
       const h = canvas.height;
-      ctx.strokeStyle = "rgba(65,91,168,1)";
+      ctx.strokeStyle = "rgba(174, 194, 224, 0.5)";
 
-      ctx.lineWidth = 3;
+      ctx.lineWidth = 2;
 
       ctx.lineCap = "round";
 
