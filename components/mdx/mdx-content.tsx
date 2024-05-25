@@ -26,7 +26,7 @@ function CopyButton({ children }: { children: ReactNode }) {
     </Button>
   );
 }
-function GenerateHeaderID(text: string) {
+export function GenerateHeaderID(text: string) {
   return text.toLowerCase().replace(/ /g, "-");
 }
 const MdxComponents = {

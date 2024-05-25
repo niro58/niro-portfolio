@@ -8,11 +8,7 @@ const header_components: {
   { title: "Projects", href: "/#projects" },
   {
     title: "Stack",
-    href: "/#stack",
-    subPages: [
-      { title: "Current", href: "/#stack" },
-      { title: "History", href: "/history-stack" }
-    ]
+    href: "/#stack"
   },
   { title: "Contact", href: "/#contact" }
 ];
