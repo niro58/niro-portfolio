@@ -1,9 +1,6 @@
-import { Frontmatter, PostType, blank_frontmatter } from "../post-interfaces";
+import { Frontmatter, blank_frontmatter } from "../post-interfaces";
 
-export async function GetPosts(
-  type?: PostType,
-  limit?: number
-): Promise<OutputPost[]> {
+export async function GetPosts(): Promise<OutputPost[]> {
   const url = new URL("/api/posts", process.env.NEXT_ROOT_PATH);
 
   const res = await fetch(url.href, {
@@ -15,6 +12,7 @@ export async function GetPosts(
   const posts = await res.json();
   for (let post of posts) {
     post.frontmatter.start_date = new Date(post.frontmatter.start_date);
+    post.frontmatter.end_date = new Date(post.frontmatter.end_date);
   }
 
   posts.sort((a: OutputPost, b: OutputPost) => {
@@ -24,7 +22,7 @@ export async function GetPosts(
   });
   return posts;
 }
-interface OutputPost {
+export interface OutputPost {
   slug?: string;
   frontmatter: Frontmatter;
   content?: string;
@@ -45,5 +43,9 @@ export async function GetPost(slug: string): Promise<OutputPost> {
   if (frontmatter.start_date) {
     frontmatter.start_date = new Date(frontmatter.start_date);
   }
+  if (frontmatter.end_date) {
+    frontmatter.end_date = new Date(frontmatter.end_date);
+  }
+
   return { frontmatter, content: content };
 }

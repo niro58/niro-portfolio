@@ -7,12 +7,12 @@ import { ContactForm } from "./contact-form";
 
 export const Contacts: React.FC = () => {
   return (
-    <div className="flex min-h-screen items-center justify-between bg-gradient-to-b from-primary/20 to-slate-900 py-24">
+    <div className="flex min-h-screen items-center justify-between bg-gradient-to-b from-primary/20 to-primary/10 py-24">
       <div className="container flex h-1/2 flex-col justify-between gap-5 md:flex-row">
         <div className="flex  w-full items-center bg-cover md:h-full md:max-h-full md:w-1/2">
           <Image
             src={ContactsImage}
-            className="h-full object-cover shadow-lg shadow-primary "
+            className="h-full rounded-lg object-cover shadow-lg"
             alt="contacts image"
           />
         </div>

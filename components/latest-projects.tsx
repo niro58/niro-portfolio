@@ -2,15 +2,8 @@ import { GetPost } from "@/lib/api-utils/api-utils-post";
 import { MoreHorizontalIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
+import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle
-} from "./ui/card";
 
 export async function LatestProjects() {
   const currentProjects = [
@@ -22,53 +15,71 @@ export async function LatestProjects() {
   for (let project of currentProjects) {
     const res = await GetPost(project);
     const { frontmatter } = res;
-    data.push(frontmatter);
+    data.push({
+      slug: project,
+      frontmatter: frontmatter
+    });
   }
+  const images = [
+    "/images/posts/steam-trader.jpg",
+    "/images/posts/vjm-frigotrans-02.jpg",
+    "/images/posts/vjm-truck-fleet.jpg"
+  ];
+
   return (
-    <section className="flex w-full justify-center py-12 md:py-24 lg:py-32">
-      <div className="px-5 py-24 sm:w-10/12 lg:gap-5 lg:px-10">
-        <div className="grid h-full grid-cols-2 grid-rows-2 gap-2 lg:gap-5">
-          <div className="justify-top mb-5 flex w-full flex-col items-start font-thin tracking-wide">
-            <div>
-              <div className="text-start text-6xl/tight font-thin tracking-wide">
-                Some of projects that
-                <br /> I am working on
-              </div>
+    <section className="container h-screen w-full py-12 md:py-8 lg:py-16">
+      <div className="grid h-full grid-cols-2 grid-rows-2 gap-2  lg:gap-5">
+        <div className="font-thin tracking-wide">
+          <div>
+            <div className="text-start text-6xl/tight font-thin tracking-wide">
+              Some of projects that
+              <br /> I am working on
             </div>
           </div>
-          {data.map((project, index) => (
-            <Card key={index} className="w-full">
-              <CardHeader className="pb-2 lg:pb-4">
-                <CardTitle className="flex flex-col items-center justify-between text-lg sm:flex-row lg:text-2xl">
-                  <span className="text-overflow-ellipsis order-2 overflow-hidden whitespace-normal text-lg sm:order-1 sm:text-xl lg:text-3xl">
-                    {project.title}
-                  </span>
-                  <Link
-                    className="order-1 sm:order-2"
-                    href={`/post/${currentProjects[index]}`}
-                    key={index}
-                  >
-                    <Button size="icon" variant="ghost">
-                      <MoreHorizontalIcon className="h-6 w-6" />
-                    </Button>
-                  </Link>
-                </CardTitle>
-                <CardDescription className="text-base text-secondary sm:text-lg lg:text-xl ">
-                  {project.short_description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex items-center justify-center p-2 lg:p-6">
-                <Image
-                  alt="Creative Portfolio Showcase"
-                  className="aspect-video rounded-lg object-cover"
-                  width="500"
-                  height="250"
-                  src={project.header_img}
-                />
-              </CardContent>
-            </Card>
-          ))}
         </div>
+        {data.map((project, index) => (
+          <div
+            key={index}
+            className="flex h-full flex-col rounded-xl border border-primary bg-background/50 p-5"
+          >
+            <div className="flex flex-row justify-between">
+              <div className="text-2xl font-bold">
+                <Link
+                  href={`/post/${project.slug}`}
+                  className="transition-colors hover:text-primary/50"
+                >
+                  {project.frontmatter.title}
+                </Link>
+              </div>
+
+              <Button size="icon" variant="ghost">
+                <Link href={`/post/${project.slug}`}>
+                  <MoreHorizontalIcon className="h-6 w-6" />
+                </Link>
+              </Button>
+            </div>
+            <div className="text-neutral-400"></div>
+            <div>
+              {project.frontmatter.categories.map((category, index) => (
+                <Badge key={index} className="mr-2" variant="outline">
+                  {category}
+                </Badge>
+              ))}
+            </div>
+            <div className="grid h-full grid-cols-2">
+              <p className="pt-3 text-lg">
+                {project.frontmatter.short_description}
+              </p>
+              <Image
+                src={images[index]}
+                alt={project.frontmatter.title}
+                width={500}
+                height={300}
+                className="place-self-center rounded-lg"
+              />
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

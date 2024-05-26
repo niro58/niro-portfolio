@@ -75,8 +75,10 @@ const Navbar: React.FC = () => {
           </div>
         </div>
         <div
-          className={`flex flex-row rounded-xl p-5 transition-all ${
-            scrollY > 400 ? "gap-8 bg-background/50" : "gap-12 bg-background"
+          className={`== flex flex-row rounded-xl transition-all ${
+            scrollY > 400
+              ? "gap-8 bg-background/50 p-2"
+              : "gap-12 bg-background p-4"
           }`}
         >
           {socials.map((component, index) => {
@@ -88,8 +90,8 @@ const Navbar: React.FC = () => {
                 className="flex flex-row"
               >
                 <IconComponent
-                  className={`text-white transition-all hover:-translate-y-1 hover:translate-x-1 hover:text-primary
-                        ${scrollY > 400 ? "h-8 w-8" : "h-12 w-12"}
+                  className={`text-white transition-all duration-500 hover:-translate-y-1 hover:translate-x-1 hover:text-primary
+                        ${scrollY > 400 ? "h-6 w-6" : "h-10 w-10"}
                       `}
                 />
               </Link>

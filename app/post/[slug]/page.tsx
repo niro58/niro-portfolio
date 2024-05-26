@@ -2,6 +2,7 @@ import { MdxContent } from "@/components/mdx/mdx-content";
 import { TableOfContents } from "@/components/post-table-of-contents";
 import { Badge } from "@/components/ui/badge";
 import { GetPost } from "@/lib/api-utils/api-utils-post";
+import { DateToString } from "@/lib/dateToString";
 import { serialize } from "next-mdx-remote/serialize";
 import rehypeCodeTitles from "rehype-code-titles";
 import rehypePrism from "rehype-prism-plus";
@@ -30,9 +31,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
           </h1>
           <div className="py-4 tracking-wide">
             <span className="rounded-lg bg-white px-2 py-1 text-black">
-              {String(frontmatter.start_date.getDate()).padStart(2, "0")}-
-              {String(frontmatter.start_date.getMonth() + 1).padStart(2, "0")}-
-              {frontmatter.start_date.getFullYear()}
+              {DateToString(frontmatter.start_date)}
             </span>
           </div>
           <div className="flex flex-row items-center gap-2 pt-2">

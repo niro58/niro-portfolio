@@ -1,6 +1,9 @@
 import { SkillDescription } from "@/components/current-stack";
 import { ArrowRight } from "lucide-react";
+import { BiLogoPostgresql } from "react-icons/bi";
 import { FaReact } from "react-icons/fa";
+import { SiSqlite } from "react-icons/si";
+import { TbSeparator } from "react-icons/tb";
 
 export const ActiveSkills: SkillDescription[] = [
   {
@@ -90,7 +93,10 @@ export const ActiveSkills: SkillDescription[] = [
           d="M572.8 413.4C545.9 412.8 521.4 405.1 500.7 387.4C483.3 372.3 472.3 353.1 468.8 330.4C463.5 297 472.6 267.5 492.7 241.2C514.3 212.8 540.3 198.1 575.4 191.9C605.5 186.6 633.9 189.5 659.6 207C682.9 222.9 697.4 244.5 701.2 272.9C706.2 312.8 694.7 345.3 667.2 373C647.7 392.8 623.8 405.2 596.3 410.8C588.5 412.3 580.5 412.6 572.8 413.4ZM643.1 294.1C642.8 290.3 642.8 287.3 642.2 284.4C636.9 255.2 610 238.6 581.9 245.1C554.4 251.3 536.7 268.7 530.2 296.5C524.9 319.5 536.1 342.9 557.4 352.3C573.6 359.4 589.9 358.5 605.5 350.5C628.9 338.4 641.6 319.5 643.1 294.1Z"
           fill="#B8B8B8"
         />
-      </svg>
+      </svg>,
+      <TbSeparator style={{ transform: "rotate(90deg)" }} size={32} />,
+      <BiLogoPostgresql size={32} />,
+      <SiSqlite size={32} />
     ],
     skillLength: "2020-2024"
   },

@@ -400,7 +400,7 @@ export const CurrentStack: React.FC = () => {
     "rounded-tr-xl"
   ];
   return (
-    <div className="relative -z-20 min-h-screen bg-gradient-to-t from-slate-900 to-background">
+    <div className="relative -z-20 bg-gradient-to-t from-slate-900 to-background">
       <Background />
       <div className="container z-10 py-24">
         <div className="mb-5 w-full text-start text-4xl font-thin tracking-wide">
@@ -411,7 +411,7 @@ export const CurrentStack: React.FC = () => {
             All archive/current projects are available in my portfolio
           </div>
         </div>
-        <div className="grid grid-cols-2 grid-rows-3 gap-5 pb-12 pt-12">
+        <div className="grid grid-cols-2 grid-rows-2 gap-5 pb-12 pt-12">
           {ActiveSkills.map((skill, index) => (
             <div
               key={index}

@@ -1,7 +1,7 @@
 "use client";
 
 import Leetcode from "@/public/icons/leetcode";
-import copyToCliboard from "@/utils/copyToClipboard";
+import copyToCliboard from "@/lib/copyToClipboard";
 import Link from "next/link";
 import React from "react";
 import { BsDiscord, BsEnvelope, BsGithub, BsLinkedin } from "react-icons/bs";
