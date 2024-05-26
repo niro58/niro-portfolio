@@ -38,7 +38,6 @@ export async function GET(req: NextRequest) {
       headers: { "content-type": "application/json" }
     });
   } catch (error) {
-    console.log(error);
     return new Response("Error Fetching Posts", { status: 500 });
   }
 }

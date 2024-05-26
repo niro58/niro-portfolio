@@ -9,15 +9,27 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <div className="min-h-screen bg-gradient-to-b from-slate-900 to-background">
+      <div
+        className="min-h-screen bg-gradient-to-b from-slate-900 to-background"
+        id="about-me"
+      >
         <AboutMe />
       </div>
-      <CurrentStack />
-      <div className="min-h-screen bg-gradient-to-b from-slate-900 to-background">
+      <div id="stack">
+        <CurrentStack />
+      </div>
+      <div
+        className="min-h-screen bg-gradient-to-b from-slate-900 to-background"
+        id="projects"
+      >
         <LatestProjects />
       </div>
-      <Portfolio />
-      <Contacts />
+      <div id="portfolio">
+        <Portfolio />
+      </div>
+      <div id="contact">
+        <Contacts />
+      </div>
     </main>
   );
 }

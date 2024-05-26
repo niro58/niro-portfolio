@@ -5,10 +5,14 @@ const header_components: {
 }[] = [
   { title: "Home", href: "/#" },
   { title: "About", href: "/#about" },
-  { title: "Projects", href: "/#projects" },
   {
     title: "Stack",
     href: "/#stack"
+  },
+  { title: "Projects", href: "/#projects" },
+  {
+    title: "Portfolio",
+    href: "/#portfolio"
   },
   { title: "Contact", href: "/#contact" }
 ];

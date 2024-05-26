@@ -66,14 +66,12 @@ export async function Portfolio() {
     }
   }
   return (
-    <section className="flex w-full justify-center bg-gradient-to-b from-background to-primary/20 py-12 md:py-24 lg:py-32">
+    <section className="flex w-full justify-center bg-gradient-to-b from-background to-primary/20 pt-12 md:pt-24 lg:pt-32">
       <div className="px-5 py-24 sm:w-10/12 lg:gap-5 lg:px-10">
         <div className="flex flex-col">
           <div className="justify-top mb-5 flex w-full flex-col items-start font-thin tracking-wide">
-            <div>
-              <div className="py-16 text-start text-6xl/tight font-thin tracking-wide">
-                Portfolio
-              </div>
+            <div className="text-start text-6xl/tight font-thin tracking-wide">
+              Portfolio
             </div>
           </div>
           <div className="grid grid-cols-3 gap-5">

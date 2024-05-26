@@ -10,6 +10,7 @@ export async function GetPosts(): Promise<OutputPost[]> {
     return [];
   }
   const posts = await res.json();
+
   for (let post of posts) {
     post.frontmatter.start_date = new Date(post.frontmatter.start_date);
     post.frontmatter.end_date = new Date(post.frontmatter.end_date);

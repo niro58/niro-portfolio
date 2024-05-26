@@ -1,6 +1,6 @@
 export function DateToString(date: Date): string {
   if (!(date instanceof Date)) {
-    throw new Error("date must be a Date object");
+    return "";
   }
   const day = String(date.getDate()).padStart(2, "0");
   const month = String(date.getMonth() + 1).padStart(2, "0");

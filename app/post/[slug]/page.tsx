@@ -14,7 +14,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   if (!frontmatter || !content) {
     return <div>Not found</div>;
   }
-
+  
   const serialized = await serialize(content, {
     mdxOptions: {
       rehypePlugins: [rehypeCodeTitles, rehypePrism as any]

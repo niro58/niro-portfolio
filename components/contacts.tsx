@@ -3,6 +3,7 @@
 import ContactsImage from "@/public/images/contacts.webp";
 import Image from "next/image";
 
+import copyToCliboard from "@/lib/copyToClipboard";
 import { ContactForm } from "./contact-form";
 
 export const Contacts: React.FC = () => {
@@ -18,8 +19,18 @@ export const Contacts: React.FC = () => {
         </div>
         <div className="flex w-full flex-col justify-between md:w-1/2">
           <div className="space-y-5">
-            <div className="py-16 text-start text-6xl/tight font-thin tracking-wide">
+            <div className="text-start text-6xl/tight font-thin tracking-wide">
               Contact Form
+            </div>
+            <div>
+              You can contact me either through email :{" "}
+              <span
+                className="cursor-pointer underline transition-colors hover:text-primary"
+                onClick={() => copyToCliboard("niro.dev.01@gmail.com")}
+              >
+                niro.dev.01@gmail.com
+              </span>{" "}
+              or using this form
             </div>
           </div>
           <div className="flex h-full items-center justify-center">
