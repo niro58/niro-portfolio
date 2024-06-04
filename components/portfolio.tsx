@@ -43,27 +43,13 @@ const GridColumn = ({ data }: { data: OutputPost[] }) =>
   ));
 export async function Portfolio() {
   let data = [];
-  let gridData: {
-    grid_1: OutputPost[];
-    grid_2: OutputPost[];
-    grid_3: OutputPost[];
-  } = {
-    grid_1: [],
-    grid_2: [],
-    grid_3: []
-  };
+  let gridData: OutputPost[][] = [[], [], []];
   const posts = await GetPosts();
   for (let project of posts) {
     data.push(project);
   }
   for (let i = 0; i < data.length; i++) {
-    if (i % 3 === 0) {
-      gridData["grid_1"].push(data[i]);
-    } else if (i % 3 === 1) {
-      gridData["grid_2"].push(data[i]);
-    } else {
-      gridData["grid_3"].push(data[i]);
-    }
+    gridData[i % 3].push(data[i]);
   }
   return (
     <section className="flex w-full justify-center bg-gradient-to-b from-background to-primary/20 pt-12 md:pt-24 lg:pt-32">
@@ -75,15 +61,11 @@ export async function Portfolio() {
             </div>
           </div>
           <div className="grid grid-cols-3 gap-5">
-            <div className="grid grid-cols-1 gap-5">
-              <GridColumn data={gridData.grid_1} />
-            </div>
-            <div className="grid grid-cols-1 gap-5">
-              <GridColumn data={gridData.grid_2} />
-            </div>
-            <div className="grid grid-cols-1 gap-5">
-              <GridColumn data={gridData.grid_3} />
-            </div>
+            {gridData.map((data, index) => (
+              <div className="grid grid-cols-1 gap-5" key={index}>
+                <GridColumn data={data} />
+              </div>
+            ))}
           </div>
         </div>
       </div>

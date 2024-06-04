@@ -13,13 +13,24 @@ export async function GetPosts(): Promise<OutputPost[]> {
 
   for (let post of posts) {
     post.frontmatter.start_date = new Date(post.frontmatter.start_date);
-    post.frontmatter.end_date = new Date(post.frontmatter.end_date);
+    if (post.frontmatter.end_date === null) {
+      post.frontmatter.end_date = null;
+    } else {
+      post.frontmatter.end_date = new Date(post.frontmatter.end_date);
+    }
   }
 
   posts.sort((a: OutputPost, b: OutputPost) => {
-    return (
-      b.frontmatter.start_date.getTime() - a.frontmatter.start_date.getTime()
-    );
+    // if doesnt exist then the date should be max
+    const a_date: number =
+      a.frontmatter.end_date === null
+        ? new Date("9999-12-31T23:59:59.999Z").getTime()
+        : a.frontmatter.end_date.getTime();
+    const b_date: number =
+      b.frontmatter.end_date === null
+        ? new Date("9999-12-31T23:59:59.999Z").getTime()
+        : b.frontmatter.end_date.getTime();
+    return b_date - a_date;
   });
   return posts;
 }

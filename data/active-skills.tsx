@@ -103,7 +103,7 @@ export const ActiveSkills: SkillDescription[] = [
   {
     type: "Web",
     description:
-      "In 2024, I made the decision to jump back into web development, with a focus on learning React. This move aligns with my upcoming work projects and, honestly, because it just seems like a good time.",
+      "In 2024, I made the decision to jump back into web development, with a focus on learning React. This move aligns with my upcoming work projects.",
     skillLength: "2024",
     headerIconsTooltip: ["Next.JS", "React", "Typescript", "Tailwind"],
     headerIcons: [

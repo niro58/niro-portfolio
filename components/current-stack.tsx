@@ -12,8 +12,8 @@ export interface SkillDescription {
 const Background = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={1888}
-    height={1560}
+    width={"100%"}
+    height={"100%"}
     className="absolute -z-0"
   >
     <g clipPath="url(#a)">
@@ -400,7 +400,7 @@ export const CurrentStack: React.FC = () => {
     "rounded-tr-xl"
   ];
   return (
-    <div className="relative -z-20 bg-gradient-to-t from-slate-900 to-background">
+    <div className="relative -z-20 bg-gradient-to-b from-background to-background">
       <Background />
       <div className="container z-10 py-24">
         <div className="mb-5 w-full text-start text-4xl font-thin tracking-wide">
@@ -408,7 +408,8 @@ export const CurrentStack: React.FC = () => {
             My current learning stack
           </div>
           <div className="text-start text-2xl/relaxed font-bold tracking-normal text-neutral-400">
-            All archive/current projects are available in my portfolio
+            Skill that I am currently learning, I have left out the ones that I
+            haven't used in a long time
           </div>
         </div>
         <div className="grid grid-cols-2 grid-rows-2 gap-5 pb-12 pt-12">

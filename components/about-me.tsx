@@ -2,10 +2,8 @@
 import { cn } from "@/lib/utils";
 import { Transition } from "@headlessui/react";
 import Image from "next/image";
-import Link from "next/link";
 import React, { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 enum Section {
   About,
@@ -156,7 +154,14 @@ const ExperienceSection: React.FC = () => {
       title: "Unity Developer",
       company: "My projects",
       date: "2020 - 2022",
-      description: "Creating games, creative coding, 3D modelling, Pixel Art",
+      description: "Creating games, creative coding, 3D modelling, pixel art",
+      detailed_link: "https..."
+    },
+    {
+      title: "Web Development & Creative Coding",
+      company: "My projects",
+      date: "2024 - Present",
+      description: "Back to web dev Next.JS and p5js for creative coding",
       detailed_link: "https..."
     },
     {
@@ -171,13 +176,6 @@ const ExperienceSection: React.FC = () => {
       company: "VJM Frigotrans",
       date: "2023 - Present",
       description: "Data gathering, visualization, design, internal software",
-      detailed_link: "https..."
-    },
-    {
-      title: "Web Development & Creative Coding",
-      company: "My projects",
-      date: "2024 - Present",
-      description: "Back to web dev Next.JS and p5js for creative coding",
       detailed_link: "https..."
     }
   ];
@@ -364,11 +362,11 @@ const ExperienceSection: React.FC = () => {
               </div>
 
               <div>{item.description}</div>
-              <Link href={item.detailed_link}>
+              {/* <Link href={item.detailed_link}>
                 <Button size="sm" variant="outline">
                   Details
                 </Button>
-              </Link>
+              </Link> */}
               {index !== data.length - 1 && (
                 <Separator
                   orientation="horizontal"
