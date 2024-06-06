@@ -1,6 +1,7 @@
 "use client";
 
 import { ActiveSkills } from "@/data/active-skills";
+import { cn } from "@/lib/utils";
 import React from "react";
 export interface SkillDescription {
   type: string;
@@ -14,7 +15,9 @@ const Background = () => (
     xmlns="http://www.w3.org/2000/svg"
     width={"100%"}
     height={"100%"}
+    viewBox="0 0 1920 1100"
     className="absolute -z-0"
+    preserveAspectRatio="xMidYMid meet"
   >
     <g clipPath="url(#a)">
       <mask
@@ -394,8 +397,8 @@ const Background = () => (
   </svg>
 );
 export const CurrentStack: React.FC = () => {
-  const roundedSides = [
-    "rounded-bl-xl row-span-2",
+  const skillStyle = [
+    "rounded-bl-xl md:row-span-2",
     "rounded-tl-xl",
     "rounded-tr-xl"
   ];
@@ -403,29 +406,32 @@ export const CurrentStack: React.FC = () => {
     <div className="relative -z-20 bg-gradient-to-b from-background to-background">
       <Background />
       <div className="container z-10 py-24">
-        <div className="mb-5 w-full text-start text-4xl font-thin tracking-wide">
-          <div className="text-start text-6xl/tight font-thin tracking-wide">
+        <div className="mb-5 w-full px-4 text-start text-4xl font-thin tracking-wide">
+          <div className="break-words text-start text-6xl/tight font-thin tracking-wide">
             My current learning stack
           </div>
-          <div className="text-start text-2xl/relaxed font-bold tracking-normal text-neutral-400">
-            Skill that I am currently learning, I have left out the ones that I
+          <div className="text-start text-2xl/relaxed font-normal tracking-normal text-neutral-400">
+            Skills that I am currently learning, I have left out the ones that I
             haven't used in a long time
           </div>
         </div>
-        <div className="grid grid-cols-2 grid-rows-2 gap-5 pb-12 pt-12">
+        <div className="grid grid-cols-1 gap-5 pb-12 pt-12 md:grid-cols-2 md:grid-rows-2">
           {ActiveSkills.map((skill, index) => (
             <div
               key={index}
-              className={`flex flex-col gap-5 bg-background/50 ring-2 ring-primary ${roundedSides[index]} rounded-sm p-10`}
+              className={cn(
+                `flex flex-col gap-5 rounded-sm bg-background/50 p-10 ring-2 ring-primary`,
+                skillStyle[index]
+              )}
             >
-              <div className="inline-flex justify-center space-x-5 p-5">
+              <div className="flex flex-col items-center justify-center gap-5 p-5">
                 {skill.headerIcons.map((headerIcon, index) =>
                   React.cloneElement(headerIcon, { key: index })
                 )}
               </div>
-              <div className="w-full border-t-2 border-primary"></div>
-              <div className="inline-flex justify-between text-2xl tracking-wider text-primary">
-                <div>{skill.type}</div>
+              <div className="w-full border-t"></div>
+              <div className="flex flex-col justify-between border-primary text-2xl tracking-wider text-primary md:flex-row">
+                <div className="break-words">{skill.type}</div>
                 <div>{skill.skillLength}</div>
               </div>
               <div className="text-md/relaxed w-full text-neutral-200">

@@ -6,6 +6,7 @@ import Link from "next/link";
 import React, { useContext } from "react";
 
 import header_components from "@/data/header-components";
+import copyToCliboard from "@/lib/copyToClipboard";
 import { Transition } from "@headlessui/react";
 import { BsDiscord, BsGithub, BsLinkedin } from "react-icons/bs";
 import { IconType } from "react-icons/lib";
@@ -83,7 +84,23 @@ const Navbar: React.FC = () => {
         >
           {socials.map((component, index) => {
             const IconComponent = component.logo;
-            return (
+            return !component.href?.includes("https") ? (
+              <Link
+                key={index}
+                href="/"
+                className="underline transition-colors hover:text-primary"
+                onClick={(e) => {
+                  e.preventDefault();
+                  copyToCliboard(component.href ? component.href : "");
+                }}
+              >
+                <IconComponent
+                  className={`text-white transition-all duration-500 hover:-translate-y-1 hover:translate-x-1 hover:text-primary
+                        ${scrollY > 400 ? "h-6 w-6" : "h-10 w-10"}
+                      `}
+                />
+              </Link>
+            ) : (
               <Link
                 href={component.href || ""}
                 key={index}

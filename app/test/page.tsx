@@ -1,10 +1,10 @@
-import { LatestProjects } from "@/components/latest-projects";
+import { CurrentStack } from "@/components/current-stack";
 
 export default function Home() {
   return (
     <main>
-      <div className="min-h-screen bg-gradient-to-b from-slate-900 to-background">
-        <LatestProjects />
+      <div id="stack">
+        <CurrentStack />
       </div>
     </main>
   );

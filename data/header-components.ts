@@ -9,7 +9,6 @@ const header_components: {
     title: "Stack",
     href: "/#stack"
   },
-  { title: "Projects", href: "/#projects" },
   {
     title: "Portfolio",
     href: "/#portfolio"

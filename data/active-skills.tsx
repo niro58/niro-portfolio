@@ -57,7 +57,7 @@ export const ActiveSkills: SkillDescription[] = [
           fill="white"
         />
       </svg>,
-      <ArrowRight size={32} className="opacity-50" />,
+      <ArrowRight size={32} className="opacity-50 " />,
       <svg
         width="42.67"
         height="32"
