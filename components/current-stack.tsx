@@ -412,7 +412,7 @@ export const CurrentStack: React.FC = () => {
           </div>
           <div className="text-start text-2xl/relaxed font-normal tracking-normal text-neutral-400">
             Skills that I am currently learning, I have left out the ones that I
-            haven't used in a long time
+            haven&apos;t used in a long time
           </div>
         </div>
         <div className="grid grid-cols-1 gap-5 pb-12 pt-12 md:grid-cols-2 md:grid-rows-2">
@@ -424,7 +424,7 @@ export const CurrentStack: React.FC = () => {
                 skillStyle[index]
               )}
             >
-              <div className="flex flex-col items-center justify-center gap-5 p-5">
+              <div className="flex flex-col items-center justify-center gap-5 p-5 md:flex-row">
                 {skill.headerIcons.map((headerIcon, index) =>
                   React.cloneElement(headerIcon, { key: index })
                 )}

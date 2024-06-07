@@ -1,5 +1,6 @@
 "use client";
 import { MDXRemote, type MDXRemoteSerializeResult } from "next-mdx-remote";
+import Image, { ImageProps } from "next/image";
 import { ReactNode, useState } from "react";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { MdContentCopy } from "react-icons/md";
@@ -65,7 +66,7 @@ const MdxComponents = {
   pre: (props: React.HTMLProps<HTMLPreElement>) => (
     <pre className="relative rounded-lg border bg-background/50 p-5">
       {props.children}
-      <CopyButton children={props.children} />
+      <CopyButton>{props.children}</CopyButton>
     </pre>
   ),
   /** Card component */
@@ -80,15 +81,17 @@ const MdxComponents = {
     />
   ),
 
-  Image: (props: React.HTMLProps<HTMLImageElement>) => (
-    <img
-      style={{
-        borderRadius: "0.25rem",
-        padding: "0.5rem 1rem"
-      }}
-      {...props}
-    />
-  )
+  Image: (props: React.HTMLProps<HTMLImageElement>) => {
+    const { alt = "", ...otherProps } = props as ImageProps;
+    return (
+      <Image
+        sizes="100vw"
+        style={{ width: "100%", height: "auto" }}
+        alt={alt}
+        {...otherProps}
+      />
+    );
+  }
 };
 
 export function MdxContent({ source }: MdxContentProps) {

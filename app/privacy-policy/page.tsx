@@ -4,7 +4,7 @@ export default function Home() {
       <style
         dangerouslySetInnerHTML={{
           __html:
-            "\n  [data-custom-class='body'], [data-custom-class='body'] * {\n          background: transparent !important;\n        }\n[data-custom-class='title'], [data-custom-class='title'] * {\n          font-family: Arial !important;\nfont-size: 26px !important;\ncolor: #000000 !important;\n        }\n[data-custom-class='subtitle'], [data-custom-class='subtitle'] * {\n          font-family: Arial !important;\ncolor: #595959 !important;\nfont-size: 14px !important;\n        }\n[data-custom-class='heading_1'], [data-custom-class='heading_1'] * {\n          font-family: Arial !important;\nfont-size: 19px !important;\ncolor: #000000 !important;\n        }\n[data-custom-class='heading_2'], [data-custom-class='heading_2'] * {\n          font-family: Arial !important;\nfont-size: 17px !important;\ncolor: #000000 !important;\n        }\n[data-custom-class='body_text'], [data-custom-class='body_text'] * {\n          color: #595959 !important;\nfont-size: 14px !important;\nfont-family: Arial !important;\n        }\n[data-custom-class='link'], [data-custom-class='link'] * {\n          color: #3030F1 !important;\nfont-size: 14px !important;\nfont-family: Arial !important;\nword-break: break-word !important;\n        }\n"
+            "\n  [data-custom-class=&apos;body&apos;], [data-custom-class=&apos;body&apos;] * {\n          background: transparent !important;\n        }\n[data-custom-class=&apos;title&apos;], [data-custom-class=&apos;title&apos;] * {\n          font-family: Arial !important;\nfont-size: 26px !important;\ncolor: #000000 !important;\n        }\n[data-custom-class=&apos;subtitle&apos;], [data-custom-class=&apos;subtitle&apos;] * {\n          font-family: Arial !important;\ncolor: #595959 !important;\nfont-size: 14px !important;\n        }\n[data-custom-class=&apos;heading_1&apos;], [data-custom-class=&apos;heading_1&apos;] * {\n          font-family: Arial !important;\nfont-size: 19px !important;\ncolor: #000000 !important;\n        }\n[data-custom-class=&apos;heading_2&apos;], [data-custom-class=&apos;heading_2&apos;] * {\n          font-family: Arial !important;\nfont-size: 17px !important;\ncolor: #000000 !important;\n        }\n[data-custom-class=&apos;body_text&apos;], [data-custom-class=&apos;body_text&apos;] * {\n          color: #595959 !important;\nfont-size: 14px !important;\nfont-family: Arial !important;\n        }\n[data-custom-class=&apos;link&apos;], [data-custom-class=&apos;link&apos;] * {\n          color: #3030F1 !important;\nfont-size: 14px !important;\nfont-family: Arial !important;\nword-break: break-word !important;\n        }\n"
         }}
       />
       <span
@@ -60,17 +60,21 @@ export default function Home() {
                   __________
                   <div className="block-component" />
                 </div>{" "}
-                (<div className="block-component" />'<strong>we</strong>', '
-                <strong>us</strong>', or '<strong>our</strong>'
+                (<div className="block-component" />
+                &apos;<strong>we</strong>&apos;, &apos;
+                <strong>us</strong>&apos;, or &apos;<strong>our</strong>&apos;
                 <div className="else-block" />
               </span>
               <span data-custom-class="body_text">
                 ), describes how and why we might collect, store, use, and/or
-                share (<div className="block-component" />'
-                <strong>process</strong>'
+                share (<div className="block-component" />
+                &apos;
+                <strong>process</strong>&apos;
                 <div className="else-block" />) your information when you use
-                our services (<div className="block-component" />'
-                <strong>Services</strong>'<div className="else-block" />
+                our services (<div className="block-component" />
+                &apos;
+                <strong>Services</strong>&apos;
+                <div className="else-block" />
                 ), such as when you:
               </span>
             </span>
@@ -1021,8 +1025,8 @@ export default function Home() {
                     <span style={{ fontSize: 15, color: "rgb(89, 89, 89)" }}>
                       <span data-custom-class="body_text">
                         <em>Location Data.</em> We collect location data such as
-                        information about your device's location, which can be
-                        either precise or imprecise. How much information we
+                        information about your device&apos;s location, which can
+                        be either precise or imprecise. How much information we
                         collect depends on the type and settings of the device
                         you use to access the Services. For example, we may use
                         GPS and other technologies to collect geolocation data
@@ -1373,7 +1377,7 @@ export default function Home() {
                                                                     <strong>
                                                                       To save or
                                                                       protect an
-                                                                      individual's
+                                                                      individual&apos;s
                                                                       vital
                                                                       interest.
                                                                     </strong>{" "}
@@ -2073,12 +2077,12 @@ export default function Home() {
                                                                     contractors,
                                                                     or agents (
                                                                     <div className="block-component" />
-                                                                    '
+                                                                    &apos;
                                                                     <strong>
                                                                       third
                                                                       parties
                                                                     </strong>
-                                                                    '
+                                                                    &apos;
                                                                     <div className="else-block" />
                                                                     ) who
                                                                     perform
@@ -3777,7 +3781,7 @@ export default function Home() {
                                                                                 the
                                                                                 section{" "}
                                                                                 <div className="block-component" />
-                                                                                '
+                                                                                &apos;
                                                                                 <div className="else-block" />
                                                                               </span>
                                                                             </span>
@@ -3829,7 +3833,7 @@ export default function Home() {
                                                                             >
                                                                               <span data-custom-class="body_text">
                                                                                 <div className="block-component" />
-                                                                                '
+                                                                                &apos;
                                                                                 <div className="else-block" />{" "}
                                                                                 below.
                                                                               </span>
@@ -4218,7 +4222,7 @@ export default function Home() {
                                                                                 the
                                                                                 section{" "}
                                                                                 <div className="block-component" />
-                                                                                '
+                                                                                &apos;
                                                                                 <div className="else-block" />
                                                                               </span>
                                                                             </span>
@@ -4270,7 +4274,7 @@ export default function Home() {
                                                                             >
                                                                               <span data-custom-class="body_text">
                                                                                 <div className="block-component" />
-                                                                                '
+                                                                                &apos;
                                                                                 <div className="else-block" />{" "}
                                                                                 below
                                                                                 <div className="block-component" />
@@ -4529,7 +4533,7 @@ export default function Home() {
                                                                                 Do-Not-Track
                                                                                 (
                                                                                 <div className="block-component" />
-                                                                                'DNT'
+                                                                                &apos;DNT&apos;
                                                                                 <div className="else-block" />
 
                                                                                 )
@@ -4820,7 +4824,7 @@ export default function Home() {
                                                                                 an
                                                                                 updated{" "}
                                                                                 <div className="block-component" />
-                                                                                'Revised'
+                                                                                &apos;Revised&apos;
                                                                                 <div className="else-block" />{" "}
                                                                                 date
                                                                                 and

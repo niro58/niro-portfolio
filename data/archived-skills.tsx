@@ -1,10 +1,7 @@
 import { SkillDescription } from "@/components/current-stack";
-import { FaReact } from "react-icons/fa";
-import { v4 as uuidv4 } from "uuid";
 
 export const ArchivedSkills: SkillDescription[] = [
   {
-    id: uuidv4(),
     type: "Web",
     description:
       "Basically started in the start of 2024, I have done some web dev earlier in high school(PHP, JS) and at work(Symfony, JS). Decided to choose this because I have done some React Native earlier and it seemed like the most suiting mix for me",
@@ -38,7 +35,6 @@ export const ArchivedSkills: SkillDescription[] = [
     ]
   },
   {
-    id: "23154714870",
     type: "Unity",
     description:
       "I have done some web scrapping for work and for my own projects. I have also done some data analysis for my own projects and for work. I have used Python for these projects.",
@@ -100,7 +96,6 @@ export const ArchivedSkills: SkillDescription[] = [
     skillLength: "2021-2023"
   },
   {
-    id: uuidv4(),
     type: "High School",
     description:
       "I have done some web scrapping for work and for my own projects. I have also done some data analysis for my own projects and for work. I have used Python for these projects.",
@@ -126,7 +121,6 @@ export const ArchivedSkills: SkillDescription[] = [
     skillLength: "2024"
   },
   {
-    id: "78275129122",
     type: "High School",
     description:
       "I have done some web scrapping for work and for my own projects. I have also done some data analysis for my own projects and for work. I have used Python for these projects.",
@@ -156,7 +150,6 @@ export const ArchivedSkills: SkillDescription[] = [
     skillLength: "2024"
   },
   {
-    id: uuidv4(),
     type: "High School",
     description:
       "I have done some web scrapping for work and for my own projects. I have also done some data analysis for my own projects and for work. I have used Python for these projects.",

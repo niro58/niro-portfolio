@@ -22,7 +22,7 @@ export async function Portfolio() {
             </div>
             <div className="text-start text-2xl/relaxed font-normal tracking-normal text-neutral-400">
               Still gotta write content for this section, for now just a list of
-              projects I've worked on.
+              projects I&apos;ve worked on.
             </div>
           </div>
 
