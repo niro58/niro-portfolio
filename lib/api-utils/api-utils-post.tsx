@@ -2,7 +2,6 @@ import { Frontmatter, blank_frontmatter } from "../post-interfaces";
 
 export async function GetPosts(): Promise<OutputPost[]> {
   const url = new URL("/api/posts", process.env.NEXT_ROOT_PATH);
-
   const res = await fetch(url.href, {
     method: "GET"
   });
