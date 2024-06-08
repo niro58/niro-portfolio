@@ -21,8 +21,9 @@ export const Contacts: React.FC = () => {
           <div>
             <h2 className="text-5xl font-thin">Get in touch</h2>
             <p className="pt-4 text-neutral-300">
-              Will be happy to chat about any interesting subjects or if you
-              want to cooperate on any project, feel free to message me
+              I'm always open to discussing interesting topics or collaborating
+              on new projects. If you're interested, feel free to reach out to
+              me anytime.
             </p>
           </div>
           <div>

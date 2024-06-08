@@ -104,6 +104,8 @@ const Navbar: React.FC = () => {
               <Link
                 href={component.href || ""}
                 key={index}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex flex-row"
               >
                 <IconComponent

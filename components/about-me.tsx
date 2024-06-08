@@ -124,8 +124,8 @@ const AboutSection: React.FC = () => (
       </Avatar>
       <div className="pt-2 text-center text-xl font-bold">Nichita Roilean</div>
       <div className="grid grid-cols-2 gap-1 px-2 py-1 text-center text-neutral-400 sm:gap-5 sm:px-0">
-        <div className="break-all">Full-stack Developer</div>
-        <div>Data Analytic</div>
+        <div className="break-all">Full-Stack Developer</div>
+        <div>Data Analytics</div>
       </div>
     </div>
     <div className="z-10 px-5">
@@ -133,9 +133,12 @@ const AboutSection: React.FC = () => (
         About
       </div>
       <div className="text-md leading-relaxed ">
-        A 21 year old developer from Prague, Czech Republic that enjoys creating
-        software, console apps, . . . Basically everything that sounds fun and
-        challenging, enjoying trying out new technologies in each project
+        I'm a 21-year-old developer based in Prague, Czech Republic. I have a
+        real passion for creating all sorts of things—from software and console
+        apps to websites. If it's fun and poses a good challenge, I'm all in. I
+        love experimenting with new technologies in every project I tackle,
+        constantly exploring different programming mindsets by trying new
+        programming languages.
       </div>
     </div>
   </>
