@@ -1,5 +1,6 @@
 "use client";
 
+import { Transition } from "@headlessui/react";
 import React, { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 
@@ -80,8 +81,18 @@ export const Rain: React.FC = () => {
   }, [inView]);
 
   return (
-    <div ref={ref} className="absolute flex min-h-screen w-full justify-center">
+    <Transition
+      show={true}
+      ref={ref}
+      className="absolute -z-20 flex min-h-screen w-full justify-center"
+      enter="transition-opacity duration-500 delay-500"
+      enterFrom="opacity-0"
+      enterTo="opacity-100"
+      leave="transition-opacity duration-500"
+      leaveFrom="opacity-100"
+      leaveTo="opacity-0"
+    >
       {inView && <canvas ref={rainContainer} className="-z-10" />}
-    </div>
+    </Transition>
   );
 };
