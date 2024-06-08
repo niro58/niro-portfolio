@@ -6,6 +6,13 @@ import { DateToString } from "@/lib/dateToString";
 import { serialize } from "next-mdx-remote/serialize";
 import rehypeCodeTitles from "rehype-code-titles";
 import rehypePrism from "rehype-prism-plus";
+
+import outputs from "@/amplify_outputs.json";
+import { Amplify } from "aws-amplify";
+
+Amplify.configure(outputs, {
+  ssr: true
+});
 export default async function Page({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const post = await GetPost(slug);
@@ -14,7 +21,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   if (!frontmatter || !content) {
     return <div>Not found</div>;
   }
-  
+
   const serialized = await serialize(content, {
     mdxOptions: {
       rehypePlugins: [rehypeCodeTitles, rehypePrism as any]

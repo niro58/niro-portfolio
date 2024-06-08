@@ -3,7 +3,12 @@ import { Contacts } from "@/components/contacts";
 import { CurrentStack } from "@/components/current-stack";
 import { Hero } from "@/components/hero";
 import { Portfolio } from "@/components/portfolio";
+import outputs from '@/amplify_outputs.json';
+import { Amplify } from 'aws-amplify';
 
+Amplify.configure(outputs, {
+  ssr: true 
+});
 export default function Home() {
   return (
     <main>

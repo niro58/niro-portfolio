@@ -17,7 +17,6 @@ export default function HeroBackground() {
 
   return (
     <div className="relative flex justify-center">
-      <Rain />
       <Image
         src={"/images/hero/hero-foreground.png"}
         placeholder="blur"
@@ -35,6 +34,7 @@ export default function HeroBackground() {
         className="-z-30 min-h-screen object-cover"
         alt="hero"
       />
+      <Rain />
     </div>
   );
 }
