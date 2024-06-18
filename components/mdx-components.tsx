@@ -1,36 +1,10 @@
-"use client";
-import { MDXRemote, type MDXRemoteSerializeResult } from "next-mdx-remote";
 import Image, { ImageProps } from "next/image";
-import { ReactNode, useState } from "react";
-import { FaRegCircleCheck } from "react-icons/fa6";
-import { MdContentCopy } from "react-icons/md";
-import { Button } from "../ui/button";
+import { CopyButton } from "./copy-button";
 
-type MdxContentProps = {
-  source: MDXRemoteSerializeResult;
-};
-function CopyButton({ children }: { children: ReactNode }) {
-  const [copied, setCopied] = useState(false);
-  return (
-    <Button
-      size="icon"
-      className="absolute right-2 top-2 rounded-lg bg-primary/50 transition-all hover:bg-primary/100"
-      onClick={() => {
-        navigator.clipboard.writeText(children as string);
-        setCopied(true);
-        setTimeout(() => {
-          setCopied(false);
-        }, 1000);
-      }}
-    >
-      {copied ? <FaRegCircleCheck /> : <MdContentCopy />}
-    </Button>
-  );
-}
 export function GenerateHeaderID(text: string) {
   return text.toLowerCase().replace(/ /g, "-");
 }
-const MdxComponents = {
+export const MdxComponents = {
   h1: (props: React.HTMLProps<HTMLHeadingElement>) => (
     <h1
       className="mb-5 border-b-2 border-secondary py-2 text-4xl font-thin tracking-wide text-white"
@@ -93,7 +67,3 @@ const MdxComponents = {
     );
   }
 };
-
-export function MdxContent({ source }: MdxContentProps) {
-  return <MDXRemote {...source} components={MdxComponents} />;
-}

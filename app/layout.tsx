@@ -11,7 +11,7 @@ const inter = Montserrat({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "Niro's Portfolio",
-  description: "Created by Nichita Roilean"
+  description: "Portfolio, project showcase, and blog of Niro"
 };
 
 export default function RootLayout({

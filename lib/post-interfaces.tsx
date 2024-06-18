@@ -7,6 +7,7 @@ export type Frontmatter = {
   end_date: Date;
   short_description: string;
   categories: string[];
+  images: string[];
 };
 
 export type Post<TFrontmatter> = {
@@ -20,5 +21,6 @@ export const blank_frontmatter: Frontmatter = {
   start_date: new Date(),
   end_date: new Date(),
   short_description: "",
-  categories: []
+  categories: [],
+  images: []
 };

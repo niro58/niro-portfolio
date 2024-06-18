@@ -1,8 +1,0 @@
-.svg-rotation-circle-anim:hover {
-  scale: 0;
-  transition: 0.5s;
-}
-.svg-rotation-circle-anim:hover .circle:first-child {
-  transform: rotate(0deg);
-  transition: 0.5s;
-}
