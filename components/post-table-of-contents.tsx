@@ -4,7 +4,8 @@ import { ScrollContext } from "@/lib/scroll-observer";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
-import { GenerateHeaderID } from "./mdx/mdx-content";
+import { GenerateHeaderID } from "./mdx-components";
+
 interface TableOfContentsProps {
   content: string;
 }
