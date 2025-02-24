@@ -1,9 +1,22 @@
 <script>
-	import Button from '$lib/components/ui/button/button.svelte';
+	import About from '$lib/components/about.svelte';
+	import Blog from '$lib/components/blog.svelte';
+	import Contact from '$lib/components/contact.svelte';
+
+	import Hero from '$lib/components/hero.svelte';
+	import Journey from '$lib/components/journey.svelte';
+	import Seo from '$lib/components/seo.svelte';
+	import Stack from '$lib/components/stack.svelte';
+
+	let { data } = $props();
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
-<Button>yo</Button>
-
-<div class="w-32 rounded-lg bg-green-50 p-5">yo2</div>
+<Seo title="Nichita Roilean" />
+<main class="min-h-screen">
+	<Hero />
+	<About />
+	<Journey />
+	<Stack />
+	<Blog />
+	<Contact form={data.form} />
+</main>
