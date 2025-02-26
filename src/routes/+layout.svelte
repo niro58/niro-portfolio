@@ -1,4 +1,5 @@
 <script lang="ts">
+	import AnalyticsConsent from '$lib/components/analytics-consent.svelte';
 	import Navbar from '$lib/components/navbar.svelte';
 	import '../app.css';
 	let { children } = $props();
@@ -6,3 +7,4 @@
 
 <Navbar />
 {@render children()}
+<AnalyticsConsent />

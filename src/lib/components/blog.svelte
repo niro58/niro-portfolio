@@ -1,73 +1,68 @@
 <script lang="ts">
+	import type { MetadataWithSlug } from '$lib/types';
 	import { ArrowRight } from 'lucide-svelte';
+	import PostShort from './post-short.svelte';
+	import { getPosts } from '$lib/query';
+	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
+	const {
+		posts: initialPosts,
+		pageSize,
+		category
+	}: { posts: MetadataWithSlug[]; pageSize: number; category?: string } = $props();
 
-	const blogPosts = [
-		{
-			slug: 'mastering-react-hooks',
-			title: 'Mastering React Hooks: Advanced Patterns',
-			date: '2024-02-15',
-			excerpt: 'Dive deep into advanced React Hook patterns to level up your component logic.',
-			tags: ['React', 'Hooks', 'JavaScript']
-		},
-		{
-			title: 'The Future of Web Development: AI Integration',
-			date: '2024-02-20',
-			excerpt:
-				'Exploring how AI is reshaping the landscape of web development and what it means for developers.',
-			tags: ['AI', 'Web Development', 'Future Tech']
-		},
-		{
-			title: 'Building Scalable Microservices with Node.js',
-			date: '2024-02-10',
-			excerpt:
-				'A comprehensive guide to designing and implementing microservices architecture using Node.js.',
-			tags: ['Microservices', 'Node.js', 'Architecture']
-		}
-	];
+	let page = $state(0);
+	let posts: MetadataWithSlug[] = $state(initialPosts);
+	let pageState: 'loading' | 'idle' | 'all_loaded' | 'error' = $state(
+		initialPosts.length < pageSize ? 'all_loaded' : 'idle'
+	);
+
+	function loadMorePosts() {
+		pageState = 'loading';
+		page += 1;
+		getPosts(pageSize, page, category).then((res) => {
+			if (res.success) {
+				if (res.data.length === pageSize) {
+					pageState = 'idle';
+				} else {
+					pageState = 'all_loaded';
+				}
+				posts = [...posts, ...res.data];
+			} else {
+				pageState = 'error';
+			}
+		});
+	}
 </script>
 
 <section id="blog" class="py-20">
 	<div class="container mx-auto px-4">
 		<h2 class="mb-10 text-center text-3xl font-bold">
 			<span class="from-primary to-primary/70 bg-gradient-to-r bg-clip-text text-transparent">
-				Latest Insights
+				Latest Posts
 			</span>
 		</h2>
 		<div class="mb-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-			{#each blogPosts as post, index}
-				<article
-					class="overflow-hidden rounded-lg border border-primary/20 bg-card shadow-lg transition-all hover:shadow-lg hover:shadow-primary/20"
-				>
-					<div class="p-6">
-						<h3 class="mb-2 text-xl font-semibold text-red-300">{post.title}</h3>
-						<p class="mb-4 text-sm text-gray-400">{post.date}</p>
-						<p class="mb-4 text-gray-300">{post.excerpt}</p>
-						<div class="mb-4 flex flex-wrap gap-2">
-							{#each post.tags as tag}
-								<span
-									class="rounded-full border border-primary/50 bg-red-900/30 px-2 py-1 text-xs text-red-200"
-								>
-									{tag}
-								</span>
-							{/each}
-						</div>
-						<a
-							href={`/blog/${post.slug}`}
-							class="inline-flex items-center text-red-400 transition-colors hover:text-red-300"
-						>
-							Read more <ArrowRight class="ml-2 h-4 w-4" />
-						</a>
-					</div>
-				</article>
+			{#each posts as post}
+				<div transition:fly={{ y: 25, duration: 500 }}>
+					<PostShort {post} />
+				</div>
 			{/each}
 		</div>
 		<div class="text-center">
-			<button
-				class="rounded-full bg-gradient-to-r from-primary to-purple-600 px-6 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-primary/50 active:scale-95"
-			>
-				View More Posts
-			</button>
+			{#if pageState === 'error'}
+				<p class="text-red-500">Error loading posts</p>
+			{:else if pageState !== 'all_loaded'}
+				<button
+					onclick={() => {
+						loadMorePosts();
+					}}
+					disabled={pageState === 'loading'}
+					class="from-primary hover:shadow-primary/50 rounded-full bg-gradient-to-r to-purple-600 px-6 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"
+				>
+					Load more
+				</button>
+			{/if}
 		</div>
 	</div>
 </section>

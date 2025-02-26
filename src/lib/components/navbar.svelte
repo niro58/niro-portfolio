@@ -1,72 +1,207 @@
 <script lang="ts">
-	import { moveToSection } from '$lib/utils';
-	import { Github, Linkedin } from 'lucide-svelte';
+	import { page } from '$app/stores';
+
+	import Button from '$lib/components/ui/button/button.svelte';
+	import { Github, Linkedin, Menu } from 'lucide-svelte';
+	import * as Card from './ui/card/index';
+	import { fade, slide } from 'svelte/transition';
 	import NiroLogo from './ui/niro-logo.svelte';
-	import { LINKS } from '$config/links';
+	import { SOCIALS } from '$config/socials';
 	import Discord from './ui/discord.svelte';
+	import { moveToSection } from '$lib/utils';
+
+	let isOpen = $state(false);
+
+	let hoveredIndex = $state<number | null>(null);
+	let activeIndex = $state(0);
+	let hoverStyle: {
+		left?: string;
+		width?: string;
+	} = $state({});
+	let activeStyle: {
+		left: string;
+		width: string;
+	} = $state({ left: '0px', width: '0px' });
+
+	let tabRefs = $state<HTMLAnchorElement[]>([]);
+
+	$effect(() => {
+		if (hoveredIndex !== null) {
+			const hoveredElement = tabRefs[hoveredIndex];
+			if (hoveredElement) {
+				const { offsetLeft, offsetWidth } = hoveredElement;
+				hoverStyle = {
+					left: `${offsetLeft}px`,
+					width: `${offsetWidth}px`
+				};
+			}
+		}
+	});
+	$effect(() => {
+		const activeElement = tabRefs[activeIndex];
+		if (activeElement) {
+			const { offsetLeft, offsetWidth } = activeElement;
+			activeStyle = {
+				left: `${offsetLeft}px`,
+				width: `${offsetWidth}px`
+			};
+		}
+	});
+
+	$effect(() => {
+		requestAnimationFrame(() => {
+			const overviewElement = tabRefs[activeIndex];
+			if (overviewElement) {
+				const { offsetLeft, offsetWidth } = overviewElement;
+				activeStyle = {
+					left: `${offsetLeft}px`,
+					width: `${offsetWidth}px`
+				};
+			}
+		});
+	});
+	$effect(() => {
+		const currentPage = Object.values(pages).find((item) => item.link === $page.route.id);
+		if (currentPage) {
+			activeIndex = Object.values(pages).indexOf(currentPage);
+			const activeElement = tabRefs[activeIndex];
+			if (activeElement) {
+				const { offsetLeft, offsetWidth } = activeElement;
+				activeStyle = {
+					left: `${offsetLeft}px`,
+					width: `${offsetWidth}px`
+				};
+			}
+		}
+	});
+
+	const pages = {
+		home: {
+			title: 'Home',
+			link: '/#home'
+		},
+		about: {
+			title: 'About',
+			link: '/#about'
+		},
+		stack: {
+			title: 'Stack',
+			link: '/#stack'
+		},
+		portfolio: {
+			title: 'Portfolio',
+			link: '/portfolio'
+		},
+		blog: {
+			title: 'Blog',
+			link: '/blog'
+		},
+		contact: {
+			title: 'Contact',
+			link: '/#contact'
+		}
+	};
 </script>
 
-<nav
-	class="border-border/40 bg-background/95 supports-[backdrop-filter]:bg-background/60 fixed top-0 z-50 w-full border-b backdrop-blur"
->
-	<div class="container flex h-16 items-center justify-between">
-		<a href="/" class="text-primary text-2xl font-bold">
-			<NiroLogo class="h-8 w-8" />
-		</a>
-		<div class="flex items-center gap-6">
+{#snippet pageLinks()}
+	<div in:fade={{ duration: 300, delay: 200 }} class="gap-5 sm:flex sm:flex-row">
+		{#each Object.values(pages) as item, index}
 			<a
-				href="/#home"
+				bind:this={tabRefs[index]}
+				class={`h-[30px] cursor-pointer px-3 py-2 transition-colors duration-300 ${
+					index === activeIndex ? 'text-foreground' : 'text-foreground/50'
+				}`}
+				onmouseenter={() => (hoveredIndex = index)}
+				onmouseleave={() => (hoveredIndex = null)}
 				onclick={(e) => {
-					moveToSection(e, 'home');
+					if (item.link.includes('#')) {
+						moveToSection(e, item.link.split('#')[1]);
+					}
+					activeIndex = index;
 				}}
-				class="text-sm font-medium"
-				>Home
-			</a>
-			<a
-				href="#about"
-				onclick={(e) => {
-					moveToSection(e, 'about');
-				}}
-				class="text-sm font-medium"
-				>About
-			</a>
-			<a
-				href="#stack"
-				onclick={(e) => {
-					moveToSection(e, 'stack');
-				}}
-				class="text-sm font-medium"
-				>Stack
-			</a>
-			<a
-				href="#blog"
-				onclick={(e) => {
-					moveToSection(e, 'blog');
-				}}
-				class="text-sm font-medium">Blog</a
+				href={item.link}
 			>
+				<div
+					transition:fade={{ duration: 300, delay: 10000 + 100 * index }}
+					class="flex h-full items-center justify-center text-sm leading-5 font-[var(--www-mattmannucci-me-geist-regular-font-family)] whitespace-nowrap"
+				>
+					{item.title}
+				</div>
+			</a>
+		{/each}
+	</div>
+{/snippet}
+<nav class="sticky top-0 z-40 w-full">
+	<div class="flex h-16 justify-center">
+		<Card.Root
+			class="relative hidden h-[75px] w-full items-center justify-center rounded-t-none border-none shadow-none sm:flex"
+		>
 			<a
-				href="#contact"
-				onclick={(e) => {
-					moveToSection(e, 'contact');
-				}}
-				class="text-sm font-medium"
-				>Contact
-			</a>
-		</div>
-		<div class="flex items-center gap-4">
-			<a href={LINKS.DISCORD_LINK} class="fill-muted-foreground hover:fill-primary">
-				<Discord class="h-5 w-5" />
-			</a>
-			<a href={LINKS.GITHUB_LINK} class="text-muted-foreground hover:text-primary">
-				<Github class="h-5 w-5" />
-			</a>
-			<a
-				href={LINKS.LINKEDIN_LINK}
-				class="text-muted-foreground hover:text-primary"
+				href="/"
+				class="text-primary absolute top-0 bottom-0 left-8 flex items-center gap-2 text-2xl font-bold"
 			>
-				<Linkedin class="h-5 w-5" />
+				<NiroLogo class="h-8 w-8" />
 			</a>
+			<Card.Content class="p-0">
+				<div class="relative">
+					<div
+						class="bg-foreground/10 absolute flex h-[30px] items-center rounded-[6px] transition-all duration-300 ease-out"
+						style:left={hoverStyle.left ? hoverStyle.left : ''}
+						style:width={hoverStyle.width ? hoverStyle.width : ''}
+						style:opacity={hoveredIndex !== null ? 1 : 0}
+					></div>
+
+					<div
+						class="bg-foreground absolute bottom-[-6px] h-[2px] transition-all duration-300 ease-out"
+						style:left={activeStyle.left}
+						style:width={activeStyle.width}
+						in:fade={{ delay: 300, duration: 300 }}
+					></div>
+
+					<div class="relative flex items-center space-x-[6px]">
+						{@render pageLinks()}
+					</div>
+				</div>
+				<div class="absolute top-0 right-8 bottom-0 flex items-center gap-2">
+					<Button
+						variant="outline"
+						target="_blank"
+						class="text-muted-foreground"
+						size="icon"
+						href={SOCIALS.GITHUB_LINK}><Discord class="h-5 w-5" /></Button
+					>
+					<Button
+						variant="outline"
+						target="_blank"
+						class="text-muted-foreground"
+						size="icon"
+						href={SOCIALS.GITHUB_LINK}><Github class="h-5 w-5" /></Button
+					>
+					<Button
+						variant="outline"
+						target="_blank"
+						class="text-muted-foreground"
+						size="icon"
+						href={SOCIALS.LINKEDIN_LINK}><Linkedin class="h-5 w-5" /></Button
+					>
+				</div>
+			</Card.Content>
+		</Card.Root>
+		<div class="relative flex w-full items-center justify-between px-4 sm:hidden">
+			<Button variant="ghost" size="icon" onclick={() => (isOpen = !isOpen)}>
+				<Menu class="h-6 w-6" />
+				<span class="sr-only">Open main menu</span>
+			</Button>
+			<div class="h-10 w-10"></div>
+			{#if isOpen}
+				<div
+					class="bg-background absolute top-16 left-0 w-full rounded-b-lg shadow-lg"
+					in:slide={{ duration: 300 }}
+					out:slide={{ duration: 300 }}
+				>
+					{@render pageLinks()}
+				</div>
+			{/if}
 		</div>
 	</div>
 </nav>

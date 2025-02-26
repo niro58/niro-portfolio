@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { ChevronRight } from 'lucide-svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
-	import { moveToSection } from '$lib/utils';
-
 	let canvasEl: HTMLCanvasElement | undefined = $state();
 
 	$effect(() => {
@@ -16,10 +14,10 @@
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
 
-		const fontSize = 14;
+		const fontSize = 15;
 		const columns = canvas.width / fontSize;
 
-		const drops: number[] = [];
+		const drops: number[] = $state([]);
 		for (let i = 0; i < columns; i++) {
 			drops[i] = 1;
 		}
@@ -33,9 +31,9 @@
 			ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
 			ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-			ctx.fillStyle = '#FF0000';
+			ctx.fillStyle = '#FF4645';
 			ctx.font = `${fontSize}px monospace`;
-
+			console.log(ctx);
 			for (let i = 0; i < drops.length; i++) {
 				const text = codes[Math.floor(Math.random() * codes.length)];
 				ctx.fillText(text, i * fontSize, drops[i] * fontSize);
@@ -68,23 +66,10 @@
 			cutting-edge technologies.
 		</p>
 		<div class="flex flex-row gap-4">
-			<Button
-				size="lg"
-				class="mt-4"
-				onclick={(e) => {
-					moveToSection(e, 'stack');
-				}}
-			>
-				Stack <ChevronRight class="ml-2 h-4 w-4" />
+			<Button href="/portfolio" size="lg" class="mt-4">
+				Portfolio <ChevronRight class="ml-2 h-4 w-4" />
 			</Button>
-			<Button
-				variant="outline"
-				size="lg"
-				class="mt-4"
-				onclick={(e) => {
-					moveToSection(e, 'blog');
-				}}
-			>
+			<Button href="/blog" variant="outline" size="lg" class="mt-4">
 				Blog <ChevronRight class="ml-2 h-4 w-4" />
 			</Button>
 		</div>

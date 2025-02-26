@@ -1,6 +1,5 @@
 import { browser } from '$app/environment';
 import { type ClassValue, clsx } from 'clsx';
-import { linear } from 'svelte/easing';
 import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {

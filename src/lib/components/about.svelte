@@ -1,21 +1,25 @@
 <script>
 	import { ArrowRight } from 'lucide-svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
+	import Separator from './ui/separator/separator.svelte';
 </script>
 
 <section id="about" class="relative py-24">
 	<div class="container">
 		<div class="mx-auto max-w-3xl text-center">
 			<h2 class="mb-8 text-3xl font-bold tracking-tight sm:text-4xl">About Me</h2>
-			<p class="text-muted-foreground mb-6 text-lg">
-				I'm a passionate full-stack developer based in Prague, Czech Republic, with a knack for
-				crafting elegant solutions to complex problems. My journey in tech is driven by an
-				insatiable curiosity and a desire to push the boundaries of what's possible in web
-				development.
+			<p class="text-muted-foreground text-lg">
+				I’m a developer based in Prague, Czech Republic, with a strong focus on full-stack
+				development. Building seamless, end-to-end solutions is where I thrive—whether it’s crafting
+				intuitive front-end interfaces or designing robust back-end systems. I love the challenge of
+				bringing all the pieces together to create something functional and impactful.
 			</p>
+			<Separator class="my-3" />
 			<p class="text-muted-foreground mb-8 text-lg">
-				When I'm not coding, you can find me exploring the latest tech trends, contributing to
-				open-source projects, or enjoying a good cup of coffee while brainstorming my next big idea.
+				Beyond full-stack, I enjoy exploring other areas like game development, process automation,
+				and data analytics. If a project is fun, challenging, and pushes me to learn something new,
+				I’m all in. I’m constantly experimenting with new technologies and programming languages,
+				always eager to expand my toolkit and tackle problems from fresh perspectives.
 			</p>
 		</div>
 	</div>

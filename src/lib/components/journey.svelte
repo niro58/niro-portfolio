@@ -4,56 +4,72 @@
 
 	const journeySteps = [
 		{
-			year: 2016,
-			title: 'Booting Up',
-			role: 'Junior Web Developer @ StartupX',
+			year: '2018 - 2022',
+			title: 'Naive Newbie Developer',
+			role: 'High School',
 			description:
-				"Initialized my dev career. Learned to console.log('Hello World') professionally.",
-			tech: ['JavaScript', 'HTML', 'CSS']
+				'Started with the basics: HTML, CSS, and a dream. Built my first websites and fell in love with coding.',
+			tech: ['HTML', 'CSS', 'JavaScript'],
+			command: '$ ./hello_world.sh'
 		},
 		{
-			year: 2018,
-			title: 'Scaling Up',
-			role: 'Full Stack Developer @ InnovateSoft',
+			year: '2020 - 2022',
+			title: 'Unity Developer',
+			role: 'My Projects',
 			description:
-				'Leveled up to full-stack. Turned coffee into code across the entire application spectrum.',
-			tech: ['React', 'Node.js', 'MongoDB']
+				'Dived into game development, 3D modeling, and pixel art. Made games that were more fun to build than to play.',
+			tech: ['Unity', 'C#', 'Blender', 'Pixel Art'],
+			command: '$ ./game_on.sh'
 		},
 		{
-			year: 2021,
-			title: 'System Administrator',
-			role: 'Senior Full Stack Developer @ TechCorp',
+			year: '2024 - Present',
+			title: 'Web Development',
+			role: 'My Projects',
 			description:
-				'Took on a leadership role. Architecting solutions and mentoring the next generation of developers.',
-			tech: ['AWS', 'Docker', 'Kubernetes']
+				'After a brief stint with React (0.5-1 year of pain), I switched to Svelte and never looked back. Now building fast, modern web apps with a focus on clean, efficient code.',
+			tech: ['Svelte', 'JavaScript', 'TailwindCSS'],
+			command: '$ ./svelte_is_love.sh'
 		},
 		{
-			year: 2024,
-			title: 'Continuous Deployment',
-			role: 'Tech Lead & AI Enthusiast',
+			year: '2022 - Present',
+			title: 'Back-End Development',
+			role: 'My Projects',
 			description:
-				"Exploring the bleeding edge. Integrating AI into web applications and pushing the boundaries of what's possible.",
-			tech: ['TensorFlow.js', 'GPT-3', 'Serverless']
+				'Started with PHP and .NET (C#), but in 2024, I made the switch to Go (Golang) for building efficient, scalable back-end systems. Also worked with databases like PostgreSQL and MongoDB.',
+			tech: ['Go (Golang)', 'PHP', '.NET (C#)', 'PostgreSQL', 'MongoDB', 'REST APIs'],
+			command: '$ ./go_build_everything.sh'
+		},
+		{
+			year: '2023 - Present',
+			title: 'Full-Stack Developer & Data Analytics',
+			role: 'VJM Frigotrans & Everest Solutions',
+			description:
+				'Combining my full-stack skills to build internal tools, dashboards, and web pages. Using Svelte for front-end and Go for back-end, along with data visualization tools like Power BI. Also created pages in both Svelte and React for various projects.',
+			tech: ['Svelte', 'Go (Golang)', 'Power BI', 'Python', 'PostgreSQL', 'React'],
+			command: '$ ./full_stack_wizardry.sh'
 		}
 	];
 </script>
 
-<section class=" py-20">
+<section class="py-20">
 	<div class="container mx-auto px-4">
 		<h2 class="mb-10 text-center text-3xl font-bold">
 			<span class="from-primary to-primary/70 bg-gradient-to-r bg-clip-text text-transparent">
-				My Development Journey
+				$ ./my_dev_journey.sh
 			</span>
 		</h2>
 		<div class="space-y-8">
 			{#each journeySteps as step, index}
-				<div class="border-primary-500/20 bg-card rounded-lg border p-6 shadow-lg">
+				<div
+					class="border-primary-500/20 bg-card rounded-lg border p-6 shadow-lg"
+					transition:fly={{ y: 20, duration: 300 }}
+				>
 					<div class="mb-4 flex items-center">
 						<Terminal class="text-primary mr-2 h-6 w-6" />
-						<span class="text-primary font-mono">$ ./career_progress.sh {step.year}</span>
+						<span class="text-primary font-mono">{step.command}</span>
 					</div>
 					<h3 class="text-primary mb-2 text-xl font-semibold">{step.title}</h3>
-					<p class="mb-2">{step.role}</p>
+					<p class="mb-2 font-medium">{step.role}</p>
 					<p class="text-muted-foreground mb-4">{step.description}</p>
 					<div class="flex flex-wrap gap-2">
 						{#each step.tech as t}

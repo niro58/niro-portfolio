@@ -41,11 +41,11 @@
 				Tech Stack Mastery
 			</span>
 		</h2>
-		<div class="mb-8 flex justify-center space-x-4">
+		<div class="mb-8 grid grid-cols-2 grid-rows-2 justify-center gap-4 space-x-4 md:flex">
 			{#each skillCategories as category, index}
 				<button
 					onclick={() => (activeCategoryIndex = index)}
-					class={`rounded-full px-4 py-2 transition-all ${
+					class={`w-full md:w-auto rounded-full px-4 py-2 transition-all ${
 						activeCategory.name === category.name
 							? `bg-gradient-to-r ${category.color} `
 							: 'bg-card text-muted-foreground hover:bg-card/50 hover:border-primary/50 border border-transparent'
@@ -61,7 +61,7 @@
 				<div
 					class="border-primary/20 bg-card w-full rounded-lg border p-6 shadow-lg"
 					in:fly={{ duration: 300, delay: 300, y: -20 }}
-					out:fly={{ duration: 200, y:20 }}
+					out:fly={{ duration: 200, y: 20 }}
 				>
 					<h3 class="mb-4 flex items-center text-2xl font-semibold">
 						<activeCategory.icon

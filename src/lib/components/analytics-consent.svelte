@@ -22,7 +22,7 @@
 
 {#if !isSetup}
 	<div
-		class="border-border bg-background fixed right-0 bottom-0 left-0 z-50 border-t p-4 md:p-6"
+		class="border-border bg-background p- 4 fixed right-0 bottom-0 left-0 z-50 border-t md:p-6"
 		in:fly={{ y: 20, duration: 300 }}
 		out:fly={{ y: 20, duration: 300 }}
 	>
@@ -32,20 +32,20 @@
 					I use analytics only for website traffic analysis. No data is shared for advertising,
 					personalization, or marketing purposes.
 				</p>
-				<pre>
+				<!-- <pre>
                     <code>
-						<!-- settings:{
-							anonymize_ip: true,
-							send_page_view: true
-						},
-						consent:{
-							ad_user_data: 'denied',
-							ad_personalization: 'denied',
-							ad_storage: 'denied',
-							analytics_storage: 'granted'
-						} -->
+settings:{'{'}
+	anonymize_ip: true,
+	send_page_view: true
+{'}'},
+consent:{'{'}
+	ad_user_data: 'denied',
+	ad_personalization: 'denied',
+	ad_storage: 'denied',
+	analytics_storage: 'granted'
+{'}'}
                     </code>
-                </pre>
+                </pre> -->
 			</div>
 			<div class="flex items-center gap-4">
 				<Button size="icon" class="w-16" onclick={handleAccept} variant="outline">OK</Button>

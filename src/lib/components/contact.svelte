@@ -1,15 +1,16 @@
 <script lang="ts">
 	import { Github, Linkedin, Send } from 'lucide-svelte';
 	import * as Card from '$lib/components/ui/card/index.js';
-	import Input from '$lib/components/ui/input/input.svelte';
-	import Textarea from '$lib/components/ui/textarea/textarea.svelte';
-	import Button from '$lib/components/ui/button/button.svelte';
 	import FormRoot from '$lib/form/form-root.svelte';
 	import { contactSchema, type ContactSchema } from '$lib/schemas.js';
 	import type { z } from 'zod';
 	import type { SuperValidated } from 'sveltekit-superforms/client';
-	import { LINKS } from '$config/links';
+	import { SOCIALS } from '$config/socials';
 	import Discord from './ui/discord.svelte';
+	import ContactBody from './contact-body.svelte';
+	import FormResult from '$lib/form/form-result.svelte';
+	import FormButton from './ui/form/form-button.svelte';
+	import SuperDebug from 'sveltekit-superforms';
 
 	const {
 		form
@@ -26,41 +27,25 @@
 					<Card.Title>Get in touch</Card.Title>
 				</Card.Header>
 				<Card.Content>
-					<FormRoot action="/" data={form} schema={contactSchema}>
-						{#snippet children({ form, formData })}
-							<div class="space-y-2">
-								<Input placeholder="Name" />
-							</div>
-							<div class="space-y-2">
-								<Input placeholder="Email" type="email" />
-							</div>
-							<div class="space-y-2">
-								<Textarea placeholder="Message" class="min-h-[100px]" />
-							</div>
-							<Button class="w-full">
-								Send Message
+					<FormRoot action="/contact" data={form} schema={contactSchema}>
+						{#snippet children({ form, formData, formState })}
+							<FormResult {formState} />
+							<ContactBody {form} {formData} />
+							<FormButton disabled={formState === 'submitting'} class="w-full">
+								Send
 								<Send class="ml-2 h-4 w-4" />
-							</Button>
+							</FormButton>
 						{/snippet}
 					</FormRoot>
 
 					<div class="mt-6 flex justify-center gap-4">
-						<a
-							href={LINKS.DISCORD_LINK}
-							class="fill-muted-foreground fill:text-primary"
-						>
+						<a href={SOCIALS.DISCORD_LINK} class="text-muted-foreground hover:text-primary">
 							<Discord class="h-6 w-6" />
 						</a>
-						<a
-							href={LINKS.GITHUB_LINK}
-							class="text-muted-foreground hover:text-primary"
-						>
+						<a href={SOCIALS.GITHUB_LINK} class="text-muted-foreground hover:text-primary">
 							<Github class="h-6 w-6" />
 						</a>
-						<a
-							href={LINKS.LINKEDIN_LINK}
-							class="text-muted-foreground hover:text-primary"
-						>
+						<a href={SOCIALS.LINKEDIN_LINK} class="text-muted-foreground hover:text-primary">
 							<Linkedin class="h-6 w-6" />
 						</a>
 					</div>

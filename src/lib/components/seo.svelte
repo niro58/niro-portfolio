@@ -11,7 +11,7 @@
 		themeColor?: string;
 		nofollow?: boolean;
 		noindex?: boolean;
-		nositelinkssearchbox?: boolean;
+		nositeSOCIALSsearchbox?: boolean;
 		notranslate?: boolean;
 		canonical?: string;
 		amp?: string;
@@ -35,7 +35,7 @@
 		themeColor,
 		nofollow,
 		noindex,
-		nositelinkssearchbox,
+		nositeSOCIALSsearchbox,
 		notranslate,
 		canonical,
 		amp,
@@ -124,8 +124,8 @@
 		content={`${noindex ? 'noindex' : 'index'},${nofollow ? 'nofollow' : 'follow'}`}
 	/>
 
-	{#if nositelinkssearchbox}
-		<meta name="google" content="nositelinkssearchbox" />
+	{#if nositeSOCIALSsearchbox}
+		<meta name="google" content="nositeSOCIALSsearchbox" />
 	{/if}
 
 	{#if notranslate}
