@@ -20,7 +20,11 @@ export type Metadata = {
 	demoLink?: string;
 };
 export type MetadataWithSlug = Metadata & { slug: string };
-
+export type PostSection = {
+	id: string;
+	title: string;
+	items?: PostSection[];
+};
 type Success<T> = {
 	success: true;
 	data: T;

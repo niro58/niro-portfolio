@@ -1,5 +1,8 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import NoPosts from '$lib/components/no-posts.svelte';
+	import Seo from '$lib/components/seo.svelte';
+	import Button from '$lib/components/ui/button/button.svelte';
 	import { ArrowRight, ExternalLink, Github, Globe } from 'lucide-svelte';
 	import { onMount } from 'svelte';
 	import { fly, fade, scale, blur } from 'svelte/transition';
@@ -8,16 +11,23 @@
 	const activeProject = $derived(data.projects[activeIndex]);
 </script>
 
+<Seo title="Portfolio | Niro" canonical={page.url.origin + page.url.pathname} />
 {#if data.projects.length === 0}
 	<NoPosts type="portfolio" />
 {:else}
 	<div class="min-h-screen">
 		<main class="container mx-auto px-4 py-12">
-			<h1 class="mb-8 text-center text-4xl font-bold">
-				<span class=" from-primary to-primary/70 bg-gradient-to-r bg-clip-text text-transparent">
-					My Portfolio
-				</span>
-			</h1>
+			<div class="mb-8">
+				<h1 class="text-center text-4xl font-bold">
+					<span class=" from-primary to-primary/70 bg-gradient-to-r bg-clip-text text-transparent">
+						My Portfolio
+					</span>
+				</h1>
+				<div class="text-muted-foreground text-center">
+					Welcome to my portfolio! I’m still in process of writing about each one to share them
+					here. Stay tuned for updates!
+				</div>
+			</div>
 			<div class="grid gap-8 md:grid-cols-2">
 				<div class="grid">
 					{#key activeIndex}
@@ -27,7 +37,7 @@
 								alt={activeProject.title}
 								in:fly={{ x: 25, duration: 500 }}
 								out:fly={{ x: -25, duration: 500 }}
-								class="h-64 w-full rounded-lg object-cover shadow-lg"
+								class="aspect-video w-full rounded-lg object-cover shadow-lg"
 							/>
 						</div>
 
@@ -50,53 +60,49 @@
 									</span>
 								{/each}
 							</div>
-							<div class="mt-6 flex gap-4">
-								{#if activeProject.githubLink}
-									<a
-										href={activeProject.githubLink}
-										target="_blank"
-										rel="noopener noreferrer"
-										class="inline-flex items-center text-red-400 hover:text-red-300"
-										in:fade={{ duration: 500 }}
-										out:fade={{ duration: 500 }}
-									>
-										<Github class="mr-2" /> View on GitHub
-									</a>
-								{/if}
-								{#if activeProject.appLink}
-									<a
-										href={activeProject.appLink}
-										target="_blank"
-										rel="noopener noreferrer"
-										class="inline-flex items-center text-red-400 hover:text-red-300"
-										in:fade={{ duration: 500 }}
-										out:fade={{ duration: 500 }}
-									>
-										<Globe class="mr-2" /> App Link
-									</a>
-								{/if}
-								{#if activeProject.demoLink}
-									<a
-										href={activeProject.demoLink}
-										target="_blank"
-										rel="noopener noreferrer"
-										class="inline-flex items-center text-red-400 hover:text-red-300"
-										in:fade={{ duration: 500 }}
-										out:fade={{ duration: 500 }}
-									>
-										<ExternalLink class="mr-2" /> Live Demo
-									</a>
-								{/if}
-								<a
-									href={`/blog/${activeProject.slug}`}
-									rel="noopener noreferrer"
-									class="inline-flex items-center space-x-2 text-red-400 hover:text-red-300"
-									in:fade={{ duration: 500 }}
-									out:fade={{ duration: 500 }}
-								>
+							<div class="mt-6 flex justify-between">
+								<div class="flex gap-4">
+									{#if activeProject.githubLink}
+										<a
+											href={activeProject.githubLink}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="inline-flex items-center text-red-400 hover:text-red-300"
+											in:fade={{ duration: 500 }}
+											out:fade={{ duration: 500 }}
+										>
+											<Github class="mr-2" /> View on GitHub
+										</a>
+									{/if}
+									{#if activeProject.appLink}
+										<a
+											href={activeProject.appLink}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="inline-flex items-center text-red-400 hover:text-red-300"
+											in:fade={{ duration: 500 }}
+											out:fade={{ duration: 500 }}
+										>
+											<Globe class="mr-2" /> App Link
+										</a>
+									{/if}
+									{#if activeProject.demoLink}
+										<a
+											href={activeProject.demoLink}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="inline-flex items-center text-red-400 hover:text-red-300"
+											in:fade={{ duration: 500 }}
+											out:fade={{ duration: 500 }}
+										>
+											<ExternalLink class="mr-2" /> Live Demo
+										</a>
+									{/if}
+								</div>
+								<Button href={`/blog/${activeProject.slug}`} rel="noopener noreferrer">
 									<span>Read More</span>
 									<ArrowRight class="mr-2" />
-								</a>
+								</Button>
 							</div>
 						</div>
 					{/key}
@@ -107,7 +113,7 @@
 						{#each data.projects as project, index (index)}
 							<button
 								onclick={() => (activeIndex = index)}
-								class={`w-full rounded-lg border p-4 text-left transition-all hover:scale-102 active:scale-98 ${
+								class={`w-full rounded-lg border p-4 text-left transition-all hover:scale-101 active:scale-99 ${
 									activeIndex === index
 										? 'border-primary/50 bg-primary/20 border'
 										: 'bg-card hover:bg-card/70 '

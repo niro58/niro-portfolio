@@ -31,6 +31,7 @@
 		--sidebar-border: hsl(217 32% 17%);
 		--sidebar-ring: hsl(0 100% 64%);
 		--radius: 0.5rem;
+
 	}
 }
 
@@ -71,6 +72,8 @@
 	--animate-accordion-down: accordion-down 0.2s ease-out;
 	--animate-accordion-up: accordion-up 0.2s ease-out;
 	--animate-caret-blink: caret-blink 1.25s ease-out infinite;
+
+	--tw-prose-body: var(--color-pink-800);
 
 	--font-sans:
 		'Geist', 'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',

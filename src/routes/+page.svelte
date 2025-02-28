@@ -1,4 +1,5 @@
 <script>
+	import { page } from '$app/state';
 	import About from '$lib/components/about.svelte';
 	import Blog from '$lib/components/blog.svelte';
 	import Contact from '$lib/components/contact.svelte';
@@ -12,7 +13,12 @@
 	let { data } = $props();
 </script>
 
-<Seo title="Nichita Roilean" />
+<Seo
+	title="Home | Niro"
+	description="Hi, I’m Nichita Roilean developer from Prague who loves building things with code. From full-stack web apps to data-driven tools, this is my space to share my journey and projects."
+	keywords="full-stack developer, svelte projects, data analytics, code journey, go developer"
+	canonical={page.url.origin + page.url.pathname}
+/>
 <main class="min-h-screen">
 	<Hero />
 	<About />

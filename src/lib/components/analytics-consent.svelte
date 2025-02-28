@@ -32,20 +32,6 @@
 					I use analytics only for website traffic analysis. No data is shared for advertising,
 					personalization, or marketing purposes.
 				</p>
-				<!-- <pre>
-                    <code>
-settings:{'{'}
-	anonymize_ip: true,
-	send_page_view: true
-{'}'},
-consent:{'{'}
-	ad_user_data: 'denied',
-	ad_personalization: 'denied',
-	ad_storage: 'denied',
-	analytics_storage: 'granted'
-{'}'}
-                    </code>
-                </pre> -->
 			</div>
 			<div class="flex items-center gap-4">
 				<Button size="icon" class="w-16" onclick={handleAccept} variant="outline">OK</Button>

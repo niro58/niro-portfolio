@@ -1,8 +1,14 @@
-import { mdsvex } from 'mdsvex';
+import { mdsvex, escapeSvelte } from 'mdsvex';
 import adapter from 'amplify-adapter';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
+import { createHighlighter } from 'shiki';
+
+const highlighter = await createHighlighter({
+	themes: ['catppuccin-mocha'],
+	langs: ['javascript', 'typescript']
+});
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -48,6 +54,15 @@ const config = {
 		vitePreprocess(),
 		mdsvex({
 			extensions: ['.md'],
+			highlight: {
+				highlighter: async (code, lang = 'text') => {
+					await highlighter.loadLanguage('javascript', 'typescript');
+					const html = escapeSvelte(
+						highlighter.codeToHtml(code, { lang, theme: 'catppuccin-mocha' })
+					);
+					return `{@html \`${html}\` }`;
+				}
+			},
 			rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings]
 		})
 	]

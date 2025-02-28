@@ -33,7 +33,6 @@
 
 			ctx.fillStyle = '#FF4645';
 			ctx.font = `${fontSize}px monospace`;
-			console.log(ctx);
 			for (let i = 0; i < drops.length; i++) {
 				const text = codes[Math.floor(Math.random() * codes.length)];
 				ctx.fillText(text, i * fontSize, drops[i] * fontSize);

@@ -6,7 +6,6 @@ export async function GET({ url }) {
 	const limit = parseInt(searchParams.get('limit') || 'NaN');
 	const page = parseInt(searchParams.get('page') || 'NaN');
 	const category = searchParams.get('category');
-
 	if (limit === null || page === null || isNaN(limit) || isNaN(page)) {
 		return new Response('Missing limit or page', { status: 400 });
 	}
@@ -14,7 +13,6 @@ export async function GET({ url }) {
 	const data = import.meta.glob('./../../../posts/*.md');
 
 	let posts: MetadataWithSlug[] = [];
-
 	const postsRaw = Object.entries(data).slice(page * limit, (page + 1) * limit);
 	for (const [path, module] of postsRaw) {
 		const post: any = await module();
