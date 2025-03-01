@@ -7,13 +7,19 @@ export function cn(...inputs: ClassValue[]) {
 }
 export type FormState = 'success' | 'error' | 'input-error' | 'submitting' | 'idle';
 
-export function moveToSection(e: Event, id: string) {
+export function getIdYPos(id: string, offset:number) {
 	if (browser) {
 		const element = document.getElementById(id);
 		if (element) {
-			e.preventDefault();
-			const yPos = element.getBoundingClientRect().top + window.scrollY - 100;
-			window.scrollTo({ top: yPos, behavior: 'smooth' });
+			return element.getBoundingClientRect().top + window.scrollY - offset;
 		}
+	}
+}
+
+export function moveToSection(e: Event, id: string) {
+	const yPos = getIdYPos(id, 100);
+	if (yPos) {
+		e.preventDefault();
+		window.scrollTo({ top: yPos, behavior: 'smooth' });
 	}
 }

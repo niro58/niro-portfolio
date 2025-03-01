@@ -1,6 +1,33 @@
-<script lang="ts">
-	import { page } from '$app/stores';
+<script module>
+	const pages = {
+		home: {
+			title: 'Home',
+			link: '/#home'
+		},
+		about: {
+			title: 'About',
+			link: '/#about'
+		},
+		stack: {
+			title: 'Stack',
+			link: '/#stack'
+		},
+		portfolio: {
+			title: 'Portfolio',
+			link: '/portfolio'
+		},
+		blog: {
+			title: 'Blog',
+			link: '/blog'
+		},
+		contact: {
+			title: 'Contact',
+			link: '/#contact'
+		}
+	};
+</script>
 
+<script lang="ts">
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { Github, Linkedin, Menu } from 'lucide-svelte';
 	import * as Card from './ui/card/index';
@@ -8,10 +35,33 @@
 	import NiroLogo from './ui/niro-logo.svelte';
 	import { SOCIALS } from '$config/socials';
 	import Discord from './ui/discord.svelte';
-	import { moveToSection } from '$lib/utils';
+	import { getIdYPos, moveToSection } from '$lib/utils';
+	import { page } from '$app/state';
+	import { scrollY } from 'svelte/reactivity/window';
 
 	let isOpen = $state(false);
+	let pageIndex = $derived.by(() => {
+		const currentPage = Object.values(pages).find((item) =>
+			page.url.pathname.startsWith(item.link)
+		);
+		if (currentPage) {
+			return Object.values(pages).indexOf(currentPage);
+		}
+		return 0;
+	});
+	let pageSections = $derived.by(() => {
+		const s = Object.values(pages).map((m, index) => {
+			const link = m.link.split('#')[0];
 
+			if (link === page.url.pathname) {
+				return {
+					yPos: getIdYPos(m.link.split('#')[1], 300) || 0,
+					index: index
+				};
+			}
+		});
+		return s.filter((d) => d !== undefined);
+	});
 	let hoveredIndex = $state<number | null>(null);
 	let activeIndex = $state(0);
 	let hoverStyle: {
@@ -24,6 +74,22 @@
 	} = $state({ left: '0px', width: '0px' });
 
 	let tabRefs = $state<HTMLAnchorElement[]>([]);
+
+	$effect(() => {
+		let newIndex = pageIndex;
+		
+		for (let i = 0; i < pageSections.length; i++) {
+			const yp = pageSections[i].yPos || 0;
+			if (!scrollY.current || scrollY.current < yp) {
+				break;
+			}
+			newIndex = pageSections[i].index;
+		}
+
+		if (newIndex != activeIndex) {
+			activeIndex = newIndex;
+		}
+	});
 
 	$effect(() => {
 		if (hoveredIndex !== null) {
@@ -60,47 +126,6 @@
 			}
 		});
 	});
-	$effect(() => {
-		const currentPage = Object.values(pages).find((item) => item.link === $page.route.id);
-		if (currentPage) {
-			activeIndex = Object.values(pages).indexOf(currentPage);
-			const activeElement = tabRefs[activeIndex];
-			if (activeElement) {
-				const { offsetLeft, offsetWidth } = activeElement;
-				activeStyle = {
-					left: `${offsetLeft}px`,
-					width: `${offsetWidth}px`
-				};
-			}
-		}
-	});
-
-	const pages = {
-		home: {
-			title: 'Home',
-			link: '/#home'
-		},
-		about: {
-			title: 'About',
-			link: '/#about'
-		},
-		stack: {
-			title: 'Stack',
-			link: '/#stack'
-		},
-		portfolio: {
-			title: 'Portfolio',
-			link: '/portfolio'
-		},
-		blog: {
-			title: 'Blog',
-			link: '/blog'
-		},
-		contact: {
-			title: 'Contact',
-			link: '/#contact'
-		}
-	};
 </script>
 
 {#snippet pageLinks()}

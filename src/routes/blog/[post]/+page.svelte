@@ -63,7 +63,6 @@
 				codeBlock.classList.add('relative');
 			});
 			codeBlock.addEventListener('mouseleave', () => {
-				console.log('now');
 				const copyButton = codeBlock.querySelector('#copyButton');
 				if (copyButton) {
 					codeBlock.removeChild(copyButton);
