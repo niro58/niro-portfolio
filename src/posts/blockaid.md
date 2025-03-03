@@ -1,7 +1,7 @@
 ---
 title: 'BlockAid : Web Blocker Chrome Extension'
 date: '2025-01-08'
-updated: '2025-01-08'
+updated: '2025-02-25'
 category: 'Portfolio'
 readingTime: '8'
 excerpt: "A little project I made to help me focus on my work. It's a Chrome extension that blocks websites when you are working or just forever."

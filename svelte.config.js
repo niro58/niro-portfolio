@@ -7,7 +7,7 @@ import { createHighlighter } from 'shiki';
 
 const highlighter = await createHighlighter({
 	themes: ['catppuccin-mocha'],
-	langs: ['javascript', 'typescript']
+	langs: ['javascript', 'typescript', 'json', 'go']
 });
 
 /** @type {import('@sveltejs/kit').Config} */

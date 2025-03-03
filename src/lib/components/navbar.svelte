@@ -77,7 +77,7 @@
 
 	$effect(() => {
 		let newIndex = pageIndex;
-		
+
 		for (let i = 0; i < pageSections.length; i++) {
 			const yp = pageSections[i].yPos || 0;
 			if (!scrollY.current || scrollY.current < yp) {
@@ -193,7 +193,7 @@
 						target="_blank"
 						class="text-muted-foreground"
 						size="icon"
-						href={SOCIALS.GITHUB_LINK}><Discord class="h-5 w-5" /></Button
+						href={SOCIALS.DISCORD_LINK}><Discord class="h-5 w-5" /></Button
 					>
 					<Button
 						variant="outline"

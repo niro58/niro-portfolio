@@ -1,7 +1,7 @@
 import { getSlugs } from '$lib/query';
 
 export async function GET() {
-	const lastUpdate = '2025-02-28';
+	const lastUpdate = '2025-03-03';
 	let routes: string[] = ['', '/blog', '/portfolio'];
 	const blogSlugs = await getSlugs();
 	if (blogSlugs.success) {

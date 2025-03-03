@@ -47,8 +47,10 @@
 							out:fly={{ x: -25, duration: 500 }}
 							style:grid-area="2/1"
 						>
-							<h2 class="text-2xl font-semibold text-red-300">{activeProject.title}</h2>
-							<p class="text-muted-foreground mt-2">{activeProject.excerpt}</p>
+							<h2 class="text-primary text-2xl font-semibold">{activeProject.title}</h2>
+							<p class="text-muted-foreground border-primary mt-2 border-l-4 py-1 pl-4">
+								{activeProject.excerpt}
+							</p>
 							<div class="mt-4 flex flex-wrap gap-2">
 								{#each activeProject.tags as tag}
 									<span
