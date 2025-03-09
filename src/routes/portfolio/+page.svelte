@@ -4,9 +4,9 @@
 	import Seo from '$lib/components/seo.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { ArrowRight, ExternalLink, Github, Globe } from 'lucide-svelte';
-	import { onMount } from 'svelte';
 	import { fly, fade, scale, blur } from 'svelte/transition';
 	const { data } = $props();
+
 	let activeIndex = $state(0);
 	const activeProject = $derived(data.projects[activeIndex]);
 </script>

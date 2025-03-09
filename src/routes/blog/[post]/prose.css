@@ -364,7 +364,7 @@
 	--tw-prose-links: var(--primary);
 	--tw-prose-bold: var(--primary);
 	--tw-prose-counters: var(--muted-foreground);
-	--tw-prose-bullets: var(--border);
+	--tw-prose-bullets: var(--primary);
 	--tw-prose-hr: var(--border);
 	--tw-prose-quotes: var(--primary);
 	--tw-prose-quote-borders: var(--border);
@@ -382,7 +382,7 @@
 	--tw-prose-invert-links: var(--primary);
 	--tw-prose-invert-bold: var(--primary);
 	--tw-prose-invert-counters: var(--muted-foreground);
-	--tw-prose-invert-bullets: var(--border);
+	--tw-prose-invert-bullets: var(--primary);
 	--tw-prose-invert-hr: var(--border);
 	--tw-prose-invert-quotes: var(--foreground);
 	--tw-prose-invert-quote-borders: var(--border);

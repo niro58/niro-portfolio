@@ -153,7 +153,7 @@
 				<img src={data.meta.coverImage} alt={data.meta.title} class="object-cover" />
 			</div>
 
-			<div class="prose lg:prose-xl">
+			<div class="prose lg:prose-xl pb-12">
 				<PostContent />
 			</div>
 			<Contact form={data.form} />

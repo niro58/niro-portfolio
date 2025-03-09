@@ -1,38 +1,12 @@
 <script lang="ts">
 	import type { MetadataWithSlug } from '$lib/types';
-	import { ArrowRight } from 'lucide-svelte';
 	import PostShort from './post-short.svelte';
-	import { getPosts } from '$lib/query';
-	import { onMount } from 'svelte';
+
 	import { fly } from 'svelte/transition';
-	const {
-		posts: initialPosts,
-		pageSize,
-		category
-	}: { posts: MetadataWithSlug[]; pageSize: number; category?: string } = $props();
+	const { posts: allPosts, pageSize }: { posts: MetadataWithSlug[]; pageSize: number } = $props();
 
 	let page = $state(0);
-	let posts: MetadataWithSlug[] = $state(initialPosts);
-	let pageState: 'loading' | 'idle' | 'all_loaded' | 'error' = $state(
-		initialPosts.length < pageSize ? 'all_loaded' : 'idle'
-	);
-
-	function loadMorePosts() {
-		pageState = 'loading';
-		page += 1;
-		getPosts(pageSize, page, category).then((res) => {
-			if (res.success) {
-				if (res.data.length === pageSize) {
-					pageState = 'idle';
-				} else {
-					pageState = 'all_loaded';
-				}
-				posts = [...posts, ...res.data];
-			} else {
-				pageState = 'error';
-			}
-		});
-	}
+	let posts = $derived(allPosts.slice(0, (page + 1) * pageSize));
 </script>
 
 <section id="blog" class="py-20">
@@ -50,14 +24,11 @@
 			{/each}
 		</div>
 		<div class="text-center">
-			{#if pageState === 'error'}
-				<p class="text-red-500">Error loading posts</p>
-			{:else if pageState !== 'all_loaded'}
+			{#if posts.length < allPosts.length}
 				<button
 					onclick={() => {
-						loadMorePosts();
+						page += 1;
 					}}
-					disabled={pageState === 'loading'}
 					class="from-primary hover:shadow-primary/50 rounded-full bg-gradient-to-r to-purple-600 px-6 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"
 				>
 					Load more

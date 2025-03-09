@@ -6,7 +6,7 @@
 </script>
 
 <article
-	class="bg-card border-primary/20 hover:shadow-primary/20 flex flex-col justify-between overflow-hidden rounded-lg border shadow-lg transition-all hover:shadow-lg"
+	class="bg-card border-primary/20 hover:shadow-primary/20 flex h-full flex-col justify-between overflow-hidden rounded-lg border shadow-lg transition-all hover:shadow-lg"
 >
 	<div>
 		<img

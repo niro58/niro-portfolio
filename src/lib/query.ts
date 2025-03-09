@@ -1,13 +1,9 @@
 import { PUBLIC_API_PATH } from '$env/static/public';
 import type { MetadataWithSlug, Result } from './types';
 export async function getPosts(
-	limit: number,
-	page: number,
 	category?: string
 ): Promise<Result<MetadataWithSlug[]>> {
 	const searchParams = new URLSearchParams();
-	searchParams.set('limit', limit.toString());
-	searchParams.set('page', page.toString());
 	if (category) {
 		searchParams.set('category', category);
 	}
