@@ -1,4 +1,4 @@
-import { PUBLIC_API_PATH } from '$env/static/public';
+import { env } from '$env/dynamic/public';
 import type { MetadataWithSlug, Result } from './types';
 export async function getPosts(
 	category?: string
@@ -7,7 +7,7 @@ export async function getPosts(
 	if (category) {
 		searchParams.set('category', category);
 	}
-	const url = `${PUBLIC_API_PATH}/api/posts?${searchParams.toString()}`;
+	const url = `${env.PUBLIC_API_PATH}/api/posts?${searchParams.toString()}`;
 
 	try {
 		const response = await fetch(url);

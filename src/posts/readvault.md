@@ -16,6 +16,9 @@ tags: ['Extension', 'Svelte']
 githubLink: 'https://github.com/niro58/readvault-svelte-extension'
 ---
 
+## Hot Reloading
+
+
 ## Extension is being approved by Google Chrome Web Store.
 
 ## Text about implementation TBD.

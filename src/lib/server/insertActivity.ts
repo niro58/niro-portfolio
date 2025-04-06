@@ -1,4 +1,4 @@
-import { MONGO_API_KEY } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import { fail } from '@sveltejs/kit';
 
 export async function processEvent(form: any, key: string) {
@@ -25,7 +25,7 @@ export async function insertContactEntry(entry: any) {
 	headers.append('Content-Type', 'application/json');
 	headers.append('Access-Control-Request-Headers', '*');
 	headers.append('Access-Control-Request-Method', 'POST');
-	headers.append('api-key', MONGO_API_KEY);
+	headers.append('api-key', env.MONGO_API_KEY);
 
 	const raw = {
 		collection: 'entries',

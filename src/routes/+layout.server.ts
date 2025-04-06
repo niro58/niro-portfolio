@@ -1,9 +1,9 @@
 import { redirect } from '@sveltejs/kit';
 
-import { PUBLIC_MODE } from '$env/static/public';
+import { env } from '$env/dynamic/public';
 
 export const load = async ({ url }) => {
-	if (PUBLIC_MODE === 'prod') {
+	if (env.PUBLIC_MODE === 'prod') {
 		const { host } = url;
 		if (!host.startsWith('www.')) {
 			return redirect(301, `https://www.${url.host}${url.pathname}${url.search}`);
