@@ -93,3 +93,4 @@ jobs:
           host: nichita-r.com
           user: niro
           ssh_key: ${{ secrets.DEPLOY_SSH_KEY }}
+          with_registry_auth: true

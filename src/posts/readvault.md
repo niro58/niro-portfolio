@@ -27,7 +27,6 @@ githubLink: 'https://github.com/niro58/readvault-svelte-extension'
 
 - **Save pages instantly** with one click.
 - **Organize with folders** for better structure.
-- **Mark as urgent** to prioritize important reads.
 - **Archive pages** to keep your list clean.
 - **Everything local** using IndexedDB – no servers, no tracking.
 - **Hot reloading** for seamless development and updates.
