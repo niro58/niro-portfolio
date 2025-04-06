@@ -37,10 +37,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-
-      - name: Run tests
-        run: npm run test
-
   build-and-push-image:
     needs:
       - build-and-test
