@@ -5,7 +5,7 @@ services:
     image: ghcr.io/niro58/niro-portfolio:prod
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.niro-portfolio.rule=Host(`nichita-r.com`)'
+      - 'traefik.http.routers.niro-portfolio.rule=Host(`nichita-r.com`) || Host(`www.nichita-r.com`)'
       - 'traefik.http.routers.niro-portfolio.entrypoints=websecure'
       - 'traefik.http.routers.niro-portfolio.tls.certresolver=myresolver'
       - 'traefik.http.services.niro-portfolio.loadbalancer.server.port=3106'
