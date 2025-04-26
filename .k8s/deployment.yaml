@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: niro-portfolio
-          image: ghcr.io/niro58/niro-portfolio:734b449e7a1baa2ed730c7f7ebe65295dd3744b1
+          image: ghcr.io/niro58/niro-portfolio:36d412eac7839488a0bd24a388ebe7255f293a31
           ports:
             - containerPort: 80
           livenessProbe:
@@ -27,11 +27,11 @@ spec:
             timeoutSeconds: 60
           resources:
             requests:
-              cpu: 250m
-              memory: 200Mi
+              cpu: 25m
+              memory: 250Mi
             limits:
-              cpu: 500m
-              memory: 1000Mi
+              cpu: 100m
+              memory: 450Mi
           env:
             - name: PUBLIC_API_PATH
               value: https://nichita-r.com
