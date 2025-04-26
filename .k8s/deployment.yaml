@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: niro-portfolio
+  namespace: personal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: niro-portfolio
+  template:
+    metadata:
+      labels:
+        app: niro-portfolio
+    spec:
+      containers:
+        - name: niro-portfolio
+          image: ghcr.io/niro58/niro-portfolio:VERSION
+          ports:
+            - containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /api/ping
+              port: 3106
+            initialDelaySeconds: 15
+            periodSeconds: 30
+            timeoutSeconds: 60
+          resources:
+            requests:
+              cpu: 250m
+              memory: 200Mi
+            limits:
+              cpu: 500m
+              memory: 1000Mi
+          env:
+            - name: PUBLIC_API_PATH
+              value: https://nichita-r.com
+            - name: PUBLIC_MODE
+              value: prod
+            - name: MONGO_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-db
+                  key: api-key
