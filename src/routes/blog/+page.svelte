@@ -1,11 +1,8 @@
 <script>
 	import { page } from '$app/state';
 	import Blog from '$lib/components/blog.svelte';
-	import NoPosts from '$lib/components/no-posts.svelte';
 	import Seo from '$lib/components/seo.svelte';
 	const { data } = $props();
-
-	const pageSize = 9;
 </script>
 
 <Seo
@@ -14,8 +11,4 @@
 	keywords="programming thoughts, coding blog, Sveltekit projects, Go, personal coding projects, developer diary"
 	canonical={page.url.origin + page.url.pathname}
 />
-{#if data.posts.length > 0}
-	<Blog posts={data.posts} {pageSize} />
-{:else}
-	<NoPosts type="blog" />
-{/if}
+<Blog posts={data.posts}  />

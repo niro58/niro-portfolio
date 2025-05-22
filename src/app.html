@@ -9,28 +9,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 		<script
-			async
-			src="https://www.googletagmanager.com/gtag/js?id=G-4X2FPT99PG"
+			defer
+			data-domain="nichita-r.com"
 			nonce="%sveltekit.nonce%"
+			src="https://plausible.io/js/script.js"
 		></script>
-		<script nonce="%sveltekit.nonce%">
-			window.dataLayer = window.dataLayer || [];
-			function gtag() {
-				dataLayer.push(arguments);
-			}
-			gtag('js', new Date());
-
-			gtag('config', 'G-4X2FPT99PG', {
-				anonymize_ip: true,
-				send_page_view: true
-			});
-			gtag('consent', 'default', {
-				ad_user_data: 'denied',
-				ad_personalization: 'denied',
-				ad_storage: 'denied',
-				analytics_storage: 'granted'
-			});
-		</script>
 
 		%sveltekit.head%
 	</head>

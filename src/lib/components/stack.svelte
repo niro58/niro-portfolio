@@ -27,7 +27,7 @@
 			name: 'DevOps',
 			icon: Cloud,
 			color: 'from-red-500 to-blue-500',
-			currentSkills: ['Docker', 'AWS', 'CI/CD', 'Github Actions']
+			currentSkills: ['Kubernetes', 'Docker', 'AWS', 'CI/CD', 'Github Actions']
 		}
 	];
 	let activeCategoryIndex = $state(0);
@@ -45,7 +45,7 @@
 			{#each skillCategories as category, index}
 				<button
 					onclick={() => (activeCategoryIndex = index)}
-					class={`w-full md:w-auto rounded-full px-4 py-2 transition-all ${
+					class={`w-full rounded-full px-4 py-2 transition-all md:w-auto ${
 						activeCategory.name === category.name
 							? `bg-gradient-to-r ${category.color} `
 							: 'bg-card text-muted-foreground hover:bg-card/50 hover:border-primary/50 border border-transparent'

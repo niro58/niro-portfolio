@@ -26,27 +26,17 @@ const config = {
 		csp: {
 			mode: 'auto',
 			directives: {
-				'default-src': ['self'],
-				'script-src': ['self', 'https://www.googletagmanager.com'],
-				'style-src': [
-					'self',
-					'https://fonts.googleapis.com',
-					'https://www.googletagmanager.com',
-					'unsafe-inline'
-				],
+				'default-src': ['self', '*.plausible.io'],
+				'script-src': ['self', 'plausible.io'],
+				'style-src': ['self', 'https://fonts.googleapis.com', 'unsafe-inline'],
 				'img-src': [
 					'self',
-					'https://www.google-analytics.com',
 					'https://www.google.com',
 					'https://www.gstatic.com',
 					'https://fonts.gstatic.com'
 				],
 				'font-src': ['self', 'https://fonts.gstatic.com'],
-				'connect-src': [
-					'self',
-					'https://www.google-analytics.com',
-					'https://region1.google-analytics.com'
-				],
+				'connect-src': ['self', 'plausible.io'],
 				'frame-src': ['self', 'https://www.google.com']
 			}
 		}
