@@ -1,6 +1,6 @@
 <script>
 	import Button from '$lib/components/ui/button/button.svelte';
-	import { Home, RefreshCcw } from 'lucide-svelte';
+	import { Home, RefreshCcw } from '@lucide/svelte';
 	import { fly } from 'svelte/transition';
 </script>
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { FileText, Cpu, Database, CheckCircle } from 'lucide-svelte';
+	import { FileText, Cpu, Database, CheckCircle } from '@lucide/svelte';
 	const steps = [
 		{
 			icon: FileText,

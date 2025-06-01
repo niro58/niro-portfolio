@@ -15,7 +15,7 @@ export async function GET({ url }) {
 		if (posts.length >= Number(limit)) {
 			break;
 		}
-		if (count <= offset) {
+		if (count < offset) {
 			count++;
 			continue;
 		}

@@ -1,5 +1,5 @@
 <script>
-	import { ArrowRight } from 'lucide-svelte';
+	import { ArrowRight } from '@lucide/svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import Separator from './ui/separator/separator.svelte';
 </script>

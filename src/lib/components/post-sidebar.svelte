@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PostSection } from '$lib/types';
-	import { ChevronRight } from 'lucide-svelte';
+	import { ChevronRight } from '@lucide/svelte';
 
 	const { sections }: { sections: PostSection[] } = $props();
 

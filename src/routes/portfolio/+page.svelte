@@ -5,7 +5,7 @@
 	import Seo from '$lib/components/seo.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { cn } from '$lib/utils.js';
-	import { ArrowRight, ExternalLink, Github, Globe } from 'lucide-svelte';
+	import { ArrowRight, ExternalLink, Github, Globe } from '@lucide/svelte';
 	import { cubicOut } from 'svelte/easing';
 	import { fly, fade } from 'svelte/transition';
 	import type { PageData } from './$types';
@@ -151,11 +151,7 @@
 
 					<div class="mt-auto flex-shrink-0 pt-4 text-right">
 						{#if activeProject}
-							<Button
-								href={`/portfolio/${activeProject.slug}`}
-								size="sm"
-								disabled={!activeProject.slug}
-							>
+							<Button href={`/blog/${activeProject.slug}`} size="sm" disabled={!activeProject.slug}>
 								<span>Read More</span>
 								<ArrowRight class="ml-1 h-4 w-4" />
 							</Button>

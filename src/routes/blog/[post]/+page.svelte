@@ -1,14 +1,24 @@
 <script lang="ts">
-	import './prose.css';
 	import Seo from '$lib/components/seo.svelte';
-	import { ArrowLeft, CalendarIcon, Clock, ExternalLink, Github, Globe } from 'lucide-svelte';
+	import {
+		ArrowLeft,
+		CalendarIcon,
+		Clock,
+		ExternalLink,
+		Github,
+		Globe,
+		LayoutDashboard
+	} from '@lucide/svelte';
 	import { page } from '$app/state';
 	import Contact from '$lib/components/contact.svelte';
 	import Badge from '$lib/components/ui/badge/badge.svelte';
 	import { onMount } from 'svelte';
 	import type { PostSection } from '$lib/types.js';
 	import { fade } from 'svelte/transition';
-	import Button, { buttonVariants } from '$lib/components/ui/button/button.svelte';
+	import { buttonVariants } from '$lib/components/ui/button/button.svelte';
+	import BlogSidebar, { type BlogSection } from '$lib/components/blog-sidebar.svelte';
+	import { browser } from '$app/environment';
+	import { getIdYPos } from '$lib/utils.js';
 	let { data } = $props();
 	const { PostContent } = data;
 
@@ -70,6 +80,34 @@
 			});
 		});
 	});
+
+	function getSections(): BlogSection[] {
+		if (!browser) {
+			return [];
+		}
+		const headings = document.getElementsByTagName('h2');
+		let blogSections: BlogSection[] = [];
+		for (let i = 0; i < headings.length; i++) {
+			const subsections = document.getElementsByTagName('h3');
+			const heading = headings.item(i);
+
+			const title = heading?.textContent;
+			const yPos = getIdYPos(heading?.id || '', 200);
+
+			if (!heading || !title || !yPos) {
+				break;
+			}
+			const section: BlogSection = {
+				id: heading.id,
+				title: title,
+				icon: LayoutDashboard,
+				yPos: yPos,
+				items: subsections.length > 0 ? [] : undefined
+			};
+			blogSections.push(section);
+		}
+		return blogSections;
+	}
 </script>
 
 <Seo
@@ -87,7 +125,7 @@
 		tag: data.meta.metaKeywords
 	}}
 />
-
+<BlogSidebar sections={getSections()} />
 <div class="to-primary/10 from-background min-h-screen bg-gradient-to-b">
 	<div class="flex">
 		<article class="mx-auto max-w-3xl px-4 pt-16 pb-16">
@@ -153,7 +191,7 @@
 				<img src={data.meta.coverImage} alt={data.meta.title} class="object-cover" />
 			</div>
 
-			<div class="prose lg:prose-xl pb-12">
+			<div class="prose prose-primary lg:prose-xl pb-12">
 				<PostContent />
 			</div>
 			<Contact form={data.form} />

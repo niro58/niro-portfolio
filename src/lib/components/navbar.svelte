@@ -29,7 +29,7 @@
 
 <script lang="ts">
 	import Button from '$lib/components/ui/button/button.svelte';
-	import { Github, Linkedin, Menu } from 'lucide-svelte';
+	import { Github, Linkedin, Menu } from '@lucide/svelte';
 	import * as Card from './ui/card/index';
 	import { fade, slide } from 'svelte/transition';
 	import NiroLogo from './ui/niro-logo.svelte';

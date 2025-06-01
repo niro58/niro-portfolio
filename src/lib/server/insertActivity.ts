@@ -1,88 +1,55 @@
 import { env } from '$env/dynamic/private';
+import type { Result } from '$lib/types';
 import { fail } from '@sveltejs/kit';
 
-export async function processEvent(form: any, key: string) {
-	const entry = {
-		web: 'niro-portfolio-web',
+// export async function processEvent(form: any, key: string) {
+// 	const entry = {
+// 		web: 'niro-portfolio-web',
+// 		data: {
+// 			...form.data,
+// 			key: key
+// 		},
+// 		created: new Date().toISOString()
+// 	};
+// 	try {
+// 		await insertContactEntry(entry);
+// 	} catch (e) {
+// 		return fail(500, {
+// 			form,
+// 			error: e
+// 		});
+// 	}
+// }
+
+export async function createFormEntry(data: Record<string, any>): Promise<Result<boolean>> {
+	const url = `${env.CONTACT_API_PATH}/static-auth/contact-form`;
+
+	const body = {
+		key: 'niro-portfolio-web',
 		data: {
-			...form.data,
-			key: key
-		},
-		created: new Date().toISOString()
-	};
-	try {
-		await insertContactEntry(entry);
-	} catch (e) {
-		return fail(500, {
-			form,
-			error: e
-		});
-	}
-}
-
-export async function insertContactEntry(entry: any) {
-	const headers = new Headers();
-	headers.append('Content-Type', 'application/json');
-	headers.append('Access-Control-Request-Headers', '*');
-	headers.append('Access-Control-Request-Method', 'POST');
-	headers.append('api-key', env.MONGO_API_KEY);
-
-	const raw = {
-		collection: 'entries',
-		database: 'entries',
-		dataSource: 'ContactEntries',
-		document: entry
-	};
-	const requestOptions = {
-		method: 'POST',
-		headers: headers,
-		body: JSON.stringify(raw)
-	};
-
-	const res = await fetch(
-		'https://eu-central-1.aws.data.mongodb-api.com/app/data-qtcvz/endpoint/data/v1/action/insertOne',
-		requestOptions
-	);
-
-	if (!res.ok) {
-		throw new Error('Failed to insert contact entry');
-	}
-
-	return res.json();
-}
-export async function insertEmail(senderKey: string, subject: string, body: string, to: string) {
-	const headers = new Headers();
-	headers.append('Content-Type', 'application/json');
-	headers.append('Access-Control-Request-Headers', '*');
-	headers.append('Access-Control-Request-Method', 'POST');
-	headers.append('api-key', MONGO_API_KEY);
-
-	const raw = {
-		collection: 'emails',
-		database: 'entries',
-		dataSource: 'ContactEntries',
-		document: {
-			senderKey: senderKey,
-			to: to,
-			subject: subject,
-			body: body,
-			created_at: new Date().toISOString()
+			...data
 		}
 	};
-	const requestOptions = {
+
+	const response = await fetch(url, {
 		method: 'POST',
-		headers: headers,
-		body: JSON.stringify(raw)
-	};
+		body: JSON.stringify(body),
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${env.CONTACT_API_AUTH}`
+		}
+	});
 
-	const res = await fetch(
-		'https://eu-central-1.aws.data.mongodb-api.com/app/data-qtcvz/endpoint/data/v1/action/insertOne',
-		requestOptions
-	);
-
-	if (!res.ok) {
-		throw new Error('Failed to insert contact entry');
+	if (!response.ok) {
+		return { success: false, error: 'Failed to fetch data' };
 	}
 
-	return res.json();
+	const responseData = await response.json();
+	if (responseData.error && responseData.data === null) {
+		return {
+			success: false,
+			error: responseData.error
+		};
+	}
+	return { success: true, data: true };
 }

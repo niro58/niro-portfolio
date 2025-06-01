@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Cloud, Code, Database, Server, Zap } from 'lucide-svelte';
+	import { Cloud, Code, Database, Server, Zap } from '@lucide/svelte';
 	import { fly } from 'svelte/transition';
 
 	const skillCategories = [

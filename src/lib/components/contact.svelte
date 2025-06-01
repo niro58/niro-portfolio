@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Github, Linkedin, Send } from 'lucide-svelte';
+	import { Github, Linkedin, Send } from '@lucide/svelte';
 	import * as Card from '$lib/components/ui/card/index.js';
 	import FormRoot from '$lib/form/form-root.svelte';
 	import { contactSchema, type ContactSchema } from '$lib/schemas.js';
