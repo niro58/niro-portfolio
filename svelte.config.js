@@ -6,7 +6,7 @@ import rehypeSlug from 'rehype-slug';
 import { createHighlighter } from 'shiki';
 
 const highlighter = await createHighlighter({
-	themes: ['catppuccin-mocha'],
+	themes: ['dracula'],
 	langs: ['javascript', 'typescript', 'json', 'go']
 });
 
@@ -28,16 +28,11 @@ const config = {
 			directives: {
 				'default-src': ['self', '*.plausible.io'],
 				'script-src': ['self', 'plausible.io'],
-				'style-src': ['self', 'https://fonts.googleapis.com', 'unsafe-inline'],
-				'img-src': [
-					'self',
-					'https://www.google.com',
-					'https://www.gstatic.com',
-					'https://fonts.gstatic.com'
-				],
-				'font-src': ['self', 'https://fonts.gstatic.com'],
+				'style-src': ['self', 'unsafe-inline'],
+				'img-src': ['self'],
+				'font-src': ['self'],
 				'connect-src': ['self', 'plausible.io'],
-				'frame-src': ['self', 'https://www.google.com']
+				'frame-src': ['self']
 			}
 		}
 	},
@@ -49,9 +44,7 @@ const config = {
 			highlight: {
 				highlighter: async (code, lang = 'text') => {
 					await highlighter.loadLanguage('javascript', 'typescript');
-					const html = escapeSvelte(
-						highlighter.codeToHtml(code, { lang, theme: 'catppuccin-mocha' })
-					);
+					const html = escapeSvelte(highlighter.codeToHtml(code, { lang, theme: 'dracula' }));
 					return `{@html \`${html}\` }`;
 				}
 			},

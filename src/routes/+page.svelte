@@ -47,5 +47,7 @@
 			</div>
 		</section>
 	{/if}
-	<Contact form={data.form} />
+	<div id="contact">
+		<Contact form={data.form} />
+	</div>
 </main>

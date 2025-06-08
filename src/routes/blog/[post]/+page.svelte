@@ -1,24 +1,11 @@
 <script lang="ts">
 	import Seo from '$lib/components/seo.svelte';
-	import {
-		ArrowLeft,
-		CalendarIcon,
-		Clock,
-		ExternalLink,
-		Github,
-		Globe,
-		LayoutDashboard
-	} from '@lucide/svelte';
 	import { page } from '$app/state';
 	import Contact from '$lib/components/contact.svelte';
-	import Badge from '$lib/components/ui/badge/badge.svelte';
 	import { onMount } from 'svelte';
 	import type { PostSection } from '$lib/types.js';
-	import { fade } from 'svelte/transition';
 	import { buttonVariants } from '$lib/components/ui/button/button.svelte';
-	import BlogSidebar, { type BlogSection } from '$lib/components/blog-sidebar.svelte';
-	import { browser } from '$app/environment';
-	import { getIdYPos } from '$lib/utils.js';
+	import BlogSidebar from '$lib/components/blog/blog-sidebar.svelte';
 	let { data } = $props();
 	const { PostContent } = data;
 
@@ -80,34 +67,6 @@
 			});
 		});
 	});
-
-	function getSections(): BlogSection[] {
-		if (!browser) {
-			return [];
-		}
-		const headings = document.getElementsByTagName('h2');
-		let blogSections: BlogSection[] = [];
-		for (let i = 0; i < headings.length; i++) {
-			const subsections = document.getElementsByTagName('h3');
-			const heading = headings.item(i);
-
-			const title = heading?.textContent;
-			const yPos = getIdYPos(heading?.id || '', 200);
-
-			if (!heading || !title || !yPos) {
-				break;
-			}
-			const section: BlogSection = {
-				id: heading.id,
-				title: title,
-				icon: LayoutDashboard,
-				yPos: yPos,
-				items: subsections.length > 0 ? [] : undefined
-			};
-			blogSections.push(section);
-		}
-		return blogSections;
-	}
 </script>
 
 <Seo
@@ -120,82 +79,45 @@
 	imageHeight={data.meta.coverHeight}
 	openGraph={{
 		author: 'Nichita Roilean',
-		publishedTime: data.meta.date,
-		modifiedTime: data.meta.date,
+		publishedTime: data.meta.createdAt,
+		modifiedTime: data.meta.createdAt,
 		tag: data.meta.metaKeywords
 	}}
 />
-<BlogSidebar sections={getSections()} />
-<div class="to-primary/10 from-background min-h-screen bg-gradient-to-b">
-	<div class="flex">
-		<article class="mx-auto max-w-3xl px-4 pt-16 pb-16">
-			<a href={'/blog'} class="text-muted-foreground hover:text-foreground mb-8 flex items-center">
-				<ArrowLeft class="mr-2 h-4 w-4" />
-				Back to all posts
-			</a>
-			<div class="mb-4 flex justify-between">
-				<div class="flex gap-4">
-					{#if data.meta.githubLink}
-						<a
-							href={data.meta.githubLink}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="inline-flex items-center text-red-400 hover:text-red-300"
-							in:fade={{ duration: 500 }}
-							out:fade={{ duration: 500 }}
-						>
-							<Github class="mr-2" /> View on GitHub
-						</a>
-					{/if}
-					{#if data.meta.appLink}
-						<a
-							href={data.meta.appLink}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="inline-flex items-center text-red-400 hover:text-red-300"
-							in:fade={{ duration: 500 }}
-							out:fade={{ duration: 500 }}
-						>
-							<Globe class="mr-2" /> App Link
-						</a>
-					{/if}
-					{#if data.meta.demoLink}
-						<a
-							href={data.meta.demoLink}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="inline-flex items-center text-red-400 hover:text-red-300"
-							in:fade={{ duration: 500 }}
-							out:fade={{ duration: 500 }}
-						>
-							<ExternalLink class="mr-2" /> Live Demo
-						</a>
-					{/if}
-				</div>
-				<Badge class="mb-4">{data.meta.category}</Badge>
-			</div>
-
-			<h1 class="mb-4 text-4xl font-bold lg:text-5xl">{data.meta.title}</h1>
-			<div class="text-muted-foreground mb-8 flex items-center space-x-4">
-				<div class="flex items-center">
-					<CalendarIcon class="mr-2 h-4 w-4" />
-					<span>{data.meta.date}</span>
-				</div>
-				<div class="flex items-center">
-					<Clock class="mr-2 h-4 w-4" />
-					<span>{data.meta.readingTime} min</span>
+<BlogSidebar meta={data.meta} />
+<div class="min-h-screen">
+	<article class="lg:ml-64 pt-16 lg:pt-0">
+		<div class="max-w-3xl mx-auto py-12 px-4 lg:px-8">
+			<div class="border-card mb-12 border-b pb-8">
+				<div class="bg-card/50 rounded-lg border border-primary/50 p-6">
+					<h1 class="mb-4 font-mono text-3xl font-bold lg:text-4xl">
+						{data.meta.title}
+					</h1>
+					<p class="text-lg leading-relaxed text-gray-300">
+						{data.meta.excerpt}
+					</p>
+					<div class="mt-4 flex items-center gap-2">
+						<div class="space-x-2 font-mono text-sm text-gray-400">
+							{#each data.meta.tags as tag}
+								<span
+									class="rounded border border-primary/50 bg-red-900/30 px-2 py-1 font-mono text-xs text-gray-300"
+								>
+									#{tag}
+								</span>
+							{/each}
+						</div>
+					</div>
 				</div>
 			</div>
-
+	
 			<div class="relative mb-8 aspect-video overflow-hidden rounded-lg">
 				<img src={data.meta.coverImage} alt={data.meta.title} class="object-cover" />
 			</div>
-
+	
 			<div class="prose prose-primary lg:prose-xl pb-12">
 				<PostContent />
 			</div>
 			<Contact form={data.form} />
-		</article>
-		<!-- <PostSidebar {sections} /> -->
-	</div>
+		</div>
+	</article>
 </div>

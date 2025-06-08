@@ -23,7 +23,7 @@
 				</div>
 				<div class="text-muted-foreground mb-2 flex items-center text-sm">
 					<Calendar class="mr-1 h-4 w-4" />
-					<span>{post.date}</span>
+					<span>{post.createdAt}</span>
 				</div>
 				<p class="text-muted-foreground mb-4">{post.excerpt}</p>
 				<div class="mb-4 flex flex-wrap gap-2">

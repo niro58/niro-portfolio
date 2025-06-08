@@ -1,9 +1,9 @@
 ---
 title: 'ReadVault : Page Organize Chrome Extension'
-date: '2025-03-09'
-updated: '2025-03-09'
+createdAt: '2025-03-09'
+updatedAt: '2025-03-09'
 category: 'Portfolio'
-readingTime: '8'
+readTime: '8'
 excerpt: 'Chrome extension ReadVault is a project to save, organize, and prioritize web pages instantly. Client sided, secure and open source.'
 coverImage: '/posts/readvault.webp'
 coverWidth: 16
@@ -18,7 +18,6 @@ githubLink: 'https://github.com/niro58/readvault-svelte-extension'
 
 ## Hot Reloading
 
-
 ## Extension is being approved by Google Chrome Web Store.
 
 ## Text about implementation TBD.
@@ -30,4 +29,4 @@ githubLink: 'https://github.com/niro58/readvault-svelte-extension'
 - **Archive pages** to keep your list clean.
 - **Everything local** using IndexedDB – no servers, no tracking.
 - **Hot reloading** for seamless development and updates.
-- **Open source** 
+- **Open source**

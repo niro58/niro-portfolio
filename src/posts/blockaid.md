@@ -1,9 +1,9 @@
 ---
 title: 'BlockAid : Web Blocker Chrome Extension'
-date: '2025-01-08'
-updated: '2025-02-25'
+createdAt: '2025-01-08'
+updatedAt: '2025-02-25'
 category: 'Portfolio'
-readingTime: '8'
+readTime: '8'
 excerpt: "A little project I made to help me focus on my work. It's a Chrome extension that blocks websites when you are working or just forever."
 coverImage: '/posts/blockaid.webp'
 coverWidth: 16
@@ -31,22 +31,23 @@ The first version was plain JS, HTML, and CSS, but I rewrote it in Svelte becaus
 
 Chrome extensions consists of three main parts, each with its own purpose:
 
-1. **The Background Script**
+### **The Background Script**
 
-   - This runs in the background and manages events like network requests, tab changes, and browser actions.
-   - It’s responsible for handling things like URL blocking, storing data, and communicating with other parts of the extension.
-   - It doesn’t directly interact with web pages but can receive and process messages from the content script.
+- This runs in the background and manages events like network requests, tab changes, and browser actions.
+- It’s responsible for handling things like URL blocking, storing data, and communicating with other parts of the extension.
+- It doesn’t directly interact with web pages but can receive and process messages from the content script.
 
-2. **The Pop-up**
+### **The Pop-up**
 
-   - This is the small UI that appears when you click the extension’s icon in the toolbar.
-   - It’s usually a simple HTML file with JavaScript that lets users interact with the extension (e.g., turning it on/off, changing settings).
-   - It can also send messages to the background script using `chrome.runtime.sendMessage` to request or retrieve data.
+- This is the small UI that appears when you click the extension’s icon in the toolbar.
+- It’s usually a simple HTML file with JavaScript that lets users interact with the extension (e.g., turning it on/off, changing settings).
+- It can also send messages to the background script using `chrome.runtime.sendMessage` to request or retrieve data.
 
-3. **The Content Script**
-   - This runs inside web pages and allows the extension to modify or interact with the page’s content.
-   - It can change text, hide elements, or inject scripts, but it doesn’t have direct access to browser features like the background script does.
-   - If it needs to perform tasks that require background permissions, it sends a message to the background script, like in this example which I have used in a different extension of mine which was scrapping data out of a website:
+### **The Content Script**
+
+- This runs inside web pages and allows the extension to modify or interact with the page’s content.
+- It can change text, hide elements, or inject scripts, but it doesn’t have direct access to browser features like the background script does.
+- If it needs to perform tasks that require background permissions, it sends a message to the background script, like in this example which I have used in a different extension of mine which was scrapping data out of a website:
 
 ```ts twoslash
 chrome.runtime.sendMessage(extensionId, {
@@ -87,8 +88,9 @@ The whole frontend is built in **Svelte**, with the UI styled using **Tailwind**
 
 The core functionality of a background script is split into two parts:
 
-1. **`chrome.webNavigation.onBeforeNavigate`**:  
-   This checks before navigation if the user is trying to visit a blocked page. If they are, it redirects them instantly—so they don’t even see the page for a split second. Here’s how it works:
+### **`chrome.webNavigation.onBeforeNavigate`**:
+
+This checks before navigation if the user is trying to visit a blocked page. If they are, it redirects them instantly—so they don’t even see the page for a split second. Here’s how it works:
 
 ```js
 chrome.webNavigation.onBeforeNavigate.addListener(async function (details) {
@@ -107,8 +109,9 @@ chrome.webNavigation.onBeforeNavigate.addListener(async function (details) {
 
 It’s great for blocking domains and specific subpages (e.g., `example.com/unproductive/*`).
 
-2. **`chrome.tabs.onUpdated`**:  
-   Originally, I thought `webNavigation` would handle everything, but I noticed it didn’t catch cases where the page itself redirected to a subdomain or another path. For example, if the page moved to a subdomain or did a client-side redirect, `webNavigation` wouldn’t catch it. That’s where `chrome.tabs.onUpdated` comes in:
+### **`chrome.tabs.onUpdated`**:
+
+Originally, I thought `webNavigation` would handle everything, but I noticed it didn’t catch cases where the page itself redirected to a subdomain or another path. For example, if the page moved to a subdomain or did a client-side redirect, `webNavigation` wouldn’t catch it. That’s where `chrome.tabs.onUpdated` comes in:
 
 ```js
 chrome.tabs.onUpdated.addListener(async (id, _, tab) => {

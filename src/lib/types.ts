@@ -3,10 +3,10 @@ export type Metadata = {
 	excerpt: string;
 	tags: string[];
 	category: string;
-	readingTime: string;
+	readTime: string;
 
-	date: string;
-	updated: string;
+	createdAt: string;
+	updatedAt: string;
 
 	coverImage: string;
 	coverWidth: number;
@@ -17,7 +17,6 @@ export type Metadata = {
 
 	githubLink?: string;
 	appLink?: string;
-	demoLink?: string;
 };
 export type MetadataWithSlug = Metadata & { slug: string };
 export type PostSection = {

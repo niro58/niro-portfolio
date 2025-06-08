@@ -1,9 +1,9 @@
 ---
 title: 'Personal Kubernetes: How I deploy my projects'
-date: '2025-05-04'
-updated: '2025-05-04'
+createdAt: '2025-05-04'
+updatedAt: '2025-05-04'
 category: 'Portfolio'
-readingTime: '8'
+readTime: '8'
 excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 coverImage: '/posts/placeholder.webp'
 coverWidth: 16

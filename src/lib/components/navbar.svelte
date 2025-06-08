@@ -29,7 +29,7 @@
 
 <script lang="ts">
 	import Button from '$lib/components/ui/button/button.svelte';
-	import { Github, Linkedin, Menu } from '@lucide/svelte';
+	import { Github, Linkedin, Menu, X } from '@lucide/svelte';
 	import * as Card from './ui/card/index';
 	import { fade, slide } from 'svelte/transition';
 	import NiroLogo from './ui/niro-logo.svelte';
@@ -38,6 +38,7 @@
 	import { getIdYPos, moveToSection } from '$lib/utils';
 	import { page } from '$app/state';
 	import { scrollY } from 'svelte/reactivity/window';
+	import SuperDebug from 'sveltekit-superforms';
 
 	let isOpen = $state(false);
 	let pageIndex = $derived.by(() => {
@@ -55,7 +56,7 @@
 
 			if (link === page.url.pathname) {
 				return {
-					yPos: getIdYPos(m.link.split('#')[1], 300) || 0,
+					yPos: getIdYPos(m.link.split('#')[1], 400) || 0,
 					index: index
 				};
 			}
@@ -134,7 +135,7 @@
 			<a
 				bind:this={tabRefs[index]}
 				class={`h-[30px] cursor-pointer px-3 py-2 transition-colors duration-300 ${
-					index === activeIndex ? 'text-foreground' : 'text-foreground/50'
+					index === activeIndex ? 'text-primary font-semibold' : 'text-foreground/50'
 				}`}
 				onmouseenter={() => (hoveredIndex = index)}
 				onmouseleave={() => (hoveredIndex = null)}
@@ -170,14 +171,14 @@
 			<Card.Content class="p-0">
 				<div class="relative">
 					<div
-						class="bg-foreground/10 absolute flex h-[30px] items-center rounded-[6px] transition-all duration-300 ease-out"
+						class="bg-primary/10 absolute flex h-[30px] items-center rounded-[6px] transition-all duration-300 ease-out"
 						style:left={hoverStyle.left ? hoverStyle.left : ''}
 						style:width={hoverStyle.width ? hoverStyle.width : ''}
 						style:opacity={hoveredIndex !== null ? 1 : 0}
 					></div>
 
 					<div
-						class="bg-foreground absolute bottom-[-6px] h-[2px] transition-all duration-300 ease-out"
+						class="bg-primary absolute bottom-[-6px] h-[2px] transition-all duration-300 ease-out"
 						style:left={activeStyle.left}
 						style:width={activeStyle.width}
 						in:fade={{ delay: 300, duration: 300 }}
@@ -213,9 +214,12 @@
 			</Card.Content>
 		</Card.Root>
 		<div class="relative flex w-full items-center justify-between px-4 sm:hidden">
-			<Button variant="ghost" size="icon" onclick={() => (isOpen = !isOpen)}>
-				<Menu class="h-6 w-6" />
-				<span class="sr-only">Open main menu</span>
+			<Button variant="outline" size="icon" onclick={() => (isOpen = !isOpen)}>
+				{#if isOpen}
+					<X class="h-6 w-6" />
+				{:else}
+					<Menu class="h-6 w-6" />
+				{/if}
 			</Button>
 			<div class="h-10 w-10"></div>
 			{#if isOpen}

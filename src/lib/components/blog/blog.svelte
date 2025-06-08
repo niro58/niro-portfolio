@@ -2,7 +2,7 @@
 	import { DefaultBlogLimit } from '$config/data';
 	import { getPosts } from '$lib/query';
 	import type { MetadataWithSlug } from '$lib/types';
-	import PostShort from './post-short.svelte';
+	import PostShort from '../post-short.svelte';
 
 	import { fly } from 'svelte/transition';
 	let { posts: initialPosts }: { posts: MetadataWithSlug[] } = $props();

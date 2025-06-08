@@ -1,9 +1,9 @@
 ---
 title: 'API Spammer : Stress-Testing API Endpoints'
-date: '2025-03-03'
-updated: '2025-03-03'
+createdAt: '2025-03-03'
+updatedAt: '2025-03-03'
 category: 'Portfolio'
-readingTime: '8'
+readTime: '8'
 excerpt: "Evening project to spam my API endpoints for stress-testing purposes. It's a simple Go program that sends a lot of requests to an API endpoint."
 coverImage: '/posts/placeholder.webp'
 coverWidth: 16
@@ -14,12 +14,9 @@ tags: ['Go']
 
 githubLink: 'https://github.com/niro58/api-spammer'
 ---
-
-### API Spammer: Stress-Testing API Endpoints
-
 This was an evening project I built after needing to test my API endpoints to understand their limitations. Specifically, I had an unoptimized mailer service that needed some tuning, and I wanted to see how it would handle a high load of requests. Enter **API Spammer**—a simple tool to stress-test API endpoints.
 
-#### How It Works
+## How It Works
 
 The config is straightforward. You define the endpoints, the number of concurrent workers (`clients`), and the total number of requests to send. Here’s an example config:
 
@@ -112,7 +109,7 @@ func (s *Statistics) Debug() {
 
 I don't know, just wanted to try it out and have some fun in the evening. It’s not fancy, but it gets the job done. If you’re curious, feel free to check out the code or use it for your own testing.
 
-#### What’s Next?
+### What’s Next?
 
 This was a quick project to solve an immediate need, but there’s always room for improvement. Here’s what’s on my TODO list:
 

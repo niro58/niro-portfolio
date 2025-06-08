@@ -39,8 +39,8 @@ export async function GET({ url }) {
 	}
 
 	posts = posts.sort((a, b) => {
-		const dateA = new Date(a.date).getTime();
-		const dateB = new Date(b.date).getTime();
+		const dateA = new Date(a.createdAt).getTime();
+		const dateB = new Date(b.createdAt).getTime();
 		return dateB - dateA;
 	});
 

@@ -105,38 +105,6 @@
 												</span>
 											{/each}
 										</div>
-										<div class="mt-auto flex flex-wrap items-center gap-x-4 gap-y-2 pt-6">
-											{#if activeProject.githubLink}
-												<a
-													href={activeProject.githubLink}
-													target="_blank"
-													rel="noopener noreferrer"
-													class="inline-flex items-center text-sm text-red-400 hover:text-red-300"
-												>
-													<Github class="mr-1.5 h-4 w-4 shrink-0" /> GitHub
-												</a>
-											{/if}
-											{#if activeProject.appLink}
-												<a
-													href={activeProject.appLink}
-													target="_blank"
-													rel="noopener noreferrer"
-													class="inline-flex items-center text-sm text-red-400 hover:text-red-300"
-												>
-													<Globe class="mr-1.5 h-4 w-4 shrink-0" /> App
-												</a>
-											{/if}
-											{#if activeProject.demoLink}
-												<a
-													href={activeProject.demoLink}
-													target="_blank"
-													rel="noopener noreferrer"
-													class="inline-flex items-center text-sm text-red-400 hover:text-red-300"
-												>
-													<ExternalLink class="mr-1.5 h-4 w-4 shrink-0" /> Demo
-												</a>
-											{/if}
-										</div>
 									</div>
 								</div>
 							{/key}
@@ -149,14 +117,15 @@
 						{/if}
 					</div>
 
-					<div class="mt-auto flex-shrink-0 pt-4 text-right">
+					<div class="mt-auto pt-4 text-right" style="z-index: 10;">
 						{#if activeProject}
-							<Button href={`/blog/${activeProject.slug}`} size="sm" disabled={!activeProject.slug}>
+							<Button href={`/blog/${activeProject.slug}`} size="lg">
 								<span>Read More</span>
 								<ArrowRight class="ml-1 h-4 w-4" />
 							</Button>
 						{/if}
 					</div>
+					
 				</div>
 
 				<div class="flex h-full flex-col">
@@ -174,12 +143,36 @@
 											type="button"
 											onclick={() => (activeIndex = index)}
 											class={cn(
-												'hover:bg-primary/5 block w-full rounded-lg border border-transparent p-3 text-left transition-colors duration-150 md:p-4',
+												' hover:bg-primary/5 flex w-full flex-row rounded-lg border border-transparent p-3 text-left transition-colors duration-150 md:p-4',
 												activeIndex === index ? 'border-primary/50 bg-primary/10' : 'bg-card'
 											)}
 										>
-											<h4 class="font-semibold">{project.title}</h4>
-											<p class="mt-1 line-clamp-2 text-sm text-gray-400">{project.excerpt}</p>
+											<div>
+												<h4 class="font-semibold">{project.title}</h4>
+												<p class="mt-1 line-clamp-2 text-sm text-gray-400">{project.excerpt}</p>
+											</div>
+											<div class="flex flex-col gap-2">
+												{#if project.githubLink}
+													<Button
+														size="icon"
+														variant="outline"
+														href={project.githubLink}
+														target="_blank"
+													>
+														<Github />
+													</Button>
+												{/if}
+												{#if project.appLink}
+													<Button
+														size="icon"
+														variant="outline"
+														href={project.appLink}
+														target="_blank"
+													>
+														<Globe />
+													</Button>
+												{/if}
+											</div>
 										</button>
 									{/each}
 								{:else}

@@ -40,8 +40,8 @@ importers:
         specifier: ^3.8.1
         version: 3.8.1
       '@lucide/svelte':
-        specifier: ^0.482.0
-        version: 0.482.0(svelte@5.33.10)
+        specifier: ^0.513.0
+        version: 0.513.0(svelte@5.33.10)
       '@sveltejs/adapter-auto':
         specifier: ^4.0.0
         version: 4.0.0(@sveltejs/kit@2.17.2(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.33.10)(vite@6.1.1(@types/node@22.13.5)(jiti@2.4.2)(lightningcss@1.29.1)))(svelte@5.33.10)(vite@6.1.1(@types/node@22.13.5)(jiti@2.4.2)(lightningcss@1.29.1)))
@@ -61,8 +61,8 @@ importers:
         specifier: ^22.13.5
         version: 22.13.5
       bits-ui:
-        specifier: ^2.4.0
-        version: 2.4.0(@internationalized/date@3.8.1)(svelte@5.33.10)
+        specifier: ^2.5.0
+        version: 2.5.0(@internationalized/date@3.8.1)(svelte@5.33.10)
       eslint:
         specifier: ^9.18.0
         version: 9.21.0(jiti@2.4.2)
@@ -390,8 +390,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@lucide/svelte@0.482.0':
-    resolution: {integrity: sha512-n2ycHU9cNcleRDwwpEHBJ6pYzVhHIaL3a+9dQa8kns9hB2g05bY+v2p2KP8v0pZwtNhYTHk/F2o2uZ1bVtQGhw==}
+  '@lucide/svelte@0.513.0':
+    resolution: {integrity: sha512-XwBQMQkMlr9qp9yVg+epx5MzhBBrqul8atO00y/ZfhlKRJuQZVmq3ELibApqyBtj9ys0Ai4FH/SZcODTUFYXig==}
     peerDependencies:
       svelte: ^5
 
@@ -847,8 +847,8 @@ packages:
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
 
-  bits-ui@2.4.0:
-    resolution: {integrity: sha512-wY7FFjQaXySMfQCCzZwOeAuD2I3jWcSkQAWVZboiTxqNgYI1BmIESh/JsKQyVJ4NliF6FKCRK7sXtf4Ue3ovCQ==}
+  bits-ui@2.5.0:
+    resolution: {integrity: sha512-PbjylA1UWd4A/c5AYqie/EVxQ1/8uugmJKLg9whLoBBHbfPEBGhK09dCPrahK9kA6DRHhMmij0XXIUGIfrmNow==}
     engines: {node: '>=20', pnpm: '>=8.7.0'}
     peerDependencies:
       '@internationalized/date': ^3.8.1
@@ -2178,7 +2178,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@lucide/svelte@0.482.0(svelte@5.33.10)':
+  '@lucide/svelte@0.513.0(svelte@5.33.10)':
     dependencies:
       svelte: 5.33.10
 
@@ -2639,7 +2639,7 @@ snapshots:
 
   balanced-match@1.0.2: {}
 
-  bits-ui@2.4.0(@internationalized/date@3.8.1)(svelte@5.33.10):
+  bits-ui@2.5.0(@internationalized/date@3.8.1)(svelte@5.33.10):
     dependencies:
       '@floating-ui/core': 1.7.0
       '@floating-ui/dom': 1.7.0

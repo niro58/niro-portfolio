@@ -19,7 +19,7 @@
 	} = $props();
 </script>
 
-<section id="contact" class="relative py-24">
+<section class="relative py-24">
 	<div class="relative z-10 container">
 		<div class="mx-auto max-w-xl">
 			<Card.Root class="border-primary/20">

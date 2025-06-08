@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/state';
-	import Blog from '$lib/components/blog.svelte';
+	import Blog from '$lib/components/blog/blog.svelte';
 	import Seo from '$lib/components/seo.svelte';
 	const { data } = $props();
 </script>
