@@ -10,6 +10,8 @@ spec:
     - match: Host(`nichita-r.com`) || Host(`www.nichita-r.com`)
       kind: Rule
       middlewares:
+        - name: redirect-to-www
+          namespace: kube-system
         - name: gzip-compress
           namespace: kube-system
       services:
