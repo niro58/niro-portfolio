@@ -35,6 +35,8 @@
 			if (!scrollY.current || scrollY.current < yp) {
 				break;
 			}
+			newSection = sections[i].id;
+			
 			if (sections[i].items.length === 0) {
 				newSection = sections[i].id;
 			}
@@ -148,7 +150,7 @@
 						: 'text-sidebar-accent-foreground hover:bg-sidebar-accent border-l-2 border-transparent'
 				)}
 			>
-				<span class="text-sm font-mono font-medium">{section.title}</span>
+				<span class="font-mono text-sm font-medium">{section.title}</span>
 				{#if section.items.length > 0}
 					<ChevronRight
 						class={cn(
@@ -181,8 +183,10 @@
 							)}
 						>
 							<span class="font-mono">
-								<span class="text-sidebar-accent">→ </span> 
-								{subsection.title.length > 22 ? subsection.title.slice(0, 22) + '...' : subsection.title}
+								<span class="text-sidebar-accent">→ </span>
+								{subsection.title.length > 22
+									? subsection.title.slice(0, 22) + '...'
+									: subsection.title}
 							</span>
 						</button>
 					{/each}
@@ -199,10 +203,11 @@
 	</h3>
 	<div class="space-y-2">
 		<Button
-			href={meta.appLink}
+			href={meta.githubLink}
 			target="_blank"
 			rel="noopener noreferrer"
 			class="w-full justify-between"
+			disabled={!meta.githubLink}
 		>
 			<div class="flex flex-row gap-2">
 				<Github
@@ -220,6 +225,7 @@
 			target="_blank"
 			rel="noopener noreferrer"
 			class="w-full justify-between"
+			disabled={!meta.appLink}
 		>
 			<div class="flex flex-row gap-2">
 				<Terminal class="text-sidebar-accent-foreground group-hover:text-sidebar-primary h-4 w-4" />
