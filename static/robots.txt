@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://www.lucky-auto.cz/sitemap.xml
+Sitemap: https://www.nichita-r.com/sitemap.xml

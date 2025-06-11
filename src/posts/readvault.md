@@ -1,7 +1,7 @@
 ---
 title: 'ReadVault : Chrome Extension'
 createdAt: '2025-03-09'
-updatedAt: '2025-03-09'
+updatedAt: '2025-06-11'
 category: 'Portfolio'
 readTime: '8'
 excerpt: 'Chrome extension ReadVault is a project to save, organize, and prioritize web pages instantly. Client sided, secure and open source.'
