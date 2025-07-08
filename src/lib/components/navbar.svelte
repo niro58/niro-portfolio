@@ -38,7 +38,6 @@
 	import { getIdYPos, moveToSection } from '$lib/utils';
 	import { page } from '$app/state';
 	import { scrollY } from 'svelte/reactivity/window';
-	import SuperDebug from 'sveltekit-superforms';
 
 	let isOpen = $state(false);
 	let pageIndex = $derived.by(() => {
