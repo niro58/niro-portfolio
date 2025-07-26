@@ -10,16 +10,7 @@ export async function GET({ url }) {
 	const data = import.meta.glob('./../../../posts/*.md');
 
 	let posts: MetadataWithSlug[] = [];
-	let count = 0;
 	for (const [path, module] of Object.entries(data)) {
-		if (posts.length >= Number(limit)) {
-			break;
-		}
-		if (count < offset) {
-			count++;
-			continue;
-		}
-
 		const post: any = await module();
 		const slug = nodePath.parse(path).name;
 		if (!post.metadata) {
@@ -29,13 +20,10 @@ export async function GET({ url }) {
 			continue;
 		}
 
-		if (posts.length < limit) {
-			posts.push({
-				...post.metadata,
-				slug: slug
-			});
-			count++;
-		}
+		posts.push({
+			...post.metadata,
+			slug: slug
+		});
 	}
 
 	posts = posts.sort((a, b) => {
@@ -43,6 +31,15 @@ export async function GET({ url }) {
 		const dateB = new Date(b.createdAt).getTime();
 		return dateB - dateA;
 	});
+
+
+	if (offset > 0) {
+		posts = posts.slice(offset, offset + limit);
+	} else if (limit > 0) {
+		posts = posts.slice(0, limit);
+	}
+
+
 
 	return new Response(JSON.stringify(posts));
 }

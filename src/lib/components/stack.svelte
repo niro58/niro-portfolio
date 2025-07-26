@@ -14,7 +14,7 @@
 			name: 'Backend',
 			icon: Server,
 			color: 'from-red-500 to-purple-500',
-			currentSkills: ['Go', 'Python', 'APIs'],
+			currentSkills: ['Go', 'Python', 'gRPC', 'REST APIs', 'Express'],
 			archivedSkills: ['C#', 'PHP', 'Unity (C#) Game Dev']
 		},
 		{
@@ -27,7 +27,7 @@
 			name: 'DevOps',
 			icon: Cloud,
 			color: 'from-red-500 to-blue-500',
-			currentSkills: ['Kubernetes', 'Docker', 'AWS', 'CI/CD', 'Github Actions']
+			currentSkills: ['Kubernetes', 'Docker', 'AWS', 'Gitlab CI/CD', 'Github Actions']
 		}
 	];
 	let activeCategoryIndex = $state(0);

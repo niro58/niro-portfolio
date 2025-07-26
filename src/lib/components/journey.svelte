@@ -40,12 +40,28 @@
 			command: '$ ./go_build_everything.sh'
 		},
 		{
-			year: '2023 - Present',
+			year: 'Nov 2022 - Mar 2025',
 			title: 'Full-Stack Developer & Data Analytics',
-			role: 'VJM Frigotrans & Everest Solutions',
+			role: 'Companies: VJM Frigotrans, Everest Solutions',
 			description:
-				'Combining my full-stack skills to build internal tools, dashboards, and web pages. Using Svelte for front-end and Go for back-end, along with data visualization tools like Power BI. Also created pages in both Svelte and React for various projects.',
-			tech: ['Svelte', 'Go (Golang)', 'Power BI', 'Python', 'PostgreSQL', 'React'],
+				'Full-stack developement, mainly creating internal tools, fleet management system, data analytics dashboard. Admin dashboard for tracking fleet, page for each driver where they can see their stats, Power BI for data visualization.',
+			tech: [
+				'SvelteKit',
+				'Go (Golang)',
+				'Typescript',
+				'Power BI',
+				'Python',
+				'PostgreSQL',
+				'Docker'
+			],
+			command: '$ ./full_stack_wizardry.sh'
+		},
+		{
+			year: 'Mar 2025 - Present',
+			title: 'Full-Stack Developer',
+			role: 'Company: Asiana s.r.o.',
+			description: 'Letuska.cz',
+			tech: ['SvelteKit', 'Go (Golang)', 'Typescript', 'Kubernetes', 'Express', 'PostgreSQL'],
 			command: '$ ./full_stack_wizardry.sh'
 		}
 	];
@@ -59,7 +75,7 @@
 			</span>
 		</h2>
 		<div class="space-y-8">
-			{#each journeySteps as step, index}
+			{#each journeySteps as step}
 				<div
 					class="border-primary-500/20 bg-card rounded-lg border p-6 shadow-lg"
 					transition:fly={{ y: 20, duration: 300 }}
@@ -69,7 +85,9 @@
 						<span class="text-primary font-mono">{step.command}</span>
 					</div>
 					<h3 class="text-primary mb-2 text-xl font-semibold">{step.title}</h3>
-					<p class="mb-2 font-medium">{step.role}</p>
+					<p class="mb-2 font-medium">
+						{step.role} <span class="text-muted-foreground">({step.year})</span>
+					</p>
 					<p class="text-muted-foreground mb-4">{step.description}</p>
 					<div class="flex flex-wrap gap-2">
 						{#each step.tech as t}

@@ -13,7 +13,6 @@
 	async function nextPage() {
 		page += 1;
 		const res = await getPosts(DefaultBlogLimit, page * DefaultBlogLimit);
-		console.log(res, page);
 		if (res.success) {
 			posts.push(...res.data);
 		}
@@ -35,7 +34,7 @@
 			{/each}
 		</div>
 		<div class="text-center">
-			{#if posts.length % DefaultBlogLimit === 0}
+			{#if posts.length % (DefaultBlogLimit * (page + 1)) === 0}
 				<button
 					onclick={async () => nextPage()}
 					class="from-primary hover:shadow-primary/50 rounded-full bg-gradient-to-r to-purple-600 px-6 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"

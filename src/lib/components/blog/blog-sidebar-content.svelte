@@ -65,7 +65,6 @@
 		}
 		const headings = article.querySelectorAll('h2,h3');
 
-		console.log(headings);
 		let blogSections: BlogSectionParent[] = [];
 		let lastBlogSection: BlogSectionParent | undefined = undefined;
 		for (let i = 0; i < headings.length; i++) {

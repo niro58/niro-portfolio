@@ -64,7 +64,7 @@
 					</span>
 				</h1>
 				<p class="text-muted-foreground mt-2 text-sm md:text-base">
-					Welcome! Here are some of the projects I've worked on.
+					Yo, some of my projects that I have worked on, more will be added soon, if I dont forget about it yet again
 				</p>
 			</div>
 		</header>
