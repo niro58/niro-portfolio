@@ -8,7 +8,7 @@ import { createFormEntry } from '$lib/server/insertActivity.js';
 import { getPosts } from '$lib/query.js';
 
 export const load: PageServerLoad = async () => {
-	const posts = await getPosts(5, 0);
+	const posts = await getPosts(3, 0);
 
 	return {
 		form: await superValidate(zod(contactSchema)),
