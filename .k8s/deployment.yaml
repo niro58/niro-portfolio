@@ -34,7 +34,7 @@ spec:
               memory: 450Mi
           env:
             - name: PUBLIC_API_PATH
-              value: https://nichita-r.com
+              value: https://www.nichita-r.com
             - name: PUBLIC_MODE
               value: prod
             - name: MONGO_API_KEY
