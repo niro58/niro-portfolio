@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: niro-portfolio
-          image: ghcr.io/niro58/niro-portfolio:10ceffda6ebf96301d2e0f713494ed3c1ad01d7b
+          image: ghcr.io/niro58/niro-portfolio:53e3b9d39f4316610de1c0522756c4b5d84066c9
           ports:
             - containerPort: 80
           livenessProbe:
@@ -34,7 +34,7 @@ spec:
               memory: 450Mi
           env:
             - name: PUBLIC_API_PATH
-              value: https://nichita-r.com
+              value: https://www.nichita-r.com
             - name: PUBLIC_MODE
               value: prod
             - name: MONGO_API_KEY
