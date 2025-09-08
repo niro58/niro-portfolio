@@ -64,7 +64,8 @@
 					</span>
 				</h1>
 				<p class="text-muted-foreground mt-2 text-sm md:text-base">
-					Yo, some of my projects that I have worked on, more will be added soon, if I dont forget about it yet again
+					Yo, some of my projects that I have worked on, more will be added soon, if I dont forget
+					about it yet again
 				</p>
 			</div>
 		</header>
@@ -125,7 +126,6 @@
 							</Button>
 						{/if}
 					</div>
-					
 				</div>
 
 				<div class="flex h-full flex-col">
@@ -143,7 +143,7 @@
 											type="button"
 											onclick={() => (activeIndex = index)}
 											class={cn(
-												' hover:bg-primary/5 flex w-full flex-row rounded-lg border border-transparent p-3 text-left transition-colors duration-150 md:p-4',
+												' hover:bg-primary/5 flex w-full flex-row justify-between rounded-lg border border-transparent p-3 text-left transition-colors duration-150 md:p-4',
 												activeIndex === index ? 'border-primary/50 bg-primary/10' : 'bg-card'
 											)}
 										>

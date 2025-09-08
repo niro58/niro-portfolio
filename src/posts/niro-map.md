@@ -12,6 +12,7 @@ metaKeywords: 'map visualizer, Overture Maps Places, points of interest, POI, in
 metaDescription: 'Interactive map visualizer for exploring 12M+ points of interest. Filter by category, search by radius, and inspect place details from Overture Maps data.'
 tags: ['Website', 'Svelte', 'Maps', 'Geospatial']
 appLink: 'https://www.niromap.com'
+githubLink: 'https://github.com/niro58/niro-map'
 ---
 
 ## Tech Stack Showcase
