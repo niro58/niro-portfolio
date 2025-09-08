@@ -7,6 +7,17 @@ spec:
   entryPoints:
     - websecure
   routes:
+    - match: Host(`www.nichita-r.com`) && (PathPrefix(`/fonts`) || PathPrefix(`/css`) || PathPrefix(`/js`))
+      kind: Rule
+      priority: 11
+      middlewares:
+        - name: add-cache-headers
+          namespace: shared
+        - name: gzip-compress
+          namespace: kube-system
+      services:
+        - name: lucky-web-service
+          port: 80
     - match: Host(`nichita-r.com`) || Host(`www.nichita-r.com`)
       kind: Rule
       middlewares:
