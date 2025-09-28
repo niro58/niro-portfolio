@@ -40,10 +40,10 @@ spec:
             - name: CONTACT_API_AUTH
               valueFrom:
                 secretKeyRef:
-                  name: mongo-db
-                  key: api-key
+                  name: contact-api
+                  key: api-url
             - name: CONTACT_API_PATH
               valueFrom:
                 secretKeyRef:
-                  name: mongo-db
-                  key: api-key
+                  name: contact-api
+                  key: static-auth
