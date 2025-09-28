@@ -41,9 +41,9 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: contact-api
-                  key: api-url
+                  key: static-auth
             - name: CONTACT_API_PATH
               valueFrom:
                 secretKeyRef:
                   name: contact-api
-                  key: static-auth
+                  key: api-url
