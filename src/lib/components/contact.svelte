@@ -27,7 +27,7 @@
 					<Card.Title>Get in touch</Card.Title>
 				</Card.Header>
 				<Card.Content>
-					<FormRoot action="/contact" data={form} schema={contactSchema}>
+					<FormRoot action="?/contact" data={form} schema={contactSchema}>
 						{#snippet children({ form, formData, formState })}
 							<FormResult {formState} />
 							<ContactBody {form} {formData} />
