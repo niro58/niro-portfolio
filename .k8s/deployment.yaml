@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: niro-portfolio
-          image: ghcr.io/niro58/niro-portfolio:f249ebd9f4ba0d5d9f6ecdf5af79ecc45d84c745
+          image: ghcr.io/niro58/niro-portfolio:37fc7a016ac786de3702f6ab8ca8fcb90ce8abe9
           ports:
             - containerPort: 80
           livenessProbe:
@@ -37,7 +37,12 @@ spec:
               value: https://www.nichita-r.com
             - name: PUBLIC_MODE
               value: prod
-            - name: MONGO_API_KEY
+            - name: CONTACT_API_AUTH
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-db
+                  key: api-key
+            - name: CONTACT_API_PATH
               valueFrom:
                 secretKeyRef:
                   name: mongo-db
