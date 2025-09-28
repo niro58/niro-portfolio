@@ -37,7 +37,12 @@ spec:
               value: https://www.nichita-r.com
             - name: PUBLIC_MODE
               value: prod
-            - name: MONGO_API_KEY
+            - name: CONTACT_API_AUTH
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-db
+                  key: api-key
+            - name: CONTACT_API_PATH
               valueFrom:
                 secretKeyRef:
                   name: mongo-db
