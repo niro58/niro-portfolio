@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: niro-portfolio
-          image: ghcr.io/niro58/niro-portfolio:d5099f29841a9dbb176243baa4edbeba7a5f5b9f
+          image: ghcr.io/niro58/niro-portfolio:abb20658848bfc5e5c2b5a457f08e7dab7420591
           ports:
             - containerPort: 80
           livenessProbe:
@@ -41,9 +41,9 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: contact-api
-                  key: api-url
+                  key: static-auth
             - name: CONTACT_API_PATH
               valueFrom:
                 secretKeyRef:
                   name: contact-api
-                  key: static-auth
+                  key: api-url
