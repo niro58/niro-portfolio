@@ -16,7 +16,7 @@ spec:
         - name: gzip-compress
           namespace: kube-system
       services:
-        - name: lucky-web-service
+        - name: niro-portfolio-service
           port: 80
     - match: Host(`nichita-r.com`) || Host(`www.nichita-r.com`)
       kind: Rule
