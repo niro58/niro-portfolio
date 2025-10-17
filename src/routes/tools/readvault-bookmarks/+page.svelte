@@ -146,7 +146,7 @@
 		>
 			<Button
 				variant="default"
-				href="https://your-chrome-store-link"
+				href="https://chromewebstore.google.com/detail/readvault-bookmark-organi/pknjnapfdjdgaihmafnnpkpajefkodcn?authuser=1&hl=en"
 				target="_blank"
 				class="rounded-full"
 				size="lg"

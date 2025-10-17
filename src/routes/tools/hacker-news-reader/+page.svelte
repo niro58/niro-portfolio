@@ -43,11 +43,10 @@
 </script>
 
 <script>
-	import { moveToSection } from '$lib/utils/common';
 	import Button from '$ui/button/button.svelte';
 	import Seo from '$ui/seo/seo.svelte';
 
-	import { Filter, Bookmark, Columns, Shield } from '@lucide/svelte';
+	import { Filter, Bookmark, Columns } from '@lucide/svelte';
 	import { fly, scale } from 'svelte/transition';
 	import { generateSeoProps } from '$modules/seo';
 	import { page } from '$app/state';
@@ -138,7 +137,7 @@
 		>
 			<Button
 				variant="default"
-				href="https://your-chrome-store-link"
+				href="https://chromewebstore.google.com/detail/hacker-news-reader-filter/effgohcomddcjdfpioaajfgeckmbnjlc?authuser=1&hl=en"
 				target="_blank"
 				class="rounded-full"
 				size="lg"

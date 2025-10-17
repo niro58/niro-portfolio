@@ -42,10 +42,6 @@
 </script>
 
 <script>
-	import CircleDesignElement from '$lib/components/circle-design-element.svelte';
-	import * as Accordion from '$ui/accordion/index';
-	import { moveToSection } from '$lib/utils/common';
-
 	import Button from '$ui/button/button.svelte';
 
 	import Seo from '$ui/seo/seo.svelte';
