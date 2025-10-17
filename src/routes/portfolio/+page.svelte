@@ -1,27 +1,25 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { page } from '$app/state';
-	import { DefaultPortfolioLimit } from '$config/data.js';
-	import Seo from '$lib/components/seo.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
-	import { cn } from '$lib/utils.js';
-	import { ArrowRight, ExternalLink, Github, Globe } from '@lucide/svelte';
+	import { ArrowRight, Github, Globe } from '@lucide/svelte';
 	import { cubicOut } from 'svelte/easing';
 	import { fly, fade } from 'svelte/transition';
 	import type { PageData } from './$types';
+	import { cn } from '$lib/utils/common';
+	import { AppConfig } from '$config/app';
+	import { generateSeoProps } from '$modules/seo';
+	import Seo from '$ui/seo/seo.svelte';
+	import { page } from '$app/state';
+	import CdnImage from '$ui/cdn-image.svelte';
 
-	const { data }: { data: PageData } = $props();
+	const { data } = $props();
 
 	let activeIndex = $state(0);
 
-	const activeProject = $derived(
-		data.projects && data.projects.length > activeIndex && activeIndex >= 0
-			? data.projects[activeIndex]
-			: null
-	);
+	const activeProject = $derived(data.projects[activeIndex]);
 
 	$effect(() => {
-		if (data.projects && data.projects.length > 0) {
+		if (data.projects.length > 0) {
 			if (activeIndex >= data.projects.length || activeIndex < 0) {
 				activeIndex = 0;
 			}
@@ -40,17 +38,21 @@
 		});
 	}
 
-	const hasMoreProjects = $derived(data.projects.length === DefaultPortfolioLimit);
+	const hasMoreProjects = $derived(data.projects.length === AppConfig.defaultPortfolioLimit);
 	const isFirstPage = $derived(data.page <= 1);
 </script>
 
 <Seo
-	title="Portfolio | Niro"
-	description="Explore projects developed by Niro."
-	canonical={page.url.origin + page.url.pathname}
+	{...generateSeoProps(
+		{
+			type: 'WebPage',
+			seoTitle: 'Portfolio | Niro',
+			seoDescription: 'Explore projects developed by Niro.'
+		},
+		page.url
+	)}
 />
-
-{#if !data.projects || (data.projects.length === 0 && data.page === 1)}
+{#if data.projects.length === 0 && data.page === 1}
 	<div class="flex min-h-[60vh] items-center justify-center px-4 text-center">
 		<p class="text-muted-foreground">No portfolio projects found yet.</p>
 	</div>
@@ -82,10 +84,12 @@
 									out:fade={{ duration: 300, easing: cubicOut }}
 								>
 									<div>
-										<img
+										<CdnImage
 											src={activeProject.coverImage}
 											alt={activeProject.title}
-											class="aspect-video w-full rounded-lg object-cover shadow-lg"
+											width={1000}
+											height={600}
+											class="aspect-vide w-full rounded-lg object-cover shadow-lg"
 										/>
 									</div>
 									<div class="flex flex-col">

@@ -5,16 +5,16 @@ import { zod } from 'sveltekit-superforms/adapters';
 import { contactSchema } from '$lib/schemas.js';
 import { type Actions } from '@sveltejs/kit';
 import { createFormEntry } from '$lib/server/insertActivity.js';
-import { getPosts } from '$lib/query.js';
+import { getBlogPosts } from '$lib/server/content.js';
 
-export const load: PageServerLoad = async () => {
-	const posts = await getPosts(3, 0);
+export async function load() {
+	const posts = await getBlogPosts(3);
 
 	return {
 		form: await superValidate(zod(contactSchema)),
-		posts: !posts.success ? [] : posts.data
+		posts: posts
 	};
-};
+}
 
 export const actions: Actions = {
 	contact: async (event) => {

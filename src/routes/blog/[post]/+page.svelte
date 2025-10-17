@@ -1,11 +1,14 @@
 <script lang="ts">
-	import Seo from '$lib/components/seo.svelte';
 	import { page } from '$app/state';
 	import Contact from '$lib/components/contact.svelte';
 	import { onMount } from 'svelte';
-	import type { PostSection } from '$lib/types.js';
 	import { buttonVariants } from '$lib/components/ui/button/button.svelte';
 	import BlogSidebar from '$lib/components/blog/blog-sidebar.svelte';
+	import type { PostSection } from '$lib/types/content.js';
+	import Seo from '$ui/seo/seo.svelte';
+	import CdnImage from '$ui/cdn-image.svelte';
+	import { generateSeoProps } from '$modules/seo.js';
+	import { createCloudflareImageUrl } from '$lib/utils/common.js';
 	let { data } = $props();
 	const { PostContent } = data;
 
@@ -70,26 +73,42 @@
 </script>
 
 <Seo
-	title={data.meta.title}
-	type="article"
-	description={data.meta.metaDescription}
-	keywords={data.meta.metaKeywords}
-	canonical={page.url.origin + page.url.pathname}
-	imageWidth={data.meta.coverWidth}
-	imageHeight={data.meta.coverHeight}
-	openGraph={{
-		author: 'Nichita Roilean',
-		publishedTime: data.meta.createdAt,
-		modifiedTime: data.meta.createdAt,
-		tag: data.meta.metaKeywords
-	}}
+	{...generateSeoProps(
+		{
+			type: 'Article',
+			seoTitle: data.meta.title,
+			seoDescription: data.meta.metaDescription,
+			seoKeywords: data.meta.metaKeywords,
+			image: [
+				{
+					url: createCloudflareImageUrl(data.meta.coverImage, {
+						width: '1080',
+						height: '606',
+						fit: 'cover'
+					}),
+					width: 1080,
+					height: 606,
+					alt: data.meta.coverImageAlt
+				}
+			],
+			author: [
+				{
+					type: 'Person',
+					name: 'Nichita Roilean'
+				}
+			],
+			datePublished: new Date(data.meta.createdAt).toISOString(),
+			dateModified: new Date(data.meta.updatedAt).toISOString()
+		},
+		page.url
+	)}
 />
 <BlogSidebar meta={data.meta} />
 <div class="min-h-screen">
-	<article class="lg:ml-64 pt-16 lg:pt-0">
-		<div class="max-w-3xl mx-auto py-12 px-4 lg:px-8">
+	<article class="pt-16 lg:ml-64 lg:pt-0">
+		<div class="mx-auto max-w-3xl px-4 py-12 lg:px-8">
 			<div class="border-card mb-12 border-b pb-8">
-				<div class="bg-card/50 rounded-lg border border-primary/50 p-6">
+				<div class="bg-card/50 border-primary/50 rounded-lg border p-6">
 					<h1 class="mb-4 font-mono text-3xl font-bold lg:text-4xl">
 						{data.meta.title}
 					</h1>
@@ -100,7 +119,7 @@
 						<div class="space-x-2 font-mono text-sm text-gray-400">
 							{#each data.meta.tags as tag}
 								<span
-									class="rounded border border-primary/50 bg-red-900/30 px-2 py-1 font-mono text-xs text-gray-300"
+									class="border-primary/50 rounded border bg-red-900/30 px-2 py-1 font-mono text-xs text-gray-300"
 								>
 									#{tag}
 								</span>
@@ -109,11 +128,17 @@
 					</div>
 				</div>
 			</div>
-	
+
 			<div class="relative mb-8 aspect-video overflow-hidden rounded-lg">
-				<img src={data.meta.coverImage} alt={data.meta.title} class="object-cover" />
+				<CdnImage
+					src={data.meta.coverImage}
+					alt={data.meta.coverImageAlt}
+					width={704}
+					height={396}
+					class="object-cover"
+				/>
 			</div>
-	
+
 			<div class="prose prose-primary lg:prose-xl pb-12">
 				<PostContent />
 			</div>

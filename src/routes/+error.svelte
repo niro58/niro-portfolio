@@ -1,4 +1,5 @@
 <script>
+	import { appPages } from '$config/pages';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { Home, RefreshCcw } from '@lucide/svelte';
 	import { fly } from 'svelte/transition';
@@ -17,7 +18,7 @@
 		</p>
 		<div class="flex justify-center space-x-4">
 			<div class="transition-all hover:scale-105 active:scale-95">
-				<Button href="/">
+				<Button href={appPages.root.path()}>
 					<Home class="mr-2 h-5 w-5" />
 					Go Home
 				</Button>

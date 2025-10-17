@@ -21,7 +21,8 @@ const config = {
 
 		alias: {
 			$config: './src/config',
-			$posts: './src/posts'
+			$modules: './src/lib/modules',
+			$ui: './src/lib/components/ui'
 		},
 		csp: {
 			mode: 'auto',
@@ -29,7 +30,7 @@ const config = {
 				'default-src': ['self', '*.plausible.io'],
 				'script-src': ['self', 'plausible.io'],
 				'style-src': ['self', 'unsafe-inline'],
-				'img-src': ['self'],
+				'img-src': ['self', 'https://imagedelivery.net', 'data:', 'blob:'],
 				'font-src': ['self'],
 				'connect-src': ['self', 'plausible.io'],
 				'frame-src': ['self']

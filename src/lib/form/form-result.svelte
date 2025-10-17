@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { FormState } from '$lib/utils';
+	import type { FormState } from '$lib/utils/common';
 	import { fly } from 'svelte/transition';
 	interface Props {
 		formState?: FormState;

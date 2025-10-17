@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { Metadata } from '$lib/types';
 	import {
 		Calendar,
 		ChevronRight,
@@ -9,12 +8,13 @@
 		Hash,
 		Terminal
 	} from '@lucide/svelte';
-	import { cn, getIdYPos, moveToSection } from '$lib/utils';
+	import { cn, getIdYPos, moveToSection } from '$lib/utils/common';
 	import { scrollY } from 'svelte/reactivity/window';
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 	import Button from '../ui/button/button.svelte';
-	const { meta }: { meta: Metadata } = $props();
+	import type { BlogPost } from '$lib/types/content';
+	const { meta }: { meta: BlogPost } = $props();
 
 	type BlogSection = {
 		id: string;
@@ -36,7 +36,7 @@
 				break;
 			}
 			newSection = sections[i].id;
-			
+
 			if (sections[i].items.length === 0) {
 				newSection = sections[i].id;
 			}

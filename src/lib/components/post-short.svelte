@@ -1,8 +1,9 @@
 <script lang="ts">
-	import type { MetadataWithSlug } from '$lib/types';
+	import type { BlogPost } from '$lib/types/content';
+	import CdnImage from '$ui/cdn-image.svelte';
 	import { ArrowRight, Calendar, Tag } from '@lucide/svelte';
 
-	const { post }: { post: MetadataWithSlug } = $props();
+	const { post }: { post: BlogPost } = $props();
 </script>
 
 <a href={`/blog/${post.slug}`}>
@@ -10,10 +11,12 @@
 		class="bg-card border-primary/20 hover:shadow-primary/20 flex h-full flex-col justify-between overflow-hidden rounded-lg border shadow-lg transition-all hover:shadow-lg"
 	>
 		<div>
-			<img
-				src={post.coverImage || '/placeholder.svg'}
-				alt={post.title}
-				class="aspect-video w-full object-cover"
+			<CdnImage
+				src={post.coverImage}
+				alt={post.coverImageAlt}
+				width={388}
+				height={220}
+				class="w-full object-cover"
 			/>
 			<div class=" p-6">
 				<div

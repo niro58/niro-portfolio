@@ -1,10 +1,17 @@
-import { getSlugs } from '$lib/query';
+import { appPages } from '$config/pages';
+import { getBlogPosts } from '../../lib/server/content';
 
 export async function GET() {
-	const lastUpdate = '2025-06-11';
-	let routes: string[] = ['', '/blog', '/portfolio'];
-	const blogSlugs = await getSlugs();
-	if (blogSlugs.success) {
+	const lastUpdate = '2025-16-11';
+	let routes: string[] = [
+		appPages.root.path().replace("/", ""),
+		appPages.blog.path(),
+		appPages.portfolio.path(),
+		appPages.tools.path()
+	];
+
+	const blogSlugs = await getBlogPosts();
+	if (blogSlugs.type === 'SUCCESS') {
 		blogSlugs.data.map((slug) => {
 			routes.push(`/blog/${slug}`);
 		});
@@ -26,6 +33,8 @@ export async function GET() {
 					(route) => `
 				<url>
 					<loc>https://www.nichita-r.com${route}</loc>
+					<priority>0.8</priority>
+					<changefreq>daily</changefreq>
 					<lastmod>${lastUpdate}</lastmod>
 				</url>
 				`

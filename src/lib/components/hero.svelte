@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { ChevronRight } from '@lucide/svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
+	import { appPages } from '$config/pages';
 	let canvasEl: HTMLCanvasElement | undefined = $state();
 
 	$effect(() => {
@@ -65,10 +66,10 @@
 			cutting-edge technologies.
 		</p>
 		<div class="flex flex-row gap-4">
-			<Button href="/portfolio" size="lg" class="mt-4">
+			<Button href={appPages.portfolio.path()} size="lg" class="mt-4">
 				Portfolio <ChevronRight class="ml-2 h-4 w-4" />
 			</Button>
-			<Button href="/blog" variant="outline" size="lg" class="mt-4">
+			<Button href={appPages.blog.path()} variant="outline" size="lg" class="mt-4">
 				Blog <ChevronRight class="ml-2 h-4 w-4" />
 			</Button>
 		</div>

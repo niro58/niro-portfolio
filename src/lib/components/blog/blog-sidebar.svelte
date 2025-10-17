@@ -1,14 +1,13 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
-	import { X, Menu, Book } from '@lucide/svelte';
-	import type { Component } from 'svelte';
-	import type { Metadata } from '$lib/types';
+	import { X,  Book } from '@lucide/svelte';
 	import BlogSidebarContent from './blog-sidebar-content.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
+	import { cn } from '$lib/utils/common';
+	import type { BlogPost } from '$lib/types/content';
 	const {
 		meta
 	}: {
-		meta: Metadata;
+		meta: BlogPost;
 	} = $props();
 
 	let isMobileOpen = $state(false);

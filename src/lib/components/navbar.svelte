@@ -2,27 +2,28 @@
 	const pages = {
 		home: {
 			title: 'Home',
-			link: '/#home'
+			link: appPages.root.path() + '#home'
 		},
-		about: {
-			title: 'About',
-			link: '/#about'
-		},
+
 		stack: {
 			title: 'Stack',
-			link: '/#stack'
+			link: appPages.root.path() + '#stack'
 		},
 		portfolio: {
-			title: 'Portfolio',
-			link: '/portfolio'
+			title: appPages.portfolio.name,
+			link: appPages.portfolio.path()
 		},
 		blog: {
-			title: 'Blog',
-			link: '/blog'
+			title: appPages.blog.name,
+			link: appPages.blog.path()
+		},
+		tools: {
+			title: appPages.tools.name,
+			link: appPages.tools.path()
 		},
 		contact: {
 			title: 'Contact',
-			link: '/#contact'
+			link: appPages.root.path() + '#contact'
 		}
 	};
 </script>
@@ -32,12 +33,13 @@
 	import { Github, Linkedin, Menu, X } from '@lucide/svelte';
 	import * as Card from './ui/card/index';
 	import { fade, slide } from 'svelte/transition';
-	import NiroLogo from './ui/niro-logo.svelte';
-	import { SOCIALS } from '$config/socials';
-	import Discord from './ui/discord.svelte';
-	import { getIdYPos, moveToSection } from '$lib/utils';
+	import NiroLogo from './ui/icons/niro-logo.svelte';
+	import Discord from './ui/icons/discord.svelte';
+	import { getIdYPos, moveToSection } from '$lib/utils/common';
 	import { page } from '$app/state';
 	import { scrollY } from 'svelte/reactivity/window';
+	import { AppConfig } from '$config/app';
+	import { appPages } from '$config/pages';
 
 	let isOpen = $state(false);
 	let pageIndex = $derived.by(() => {
@@ -162,7 +164,7 @@
 			class="relative hidden h-[75px] w-full items-center justify-center rounded-t-none border-none shadow-none sm:flex"
 		>
 			<a
-				href="/"
+				href={appPages.root.path()}
 				class="text-primary absolute top-0 bottom-0 left-8 flex items-center gap-2 text-2xl font-bold"
 			>
 				<NiroLogo class="h-8 w-8" />
@@ -193,21 +195,21 @@
 						target="_blank"
 						class="text-muted-foreground"
 						size="icon"
-						href={SOCIALS.DISCORD_LINK}><Discord class="h-5 w-5" /></Button
+						href={AppConfig.socialLinks.discord}><Discord class="h-5 w-5" /></Button
 					>
 					<Button
 						variant="outline"
 						target="_blank"
 						class="text-muted-foreground"
 						size="icon"
-						href={SOCIALS.GITHUB_LINK}><Github class="h-5 w-5" /></Button
+						href={AppConfig.socialLinks.github}><Github class="h-5 w-5" /></Button
 					>
 					<Button
 						variant="outline"
 						target="_blank"
 						class="text-muted-foreground"
 						size="icon"
-						href={SOCIALS.LINKEDIN_LINK}><Linkedin class="h-5 w-5" /></Button
+						href={AppConfig.socialLinks.linkedin}><Linkedin class="h-5 w-5" /></Button
 					>
 				</div>
 			</Card.Content>

@@ -1,10 +1,10 @@
-import { DefaultBlogLimit } from '$config/data.js';
-import { getPosts } from '$lib/query';
+import { AppConfig } from "$config/app";
+import { getBlogPosts } from "$lib/server/content";
 
 export async function load() {
-	const posts = await getPosts(DefaultBlogLimit, 0);
+	const posts = await getBlogPosts();
 	return {
 		page: posts,
-		posts: posts.success ? posts.data : []
+		posts: posts
 	};
 }

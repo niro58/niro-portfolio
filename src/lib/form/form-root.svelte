@@ -4,7 +4,7 @@
 	import { zod, zodClient } from 'sveltekit-superforms/adapters';
 
 	import type { Snippet } from 'svelte';
-	import { cn, type FormState } from '$lib/utils';
+	import { cn, type FormState } from '$lib/utils/common';
 
 	interface Props {
 		data: SuperValidated<z.infer<TForm>>;

@@ -1,22 +1,12 @@
 <script lang="ts">
-	import { DefaultBlogLimit } from '$config/data';
-	import { getPosts } from '$lib/query';
-	import type { MetadataWithSlug } from '$lib/types';
+	import { AppConfig } from '$config/app';
+	import type { BlogPost } from '$lib/types/content';
 	import PostShort from '../post-short.svelte';
 
-	import { fly } from 'svelte/transition';
-	let { posts: initialPosts }: { posts: MetadataWithSlug[] } = $props();
-
-	let posts: MetadataWithSlug[] = $state(initialPosts);
-
+	import { fly, slide } from 'svelte/transition';
+	const { postsRes }: { postsRes: BlogPost[] } = $props();
 	let page = $state(0);
-	async function nextPage() {
-		page += 1;
-		const res = await getPosts(DefaultBlogLimit, page * DefaultBlogLimit);
-		if (res.success) {
-			posts.push(...res.data);
-		}
-	}
+	let posts = $derived(postsRes.slice(0, (page + 1) * AppConfig.defaultBlogLimit));
 </script>
 
 <section id="blog" class="py-20">
@@ -27,16 +17,18 @@
 			</span>
 		</h2>
 		<div class="mb-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-			{#each posts as post}
-				<div transition:fly={{ y: 25, duration: 500 }}>
+			{#each posts as post, index (index)}
+				<div in:slide={{ duration: 350 }}>
 					<PostShort {post} />
 				</div>
 			{/each}
 		</div>
 		<div class="text-center">
-			{#if posts.length % (DefaultBlogLimit * (page + 1)) === 0}
+			{#if posts.length < postsRes.length}
 				<button
-					onclick={async () => nextPage()}
+					onclick={() => {
+						page += 1;
+					}}
 					class="from-primary hover:shadow-primary/50 rounded-full bg-gradient-to-r to-purple-600 px-6 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"
 				>
 					Load more
