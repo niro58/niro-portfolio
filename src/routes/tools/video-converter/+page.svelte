@@ -55,9 +55,10 @@
 	{...generateSeoProps(
 		{
 			type: 'WebPage',
-			seoTitle:
-				'Convert videos in bulk for free—fast, secure, and browser-based. No sign-ups or uploads. Process up to 10 videos, export as single files or ZIP.',
+			seoTitle:"Video Converter | Niro",
 			seoDescription:
+				'Convert videos in bulk for free—fast, secure, and browser-based. No sign-ups or uploads. Process up to 10 videos, export as single files or ZIP.',
+			seoKeywords:
 				'video converter online, free video converter, convert videos in browser, bulk video converter, secure video converter, no upload video converter, MP4 converter, AVI converter, MKV converter, WebM converter'
 		},
 		page.url,

@@ -58,7 +58,7 @@
 	{...generateSeoProps(
 		{
 			type: 'WebPage',
-			seoTitle: 'Portfolio | Niro',
+			seoTitle: 'Image Resizer | Niro',
 			seoDescription: 'Explore projects developed by Niro.'
 		},
 		page.url,
