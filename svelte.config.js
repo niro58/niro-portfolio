@@ -32,7 +32,7 @@ const config = {
 				'style-src': ['self', 'unsafe-inline'],
 				'img-src': ['self', 'https://imagedelivery.net', 'data:', 'blob:'],
 				'font-src': ['self'],
-				'connect-src': ['self', 'plausible.io'],
+				'connect-src': ['self', 'plausible.io', 'https://unpkg.com'],
 				'frame-src': ['self']
 			}
 		}

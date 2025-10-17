@@ -46,7 +46,7 @@
 	import Button from '$ui/button/button.svelte';
 	import Seo from '$ui/seo/seo.svelte';
 
-	import { Filter, Bookmark, Columns } from '@lucide/svelte';
+	import { Filter, Bookmark, Columns, Github } from '@lucide/svelte';
 	import { fly, scale } from 'svelte/transition';
 	import { generateSeoProps } from '$modules/seo';
 	import { page } from '$app/state';
@@ -142,6 +142,16 @@
 				class="rounded-full"
 				size="lg"
 				>Get HN Reader
+			</Button>
+			<Button
+				variant="outline"
+				href="https://github.com/niro58/hackernews-reader"
+				target="_blank"
+				class="rounded-full"
+				size="lg"
+				>
+				<Github/>
+				Github
 			</Button>
 		</div>
 	</div>

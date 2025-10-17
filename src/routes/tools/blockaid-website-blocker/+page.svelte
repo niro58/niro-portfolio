@@ -46,7 +46,7 @@
 
 	import Seo from '$ui/seo/seo.svelte';
 
-	import { Lock, Globe, Clock, Shield, Gift, Settings, Check } from '@lucide/svelte';
+	import { Lock, Globe, Clock, Shield, Gift, Settings, Check, Github } from '@lucide/svelte';
 	import { fly, scale } from 'svelte/transition';
 	import { generateSeoProps } from '$modules/seo';
 	import { page } from '$app/state';
@@ -131,6 +131,17 @@
 				class="rounded-full"
 				size="lg"
 				>Download BlockAid
+			</Button>
+			<Button
+				variant="outline"
+				href="https://github.com/niro58/blockaid-extension-svelte"
+				target="_blank"
+				class="rounded-full"
+				size="lg"
+			>
+				<Github />
+
+				Github
 			</Button>
 		</div>
 	</div>

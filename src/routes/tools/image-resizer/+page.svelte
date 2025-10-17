@@ -76,7 +76,7 @@
 <CircleDesignElement variation="2" />
 <CircleDesignElement variation="3" />
 
-<section class="flex min-h-screen flex-col items-center justify-center">
+<section class="container flex min-h-screen flex-col pt-16">
 	{#if !editorMode}
 		<SelectScreen />
 	{:else}

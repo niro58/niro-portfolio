@@ -156,22 +156,21 @@
 					</Table.Root>
 				</ScrollArea>
 			</Card.Content>
-			<Card.Footer>
-				<div class="flex w-full flex-col">
-					<div class="flex flex-row gap-5">
-						<Button class="mt-5 h-12 w-full text-xl" onclick={() => fileInputEl?.click()}>
-							<Plus />
-						</Button>
-						<Button
-							class="mt-5 h-12 w-12 text-xl"
-							disabled={imageEditor.images.length === 0}
-							onclick={() => (imageEditor.images = [])}
-						>
-							<Trash2 />
-						</Button>
-					</div>
-				</div></Card.Footer
-			>
+			<Card.Footer class="flex flex-row gap-2">
+				<div class="flex grow flex-row justify-between gap-5">
+					<Button class="mt-5 h-12 w-full grow text-xl" onclick={() => fileInputEl?.click()}>
+						<Plus />
+					</Button>
+				</div>
+				<Button
+					class="mt-5 h-12 w-12 text-xl"
+					variant="outline"
+					disabled={imageEditor.images.length === 0}
+					onclick={() => (imageEditor.images = [])}
+				>
+					<Trash2 />
+				</Button>
+			</Card.Footer>
 		</Card.Root>
 	</FileDropper>
 	<Card.Root class="mx-auto grid max-h-[85vh] w-full max-w-3xl grid-rows-12">
@@ -180,7 +179,6 @@
 		</Card.Header>
 		<Card.Content class="row-span-9 flex flex-col gap-6">
 			<div class="space-y-2">
-				<Label>Resizing Type</Label>
 				<RadioGroup.Root
 					bind:value={
 						() => imageEditor.settings.cropType,
@@ -267,7 +265,9 @@
 							}
 						}
 					>
-						<Select.Trigger id="format">{imageEditor.settings.format.toUpperCase()}</Select.Trigger>
+						<Select.Trigger class="w-full" id="format"
+							>{imageEditor.settings.format.toUpperCase()}</Select.Trigger
+						>
 						<Select.Content>
 							{#each Object.entries(ImageExportFormats) as [key, value]}
 								<Select.Item value={key}>{value.toUpperCase()}</Select.Item>
@@ -286,7 +286,7 @@
 							}
 						}
 					>
-						<Select.Trigger id="aspect-ratio"
+						<Select.Trigger class="w-full" id="aspect-ratio"
 							>{aspectRatioToKey(imageEditor.settings.aspectRatio)}</Select.Trigger
 						>
 						<Select.Content>
@@ -346,20 +346,23 @@
 					/>
 				</div>
 
-				<div class="relative space-y-2">
-					<Label for="fixed_size_y">Fixed Y</Label>
-					<Input
-						id="fixed_size_y"
-						type="number"
-						bind:value={
-							() => imageEditor.settings.fixedSize.y,
-							(v) => {
-								if (isNaN(v) || v < 0 || v > 10000) return;
-								imageEditor.settings.fixedSize.y = v;
+				<div class="relative flex flex-row gap-2">
+					<div class="flex grow flex-col gap-2">
+						<Label for="fixed_size_y">Fixed Y</Label>
+						<Input
+							id="fixed_size_y"
+							class="w-full"
+							type="number"
+							bind:value={
+								() => imageEditor.settings.fixedSize.y,
+								(v) => {
+									if (isNaN(v) || v < 0 || v > 10000) return;
+									imageEditor.settings.fixedSize.y = v;
+								}
 							}
-						}
-						min="1"
-					/>
+							min="1"
+						/>
+					</div>
 					<Button
 						size="icon"
 						class="absolute right-0 bottom-0"
@@ -372,8 +375,9 @@
 		</Card.Content>
 		<Card.Footer class="row-span-2 flex flex-col items-start justify-end gap-5">
 			<div class="flex items-center gap-2 space-x-2">
-				<div class="space-x-1">
+				<div class="flex flex-row gap-2">
 					<Checkbox
+						class="size-6"
 						id="zip-export"
 						aria-labelledby="zip-export"
 						bind:checked={
@@ -384,13 +388,14 @@
 					<Label
 						id="zip-export"
 						for="zip-export"
-						class="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+						class="text-lg leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
 					>
 						ZIP
 					</Label>
 				</div>
-				<div class="space-x-1">
+				<div class="flex flex-row gap-2">
 					<Checkbox
+						class="size-6"
 						id="single-files-export"
 						aria-labelledby="single-files-export"
 						bind:checked={
@@ -401,7 +406,7 @@
 					<Label
 						id="single-files-export"
 						for="single-files-export"
-						class="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+						class="text-lg leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
 					>
 						Single Files
 					</Label>

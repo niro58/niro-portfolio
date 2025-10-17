@@ -130,26 +130,23 @@
 						</div>
 					{/each}
 				</ScrollArea>
-				<div class="flex w-full flex-col">
-					<div class="flex flex-row gap-5">
-						<Button
-							class="w-full text-xl"
-							disabled={!canExport}
-							onclick={() => fileInputEl?.click()}
-						>
-							<Plus />
-						</Button>
-						<Button
-							class="w-12 text-xl"
-							size="icon"
-							disabled={!canExport}
-							onclick={() => (videoEditor.videos = [])}
-						>
-							<Trash2 />
-						</Button>
-					</div>
-				</div>
 			</Card.Content>
+			<Card.Footer class="flex flex-row gap-2">
+				<div class="flex grow flex-row justify-between gap-5">
+					<Button class="w-full text-xl" disabled={!canExport} onclick={() => fileInputEl?.click()}>
+						<Plus />
+					</Button>
+				</div>
+				<Button
+					class="w-12 text-xl"
+					size="icon"
+					variant="outline"
+					disabled={!canExport}
+					onclick={() => (videoEditor.videos = [])}
+				>
+					<Trash2 />
+				</Button>
+			</Card.Footer>
 		</Card.Root>
 		<Card.Root>
 			<Card.Content class="flex h-full flex-col justify-between p-6">
@@ -159,7 +156,7 @@
 						<div class="w-1/2">
 							<Label class="mb-2 block text-sm font-medium" for="video-format">Convert to:</Label>
 							<Popover.Root bind:open={formatOpen}>
-								<Popover.Trigger id="video-format">
+								<Popover.Trigger id="video-format" class="w-full">
 									{#snippet child({ props })}
 										<Button
 											variant="outline"

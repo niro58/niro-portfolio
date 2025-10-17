@@ -51,7 +51,16 @@
 
 	import Seo from '$ui/seo/seo.svelte';
 
-	import { Bookmark, AlertTriangle, Archive, Shield, Gift, Settings, Check } from '@lucide/svelte';
+	import {
+		Bookmark,
+		AlertTriangle,
+		Archive,
+		Shield,
+		Gift,
+		Settings,
+		Check,
+		Github
+	} from '@lucide/svelte';
 	import { fly, scale } from 'svelte/transition';
 	import { generateSeoProps } from '$modules/seo';
 	import { page } from '$app/state';
@@ -151,6 +160,17 @@
 				class="rounded-full"
 				size="lg"
 				>Download ReadVault
+			</Button>
+			<Button
+				variant="outline"
+				href="https://github.com/niro58/readvault-svelte-extension"
+				target="_blank"
+				class="rounded-full"
+				size="lg"
+			>
+				<Github />
+
+				Github
 			</Button>
 		</div>
 	</div>

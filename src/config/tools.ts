@@ -5,7 +5,6 @@ import { appPages } from "./pages";
 
 export const categoryIcons: Record<string, Component> = {
     "Chrome Extensions": Chrome,
-    // "Developer Tools": Code2,
     Productivity: Zap,
 } as const
 
@@ -32,38 +31,17 @@ export const tools: Tool[] = [
         url: appPages.readvault_bookmarks.path(),
         year: "2025",
     },
-    // {
-    //     name: "Design System CLI",
-    //     description: "Command-line tool for generating design tokens and components with TypeScript support.",
-    //     category: "Developer Tools",
-    //     url: "#",
-    //     year: "2024",
-    //     featured: true,
-    // },
-    // {
-    //     name: "API Tester",
-    //     description: "Lightweight REST API testing tool with request history.",
-    //     category: "Developer Tools",
-    //     url: "#",
-    //     year: "2023",
-    // },
-    // {
-    //     name: "Git Commit Helper",
-    //     description: "Generate conventional commit messages with AI assistance.",
-    //     category: "Developer Tools",
-    //     url: "#",
-    //     year: "2024",
-    // },
+
     {
         name: appPages.video_converter.name,
-        description: "",
+        description: "Local video converter",
         category: "Productivity",
         url: appPages.video_converter.path(),
         year: "2025",
     },
     {
         name: appPages.image_resizer.name,
-        description: "",
+        description: "Local image-converter and resizer",
         category: "Productivity",
         url: appPages.image_resizer.path(),
         year: "2025",
