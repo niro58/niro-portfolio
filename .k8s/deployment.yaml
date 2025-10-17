@@ -47,3 +47,5 @@ spec:
                 secretKeyRef:
                   name: contact-api
                   key: api-url
+            - name: PUBLIC_IMAGE_CDN
+              value: https://imagedelivery.net/7WKcVsmsOjoGLZ6M5TFPXA/
