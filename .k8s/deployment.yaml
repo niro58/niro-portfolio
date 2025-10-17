@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: niro-portfolio
-          image: ghcr.io/niro58/niro-portfolio:083a878e3925842f0aa6f56cebb47b94a55cdf47
+          image: ghcr.io/niro58/niro-portfolio:3ca59bc4cf44b7acf818e0d06e8b10c216aa206b
           ports:
             - containerPort: 80
           livenessProbe:
@@ -47,3 +47,5 @@ spec:
                 secretKeyRef:
                   name: contact-api
                   key: api-url
+            - name: PUBLIC_IMAGE_CDN
+              value: https://imagedelivery.net/7WKcVsmsOjoGLZ6M5TFPXA/
