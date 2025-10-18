@@ -17,7 +17,7 @@
 		{
 			question: 'What is the maximum file size and number of videos I can convert?',
 			answer:
-				'You can upload videos up to 100 MB each and convert up to 10 videos at the same time.'
+				'You can upload videos up to 10 GB each and convert up to 10 videos at the same time.'
 		},
 		{
 			question: 'Is my data safe?',
@@ -30,7 +30,7 @@
 		'Export as single files or ZIP',
 		'No quality loss—high-quality results',
 		'100% free—no sign-ups, no hidden fees',
-		'Process videos up to 100 MB each'
+		'Process videos up to 10 GB each'
 	];
 </script>
 
@@ -40,8 +40,8 @@
 	import CircleDesignElement from '$lib/components/circle-design-element.svelte';
 	import Seo from '$ui/seo/seo.svelte';
 	import { VideoEditor } from '$modules/video-editor.svelte';
-	import SelectScreen from '$lib/components/video-converter/video-converter-select-screen.svelte';
-	import EditorScreen from '$lib/components/video-converter/video-converter-editor-screen.svelte';
+	import VideoSelectScreen from '$lib/components/video-converter/video-converter-select-screen.svelte';
+	import VideoEditorScreen from '$lib/components/video-converter/video-converter-editor-screen.svelte';
 	import { generateSeoProps } from '$modules/seo';
 	import { page } from '$app/state';
 	import QaItems from '$ui/qa-items.svelte';
@@ -55,7 +55,7 @@
 	{...generateSeoProps(
 		{
 			type: 'WebPage',
-			seoTitle:"Video Converter | Niro",
+			seoTitle: 'Video Converter | Niro',
 			seoDescription:
 				'Convert videos in bulk for free—fast, secure, and browser-based. No sign-ups or uploads. Process up to 10 videos, export as single files or ZIP.',
 			seoKeywords:
@@ -75,9 +75,9 @@
 
 <section class="container min-h-screen pt-12">
 	{#if videoEditor.videos.length === 0}
-		<SelectScreen bind:videoEditor />
+		<VideoSelectScreen bind:videoEditor />
 	{:else}
-		<EditorScreen bind:videoEditor />
+		<VideoEditorScreen bind:videoEditor />
 	{/if}
 </section>
 

@@ -64,7 +64,7 @@
 				</div>
 			</div>
 			<h3 class="text-foreground mb-2 text-xl font-semibold">Drag and drop your video here</h3>
-			<p class="text-neutral-foreground text-sm">Supports MP4, AVI, MKV, and more up to 100MB</p>
+			<p class="text-neutral-foreground text-sm">Supports MP4, AVI, MKV, and more up to 10GB</p>
 		</div>
 	</FileDropper>
 	<div
@@ -149,11 +149,11 @@
 			</Card.Footer>
 		</Card.Root>
 		<Card.Root>
-			<Card.Content class="flex h-full flex-col justify-between p-6">
+			<Card.Content class="flex h-full flex-col justify-between ">
 				<div>
 					<h2 class="mb-4 text-xl font-semibold">Conversion Options</h2>
 					<div class="flex space-x-4">
-						<div class="w-1/2">
+						<div class="w-full">
 							<Label class="mb-2 block text-sm font-medium" for="video-format">Convert to:</Label>
 							<Popover.Root bind:open={formatOpen}>
 								<Popover.Trigger id="video-format" class="w-full">
@@ -168,8 +168,10 @@
 										>
 											{#if Object.values(ResultVideoFormat).includes(videoEditor.settings.exportFileFormat as ResultVideoFormat)}
 												{videoEditor.settings.exportFileFormat?.toUpperCase()}
+											{:else if Object.values(ResultAudioFormat).includes(videoEditor.settings.exportFileFormat as ResultVideoFormat)}
+												{videoEditor.settings.exportFileFormat?.toUpperCase()}
 											{:else}
-												Select Video Format
+												Select Video/Audio Format
 											{/if}
 											<ChevronsUpDown class="ml-2 size-4 shrink-0 opacity-50" />
 										</Button>
@@ -179,7 +181,7 @@
 									<Command.Root>
 										<Command.Input placeholder="Search format..." />
 										<Command.List>
-											<Command.Empty>No framework found.</Command.Empty>
+											<Command.Empty>No format found.</Command.Empty>
 											<Command.Group heading="Video Formats">
 												{#each Object.entries(ResultVideoFormat) as [k, v]}
 													<Command.Item

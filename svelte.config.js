@@ -28,12 +28,19 @@ const config = {
 			mode: 'auto',
 			directives: {
 				'default-src': ['self', '*.plausible.io'],
-				'script-src': ['self', 'plausible.io'],
+				'script-src': [
+					'self',
+					'plausible.io',
+					'https://cdn.jsdelivr.net',
+					'blob:',
+					"'wasm-unsafe-eval'"
+				],
 				'style-src': ['self', 'unsafe-inline'],
 				'img-src': ['self', 'https://imagedelivery.net', 'data:', 'blob:'],
 				'font-src': ['self'],
-				'connect-src': ['self', 'plausible.io', 'https://unpkg.com'],
-				'frame-src': ['self']
+				'connect-src': ['self', 'plausible.io', 'cdn.jsdelivr.net', 'raw.githubusercontent.com'],
+				'frame-src': ['self'],
+				'worker-src': ['self', 'blob:']
 			}
 		}
 	},

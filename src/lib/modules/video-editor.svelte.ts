@@ -18,6 +18,9 @@ export class VideoEditor {
 	constructor() {
 		onMount(() => {
 			this.loadFfmpeg();
+			return () => {
+				console.log("destroyed");
+			}
 		});
 
 		$effect(() => {
@@ -33,15 +36,19 @@ export class VideoEditor {
 		});
 	}
 	private async loadFfmpeg() {
-		const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm';
+		const baseURL = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm';
 
-		this.ffmpeg = new FFmpeg();
+		const ffmpeg = new FFmpeg()
 
-		await this.ffmpeg.load({
+		ffmpeg.on('log', ({ message }) => {
+			console.log(message);
+		});
+
+		await ffmpeg.load({
 			coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript'),
 			wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm')
 		});
-
+		this.ffmpeg = ffmpeg
 		this.currState = 'loaded';
 	}
 	stringToSeconds(duration: string) {
@@ -68,32 +75,66 @@ export class VideoEditor {
 			toast.error('No videos to export.');
 			return;
 		}
-		if (this.videos.some((video) => video.currState !== 'none')) {
-			toast.error('Already exporting a video.');
+		if (this.videos.some((video) => video.currState === 'exporting')) {
+			toast.error('An export is already in progress.');
 			return;
 		}
-		this.videos.map(async (video) => {
+
+		for (const video of this.videos) {
 			if (!this.ffmpeg) return;
+			video.currProgress.set(0);
+
 			this.ffmpeg.on('progress', ({ progress }) => {
-				video.currProgress.target = Math.round(progress * 100);
+				const currentProgress = Math.max(0, Math.min(1, progress));
+				video.currProgress.target = Math.round(currentProgress * 100);
 			});
 
-			video.currState = 'exporting';
-			await this.ffmpeg.writeFile(video.filename, await fetchFile(video.file));
+			const outputFilename = `output.${this.settings.exportFileFormat}`;
 
-			await this.ffmpeg.exec(['-i', video.filename, `output.${this.settings.exportFileFormat}`]);
-			const data = await this.ffmpeg.readFile(`output.${this.settings.exportFileFormat}`);
+			try {
+				video.currState = 'exporting';
+				await this.ffmpeg.writeFile(video.filename, await fetchFile(video.file));
 
-			const a = document.createElement('a');
-			if (typeof (data) === "string") {
-				console.error("wrong type of data" + data)
-				return;
+				await this.ffmpeg.exec([
+					'-i',
+					video.filename,
+					'-y',
+					outputFilename
+				]);
+
+				const data = await this.ffmpeg.readFile(`output.${this.settings.exportFileFormat}`);
+
+				if (typeof data === 'string') {
+					console.error("FFmpeg returned a string instead of file data:", data);
+					video.currState = 'none';
+					continue;
+				}
+
+				console.log("Export finished, creating download link.");
+				const blob = new Blob([data.buffer as any], { type: 'video/mp4' });
+				const a = document.createElement('a');
+				a.href = URL.createObjectURL(blob);
+				a.download = `output.${this.settings.exportFileFormat}`;
+				a.click();
+				URL.revokeObjectURL(a.href);
+
+				video.currState = 'done';
+
+			} catch (error) {
+				console.error("An error occurred during ffmpeg export:", error);
+				toast.error(`Failed to export ${video.filename}.`);
+				video.currState = 'none';
+			} finally {
+				// CRITICAL: Clean up the virtual filesystem to prevent memory leaks
+				if (this.ffmpeg) {
+					try {
+						await this.ffmpeg.deleteFile(video.filename);
+						await this.ffmpeg.deleteFile(outputFilename);
+					} catch (e) {
+						console.error("Could not delete files from virtual FS", e);
+					}
+				}
 			}
-			const blob = new Blob([data.buffer as any], { type: 'video/mp4' });
-			a.href = URL.createObjectURL(blob);
-			a.download = `output.${this.settings.exportFileFormat}`;
-			a.click();
-			video.currState = 'done';
-		});
+		}
 	}
 }

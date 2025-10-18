@@ -59,7 +59,7 @@
 	{...generateSeoProps(
 		{
 			type: 'WebPage',
-			seoTitle: 'HN Reader | A Better Hacker News Reader',
+			seoTitle: 'HN Reader | Niro',
 			seoDescription:
 				'HN Reader helps you filter out noise from your Hacker News feed by blocking keywords and saving posts to read later. A simple, private, and clean way to read HN.',
 			seoKeywords:
@@ -149,8 +149,8 @@
 				target="_blank"
 				class="rounded-full"
 				size="lg"
-				>
-				<Github/>
+			>
+				<Github />
 				Github
 			</Button>
 		</div>

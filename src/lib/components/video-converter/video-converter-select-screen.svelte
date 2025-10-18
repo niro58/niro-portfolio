@@ -92,7 +92,7 @@
 				</div>
 			</div>
 			<h3 class="text-foreground mb-2 text-xl font-semibold">Drag and drop your video here</h3>
-			<p class="text-neutral-foreground text-sm">Supports MP4, AVI, MKV, and more up to 100MB</p>
+			<p class="text-neutral-foreground text-sm">Supports MP4, AVI, MKV, and more up to 10GB</p>
 		</div>
 	</FileDropper>
 

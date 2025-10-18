@@ -9,5 +9,6 @@ export class EditableVideo {
 	constructor(file: File) {
 		this.file = file;
 		this.filename = file.name.split('.').slice(0, -1).join('.');
+
 	}
 }

@@ -6,9 +6,9 @@ export class AppConfig {
     static defaultBlogLimit = 6;
     static defaultPortfolioLimit = 4;
 
-    static maxImageSize = 25 * 1024 * 1024
+    static maxImageSize = 40 * 1024 * 1024
     static maxImageEditAmount = 100
-    static maxVideoSize = 100 * 1024 * 1024
+    static maxVideoSize = 10000 * 1024 * 1024
     static maxVideoEditAmount = 10;
 
     static contact = {

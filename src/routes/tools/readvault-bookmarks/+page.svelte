@@ -73,7 +73,7 @@
 	{...generateSeoProps(
 		{
 			type: 'WebPage',
-			seoTitle: 'ReadVault | Your Ultimate Reading Companion',
+			seoTitle: 'ReadVault | Niro',
 			seoDescription:
 				"ReadVault is a simple extension to save, organize, and prioritize your reading list. Save articles with one click, mark them as urgent, and archive them when you're done. All data is stored locally.",
 			seoKeywords:

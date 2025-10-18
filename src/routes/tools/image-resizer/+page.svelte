@@ -15,7 +15,7 @@
 		},
 		{
 			question: 'What is the maximum file size and number of images I can resize?',
-			answer: 'You can upload images up to 25 MB each and resize up to 100 images at the same time.'
+			answer: 'You can upload images up to 40 MB each and resize up to 100 images at the same time.'
 		},
 		{
 			question: 'Is my data safe?',
@@ -28,16 +28,16 @@
 		'Preserve or customize aspect ratios',
 		'No quality loss—high-quality results',
 		'100% free—no sign-ups, no hidden fees',
-		'Process images up to 25 MB each'
+		'Process images up to 40 MB each'
 	];
 </script>
 
 <script lang="ts">
 	import { Image, Lock } from '@lucide/svelte';
 	import CircleDesignElement from '$lib/components/circle-design-element.svelte';
-	import SelectScreen from '$lib/components/image-resizer/image-resizer-select-screen.svelte';
+	import ImageSelectScreen from '$lib/components/image-resizer/image-resizer-select-screen.svelte';
 	import { setImageEditor } from '$modules/image-editor.svelte';
-	import EditorScreen from '$lib/components/image-resizer/image-resizer-editor-screen.svelte';
+	import ImageEditorScreen from '$lib/components/image-resizer/image-resizer-editor-screen.svelte';
 	import Seo from '$ui/seo/seo.svelte';
 	import { generateSeoProps } from '$modules/seo';
 	import { page } from '$app/state';
@@ -78,9 +78,9 @@
 
 <section class="container flex min-h-screen flex-col pt-16">
 	{#if !editorMode}
-		<SelectScreen />
+		<ImageSelectScreen />
 	{:else}
-		<EditorScreen />
+		<ImageEditorScreen />
 	{/if}
 </section>
 <AboutFeatures

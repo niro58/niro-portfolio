@@ -21,7 +21,7 @@ export class EditableImage {
 			this.format = file.type;
 			this.width = fileData.width;
 			this.height = fileData.height;
-		} catch (e) {}
+		} catch (e) { }
 	}
 
 	private getFileData(file: File): Promise<{ width: number; height: number; src: string }> {
@@ -91,17 +91,17 @@ export class EditableImage {
 					const offset: Vector2 =
 						settings.cropType === 'inside'
 							? {
-									x: canvas.width !== this.width ? (canvas.width - this.width) / 2 : 0,
-									y: canvas.height !== this.height ? (canvas.height - this.height) / 2 : 0
-								}
+								x: canvas.width !== this.width ? (canvas.width - this.width) / 2 : 0,
+								y: canvas.height !== this.height ? (canvas.height - this.height) / 2 : 0
+							}
 							: {
-									x: canvas.width !== this.width ? (canvas.width - this.width) / 2 : 0,
-									y: canvas.height !== this.height ? (canvas.height - this.height) / 2 : 0
-								};
+								x: canvas.width !== this.width ? (canvas.width - this.width) / 2 : 0,
+								y: canvas.height !== this.height ? (canvas.height - this.height) / 2 : 0
+							};
 
 					ctx.drawImage(img, offset.x, offset.y, this.width, this.height);
 				}
-				if(settings.cropType === 'downscale') {
+				if (settings.cropType === 'downscale') {
 					const scale = Math.min(canvas.width / this.width, canvas.height / this.height);
 					const offset: Vector2 = {
 						x: (canvas.width - this.width * scale) / 2,
