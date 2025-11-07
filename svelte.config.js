@@ -40,7 +40,7 @@ const config = {
 					"'wasm-unsafe-eval'",
 					'unsafe-inline'
 				],
-				'style-src': ['self'],
+				'style-src': ['self', 'unsafe-inline'],
 				'img-src': ['self', 'https://imagedelivery.net', 'data:', 'blob:'],
 				'font-src': ['self'],
 				'connect-src': ['self', 'plausible.io', 'cdn.jsdelivr.net', 'raw.githubusercontent.com'],
