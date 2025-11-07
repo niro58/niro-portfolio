@@ -1,8 +1,7 @@
 import { browser } from '$app/environment';
-import { env } from '$env/dynamic/public';
+import { AppConfig } from '$config/app';
 import { type ClassValue, clsx } from 'clsx';
-import { cubicOut, quintOut } from 'svelte/easing';
-import { crossfade } from 'svelte/transition';
+import { cubicOut } from 'svelte/easing';
 import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
@@ -61,7 +60,7 @@ export type WithoutChildrenOrChild<T> = WithoutChildren<WithoutChild<T>>;
 export type WithElementRef<T, U extends HTMLElement = HTMLElement> = T & { ref?: U | null };
 
 export function createCloudflareImageUrl(imageId: string, imageOptions?: Record<string, string>) {
-    let url = env.PUBLIC_IMAGE_CDN + imageId;
+    let url = AppConfig.publicImageCdn + imageId;
     if (imageOptions) {
         url += "/"
         Object.entries(imageOptions).forEach(([key, value]) => {

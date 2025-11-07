@@ -1,8 +1,6 @@
 <script lang="ts">
-	import Checkbox from '$lib/components/ui/checkbox/checkbox.svelte';
 	import * as Form from '$lib/components/ui/form/index.js';
 	import Input from '$lib/components/ui/input/input.svelte';
-	import Label from '$lib/components/ui/label/label.svelte';
 	import Textarea from '$lib/components/ui/textarea/textarea.svelte';
 	import type { ContactSchema, contactSchema } from '$lib/schemas';
 	import type { SuperForm, SuperFormData } from 'sveltekit-superforms/client';

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { appPages } from '$config/pages';
 	import type { BlogPost } from '$lib/types/content';
 	import CdnImage from '$ui/cdn-image.svelte';
 	import { ArrowRight, Calendar, Tag } from '@lucide/svelte';
@@ -6,7 +7,7 @@
 	const { post }: { post: BlogPost } = $props();
 </script>
 
-<a href={`/blog/${post.slug}`}>
+<a href={appPages.blog_page.path(post.slug!)}>
 	<article
 		class="bg-card border-primary/20 hover:shadow-primary/20 flex h-full flex-col justify-between overflow-hidden rounded-lg border shadow-lg transition-all hover:shadow-lg"
 	>
@@ -14,7 +15,7 @@
 			<CdnImage
 				src={post.coverImage}
 				alt={post.coverImageAlt}
-				width={388}
+				width={500}
 				height={220}
 				class="w-full object-cover"
 			/>

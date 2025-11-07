@@ -1,5 +1,5 @@
 import { mdsvex, escapeSvelte } from 'mdsvex';
-import adapter from '@sveltejs/adapter-node';
+import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
@@ -18,6 +18,10 @@ const config = {
 		adapter: adapter({
 			out: 'build'
 		}),
+		prerender: {
+			handleMissingId: 'warn',
+			origin: process.env.ORIGIN || 'http://localhost:4173'
+		},
 
 		alias: {
 			$config: './src/config',
@@ -33,9 +37,10 @@ const config = {
 					'plausible.io',
 					'https://cdn.jsdelivr.net',
 					'blob:',
-					"'wasm-unsafe-eval'"
+					"'wasm-unsafe-eval'",
+					'unsafe-inline'
 				],
-				'style-src': ['self', 'unsafe-inline'],
+				'style-src': ['self'],
 				'img-src': ['self', 'https://imagedelivery.net', 'data:', 'blob:'],
 				'font-src': ['self'],
 				'connect-src': ['self', 'plausible.io', 'cdn.jsdelivr.net', 'raw.githubusercontent.com'],

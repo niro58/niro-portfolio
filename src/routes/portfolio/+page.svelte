@@ -14,32 +14,19 @@
 
 	const { data } = $props();
 
-	let activeIndex = $state(0);
+	let activePage = $state(0);
 
-	const activeProject = $derived(data.projects[activeIndex]);
+	const hasNextPage = $derived(data.projects.length > AppConfig.defaultPortfolioLimit);
 
-	$effect(() => {
-		if (data.projects.length > 0) {
-			if (activeIndex >= data.projects.length || activeIndex < 0) {
-				activeIndex = 0;
-			}
-		} else {
-			activeIndex = -1;
-		}
-	});
-
-	function moveToPage(newPage: number) {
-		if (newPage < 1) return;
-		goto(`/portfolio?page=${newPage}`, {
-			invalidateAll: true,
-			replaceState: true,
-			noScroll: true,
-			keepFocus: true
-		});
-	}
-
-	const hasMoreProjects = $derived(data.projects.length === AppConfig.defaultPortfolioLimit);
-	const isFirstPage = $derived(data.page <= 1);
+	const projectsToShow = $derived(
+		hasNextPage
+			? data.projects.slice(
+					activePage * AppConfig.defaultPortfolioLimit,
+					activePage * AppConfig.defaultPortfolioLimit + AppConfig.defaultPortfolioLimit
+				)
+			: data.projects
+	);
+	let activeProject = $derived(projectsToShow[0]);
 </script>
 
 <Seo
@@ -52,7 +39,7 @@
 		page.url
 	)}
 />
-{#if data.projects.length === 0 && data.page === 1}
+{#if data.projects.length === 0 && activePage === 1}
 	<div class="flex min-h-[60vh] items-center justify-center px-4 text-center">
 		<p class="text-muted-foreground">No portfolio projects found yet.</p>
 	</div>
@@ -134,7 +121,7 @@
 
 				<div class="flex h-full flex-col">
 					<div class="relative mb-12 flex-grow overflow-hidden md:min-h-[480px]">
-						{#key data.page}
+						{#key activePage}
 							<div
 								class="space-y-3 overflow-y-auto pr-2 md:absolute md:inset-0 md:space-y-4"
 								style="scrollbar-width: thin; scrollbar-color: rgba(156, 163, 175, 0.4) transparent;"
@@ -142,13 +129,15 @@
 								out:fly={{ y: -40, duration: 300, easing: cubicOut, opacity: 0 }}
 							>
 								{#if data.projects.length > 0}
-									{#each data.projects as project, index (project.slug || index)}
+									{#each projectsToShow as project, index (project.slug || index)}
 										<button
 											type="button"
-											onclick={() => (activeIndex = index)}
+											onclick={() => (activeProject = project)}
 											class={cn(
 												' hover:bg-primary/5 flex w-full flex-row justify-between rounded-lg border border-transparent p-3 text-left transition-colors duration-150 md:p-4',
-												activeIndex === index ? 'border-primary/50 bg-primary/10' : 'bg-card'
+												activeProject.slug === project.slug
+													? 'border-primary/50 bg-primary/10'
+													: 'bg-card'
 											)}
 										>
 											<div>
@@ -190,17 +179,17 @@
 						<Button
 							size="sm"
 							variant="outline"
-							onclick={() => moveToPage(data.page - 1)}
-							disabled={isFirstPage}
+							onclick={() => (activePage -= 1)}
+							disabled={activePage === 0}
 						>
 							Prev Page
 						</Button>
-						<span class="text-muted-foreground text-sm font-semibold"> Page {data.page} </span>
+						<span class="text-muted-foreground text-sm font-semibold"> Page {activePage + 1} </span>
 						<Button
 							size="sm"
 							variant="outline"
-							onclick={() => moveToPage(data.page + 1)}
-							disabled={!hasMoreProjects}
+							onclick={() => (activePage += 1)}
+							disabled={!hasNextPage}
 						>
 							Next Page
 						</Button>

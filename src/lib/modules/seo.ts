@@ -1,19 +1,36 @@
 import { AppConfig } from "$config/app";
 import { env } from "$env/dynamic/public";
 import type { SeoPage, SeoPagePart } from "$lib/types/seo";
+import { createCloudflareImageUrl } from "$lib/utils/common";
 import type { SeoProps } from "$ui/seo/seo.svelte";
 import type { Page } from "@sveltejs/kit";
 
 
 const BASE_WEBSITE_ID = AppConfig.baseUrl + '/#' + AppConfig.jsonLdWebsiteId;
 
+const jsonLdWebsiteLogo = createCloudflareImageUrl("33a9f1db-82d0-4fd9-7a43-614e5ae60900", {
+    width: "256",
+    height: "256",
+    fit: "cover"
+})
+const jsonLdWebsiteImage = createCloudflareImageUrl("33a9f1db-82d0-4fd9-7a43-614e5ae60900", {
+    width: "1024",
+    height: "776",
+    fit: "cover"
+})
+const firstDefaultImage = createCloudflareImageUrl("33a9f1db-82d0-4fd9-7a43-614e5ae60900", {
+    width: "1200",
+    height: "630",
+    fit: "cover"
+})
+
 export const JSONLD_WEBSITE_SCHEMA = {
     '@type': 'WebSite',
     '@id': BASE_WEBSITE_ID, // A unique ID for your business
     name: AppConfig.siteName,
-    url: env.PUBLIC_BASE_URL,
-    logo: AppConfig.jsonLdWebsiteLogo,
-    image: AppConfig.jsonLdWebsiteImage,
+    url: AppConfig.baseUrl,
+    logo: jsonLdWebsiteLogo,
+    image: jsonLdWebsiteImage,
     sameAs: AppConfig.socialLinks ? Object.values(AppConfig.socialLinks) : undefined,
 }
 
@@ -59,7 +76,7 @@ export function generateJsonLd(seoPage: SeoPage, url: Page["url"], withContext: 
         case 'WebPage':
             mainEntity['@type'] = 'WebPage';
 
-            mainEntity.image = seoPage.image && seoPage.image.length > 0 ? seoPage.image[0].url : AppConfig.firstDefaultImage;
+            mainEntity.image = seoPage.image && seoPage.image.length > 0 ? seoPage.image[0].url : firstDefaultImage;
             break;
 
         case 'Article':
@@ -124,7 +141,7 @@ export function generateJsonLdPagePart(seoPagePart: SeoPagePart, withContext: bo
                 '@type': 'ListItem',
                 position: index + 1,
                 name: item.name,
-                item: env.PUBLIC_BASE_URL + item.item,
+                item: AppConfig.baseUrl + item.item,
             }));
             break;
         case "FAQPage":
@@ -160,7 +177,7 @@ export function generateMetaTags(seoPage: SeoPage, url: Page["url"]) {
     const canonicalUrl = getCanonicalUrl(url)
 
     const imageUrls = seoPage.image?.map(img => img.url) ?? [];
-    const firstImage = imageUrls.length > 0 ? imageUrls[0] : AppConfig.firstDefaultImage; // Fallback image
+    const firstImage = imageUrls.length > 0 ? imageUrls[0] : firstDefaultImage; // Fallback image
 
     const tags = [
         // Open Graph

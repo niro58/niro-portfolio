@@ -4,7 +4,7 @@ import { escapeXml, formatXmlDate } from "$lib/utils/common";
 
 
 export async function GET() {
-    const result = await getBlogPosts();
+    const result = await getBlogPosts({});
 
     if (result.type === 'FAILURE') {
         return new Response("Failed to fetch", { status: 500 })
@@ -54,3 +54,5 @@ export async function GET() {
         }
     });
 }
+
+export const prerender = true;

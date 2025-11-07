@@ -168,7 +168,7 @@
 										>
 											{#if Object.values(ResultVideoFormat).includes(videoEditor.settings.exportFileFormat as ResultVideoFormat)}
 												{videoEditor.settings.exportFileFormat?.toUpperCase()}
-											{:else if Object.values(ResultAudioFormat).includes(videoEditor.settings.exportFileFormat as ResultVideoFormat)}
+											{:else if Object.values(ResultAudioFormat).includes(videoEditor.settings.exportFileFormat as ResultAudioFormat)}
 												{videoEditor.settings.exportFileFormat?.toUpperCase()}
 											{:else}
 												Select Video/Audio Format

@@ -1,8 +1,8 @@
-import { env } from '$env/dynamic/private';
+import { AppConfig } from '$config/app';
 import type { ResultFetch } from '$lib/types/common';
 
 export async function createFormEntry(data: Record<string, any>): Promise<ResultFetch<boolean>> {
-	const url = `${env.CONTACT_API_PATH}/api/contact`;
+	const url = `${AppConfig.publicContactApi}/api/contact`;
 
 	const body = {
 		key: 'niro-portfolio-web',
@@ -16,7 +16,6 @@ export async function createFormEntry(data: Record<string, any>): Promise<Result
 		body: JSON.stringify(body),
 		headers: {
 			'Content-Type': 'application/json',
-			Authorization: `Bearer ${env.CONTACT_API_AUTH}`
 		}
 	});
 

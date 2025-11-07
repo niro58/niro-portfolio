@@ -3,7 +3,11 @@ import type { BlogPost } from '$lib/types/content';
 import nodePath from 'node:path';
 
 
-export async function getBlogPosts(limit?: number, offset?: number, category?: string): Promise<ResultFetch<BlogPost[]>> {
+export async function getBlogPosts(params: {
+	limit?: number,
+	offset?: number,
+	category?: string
+}): Promise<ResultFetch<BlogPost[]>> {
 	try {
 		const data = import.meta.glob('../../content/posts/*.md');
 
@@ -14,7 +18,8 @@ export async function getBlogPosts(limit?: number, offset?: number, category?: s
 			if (!post.metadata) {
 				continue;
 			}
-			if (category && post.metadata.category.toLowerCase() !== category) {
+			if (params.category && post.metadata.category.toLowerCase() !== params.category) {
+
 				continue;
 			}
 
@@ -29,11 +34,13 @@ export async function getBlogPosts(limit?: number, offset?: number, category?: s
 			const dateB = new Date(b.createdAt).getTime();
 			return dateB - dateA;
 		});
+		console.log("POSTS", posts.length)
+		if (params.offset !== undefined && params.limit !== undefined) {
+			posts = posts.slice(params.offset, params.offset + params.limit);
+		} else if (params.limit !== undefined) {
+			console.log("limiting")
 
-		if (offset && limit) {
-			posts = posts.slice(offset, offset + limit);
-		} else if (limit) {
-			posts = posts.slice(0, limit);
+			posts = posts.slice(0, params.limit);
 		}
 
 		return {

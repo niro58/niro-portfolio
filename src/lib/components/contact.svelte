@@ -1,24 +1,14 @@
 <script lang="ts">
 	import { Clock, Github, Linkedin, Mail, MapPin, Send } from '@lucide/svelte';
 	import * as Card from '$lib/components/ui/card/index.js';
-	import FormRoot from '$lib/form/form-root.svelte';
 	import { contactSchema, type ContactSchema } from '$lib/schemas.js';
-	import type { z } from 'zod';
-	import type { SuperValidated } from 'sveltekit-superforms/client';
 	import Discord from './ui/icons/discord.svelte';
 	import ContactBody from './contact-body.svelte';
-	import FormResult from '$lib/form/form-result.svelte';
+	import FormResult from '$ui/form/form-result.svelte';
 	import FormButton from './ui/form/form-button.svelte';
 	import { AppConfig } from '$config/app';
-
-	const {
-		form
-	}: {
-		form: SuperValidated<z.TypeOf<ContactSchema>>;
-	} = $props();
-
-	const GITHUB_USERNAME = 'niro58';
-	const DISCORD_USERNAME = 'niro58'; // Or new format: your.discord.username
+	import FormRootClient from '$ui/form/form-root-client.svelte';
+	import { createFormEntry } from '$lib/utils/contactEntry';
 </script>
 
 <section class="relative py-24">
@@ -29,7 +19,12 @@
 					<Card.Title>Get in touch</Card.Title>
 				</Card.Header>
 				<Card.Content>
-					<FormRoot action="?/contact" data={form} schema={contactSchema}>
+					<FormRootClient
+						schema={contactSchema}
+						onFormData={(data) => {
+							createFormEntry(data);
+						}}
+					>
 						{#snippet children({ form, formData, formState })}
 							<FormResult {formState} />
 							<ContactBody {form} {formData} />
@@ -37,7 +32,7 @@
 								Send Message                                 <Send class="ml-2 h-4 w-4" />
 							</FormButton>
 						{/snippet}
-					</FormRoot>
+					</FormRootClient>
 				</Card.Content>
 			</Card.Root>
 		</div>
@@ -58,7 +53,7 @@
 							href={AppConfig.socialLinks.github}
 							class="hover:text-primary text-muted-foreground transition-colors"
 						>
-							{GITHUB_USERNAME}
+							{AppConfig.socialLinks.githubUsername}
 						</a>
 					</div>
 				</div>
@@ -70,7 +65,7 @@
 					</div>
 					<div>
 						<p class="text-card-foreground font-medium">Discord:</p>
-						<p class="text-muted-foreground">{DISCORD_USERNAME}</p>
+						<p class="text-muted-foreground">{AppConfig.socialLinks.discordUsername}</p>
 					</div>
 				</div>
 

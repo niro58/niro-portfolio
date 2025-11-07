@@ -2,28 +2,23 @@ FROM node:22.14.0-alpine AS builder
 
 WORKDIR /app
 
+RUN npm i -g pnpm
+
 COPY package*.json .
 COPY pnpm-lock.yaml .
 
-RUN npm i -g pnpm
-RUN pnpm install
+RUN pnpm fetch
+RUN pnpm install -r --offline
 
 COPY . .
 
-RUN pnpm run build
-RUN pnpm prune --prod
+RUN ORIGIN=https://dev.nichita-r.com pnpm run build
+RUN pnpm run postbuild
 
-FROM node:22.14.0-alpine AS deployer
+FROM nginx:1.27-alpine
 
-WORKDIR /app
+COPY --from=builder /app/build /usr/share/nginx/html
 
-COPY --from=builder /app/package.json .
-COPY --from=builder /app/build build/
-COPY --from=builder /app/node_modules node_modules/ 
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 3106
-
-ENV NODE_ENV=production
-ENV PORT=3106
-
-CMD [ "node", "build" ]
+EXPOSE 80

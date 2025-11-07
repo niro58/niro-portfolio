@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: niro-portfolio
+  name: niro-portfolio-dev
   namespace: personal
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: niro-portfolio
+      app: niro-portfolio-dev
   template:
     metadata:
       labels:
-        app: niro-portfolio
+        app: niro-portfolio-dev
     spec:
       containers:
-        - name: niro-portfolio
-          image: ghcr.io/niro58/niro-portfolio:VERSION
+        - name: niro-portfolio-dev
+          image: ghcr.io/niro58/niro-portfolio-dev:v1.0.1
           ports:
             - containerPort: 80
           livenessProbe:
             httpGet:
-              path: /api/ping
-              port: 3106
+              path: /
+              port: 80
             initialDelaySeconds: 15
             periodSeconds: 30
             timeoutSeconds: 60

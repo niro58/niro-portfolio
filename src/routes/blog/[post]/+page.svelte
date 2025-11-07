@@ -142,7 +142,7 @@
 			<div class="prose prose-primary lg:prose-xl pb-12">
 				<PostContent />
 			</div>
-			<Contact form={data.form} />
+			<Contact />
 		</div>
 	</article>
 </div>

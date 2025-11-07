@@ -62,8 +62,9 @@
 			Developer
 		</h1>
 		<p class="text-muted-foreground max-w-[600px] text-lg sm:text-xl">
-			Crafting digital experiences with code. Specialized in building modern web applications with
-			cutting-edge technologies.
+			I specialize in full-stack web architecture, building applications and designing complex
+			systems. My passion extends to diverse programming challenges, always seeking projects that
+			push boundaries.
 		</p>
 		<div class="flex flex-row gap-4">
 			<Button href={appPages.portfolio.path()} size="lg" class="mt-4">

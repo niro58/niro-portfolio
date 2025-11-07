@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { AppConfig } from '$config/app';
 	import { Image, type ImageProps } from '@unpic/svelte';
-	import { env } from '$env/dynamic/public';
 	type Props = ImageProps & {
 		src: string;
 	};
@@ -10,4 +10,4 @@
 	const { src, ...rest } = props;
 </script>
 
-<Image src={env.PUBLIC_IMAGE_CDN + src} {...rest} />
+<Image src={AppConfig.publicImageCdn + src} {...rest} />

@@ -58,6 +58,6 @@
 		</section>
 	{/if}
 	<div id="contact">
-		<Contact form={data.form} />
+		<Contact />
 	</div>
 </main>
