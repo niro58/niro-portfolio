@@ -1,0 +1,48 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: niro-portfolio-dev
+  namespace: personal
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`dev.nichita-r.com`) && (PathPrefix(`/fonts`) || PathPrefix(`/css`) || PathPrefix(`/js`))
+      kind: Rule
+      priority: 11
+      middlewares:
+        - name: add-cache-headers
+          namespace: shared
+        - name: gzip-compress
+          namespace: kube-system
+      services:
+        - name: niro-portfolio-dev-service
+          port: 80
+    - match: Host(`dev.nichita-r.com`)
+      kind: Rule
+      middlewares:
+        - name: gzip-compress
+          namespace: kube-system
+      services:
+        - name: niro-portfolio-dev-service
+          port: 80
+  tls:
+    certResolver: myresolver
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: niro-portfolio-dev-http
+  namespace: personal
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`dev.nichita-r.com`)
+      kind: Rule
+      middlewares:
+        - name: redirect-to-https
+          namespace: kube-system
+      services:
+        - name: niro-portfolio-dev-service
+          port: 80
