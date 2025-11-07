@@ -12,7 +12,7 @@ RUN pnpm install -r --offline
 
 COPY . .
 
-RUN ORIGIN=https://dev.nichita-r.com pnpm run build
+RUN ORIGIN=https://www.nichita-r.com pnpm run build
 RUN pnpm run postbuild
 
 FROM nginx:1.27-alpine
