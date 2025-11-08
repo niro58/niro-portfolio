@@ -17,47 +17,47 @@ const rawAppPages = {
     blog: {
         name: "Blog",
         route: "/blog",
-        path: () => "/blog"
+        path: () => "/blog/"
     },
     portfolio: {
         name: "Portfolio",
         route: "/portfolio",
-        path: () => "/portfolio"
+        path: () => "/portfolio/"
     },
     blog_page: {
         name: "Blog page",
         route: "/blog/[slug]",
-        path: (slug: string) => `/blog/${slug}`
+        path: (slug: string) => `/blog/${slug}/`
     },
     tools: {
         name: "Tools",
         route: "/tools",
-        path: () => "/tools"
+        path: () => "/tools/"
     },
     blockaid_website_blocker: {
         name: "BlockAid: Website Blocker",
         route: "/tools/blockaid-website-blocker",
-        path: () => "/tools/blockaid-website-blocker"
+        path: () => "/tools/blockaid-website-blocker/"
     },
     hacker_news_reader: {
         name: "Hacker News Reader - Filter And Save",
         route: "/tools/hacker-news-reader",
-        path: () => "/tools/hacker-news-reader"
+        path: () => "/tools/hacker-news-reader/"
     },
     readvault_bookmarks: {
         name: "ReadVault - Bookmark. Oragnize. Thrive",
         route: "/tools/readvault-bookmarks",
-        path: () => "/tools/readvault-bookmarks"
+        path: () => "/tools/readvault-bookmarks/"
     },
     image_resizer: {
         name: "Image resizer",
         route: "/tools/image-resizer",
-        path: () => "/tools/image-resizer"
+        path: () => "/tools/image-resizer/"
     },
     video_converter: {
         name: "Video Converter",
         route: "/tools/video-converter",
-        path: () => "/tools/video-converter"
+        path: () => "/tools/video-converter/"
     }
 
 } as const;
