@@ -15,13 +15,13 @@ spec:
     spec:
       containers:
         - name: niro-portfolio
-          image: ghcr.io/niro58/niro-portfolio:f14cf8b25a20fb6ebd87689f9a33911e33aef9ac
+          image: ghcr.io/niro58/niro-portfolio:09990c437e461770994ca502f1a2e2e301c6b9b7
           ports:
             - containerPort: 80
           livenessProbe:
             httpGet:
-              path: /api/ping
-              port: 3106
+              path: /
+              port: 80
             initialDelaySeconds: 15
             periodSeconds: 30
             timeoutSeconds: 60
