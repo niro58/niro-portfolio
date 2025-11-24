@@ -34,11 +34,9 @@ export async function getBlogPosts(params: {
 			const dateB = new Date(b.createdAt).getTime();
 			return dateB - dateA;
 		});
-		console.log("POSTS", posts.length)
 		if (params.offset !== undefined && params.limit !== undefined) {
 			posts = posts.slice(params.offset, params.offset + params.limit);
 		} else if (params.limit !== undefined) {
-			console.log("limiting")
 
 			posts = posts.slice(0, params.limit);
 		}

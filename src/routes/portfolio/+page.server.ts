@@ -10,7 +10,6 @@ export async function load({ url }) {
 	if (projects.type === 'FAILURE') {
 		throw new Error("Failure portfolio posts")
 	}
-	console.log(projects);
 	return {
 		projects: projects.data
 	};

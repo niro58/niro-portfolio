@@ -106,15 +106,10 @@ The extension is pretty straightforward. It has three tabs:
 
 You can also make folders to keep your saved pages organized.
 
-<img src="/posts/readvault/main_page.webp" alt="Main page of the ReadVault extension, showing tabs for All, Urgent, and Archive, with folders for different topics."/>
-<img src="/posts/readvault/main_page_expanded.webp" alt="Main page of the ReadVault extension, showing tabs for All, Urgent, and Archive, with folders for different topics."/>
-
 Adding pages is simple.
 
 1.  **Add Current Page**: If you're on a page you want to save, the extension fills in the title and icon for you.
 2.  **Add Specific Page**: Or you can just paste a URL and add the details yourself.
-
-<img src="/posts/readvault/add_page_current.webp" alt="The UI for adding the current page, with fields for title and folder pre-populated."/>
 
 ### The "Brains" Behind It
 
