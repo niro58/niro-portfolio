@@ -53,6 +53,7 @@
 	import QaItems from '$ui/qa-items.svelte';
 	import GridFeatures from '$lib/components/grid-features.svelte';
 	import AboutFeatures from '$lib/components/about-features.svelte';
+	import { appPages } from '$config/pages';
 </script>
 
 <Seo
@@ -75,6 +76,7 @@
 		}
 	)}
 />
+<a href={appPages.blockaid_website_blocker_blocked.path()} class="hidden">Blocked Websites</a>
 
 <div class="container flex min-h-screen items-center justify-center px-4 sm:px-6 lg:px-8">
 	<div class="w-full max-w-7xl space-y-8">

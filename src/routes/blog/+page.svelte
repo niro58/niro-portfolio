@@ -21,5 +21,8 @@
 />
 
 {#if data.posts.type === 'SUCCESS'}
+	{#each data.posts.data as post}
+		<a href={post.slug} class="hidden">{post.title}</a>
+	{/each}
 	<Blog postsRes={data.posts.data} />
 {/if}

@@ -39,6 +39,11 @@ const rawAppPages = {
         route: "/tools/blockaid-website-blocker",
         path: () => "/tools/blockaid-website-blocker/"
     },
+    blockaid_website_blocker_blocked: {
+        name: "BlockAid: Website Blocker",
+        route: "/tools/blockaid-website-blocker/blocked",
+        path: () => "/tools/blockaid-website-blocker/blocked/"
+    },
     hacker_news_reader: {
         name: "Hacker News Reader - Filter And Save",
         route: "/tools/hacker-news-reader",
