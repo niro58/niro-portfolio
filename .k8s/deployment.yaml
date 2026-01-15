@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: niro-portfolio
-          image: ghcr.io/niro58/niro-portfolio:9ad33db778bc67ed0f4ef13e7f491ffb85d8235f
+          image: ghcr.io/niro58/niro-portfolio:9edcf495906e76637b700711bf7dafa691b930f3
           ports:
             - containerPort: 80
           livenessProbe:
