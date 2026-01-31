@@ -14,6 +14,8 @@ appLink: 'https://www.niromap.com'
 githubLink: 'https://github.com/niro58/niro-map'
 ---
 
+> **Status**: This project is currently disabled and not accessible. This page remains for documentation purposes.
+
 ## Tech Stack Showcase
 
 This project was built using:

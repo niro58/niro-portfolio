@@ -13,6 +13,8 @@ tags: ['Website', 'Svelte', 'Go', 'Kubernetes', 'Analytics', 'QR']
 appLink: 'https://www.rehop.io'
 ---
 
+> **Status**: This project is currently disabled and not accessible. This page remains for documentation purposes.
+
 ## Tech Stack Showcase
 
 This project was built using:

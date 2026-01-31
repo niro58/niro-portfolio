@@ -63,6 +63,11 @@ const rawAppPages = {
         name: "Video Converter",
         route: "/tools/video-converter",
         path: () => "/tools/video-converter/"
+    },
+    qr_code_generator: {
+        name: "QR Code Generator",
+        route: "/tools/qr-code-generator",
+        path: () => "/tools/qr-code-generator/"
     }
 
 } as const;

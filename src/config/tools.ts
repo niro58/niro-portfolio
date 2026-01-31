@@ -46,4 +46,12 @@ export const tools: Tool[] = [
         url: appPages.image_resizer.path(),
         year: "2025",
     },
+    {
+        name: appPages.qr_code_generator.name,
+        description: "Create custom QR codes for URLs, text, Wi-Fi, vCards, and more. Customize design with colors, gradients, and logos. Download in high-resolution PNG or SVG formats for free.",
+        category: "Productivity",
+        url: appPages.qr_code_generator.path(),
+        year: "2025",
+        featured: true,
+    },
 ] as const

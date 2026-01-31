@@ -56,7 +56,7 @@ const config = {
 			extensions: ['.md'],
 			highlight: {
 				highlighter: async (code, lang = 'text') => {
-					await highlighter.loadLanguage('javascript', 'typescript');
+					await highlighter.loadLanguage('javascript', 'typescript', 'python', 'svelte', 'sql');
 					const html = escapeSvelte(highlighter.codeToHtml(code, { lang, theme: 'dracula' }));
 					return `{@html \`${html}\` }`;
 				}

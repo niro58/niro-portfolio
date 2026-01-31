@@ -64,6 +64,7 @@
 		"clsx": "^2.1.1",
 		"colord": "^2.9.3",
 		"jszip": "^3.10.1",
+		"qr-code-styling": "^1.9.2",
 		"rehype-autolink-headings": "^7.1.0",
 		"rehype-slug": "^6.0.0",
 		"shiki": "^3.15.0",
