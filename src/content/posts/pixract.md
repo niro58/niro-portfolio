@@ -5,7 +5,7 @@ updatedAt: '2026-02-04'
 category: 'Portfolio'
 readTime: '4'
 excerpt: 'Pixract is a free, privacy-first AI creative tool that enables users to generate images, 3D models, and text using an intuitive node-based workflow editor.'
-coverImage: ''
+coverImage: '38fea1bb-6833-4e31-8ed0-9464a8943400'
 coverImageAlt: 'Pixract node-based AI workflow editor interface'
 metaKeywords: 'AI image generator, node-based workflow, 3D model generation, text generation, Google Gemini, Meshy, privacy-first AI tool, free AI creative tool'
 metaDescription: 'Pixract is a free, privacy-first AI creative tool for generating images, 3D models, and text. Features node-based workflows, cascade regeneration, and local-only storage.'
@@ -26,16 +26,19 @@ All data is stored locally on your device — nothing is stored on external serv
 ## Key Features
 
 ### Image Generation
+
 - Create images using Google Gemini (Gemini 3 Pro and Gemini 2.5 Flash)
 - Multiple aspect ratios: 1:1, 2:3, 3:2, 3:4, 4:3, 9:16, 16:9, 21:9
 - Quality settings: 1K, 2K, 4K
 - Reference-based image variations
 
 ### Text Generation
+
 - Generate text using multiple Gemini models
 - Gemini 3 Pro Preview, Gemini Flash Latest, Gemini 2.5 Pro
 
 ### 3D Model Creation
+
 - Generate 3D models using Meshy 4
 - Text-to-3D and Image-to-3D conversion
 - GLB format support with live 3D preview
@@ -92,6 +95,7 @@ When you modify an upstream node, all connected downstream nodes automatically r
 ## Privacy First
 
 Pixract takes a privacy-first approach:
+
 - No server-side storage of your content
 - API calls go directly to AI providers
 - Your creative work stays on your device
@@ -103,10 +107,10 @@ Pixract takes a privacy-first approach:
 
 Pixract itself is free. Users pay only for the AI generation costs directly to the providers:
 
-| Generation Type | Cost Range |
-|-----------------|------------|
-| Image | $0.03 - $0.24 per image |
-| 3D Model | $0.15 - $0.30 per model |
+| Generation Type | Cost Range              |
+| --------------- | ----------------------- |
+| Image           | $0.03 - $0.24 per image |
+| 3D Model        | $0.15 - $0.30 per model |
 
 ---
 
