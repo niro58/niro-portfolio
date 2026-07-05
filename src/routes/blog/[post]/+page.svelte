@@ -116,12 +116,12 @@
 						{data.meta.excerpt}
 					</p>
 					<div class="mt-4 flex items-center gap-2">
-						<div class="space-x-2 font-mono text-sm text-gray-400">
+						<div class="flex flex-wrap gap-2">
 							{#each data.meta.tags as tag}
 								<span
-									class="border-primary/50 rounded border bg-red-900/30 px-2 py-1 font-mono text-xs text-gray-300"
+									class="border-primary/50 bg-primary/10 text-primary rounded-full border px-2.5 py-1 text-xs"
 								>
-									#{tag}
+									{tag}
 								</span>
 							{/each}
 						</div>
