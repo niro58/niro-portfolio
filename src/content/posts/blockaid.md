@@ -6,7 +6,7 @@ category: 'Portfolio'
 readTime: '8'
 excerpt: "A little project I made to help me focus on my work. It's a Chrome extension that blocks websites when you are working or just forever."
 coverImage: '0a52c90e-fec0-4f1b-aa00-08c835390500'
-coverImageAlt: ''
+coverImageAlt: 'BlockAid Chrome extension interface for blocking distracting websites'
 metaKeywords: 'chrome extension, web blocker, productivity, svelte'
 metaDescription: "A little project I made to help me focus on my work. It's a Chrome extension that blocks websites when you are working or just forever."
 

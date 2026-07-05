@@ -1,6 +1,30 @@
-<script>
+<script lang="ts">
 	import ToolsGrid from '$lib/components/tools-grid.svelte';
+	import Seo from '$ui/seo/seo.svelte';
+	import { generateSeoProps } from '$modules/seo.js';
+	import { page } from '$app/state';
 </script>
+
+<Seo
+	{...generateSeoProps(
+		{
+			type: 'WebPage',
+			seoTitle: 'Tools & Projects | Niro',
+			seoDescription:
+				'A collection of free browser-based tools and projects built by Nichita Roilean — image resizer, video converter, QR code generator, and productivity browser extensions.',
+			seoKeywords:
+				'free web tools, image resizer, video converter, QR code generator, browser extensions, developer tools'
+		},
+		page.url,
+		{
+			type: 'BreadcrumbList',
+			items: [
+				{ position: 1, name: 'Home', item: '/' },
+				{ position: 2, name: 'Tools', item: '/tools/' }
+			]
+		}
+	)}
+/>
 
 <main class="dark bg-background min-h-screen">
 	<div class="mx-auto max-w-7xl px-6 py-16 md:py-24">

@@ -8,11 +8,11 @@
 		<link rel="manifest" href="%sveltekit.assets%/site.webmanifest" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<script
-			defer
-			data-domain="nichita-r.com"
-			src="https://plausible.io/js/script.js"
-		></script>
+		<!-- Content images (incl. LCP hero) are served from Cloudflare Images -->
+		<link rel="preconnect" href="https://imagedelivery.net" crossorigin />
+		<link rel="dns-prefetch" href="https://imagedelivery.net" />
+
+		<script defer data-domain="nichita-r.com" src="https://plausible.io/js/script.js"></script>
 
 		%sveltekit.head%
 	</head>

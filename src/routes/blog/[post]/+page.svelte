@@ -100,7 +100,15 @@
 			datePublished: new Date(data.meta.createdAt).toISOString(),
 			dateModified: new Date(data.meta.updatedAt).toISOString()
 		},
-		page.url
+		page.url,
+		{
+			type: 'BreadcrumbList',
+			items: [
+				{ position: 1, name: 'Home', item: '/' },
+				{ position: 2, name: 'Blog', item: '/blog/' },
+				{ position: 3, name: data.meta.title, item: `/blog/${data.meta.slug}/` }
+			]
+		}
 	)}
 />
 <BlogSidebar meta={data.meta} />
@@ -135,6 +143,7 @@
 					alt={data.meta.coverImageAlt}
 					width={704}
 					height={396}
+					priority
 					class="object-cover"
 				/>
 			</div>

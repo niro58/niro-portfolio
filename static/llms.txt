@@ -1,0 +1,29 @@
+# Niro — Nichita Roilean
+
+> Nichita Roilean (Niro) is a full-stack software developer based in Prague, Czech Republic. He builds production web platforms, SaaS products, and browser tools — primarily with SvelteKit, Svelte 5, TypeScript, Go, Python, PostgreSQL, and Kubernetes. This site is his portfolio and engineering blog: each project write-up describes the problem, architecture, and technical decisions in depth.
+
+## About
+
+- [Portfolio](https://www.nichita-r.com/portfolio/): Featured projects and case studies.
+- [Blog](https://www.nichita-r.com/blog/): Technical write-ups of every project.
+- [Tools](https://www.nichita-r.com/tools/): Free browser-based tools built by Niro.
+- GitHub: https://github.com/niro58
+- LinkedIn: https://www.linkedin.com/in/nichita-roilean-2b4673241/
+
+## Featured projects
+
+- [Niro3D](https://www.nichita-r.com/blog/niro3d/): Automated 3D-printing service platform — instant pricing, interactive 3D previews, product configurator, microservices (SvelteKit, Go, Python, Three.js). Live: https://www.niro3d.cz
+- [Everest Solutions](https://www.nichita-r.com/blog/ev-sol/): Fleet-management dashboard for a Czech taxi operation on Uber and Bolt, plus a multilingual transport website (SvelteKit, PostgreSQL, MapLibre). Live: https://www.ev-sol.cz
+- [Lucky Autoservis](https://www.nichita-r.com/blog/lucky-auto/): Multilingual car-service platform with online reservations, dynamic pricing, and programmatic SEO at scale. Live: https://www.lucky-auto.cz
+- [Autoplakaty](https://www.nichita-r.com/blog/autoplakaty/): In-car digital-signage SaaS for Android tablets in Prague vehicles (SvelteKit, Kotlin, Cloudflare R2). Live: https://www.autoplakaty.cz
+- [Meridia](https://www.nichita-r.com/blog/meridia/): A living atlas of positive news on an interactive map, with AI categorisation and RSS ingestion (SvelteKit, MapLibre, Claude). Live: https://www.meridia.news
+- [SubOwl](https://www.nichita-r.com/blog/subowl/): Cross-platform subscription tracker with reminders, analytics, and cancellation guides (SvelteKit, Capacitor). Live: https://subowl.co
+- [Pixract](https://www.nichita-r.com/blog/pixract/): Privacy-first node-based AI creative canvas generating images, 3D models, and text (SvelteKit, Go, gRPC). Live: https://pixract.com
+- [ReadVault](https://www.nichita-r.com/blog/readvault/): Open-source Chrome extension to save, organize, and prioritize web pages (Svelte, IndexedDB).
+
+## Tools
+
+- [Image Resizer](https://www.nichita-r.com/tools/image-resizer/): Client-side bulk image resizing.
+- [Video Converter](https://www.nichita-r.com/tools/video-converter/): In-browser video conversion.
+- [QR Code Generator](https://www.nichita-r.com/tools/qr-code-generator/): Custom styled QR codes.
+- [BlockAid](https://www.nichita-r.com/tools/blockaid-website-blocker/): Website blocker browser extension.
