@@ -1,29 +1,29 @@
 ---
 title: 'Niro3D: Automated 3D Printing Service Platform'
 createdAt: '2025-07-26'
-updatedAt: '2026-02-05'
+updatedAt: '2026-04-22'
 category: 'Portfolio'
 readTime: '12'
-excerpt: 'A full-stack SaaS platform for on-demand 3D printing services with real-time pricing, interactive 3D previews, and automated order processing.'
+excerpt: 'A full-stack platform for on-demand 3D printing services — covering automated pricing, interactive 3D previews, a product configurator system, and end-to-end order processing. Actively developed.'
 coverImage: '244eda23-a6aa-400c-9f55-993080983a00'
 coverImageAlt: 'Niro3D 3D Printing Platform'
-metaKeywords: 'SvelteKit, 3D printing, Three.js, microservices, Go, Python, e-commerce, Stripe, PostgreSQL, Redis, Docker, Kubernetes'
-metaDescription: 'Niro3D is a production-ready SaaS platform for automated 3D printing services featuring real-time pricing, interactive 3D visualization, and a microservices architecture.'
+metaKeywords: 'SvelteKit, 3D printing, Three.js, microservices, Go, Python, e-commerce, Stripe, PostgreSQL, Redis, Docker, Kubernetes, template configurator'
+metaDescription: 'Niro3D is a production-grade platform for automated 3D printing services featuring real-time pricing, interactive 3D visualization, a product configurator, and a complete microservices architecture. Under active development.'
 tags: ['SaaS', 'Svelte', 'Go', 'Python', 'Three.js']
 appLink: 'https://www.niro3d.cz'
 ---
 
-## Introduction
+## Overview
 
-Niro3D is a complete e-commerce platform I built for offering automated 3D printing services. Users can upload their 3D models, get instant price quotes based on material usage and print time, preview their models in an interactive 3D viewer, and order prints—all without any manual intervention.
+Niro3D is an e-commerce platform built for offering automated 3D printing services. Customers can upload their own 3D models or configure ready-made products through an interactive interface, receive instant price quotes based on material usage and print time, preview their work in a browser-based 3D viewer, and place orders — all without manual intervention at any step.
 
-The platform targets three main audiences:
+The platform addresses three distinct customer segments:
 
-- **Makers and hobbyists** who download models from sites like Printables or MakerWorld
-- **Engineers and businesses** needing rapid prototyping with professional materials
-- **Designers** wanting to sell physical prints of their digital creations
+- **Makers and hobbyists** working with downloaded models from community repositories
+- **Engineers and businesses** with rapid-prototyping requirements
+- **Gift and personalisation buyers** looking for custom printed products with specific text, shapes, or imagery
 
-What started as a simple idea to automate quoting for 3D prints turned into a complex system involving multiple microservices, real-time 3D visualization, and a complete order management workflow.
+The project has been in active development since mid-2025 and continues to expand, with new product categories and platform capabilities added on an ongoing basis.
 
 ---
 
@@ -31,217 +31,171 @@ What started as a simple idea to automate quoting for 3D prints turned into a co
 
 ### Frontend & Apps
 
-The user-facing application and admin dashboard are both built with modern web technologies:
-
-- **SvelteKit 5** with Svelte 5 Runes for reactive state management
+- **SvelteKit 2** with **Svelte 5 Runes** for fine-grained reactive state management
 - **TailwindCSS 4** + **Shadcn-Svelte** for the component library
-- **Three.js** + **Threlte** for interactive 3D model visualization
+- **Three.js** + **Threlte** for interactive 3D visualisation and custom shader materials
 - **TypeScript** throughout for type safety
 - **Zod** for runtime validation
-- **Sveltekit-superforms** + **Formsnap** for form management
-- **Vitest** for unit testing and **Playwright** for E2E tests
+- **Sveltekit-superforms** for form management
 
-### Microservices
+### Processing Services
 
-The backend processing is handled by specialized microservices:
-
-- **Slicer (Go)**: Analyzes 3D files, calculates volume, weight, and printability metrics
-- **Converter (Python)**: Converts geometry formats (STL to GLB for web preview)
-- **Renderer (Python)**: Generates static 3D model thumbnails for product listings
-- **Mailer (Python)**: Handles transactional emails (order confirmations, shipping updates)
+- **Slicer (Go)**: Analyses 3D geometry via a slicing engine, calculating volume, weight, print time, and cost
+- **Converter (Python + trimesh)**: Converts STL/3MF geometry to GLB format for browser rendering
+- **Renderer (Python + headless OpenGL)**: Generates static thumbnail images from 3D models
+- **Mailer (Python + Jinja2)**: Handles transactional email delivery
+- **Image Resizer (Cloudflare Worker)**: On-the-fly CDN image transforms served from object storage
 
 ### Infrastructure
 
-- **Database**: PostgreSQL with a normalized schema across multiple schemas (public, billing, auth)
-- **Caching**: Redis for performance optimization and session management
-- **File Storage**: AWS S3 (Cloudflare R2) for model files and renders
-- **Payments**: Stripe for subscriptions and one-time purchases
-- **Deployment**: Docker Compose for development, Kubernetes-ready for production
-
-The entire codebase is organized as a **pnpm monorepo** with TurboRepo for build orchestration, sharing components and utilities across the main app and admin dashboard.
-
----
-
-## Architecture Overview
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        User Upload                               │
-└─────────────────────────────────────────────────────────────────┘
-                                │
-                                ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                     SvelteKit App                                │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────────┐  │
-│  │ 3D Viewer   │  │ Price Calc  │  │ Shopping Cart & Checkout│  │
-│  │ (Threlte)   │  │ (Real-time) │  │ (Stripe Integration)    │  │
-│  └─────────────┘  └─────────────┘  └─────────────────────────┘  │
-└─────────────────────────────────────────────────────────────────┘
-                                │
-        ┌───────────────────────┼───────────────────────┐
-        ▼                       ▼                       ▼
-┌───────────────┐      ┌───────────────┐      ┌───────────────┐
-│ Slicer (Go)   │      │ Converter (Py)│      │ Renderer (Py) │
-│ Volume/Weight │      │ STL → GLB     │      │ Thumbnails    │
-└───────────────┘      └───────────────┘      └───────────────┘
-        │                       │                       │
-        └───────────────────────┼───────────────────────┘
-                                ▼
-                    ┌───────────────────────┐
-                    │     PostgreSQL        │
-                    │  (Products, Orders,   │
-                    │   Materials, Users)   │
-                    └───────────────────────┘
-```
+- **Database**: PostgreSQL 17 with separate schemas for application data and authentication
+- **Caching**: Redis for session management and catalog performance
+- **File Storage**: Cloudflare R2 for models, renders, and review images
+- **Payments**: Stripe with embedded checkout sessions and webhook-based order lifecycle
+- **Deployment**: Kubernetes for the web applications; containerised services deployed to cloud compute via infrastructure-as-code; tagged release pipelines handle each component independently
+- **Monorepo**: pnpm workspaces + Turborepo for build orchestration
 
 ---
 
-## Key Features
+## Architecture
 
-### 1. Product Editor with Real-Time Pricing
+```
+┌─────────────────────────────────────────────────────────────┐
+│                      Customer Browser                        │
+└─────────────────────────────────────────────────────────────┘
+                               │
+                               ▼
+┌─────────────────────────────────────────────────────────────┐
+│                     SvelteKit App                            │
+│  ┌───────────┐  ┌────────────┐  ┌───────────┐  ┌─────────┐  │
+│  │ 3D Viewer │  │Configurator│  │  Catalog  │  │Checkout │  │
+│  │ (Threlte) │  │ & Pricing  │  │ + Upload  │  │(Stripe) │  │
+│  └───────────┘  └────────────┘  └───────────┘  └─────────┘  │
+└─────────────────────────────────────────────────────────────┘
+                               │
+       ┌───────────────────────┼────────────────────┐
+       ▼                       ▼                    ▼
+┌─────────────┐      ┌──────────────┐      ┌──────────────────┐
+│ Slicer (Go) │      │Converter (Py)│      │  Renderer (Py)   │
+│ Geometry    │      │ STL → GLB    │      │  GLB → PNG       │
+│ + Pricing   │      │ (trimesh)    │      │  (headless GL)   │
+└─────────────┘      └──────────────┘      └──────────────────┘
+       │                       │                    │
+       └───────────────────────┼────────────────────┘
+                               ▼
+                 ┌─────────────────────────┐
+                 │       PostgreSQL 17      │
+                 │  Products, Orders,       │
+                 │  Templates, Filaments    │
+                 └─────────────────────────┘
+                               │
+                 ┌─────────────┴────────────┐
+                 ▼                          ▼
+          Cloudflare R2             Cloudflare Worker
+          (File Storage)            (Image CDN)
+```
 
-The heart of the platform is the product editor. Users upload STL, 3MF, or STEP files and immediately see:
+---
 
-- An interactive 3D preview of their model
-- Material weight calculations
-- Real-time price updates as they change materials or scale
-- Support for multi-part models with different materials per part
+## Key Capabilities
 
-The editor handles file upload queueing, processing status, and seamlessly updates the 3D scene as each file completes analysis.
+### Product Configurator
 
-### 2. Interactive 3D Visualization
+A product configurator system has been developed to allow customers to order custom-printed products without uploading their own files. Generator modules cover a growing range of product categories — including name-based keychains and script-style variants, desk accessories, Spotify-themed gifts, decorative wall pieces, and custom SVG art conversions. New categories are introduced iteratively as the product range expands.
 
-Using Three.js via Threlte (Svelte bindings for Three.js), users can:
+Each generator implements a shared interface covering parameter definitions, 3D preview, and pricing rules. Parameters feed directly into the pricing engine and the in-browser 3D scene, so customers see both a live price and an accurate visual before adding to cart.
 
-- Rotate, zoom, and pan around their models
-- See accurate material colors applied to the mesh
-- Scale models volumetrically while maintaining aspect ratio
-- Preview multi-color prints with different materials assigned to different parts
+### Isomorphic Pricing Engine
 
-The viewer supports both a full-featured mode for editing and a lightweight mode for product listings and cart previews.
+Pricing logic is implemented as a shared package that runs identically in the browser and on the server. This ensures the price shown during configuration matches exactly what is validated at checkout, without a server round-trip for every customer interaction.
 
-### 3. Material System
+The engine is rule-based and composable, supporting cost scaling by character count, size tiers, optional add-on flags, dropdown-based surcharges, uploaded image processing fees, and per-material multipliers.
 
-The platform supports multiple filament types, each with different properties:
+### 3D Viewer with Shader Materials
 
-- **PLA**: Standard, biodegradable, great for prototypes
-- **PETG**: Stronger, food-safe, better layer adhesion
+The Three.js viewer, integrated via Threlte, handles standard PBR material rendering as well as custom shader materials for specialty filaments — including smooth gradient blends and metallic shimmer effects. Viewer initialisation is deferred until the component enters the viewport, and a lightweight mode is used for catalog listings and cart previews.
 
-Each material has associated colors, and the pricing engine accounts for material density and cost per gram.
+### Automated Processing Pipeline
 
-### 4. Automated Processing Pipeline
+When a custom model is uploaded, a chain of services processes it asynchronously:
 
-When a user uploads a model, a chain of microservices processes it:
+1. The slicing service analyses the geometry, runs it through the configured slicing tooling, and calculates weight, print time, and cost. Defensive handling is in place for edge cases in off-the-shelf slicing software.
+2. A conversion service transforms the geometry into a web-optimised format for the browser viewer.
+3. A rendering service generates static thumbnail images for the product listing.
+4. Results are written back to the database; the frontend reflects processing status in real time.
 
-1. **Upload → Slicer**: The Go-based slicer analyzes the geometry, calculating exact volume, surface area, and estimated print time
-2. **Slicer → Converter**: The Python converter transforms the STL into GLB format for efficient web rendering
-3. **Converter → Renderer**: Another Python service generates static thumbnail images for listings
-4. **Results → Database**: All metadata is stored for pricing calculations and order processing
+Template-configured products bypass this pipeline — pricing is calculated by the shared engine, and preview renders are pre-generated from known parameter combinations.
 
-This pipeline runs asynchronously, with the frontend polling for status updates and updating the UI as each stage completes.
+### E-Commerce Flow
 
-### 5. E-Commerce Flow
+The platform supports both guest and authenticated purchase flows. Cart contents can mix custom-upload items and configured template products. Checkout is handled through an embedded Stripe session, and order status transitions are driven by webhook events. Customers with accounts have access to their full order history.
 
-The complete purchase flow includes:
+### Customer Reviews
 
-- **Shopping Cart**: Add custom uploads or pre-configured products
-- **Cart Validation**: Verify items are still available and prices are current
-- **Checkout**: Stripe integration with session-based payments
-- **Order Tracking**: Real-time status from `pending_payment` → `in_production` → `shipped`
-- **Order History**: Users can view past orders with full details
+A verified review system has been implemented, gated at the database level to confirmed purchasers. Verified customers can submit star ratings and attach review images, which are stored in object storage and displayed on product pages.
 
-Additional features include volume discounts for bulk orders, promo codes, and guest checkout for users who don't want to create an account.
+### Marketplace Integrations
 
-### 6. Admin Dashboard
+Export tooling has been developed for third-party marketplace and shopping feed integrations, supporting the business's presence across multiple sales channels.
 
-A separate SvelteKit application provides administrators with:
+### Admin Dashboard
 
-- **Printer Fleet Management**: Track printers and their capabilities
-- **Order Queue**: Assign print jobs to specific machines
-- **Inventory Management**: Monitor filament stock and batches
-- **Product Management**: Create, edit, and manage product listings
-- **Component Management**: Handle individual 3D model components
+A separate administration application provides operational tools: order queue management with printer assignment, template and product management, filament inventory tracking, and a material shader preview tool for validating visual effects before publishing.
 
 ---
 
 ## Database Design
 
-The PostgreSQL database uses a normalized schema across multiple namespaces:
+The schema is divided into two areas:
 
-**Core Tables:**
+**Application data** covers the product catalogue, component and material relationships, the template and configurator system, orders and fulfilment, review content, and an asynchronous mail queue.
 
-- `products` - Meta-products (listings visible to users)
-- `product_components` - Individual 3D parts within a product
-- `filaments` & `materials` - Material properties (density, price per gram)
-- `component_filaments` - Material assignments to components
+**Authentication** handles user accounts, session management, and credential flows.
 
-**Order Management:**
-
-- `orders` - Customer orders linked to transactions
-- `printing_queue` - Job assignments to printers
-- `printers` - Fleet management
-
-**Billing & Auth:**
-
-- `billing.transactions` - Payment records via Stripe
-- `my_auth.users` - User accounts with roles
-
-Database triggers automatically recalculate costs when material prices change or components are updated.
+Triggers ensure derived costs are recalculated automatically when material prices or component configurations change, keeping pricing consistent without application-level orchestration.
 
 ---
 
 ## Technical Challenges
 
-### Real-Time Price Calculation
+### Slicing Tooling Integration
 
-Calculating accurate prices requires knowing the exact volume of irregular 3D geometry. The Go slicer service reads the mesh triangles, calculates the enclosed volume using signed tetrahedron volumes, and accounts for infill percentage to determine actual material usage.
+Integration with off-the-shelf slicing software required defensive handling of a range of edge cases: malformed geometry files, platform-specific parsing quirks, and ensuring that user-configured print settings persist correctly across re-slice operations rather than being silently overwritten.
 
-### GLB Conversion for Web
+### Template Geometry & Printability
 
-STL files are great for printing but terrible for web rendering—they're large and lack material/color data. The Python converter uses trimesh to process models and export them as GLB (binary glTF), which Three.js renders efficiently with proper PBR materials.
+Generating parametric 3D geometry from user inputs (text, dimensions, shape choices) requires careful validation that the resulting mesh is actually printable — watertight, within bed dimensions, and free of inverted normals. Each template went through multiple geometry iterations before reaching production.
 
-### Multi-Material Support
+### Isomorphic Pricing
 
-Handling products with multiple components, each with their own material selection, required careful state management. The Svelte 5 runes system made this manageable with fine-grained reactivity that updates only what changes.
+The pricing engine runs in the browser for live updates and on the server for order validation. Keeping both in sync required isolating it as a pure TypeScript package with no environment dependencies — no DOM, no Node.js globals.
+
+### Web-Optimised 3D Formats
+
+Source geometry formats are optimised for printing, not browser rendering. The conversion service processes models into binary glTF (GLB), which renders efficiently with Three.js. Multi-part files required preserving per-component material assignments through the conversion.
 
 ---
 
-## Performance Optimizations
+## Performance Considerations
 
-- **Redis Caching**: Product catalog and session data are cached to reduce database load
-- **Lazy 3D Loading**: The Three.js viewer only initializes when visible in the viewport
-- **Image Optimization**: Pre-rendered thumbnails served via CDN for fast product listings
-- **Database Triggers**: Automatic cost recalculation happens at the database level, not in application code
+CDN image serving is handled at the edge by a Cloudflare Worker, eliminating origin requests for product thumbnails. The 3D viewer defers initialisation to avoid blocking page load. Session and catalogue data are cached to reduce database load on high-traffic pages. Cost recalculation is handled at the database level rather than in application code.
 
 ---
 
 ## Lessons Learned
 
-Building Niro3D taught me several valuable lessons:
+1. **Microservices add operational surface area**: Separation of concerns is clean, but health checks, retry logic, and cross-service observability are as load-bearing as the business logic itself.
 
-1. **Microservices add complexity**: While the separation of concerns is clean, managing multiple services requires good tooling (Docker Compose, health checks, logging)
+2. **3D in the browser is constrained by mobile**: Shader compilation times, WebGL context limits, and memory pressure all needed explicit handling — particularly for lower-end devices.
 
-2. **3D on the web is tricky**: Browser memory limits, mobile performance, and shader compilation times all needed careful handling
+3. **Pricing has more edge cases than expected**: Per-character costs, minimum charges, volume discounts, material multipliers, and add-on surcharges each added complexity. The rule-based engine paid for itself quickly.
 
-3. **Pricing is harder than it looks**: Material costs, machine time, waste factors, minimum charges, volume discounts—the pricing engine has more edge cases than expected
+4. **Monorepos surface breaking changes early**: Sharing types, pricing logic, and utilities between the customer app, admin dashboard, and scripts meant any incompatible change is caught at compile time rather than at runtime.
 
-4. **Monorepos pay off**: Sharing types, components, and utilities between the main app and admin dashboard eliminated entire classes of bugs
-
----
-
-## Future Plans
-
-The platform continues to evolve with planned features including:
-
-- Support for resin (SLA) printing with different pricing models
-- Automatic orientation optimization for better print quality
-- Integration with shipping carriers for automated label generation
-- Public API for developers to integrate Niro3D into their applications
+5. **Building a configurator from first principles is necessary**: Off-the-shelf product configurators don't exist for 3D printing. Full ownership of the engine gave control over pricing, rendering, and the checkout integration that would not have been possible with a third-party tool.
 
 ---
 
-## Conclusion
+## Where Things Stand
 
-Niro3D represents months of work combining web development, 3D graphics, distributed systems, and e-commerce. It's a production-ready platform that handles the complete lifecycle from file upload to delivered print, with minimal manual intervention.
-
-The combination of SvelteKit's developer experience, Go's performance for computation-heavy tasks, and Python's ecosystem for 3D processing proved to be a solid foundation for this kind of application.
+The platform is in active production and continues to receive regular updates. Current work is focused on expanding the product configurator range, improving the material visualisation system, and extending marketplace integrations. The architecture is designed to accommodate new product categories and service types without structural changes to the core platform.

@@ -6,7 +6,7 @@ category: 'Portfolio'
 readTime: '2'
 excerpt: 'Interactive map visualizer of popular places powered by Overture Maps Places — explore, filter and inspect ~12M points-of-interest.'
 coverImage: '0df72f36-c5bd-40c8-d094-651e3b747a00'
-coverImageAlt: ''
+coverImageAlt: 'Niro Map interactive visualizer showing points-of-interest from Overture Maps'
 metaKeywords: 'map visualizer, Overture Maps Places, points of interest, POI, interactive map, geospatial, SvelteKit, Tailwind CSS, self-hosted, VPS'
 metaDescription: 'Interactive map visualizer for exploring 12M+ points of interest. Filter by category, search by radius, and inspect place details from Overture Maps data.'
 tags: ['Website', 'Svelte', 'Maps', 'Geospatial']

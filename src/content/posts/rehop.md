@@ -6,7 +6,7 @@ category: 'Portfolio'
 readTime: '2'
 excerpt: 'Link management: branded short links, customizable QR codes, and privacy-first analytics.'
 coverImage: '4506bd38-75a3-4ddf-6c7e-a021d8338000'
-coverImageAlt: ''
+coverImageAlt: 'ReHop link management dashboard with short links and QR code generator'
 metaKeywords: 'URL shortener, link management, QR code generator, link analytics, branded links, SvelteKit, Tailwind CSS, Go, Kubernetes, gRPC, Supabase, privacy-focused, ReHop'
 metaDescription: 'ReHop is a platform to shorten URLs, generate QR codes, and track clicks. Built with SvelteKit and Go, self‑hosted on Kubernetes.'
 tags: ['Website', 'Svelte', 'Go', 'Kubernetes', 'Analytics', 'QR']

@@ -6,7 +6,7 @@ category: 'Portfolio'
 readTime: '8'
 excerpt: 'Chrome extension ReadVault is a project to save, organize, and prioritize web pages instantly. Client sided, secure and open source.'
 coverImage: 'e331e6d2-2c1d-4808-e3f5-e304075c9800'
-coverImageAlt: ''
+coverImageAlt: 'ReadVault Chrome extension for saving and organizing web pages'
 metaKeywords: 'chrome extension, web blocker, productivity, svelte'
 metaDescription: 'Chrome extension ReadVault is a project to save, organize, and prioritize web pages instantly. Client sided, secure and open source.'
 

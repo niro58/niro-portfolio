@@ -6,7 +6,7 @@ category: 'Portfolio'
 readTime: '2'
 excerpt: 'Resize images directly in your browser with Tivoku Image Resizer, a 100% client-side web application using Ffmpeg WASM.'
 coverImage: '3f107933-cf85-4725-d73a-301023abb800'
-coverImageAlt: ''
+coverImageAlt: 'Tivoku browser-based image resizer web application'
 metaKeywords: 'image resizer, online image resizer, client-side image processing, Ffmpeg WASM, SvelteKit, Tailwind CSS, web application'
 metaDescription: 'Tivoku Image Resizer is a fast, efficient, and secure web application for resizing images in your browser using Ffmpeg WASM. All processing is client-side.'
 tags: ['Website', 'Svelte']

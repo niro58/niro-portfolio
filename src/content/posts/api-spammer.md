@@ -6,7 +6,7 @@ category: 'Portfolio'
 readTime: '8'
 excerpt: "Evening project to spam my API endpoints for stress-testing purposes. It's a simple Go program that sends a lot of requests to an API endpoint."
 coverImage: '95439e14-5361-4631-d787-3c74fe489000'
-coverImageAlt: ''
+coverImageAlt: 'API Spammer Go stress-testing tool sending concurrent requests to an API endpoint'
 metaKeywords: 'golang, go, api, spammer, testing, api testing'
 metaDescription: "Evening project to spam my API endpoints for stress-testing purposes. It's a simple Go program that sends a lot of requests to an API endpoint."
 tags: ['Go']
