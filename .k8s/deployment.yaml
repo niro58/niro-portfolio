@@ -16,6 +16,10 @@ spec:
       containers:
         - name: niro-portfolio
           image: ghcr.io/niro58/niro-portfolio:latest
+          # Pull the freshly pushed :latest on every rollout. With IfNotPresent
+          # (the implicit default for a mutable tag) `kubectl rollout restart`
+          # reuses the node's cached image and silently serves stale content.
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
           livenessProbe:
