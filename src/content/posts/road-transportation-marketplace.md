@@ -10,7 +10,6 @@ coverImageAlt: 'Road transportation marketplace — bus booking, parcels, and li
 metaKeywords: 'SvelteKit, bus marketplace, Stripe Connect, programmatic SEO, hreflang, PostgreSQL, Leaflet, Server-Sent Events, Capacitor, Twilio, Viber, svelte-i18n, remote functions, parcel shipping, multi-leg routes'
 metaDescription: 'A SvelteKit bus-carrier marketplace for Eastern-European corridors: seat booking, parcels, Stripe Connect payouts, SSE GPS tracking, and 8-language programmatic SEO across 8,400+ URLs.'
 tags: ['SaaS', 'Svelte', 'Marketplace', 'SEO', 'Mobile']
-githubLink: 'https://github.com/niro58/road-transportation-app'
 ---
 
 ## Overview

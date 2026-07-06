@@ -10,7 +10,6 @@ coverImageAlt: 'Sitely — AI website generation platform for Czech businesses'
 metaKeywords: 'SvelteKit, Svelte 5, Claude AI, Anthropic, website generator, lead scraping, Google Maps, Google Places API, ARES, lead scoring, Stripe, Cloudflare Pages, Cloudflare R2, PostgreSQL, Czech, GrapesJS'
 metaDescription: 'Sitely finds Czech businesses without websites, scores them as leads, and auto-generates AI-built websites deployed to Cloudflare Pages. Built with SvelteKit, Claude, and a 100+ block generation engine.'
 tags: ['SaaS', 'Svelte', 'AI', 'Automation']
-githubLink: 'https://github.com/niro58/sitely-app'
 appLink: 'https://www.sitely.cz'
 ---
 
