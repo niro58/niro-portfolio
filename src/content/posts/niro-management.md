@@ -10,7 +10,6 @@ coverImageAlt: 'niro-management — self-hosted AI DevOps control panel'
 metaKeywords: 'SvelteKit, self-hosted, AI code review, DevOps, DeepSeek, Gonka, OpenCode, PostgreSQL, node-pty, noVNC, firejail, Sentry, autofix, BullMQ alternative, Tailscale'
 metaDescription: 'niro-management is a self-hosted AI DevOps control panel — daily AI code reviews, Sentry triage, dependency audits, autofix pull requests, remote screen viewer and web terminal, all on a Tailscale-only PC.'
 tags: ['DevOps', 'Svelte', 'AI', 'Self-Hosted']
-githubLink: 'https://github.com/niro58/niro-management'
 ---
 
 ## Overview
