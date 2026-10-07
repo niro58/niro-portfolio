@@ -34,5 +34,5 @@ spec:
               cpu: 15m
               memory: 50Mi
             limits:
-              cpu: 35m
+              cpu: 250m # 2026-10-07 cluster audit: 35m limit too tight, CPU-throttles the pod; raised to 250m
               memory: 150Mi
