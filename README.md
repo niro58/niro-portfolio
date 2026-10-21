@@ -1,3 +1,8 @@
+> **Deploy note (21.10.2026):** `build.sh` targets the OLD cluster (`kubectl config use-context personal`)
+> and pushes `:latest`. The site runs on `hetzner-fsn1-1` (`personal/niro-portfolio`). Until `build.sh` is fixed, deploy with
+> `docker build -t ghcr.io/niro58/<image>:<sha> . && docker push …`, then
+> `kubectl --context hetzner-fsn1-1 -n personal set image deploy/niro-portfolio niro-portfolio=ghcr.io/niro58/<image>:<sha>`.
+
 # sv
 
 Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).

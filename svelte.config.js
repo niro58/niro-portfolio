@@ -36,6 +36,7 @@ const config = {
 					'self',
 					'plausible.io',
 					'https://cdn.jsdelivr.net',
+					'https://challenges.cloudflare.com',
 					'blob:',
 					"'wasm-unsafe-eval'",
 					'unsafe-inline'
@@ -43,8 +44,14 @@ const config = {
 				'style-src': ['self', 'unsafe-inline'],
 				'img-src': ['self', 'https://imagedelivery.net', 'data:', 'blob:'],
 				'font-src': ['self'],
-				'connect-src': ['self', 'plausible.io', 'cdn.jsdelivr.net', 'raw.githubusercontent.com'],
-				'frame-src': ['self'],
+				'connect-src': [
+					'self',
+					'plausible.io',
+					'cdn.jsdelivr.net',
+					'raw.githubusercontent.com',
+					'https://cms.sitely.cz'
+				],
+				'frame-src': ['self', 'https://challenges.cloudflare.com'],
 				'worker-src': ['self', 'blob:']
 			}
 		}

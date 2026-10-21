@@ -3,7 +3,10 @@ import { createCloudflareImageUrl } from "$lib/utils/common";
 
 export class AppConfig {
     static publicImageCdn = "https://imagedelivery.net/7WKcVsmsOjoGLZ6M5TFPXA/"
-    static publicContactApi = "https://api.nichita-r.com"
+    // Contact form: the platform's public path. Token and site key are public by design.
+    static PUBLIC_CONTACT_FORM_URL = "https://cms.sitely.cz/public/contact/niro-portfolio-web"
+    static PUBLIC_CONTACT_FORM_TOKEN = "pcf_HIQIVH35M3UYHLN5XELPRN26GU"
+    static PUBLIC_TURNSTILE_SITE_KEY = "0x4AAAAAAFfFJ0cLkvr4uARW"
     static baseUrl = "https://www.nichita-r.com"
     static defaultBlogLimit = 6;
     static defaultPortfolioLimit = 4;
