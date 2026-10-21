@@ -2,7 +2,7 @@ FROM node:22.14.0-alpine AS builder
 
 WORKDIR /app
 
-RUN npm i -g pnpm
+RUN npm i -g pnpm@10.34.7
 
 COPY package*.json .
 COPY pnpm-lock.yaml .
