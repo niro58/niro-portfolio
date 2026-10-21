@@ -9,15 +9,15 @@
 
 	let { formState = $bindable('idle'), timeout = 3000, onSuccessEnd }: Props = $props();
 
+	// Success clears itself; an error stays until the next send: it is what tells the visitor
+	// why nothing arrived. The cleanup drops a timer that a newer state outdates.
 	$effect(() => {
-		if (formState != 'idle') {
-			setTimeout(() => {
-				if (formState === 'success' && onSuccessEnd) {
-					onSuccessEnd();
-				}
-				formState = 'idle';
-			}, timeout);
-		}
+		if (formState != 'success') return;
+		const timer = setTimeout(() => {
+			onSuccessEnd?.();
+			formState = 'idle';
+		}, timeout);
+		return () => clearTimeout(timer);
 	});
 </script>
 
