@@ -43,23 +43,28 @@
 	}: Props = $props();
 
 	let errorMessage = $state('');
+	let sent = false;
 	const data = defaults(zod4(schema));
 
 	const form = superForm(data, {
 		SPA: true,
 		validators: zod4Client(schema),
 		dataType: dataType,
-		resetForm: resetForm,
+		// Reset only after a send that really went through: superforms would also wipe a
+		// failed send, and the visitor would lose the message they just typed.
+		resetForm: () => resetForm && sent,
 		clearOnSubmit: 'errors-and-message',
 		onUpdate: async (res) => {
 			switch (res.result.type) {
 				case 'success': {
-					const sent = onFormData ? await onFormData(res.result.data.form.data) : undefined;
-					if (sent && sent.type === 'FAILURE') {
+					const result = onFormData ? await onFormData(res.result.data.form.data) : undefined;
+					if (result && result.type === 'FAILURE') {
+						sent = false;
 						formState = 'error';
-						errorMessage = sent.error;
+						errorMessage = result.error;
 						break;
 					}
+					sent = true;
 					formState = 'success';
 					break;
 				}
@@ -84,13 +89,15 @@
 		}
 	});
 
+	// Success and input errors clear themselves; an error stays until the next send, because it
+	// is what tells the visitor why nothing arrived. The cleanup drops a timer a newer state outdates.
 	$effect(() => {
-		if (formState != 'idle' && resetFormState) {
-			setTimeout(() => {
-				formState = 'idle';
-				errorMessage = 'undefined';
-			}, 3000);
-		}
+		if (!resetFormState || (formState != 'success' && formState != 'input-error')) return;
+		const timer = setTimeout(() => {
+			formState = 'idle';
+			errorMessage = '';
+		}, 3000);
+		return () => clearTimeout(timer);
 	});
 </script>
 
