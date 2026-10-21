@@ -25,7 +25,7 @@
 <LegalPage
 	title="Privacy Policy"
 	standfirst="This site collects almost nothing. Here is the specific list, and how to check it yourself."
-	updated="2 September 2026"
+	updated="21 October 2026"
 >
 	<section>
 		<h2>The short version</h2>
@@ -80,9 +80,11 @@
 		<h2>The contact form</h2>
 		<p>
 			This is the only part of the site that collects personal data. If you submit the form, it
-			sends three fields — <strong>your name, your email address and your message</strong> — to my
-			own contact service at <strong>api.nichita-r.com</strong>, tagged so I know which of my sites
-			it came from. Nothing else about you is attached to it.
+			sends three fields — <strong>your name, your email address and your message</strong> — to the
+			contact inbox of my own platform at <strong>cms.sitely.cz</strong>, tagged so I know which of
+			my sites it came from. Besides the message, it keeps only a one-way hash of your IP address,
+			used to stop spam floods. Before sending, a <strong>Cloudflare Turnstile</strong> check
+			confirms you are a person; Cloudflare sees your browser and IP address for that check only.
 		</p>
 		<p>
 			I use it for one purpose: to read your message and reply. It is not used for marketing, is not

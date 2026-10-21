@@ -9,6 +9,10 @@
 	import { AppConfig } from '$config/app';
 	import FormRootClient from '$ui/form/form-root-client.svelte';
 	import { createFormEntry } from '$lib/utils/contactEntry';
+	import Turnstile from './turnstile.svelte';
+
+	let turnstileToken = $state('');
+	let resetTurnstile = $state<() => void>();
 </script>
 
 <section class="relative py-24">
@@ -21,13 +25,20 @@
 				<Card.Content>
 					<FormRootClient
 						schema={contactSchema}
-						onFormData={(data) => {
-							createFormEntry(data);
+						onFormData={async (data) => {
+							const sent = await createFormEntry(data, turnstileToken);
+							resetTurnstile?.();
+							return sent;
 						}}
 					>
 						{#snippet children({ form, formData, formState })}
 							<FormResult {formState} />
 							<ContactBody {form} {formData} />
+							<Turnstile
+								siteKey={AppConfig.PUBLIC_TURNSTILE_SITE_KEY}
+								bind:token={turnstileToken}
+								bind:reset={resetTurnstile}
+							/>
 							<FormButton disabled={formState === 'submitting'} class="w-full">
 								Send Message                                 <Send class="ml-2 h-4 w-4" />
 							</FormButton>

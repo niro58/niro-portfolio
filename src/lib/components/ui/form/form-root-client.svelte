@@ -4,6 +4,7 @@
 	import { zod4, zod4Client, zodClient } from 'sveltekit-superforms/adapters';
 
 	import type { Snippet } from 'svelte';
+	import type { ResultFetch } from '$lib/types/common';
 	import { cn, type FormState } from '$lib/utils/common';
 
 	type Props = {
@@ -15,7 +16,7 @@
 		resetForm?: boolean;
 		debug?: boolean;
 		resetFormState?: boolean;
-		onFormData?: (data: any) => void;
+		onFormData?: (data: any) => void | Promise<ResultFetch<unknown> | void>;
 		children: Snippet<
 			[
 				{
@@ -52,12 +53,16 @@
 		clearOnSubmit: 'errors-and-message',
 		onUpdate: async (res) => {
 			switch (res.result.type) {
-				case 'success':
-					formState = 'success';
-					if (onFormData) {
-						onFormData(res.result.data.form.data);
+				case 'success': {
+					const sent = onFormData ? await onFormData(res.result.data.form.data) : undefined;
+					if (sent && sent.type === 'FAILURE') {
+						formState = 'error';
+						errorMessage = sent.error;
+						break;
 					}
+					formState = 'success';
 					break;
+				}
 				case 'failure':
 					if (res.result.data && res.result.data.form.message) {
 						formState = 'error';
