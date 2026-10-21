@@ -1,5 +1,8 @@
 import { z } from 'zod';
 
+// The CSP forbids eval; zod's JIT probes it with `new Function` and logs a violation per page.
+z.config({ jitless: true });
+
 export const contactSchema = z.object({
 	name: z
 		.string()
