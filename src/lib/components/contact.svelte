@@ -9,15 +9,6 @@
 	import { AppConfig } from '$config/app';
 	import FormRootClient from '$ui/form/form-root-client.svelte';
 	import { createFormEntry } from '$lib/utils/contactEntry';
-	import Turnstile from './turnstile.svelte';
-
-	let turnstileToken = $state('');
-	let resetTurnstile = $state<() => void>();
-	const humanCheck = {
-		checking: "Checking you're a person…",
-		failed: "We couldn't confirm you're a person. Check your connection and try again.",
-		retry: 'Try again'
-	};
 </script>
 
 <section class="relative py-24">
@@ -30,25 +21,12 @@
 				<Card.Content>
 					<FormRootClient
 						schema={contactSchema}
-						onFormData={async (data) => {
-							if (!turnstileToken) {
-								return { type: 'FAILURE', error: 'Human check not finished', code: 'NO_TOKEN' };
-							}
-							const sent = await createFormEntry(data, turnstileToken);
-							resetTurnstile?.();
-							return sent;
-						}}
+						onFormData={createFormEntry}
 					>
 						{#snippet children({ form, formData, formState })}
 							<FormResult {formState} />
 							<ContactBody {form} {formData} />
-							<Turnstile
-								siteKey={AppConfig.PUBLIC_TURNSTILE_SITE_KEY}
-								labels={humanCheck}
-								bind:token={turnstileToken}
-								bind:reset={resetTurnstile}
-							/>
-							<FormButton disabled={formState === 'submitting' || !turnstileToken} class="w-full">
+							<FormButton disabled={formState === 'submitting'} class="w-full">
 								Send Message                                 <Send class="ml-2 h-4 w-4" />
 							</FormButton>
 						{/snippet}

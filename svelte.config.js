@@ -36,7 +36,6 @@ const config = {
 					'self',
 					'plausible.io',
 					'https://cdn.jsdelivr.net',
-					'https://challenges.cloudflare.com',
 					'blob:',
 					"'wasm-unsafe-eval'",
 					'unsafe-inline'
@@ -51,7 +50,7 @@ const config = {
 					'raw.githubusercontent.com',
 					'https://cms.sitely.cz'
 				],
-				'frame-src': ['self', 'https://challenges.cloudflare.com'],
+				'frame-src': ['self'],
 				'worker-src': ['self', 'blob:']
 			}
 		}
