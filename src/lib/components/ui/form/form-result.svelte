@@ -1,45 +1,48 @@
 <script lang="ts">
+	import { AppConfig } from '$config/app';
 	import type { FormState } from '$lib/utils/common';
 	import { fly } from 'svelte/transition';
 	interface Props {
 		formState?: FormState;
-		timeout?: number;
-		onSuccessEnd?: () => void;
 	}
 
-	let { formState = $bindable('idle'), timeout = 3000, onSuccessEnd }: Props = $props();
+	let { formState = 'idle' }: Props = $props();
 
-	// Success clears itself; an error stays until the next send: it is what tells the visitor
-	// why nothing arrived. The cleanup drops a timer that a newer state outdates.
-	$effect(() => {
-		if (formState != 'success') return;
-		const timer = setTimeout(() => {
-			onSuccessEnd?.();
-			formState = 'idle';
-		}, timeout);
-		return () => clearTimeout(timer);
-	});
+	// Success and error both stay until the next send. Success used to vanish after 3 s,
+	// above a form that had just been emptied, and read as "nothing happened".
+	// The outcome takes focus when it appears: it sits above the form, out of view from the
+	// submit button, and a screen reader reads the focused message aloud.
+	function focusOnMount(node: HTMLElement) {
+		node.focus();
+	}
 </script>
 
 {#if formState === 'success'}
 	<div transition:fly={{ y: -10 }}>
 		<div
-			class="relative mb-5 rounded border border-green-400 bg-green-100 px-4 py-3 text-green-700"
-			role="alert"
+			class="relative mb-5 scroll-mt-24 rounded border border-green-400 bg-green-100 px-4 py-3 text-green-700 outline-none"
+			role="status"
+			aria-live="polite"
+			tabindex="-1"
+			use:focusOnMount
 		>
-			<strong class="font-bold">Success!</strong>
-			<span class="block sm:inline">Your form has been submitted successfully.</span>
+			<strong class="font-bold">Thank you, I have received your message.</strong>
+			<span class="block">I will reply to the email address you gave as soon as I can.</span>
 		</div>
 	</div>
 {:else if formState === 'error'}
 	<div transition:fly={{ y: -10 }}>
 		<div
-			class="relative mb-5 rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700"
+			class="relative mb-5 scroll-mt-24 rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700 outline-none"
 			role="alert"
+			tabindex="-1"
+			use:focusOnMount
 		>
-			<strong class="font-bold">Error!</strong>
-			<span class="block sm:inline">There was an error submitting your form. Please try again.</span
-			>
+			<strong class="font-bold">Your message could not be sent.</strong>
+			<span class="block">
+				It is still in the form, so please try sending it again, or email me at
+				<a class="underline" href={`mailto:${AppConfig.contact.email}`}>{AppConfig.contact.email}</a>.
+			</span>
 		</div>
 	</div>
 {/if}

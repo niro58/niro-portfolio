@@ -89,10 +89,12 @@
 		}
 	});
 
-	// Success and input errors clear themselves; an error stays until the next send, because it
-	// is what tells the visitor why nothing arrived. The cleanup drops a timer a newer state outdates.
+	// Only input errors clear themselves. Success and error both stay until the next send: the
+	// success message is the visitor's only proof the message arrived (a 3 s flash above an
+	// emptied form read as "nothing happened"), and the error is why nothing arrived. The
+	// cleanup drops a timer a newer state outdates.
 	$effect(() => {
-		if (!resetFormState || (formState != 'success' && formState != 'input-error')) return;
+		if (!resetFormState || formState != 'input-error') return;
 		const timer = setTimeout(() => {
 			formState = 'idle';
 			errorMessage = '';
